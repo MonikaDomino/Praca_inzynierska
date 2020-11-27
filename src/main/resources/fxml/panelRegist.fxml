@@ -13,37 +13,37 @@
 
 <AnchorPane prefHeight="455.0" prefWidth="719.0" style="-fx-background-color: linear-gradient(to top, #cedcf1, #b7cdee, #9fbeeb, #87b0e8, #6da1e5);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllery.Controller_Register">
    <children>
-      <Pane layoutX="344.0" layoutY="21.0" prefHeight="399.0" prefWidth="352.0" style="-fx-background-color: linear-gradient(to right top, #6b7cd1, #5b8dda, #519ddf, #51ace1,    #5cb9e1, #5abbe4, #58bde7, #55bfea, #42b6f1, #3cacf7, #48a1fb, #5f94fb); -fx-background-radius: 10%; -fx-border-color: black; -fx-border-radius: 10%;">
+      <Pane layoutX="344.0" layoutY="21.0" prefHeight="418.0" prefWidth="352.0" style="-fx-background-color: linear-gradient(to right top, #6b7cd1, #5b8dda, #519ddf, #51ace1,    #5cb9e1, #5abbe4, #58bde7, #55bfea, #42b6f1, #3cacf7, #48a1fb, #5f94fb); -fx-background-radius: 10%; -fx-border-color: black; -fx-border-radius: 10%;">
        
             <TextField fx:id="lnametxt" layoutX="178.0" layoutY="84.0" prefHeight="32.0" prefWidth="160.0" promptText="Last Name" style="-fx-background-radius: 16px;" />
-            <TextField fx:id="emailtxt" layoutX="13.0" layoutY="168.0" prefHeight="32.0" prefWidth="317.0" promptText="Email" style="-fx-background-radius: 16px;">
+            <TextField fx:id="emailtxt" layoutX="13.0" layoutY="157.0" prefHeight="32.0" prefWidth="317.0" promptText="Email" style="-fx-background-radius: 16px;">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>
             </TextField>
-            <PasswordField fx:id="passwdtxt" layoutX="19.0" layoutY="250.0" prefHeight="32.0" prefWidth="152.0" promptText="Password" style="-fx-background-radius: 16px;" />
+            <PasswordField fx:id="passwdtxt" layoutX="19.0" layoutY="221.0" prefHeight="32.0" prefWidth="152.0" promptText="Password" style="-fx-background-radius: 16px;" />
             <TextField fx:id="fnametxt" layoutX="14.0" layoutY="84.0" prefHeight="32.0" prefWidth="152.0" promptText="First Name" style="-fx-background-radius: 16px;" />
-            <PasswordField fx:id="conpasswdtxt" layoutX="186.0" layoutY="250.0" prefHeight="32.0" prefWidth="152.0" promptText="Confirm password" style="-fx-background-radius: 16px;">
+            <PasswordField fx:id="conpasswdtxt" layoutX="191.0" layoutY="221.0" prefHeight="32.0" prefWidth="152.0" promptText="Confirm password" style="-fx-background-radius: 16px;">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>
             </PasswordField>
-            <JFXButton layoutX="85.0" layoutY="324.0" mnemonicParsing="false" onAction="#register" prefHeight="38.0" prefWidth="182.0" style="-fx-background-color: linear-gradient(to bottom, #b2c4e0, #b4c4db, #b6c3d6, #b8c3d1, #bac2cc); -fx-background-radius: 16px; -fx-font-weight: bold; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); -fx-font-family: Arial Narrow;" text="Zarejestruj">
+            <JFXButton layoutX="85.0" layoutY="358.0" mnemonicParsing="false" onAction="#register" prefHeight="38.0" prefWidth="182.0" style="-fx-background-color: linear-gradient(to bottom, #b2c4e0, #b4c4db, #b6c3d6, #b8c3d1, #bac2cc); -fx-background-radius: 16px; -fx-font-weight: bold; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); -fx-font-family: Arial Narrow;" text="Zarejestruj">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXButton>
-            <Label layoutX="27.0" layoutY="227.0" text="Hasło:">
+            <Label layoutX="31.0" layoutY="200.0" text="Hasło:">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="196.0" layoutY="227.0" text="Powtórz hasło:">
+            <Label layoutX="195.0" layoutY="200.0" text="Powtórz hasło:">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="19.0" layoutY="140.0" text="Adres e-mail:">
+            <Label layoutX="19.0" layoutY="130.0" text="Adres e-mail:">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -65,6 +65,12 @@
                </font>
             </JFXButton>
          <FontAwesomeIcon glyphName="USERS" layoutX="159.0" layoutY="42.0" size="2EM" />
+         <ImageView fitHeight="38.0" fitWidth="126.0" layoutX="112.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../../../../captcha.jpg" />
+            </image>
+         </ImageView>
+         <TextField fx:id="captchatxt" layoutX="90.0" layoutY="314.0" prefHeight="32.0" prefWidth="152.0" promptText="Captcha" style="-fx-background-radius: 16px;" />
 
       </Pane>
       <ImageView fitHeight="248.0" fitWidth="286.0" layoutX="39.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">

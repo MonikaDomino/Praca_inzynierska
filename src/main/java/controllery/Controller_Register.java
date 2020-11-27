@@ -4,13 +4,17 @@ package controllery;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 
-public class Controller_Register extends openFXMl implements Initializable {
+public class Controller_Register extends openFXMl  implements Initializable {
 
     @FXML
     private TextField lnametxt;
@@ -26,6 +30,9 @@ public class Controller_Register extends openFXMl implements Initializable {
 
     @FXML
     private PasswordField conpasswdtxt;
+
+    @FXML
+    private TextField captchatxt;
 
 
     @FXML
@@ -47,6 +54,7 @@ public class Controller_Register extends openFXMl implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
 
     }
 }

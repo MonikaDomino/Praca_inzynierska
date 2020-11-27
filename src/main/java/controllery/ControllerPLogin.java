@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -19,7 +20,9 @@ public class ControllerPLogin extends openFXMl implements Initializable {
 
 
     @FXML
-    void changePassword(ActionEvent event) {
+    void changePassword(ActionEvent event)  {
+
+
 
     }
 
@@ -29,7 +32,10 @@ public class ControllerPLogin extends openFXMl implements Initializable {
     }
 
     @FXML
-    void register(ActionEvent event) {
+    void register(ActionEvent event) throws IOException {
+
+        generate();
+        obrazek();
 
         String link = "/fxml/panelRegist.fxml";
         readFXML(event, link);
