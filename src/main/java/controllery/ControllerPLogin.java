@@ -29,13 +29,14 @@ public class ControllerPLogin extends openFXMl implements Initializable {
     @FXML
     void logIN(ActionEvent event) {
 
+        String link = "/fxml/panelUser.fxml";
+        readFXML(event, link);
+        frame(event);
+
     }
 
     @FXML
-    void register(ActionEvent event) throws IOException {
-
-        generate();
-        obrazek();
+    void register(ActionEvent event) {
 
         String link = "/fxml/panelRegist.fxml";
         readFXML(event, link);

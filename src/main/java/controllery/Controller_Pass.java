@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 
 
 public class Controller_Pass {
+
     @FXML
     private TextField emailtxt;
 
