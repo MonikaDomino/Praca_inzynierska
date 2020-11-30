@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="479.0" prefWidth="697.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllery.Controller_User">
+   <left>
+      <Pane prefHeight="450.0" prefWidth="197.0" style="-fx-background-color: linear-gradient(to right top, #6b7cd1, #5b8dda, #519ddf, #51ace1,    #5cb9e1, #5abbe4, #58bde7, #55bfea, #42b6f1, #3cacf7, #48a1fb, #5f94fb);" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="65.0" fitWidth="98.0" layoutX="31.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/128-1280585_user-icon-fa-fa-user-circle-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <JFXButton layoutX="42.0" layoutY="117.0" text="START">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="27.0" fitWidth="26.0" layoutX="18.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/main_home-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="13.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/company-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <JFXButton layoutX="41.0" layoutY="168.0" text="FIRMA">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="33.0" fitWidth="36.0" layoutX="13.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/unnamed-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <JFXButton layoutX="42.0" layoutY="225.0" text="ANALIZA">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="39.0" fitWidth="47.0" layoutX="11.0" layoutY="281.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/unnamed.png" />
+               </image>
+            </ImageView>
+            <JFXButton layoutX="43.0" layoutY="282.0" text="DANE OSOBOWE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="32.0" fitWidth="46.0" layoutX="14.0" layoutY="337.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/contact-icon.png" />
+               </image>
+            </ImageView>
+            <JFXButton layoutX="31.0" layoutY="334.0" prefHeight="37.0" prefWidth="114.0" text="KONTAKT">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="55.0" layoutY="413.0" onAction="#logOut" text="WYLOGUJ">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="27.0" fitWidth="29.0" layoutX="29.0" layoutY="423.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/400-4009588_png-file-svg-log-out-icon-png.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </left>
+</BorderPane>
