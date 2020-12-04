@@ -1,0 +1,27 @@
+package controllery.panelUsers;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.Pane;
+
+import java.io.IOException;
+
+public class Controller_AnalysisType {
+    @FXML
+    private Pane pane_Analysis;
+
+    @FXML
+    void goToAnalysisMaczynskiej(ActionEvent event) {
+
+    }
+
+    @FXML
+    void goToQuickTest(ActionEvent event) throws IOException {
+        Pane newLoadPane = FXMLLoader.load(getClass().getResource("/fxml/panelUser_type/panelQuickTest_Data.fxml"));
+        pane_Analysis.getChildren().add(newLoadPane);
+
+
+    }
+
+}

@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="479.0" prefWidth="759.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllery.Controller_User">
+<BorderPane fx:id="border" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="479.0" prefWidth="759.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllery.Controller_User">
    <left>
-      <Pane prefHeight="479.0" prefWidth="251.0" style="-fx-background-color: linear-gradient(to right top, #6b7cd1, #5b8dda, #519ddf, #51ace1,    #5cb9e1, #5abbe4, #58bde7, #55bfea, #42b6f1, #3cacf7, #48a1fb, #5f94fb);" BorderPane.alignment="CENTER">
+      <Pane prefHeight="479.0" prefWidth="251.0" style="-fx-background-color: linear-gradient(to right top, #6b7cd1, #5b8dda, #519ddf, #51ace1,    #5cb9e1, #5abbe4, #58bde7, #55bfea, #42b6f1, #3cacf7, #48a1fb, #5f94fb); -fx-border-color: linear-gradient(to right top, #051937, #022c60, #00418c, #0056bb, #126beb);" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="95.0" fitWidth="132.0" layoutX="53.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -33,7 +33,7 @@
                         <Image url="@../img/main_home-removebg-preview.png" />
                      </image>
                   </ImageView>
-                  <JFXButton layoutX="70.0" layoutY="-3.0" onMouseClicked="#backToStart" prefHeight="52.0" prefWidth="77.0" text="START">
+                  <JFXButton layoutX="70.0" layoutY="-3.0" onAction="#backToStart" prefHeight="52.0" prefWidth="77.0" text="START">
                      <font>
                         <Font name="System Bold" size="17.0" />
                      </font>
@@ -42,7 +42,7 @@
             </Pane>
             <Pane layoutX="21.0" layoutY="181.0" prefHeight="42.0" prefWidth="202.0" style="-fx-background-color: linear-gradient(to bottom, #24e0ee, #22d8fb, #43ceff, #66c4ff, #87b8ff); -fx-border-color: linear-gradient(to right top, #051937, #022c60, #00418c, #0056bb, #126beb); -fx-background-radius: 12px; -fx-border-radius: 12px;">
                <children>
-                  <JFXButton layoutX="60.0" layoutY="-5.0" onMouseClicked="#goToCompanyData" prefHeight="52.0" prefWidth="94.0" text="FIRMA">
+                  <JFXButton layoutX="60.0" layoutY="-5.0" onAction="#goToCompanyData" prefHeight="52.0" prefWidth="94.0" text="FIRMA">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -54,23 +54,9 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutX="21.0" layoutY="240.0" prefHeight="44.0" prefWidth="203.0" style="-fx-background-color: linear-gradient(to bottom, #24e0ee, #22d8fb, #43ceff, #66c4ff, #87b8ff); -fx-background-radius: 12px; -fx-border-radius: 12px; -fx-border-color: linear-gradient(to right top, #051937, #022c60, #00418c, #0056bb, #126beb);">
-               <children>
-                  <ImageView fitHeight="28.0" fitWidth="42.0" layoutX="22.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/unnamed-removebg-preview.png" />
-                     </image>
-                  </ImageView>
-                  <JFXButton layoutX="55.0" layoutY="1.0" onMouseClicked="#goToAnalysis" prefHeight="43.0" prefWidth="108.0" text="ANALIZA">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </JFXButton>
-               </children>
-            </Pane>
             <Pane layoutX="20.0" layoutY="295.0" prefHeight="43.0" prefWidth="202.0" style="-fx-background-color: linear-gradient(to bottom, #24e0ee, #22d8fb, #43ceff, #66c4ff, #87b8ff); -fx-background-radius: 12px; -fx-border-radius: 12px; -fx-border-color: linear-gradient(to right top, #051937, #022c60, #00418c, #0056bb, #126beb);">
                <children>
-                  <JFXButton layoutX="38.0" layoutY="4.0" onMouseClicked="#goToPersonalData" prefHeight="37.0" prefWidth="157.0" text="DANE OSOBOWE">
+                  <JFXButton layoutX="38.0" layoutY="4.0" onAction="#goToPersonalData" prefHeight="37.0" prefWidth="157.0" text="DANE OSOBOWE">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -89,7 +75,21 @@
                         <Image url="@../img/contact-icon.png" />
                      </image>
                   </ImageView>
-                  <JFXButton layoutX="53.0" layoutY="2.0" onMouseClicked="#goToContact" prefHeight="37.0" prefWidth="114.0" text="KONTAKT">
+                  <JFXButton layoutX="53.0" layoutY="2.0" onAction="#goToContact" prefHeight="37.0" prefWidth="114.0" text="KONTAKT">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </Pane>
+            <Pane layoutX="21.0" layoutY="240.0" prefHeight="44.0" prefWidth="203.0" style="-fx-background-color: linear-gradient(to bottom, #24e0ee, #22d8fb, #43ceff, #66c4ff, #87b8ff); -fx-background-radius: 12px; -fx-border-radius: 12px; -fx-border-color: linear-gradient(to right top, #051937, #022c60, #00418c, #0056bb, #126beb);">
+               <children>
+                  <ImageView fitHeight="28.0" fitWidth="42.0" layoutX="22.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/unnamed-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <JFXButton layoutX="66.0" layoutY="4.0" onAction="#goToAnalysisType" text="ANALIZA">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -99,4 +99,7 @@
          </children>
       </Pane>
    </left>
+   <center>
+      <Pane fx:id="pane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to top, #cedcf1, #b7cdee, #9fbeeb, #87b0e8, #6da1e5);" BorderPane.alignment="CENTER" />
+   </center>
 </BorderPane>

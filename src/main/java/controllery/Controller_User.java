@@ -3,21 +3,23 @@ package controllery;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Controller_User extends openFXMl {
 
 
+
     @FXML
-    private BorderPane borderPane;
+    private Pane pane;
+    @FXML
+    private BorderPane border;
+
+
 
 
     @FXML
@@ -28,46 +30,61 @@ public class Controller_User extends openFXMl {
 
     }
 
+
+
     @FXML
-    void backToStart(MouseEvent event) {
+    void goToContact(ActionEvent event) {
+        String link = "/fxml/panelUser_type/panelContact.fxml";
+        readFXMLInBorderPane(event,link);
+
+    }
+
+
+    @FXML
+    void backToStart(ActionEvent event) {
 
     }
 
     @FXML
-    void goToAnalysis(MouseEvent event) {
+    void goToCompanyData(ActionEvent event) {
 
     }
+
 
     @FXML
-    void goToCompanyData(MouseEvent event) {
+    void goToPersonalData(ActionEvent event) {
 
     }
+
+
 
     @FXML
-    void goToContact(MouseEvent event) {
-
-        loadPage("/fxml/panelUser_type/panelContact");
-
-    }
-
-    @FXML
-    void goToPersonalData(MouseEvent event) {
+    void goToAnalysisType(ActionEvent event) {
+        String link = "/fxml/panelUser_type/panelAnalysis_Type.fxml";
+        readFXMLInBorderPane(event,link);
 
     }
 
-    private void loadPage (String page) {
-        Parent root = null;
-        try {
-            root = FXMLLoader.load(getClass().getResource(page+".fxml"));
+   public void readFXMLInBorderPane (ActionEvent event, String link){
+
+        try{
+            read = new FXMLLoader(getClass().getResource(link));
+            pane = read.load();
+            border.setCenter(pane);
+
+
         } catch (IOException e) {
-            Logger.getLogger(Controller_User.class.getName()).log(Level.SEVERE, null, e);
+            System.out.println(e.getLocalizedMessage());
         }
-            borderPane.setCenter(root);
-
     }
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+
+
 
     }
 }

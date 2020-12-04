@@ -2,9 +2,11 @@ package controllery;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -19,6 +21,7 @@ public class ControllerPLogin extends openFXMl implements Initializable {
     private PasswordField passUtxt;
 
 
+
     @FXML
     void changePassword(ActionEvent event)  {
 
@@ -27,7 +30,7 @@ public class ControllerPLogin extends openFXMl implements Initializable {
     }
 
     @FXML
-    void logIN(ActionEvent event) {
+    void logIN(ActionEvent event) throws IOException {
 
         String link = "/fxml/panelUser.fxml";
         readFXML(event, link);
@@ -44,8 +47,10 @@ public class ControllerPLogin extends openFXMl implements Initializable {
 
     }
 
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
 
     }
 }
