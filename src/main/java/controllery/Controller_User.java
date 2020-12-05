@@ -19,6 +19,8 @@ public class Controller_User extends openFXMl {
     @FXML
     private BorderPane border;
 
+    @FXML
+    private Pane changePane;
 
 
 
@@ -33,9 +35,9 @@ public class Controller_User extends openFXMl {
 
 
     @FXML
-    void goToContact(ActionEvent event) {
-        String link = "/fxml/panelUser_type/panelContact.fxml";
-        readFXMLInBorderPane(event,link);
+    void goToContact(ActionEvent event) throws IOException {
+        Pane newLoadPane = FXMLLoader.load(getClass().getResource("/fxml/panelUser_type/panelContact.fxml"));
+        changePane.getChildren().add(newLoadPane);
 
     }
 
@@ -59,24 +61,14 @@ public class Controller_User extends openFXMl {
 
 
     @FXML
-    void goToAnalysisType(ActionEvent event) {
-        String link = "/fxml/panelUser_type/panelAnalysis_Type.fxml";
-        readFXMLInBorderPane(event,link);
+    void goToAnalysisType(ActionEvent event) throws IOException {
+        Pane newLoadPane = FXMLLoader.load(getClass().getResource("/fxml/panelUser_type/panelAnalysis_Type.fxml"));
+        changePane.getChildren().add(newLoadPane);
+
 
     }
 
-   public void readFXMLInBorderPane (ActionEvent event, String link){
 
-        try{
-            read = new FXMLLoader(getClass().getResource(link));
-            pane = read.load();
-            border.setCenter(pane);
-
-
-        } catch (IOException e) {
-            System.out.println(e.getLocalizedMessage());
-        }
-    }
 
 
 

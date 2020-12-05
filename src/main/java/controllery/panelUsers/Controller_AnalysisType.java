@@ -12,7 +12,10 @@ public class Controller_AnalysisType {
     private Pane pane_Analysis;
 
     @FXML
-    void goToAnalysisMaczynskiej(ActionEvent event) {
+    void goToAnalysisMaczynskiej(ActionEvent event) throws IOException {
+        Pane newLoadPane = FXMLLoader.load(getClass().getResource("/fxml/panelUser_type/panelAnalysis_Data.fxml"));
+        pane_Analysis.getChildren().add(newLoadPane);
+
 
     }
 

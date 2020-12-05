@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="paneData" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="479.0" prefWidth="546.0" style="-fx-background-color: linear-gradient(to top, #cedcf1, #b7cdee, #9fbeeb, #87b0e8, #6da1e5); -fx-border-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllery.panelUsers.Controller_Analysis_Data">
+   <children>
+      <Pane prefHeight="45.0" prefWidth="546.0" style="-fx-background-color: linear-gradient(to bottom, #24e0ee, #22d8fb, #43ceff, #66c4ff, #87b8ff); -fx-border-color: black;">
+         <children>
+            <Label layoutX="188.0" layoutY="9.0" text="WPROWADŹ DANE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="23.0" layoutY="114.0" prefHeight="283.0" prefWidth="508.0">
+         <children>
+            <Label layoutX="19.0" layoutY="117.0" text="ZUŻYCIE ŚRODKA TRWAŁEGO:">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="19.0" layoutY="157.0" text="PRZYCHODY ZE SPRZEDAŻY:">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="19.0" layoutY="14.0" text="AKTYWA OGÓŁEM: ">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="19.0" layoutY="79.0" text="ZYSK BRUTTO:">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="195.0" text="ZYSK Z DZIAŁALNOŚCI OPERACYJNEJ: ">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="19.0" layoutY="46.0" text="ZAPASY:">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="232.0" text="ZOBOWIĄZANIA OGÓŁEM:">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="totalAssest" layoutX="293.0" layoutY="12.0" prefHeight="25.0" prefWidth="203.0" />
+            <TextField fx:id="economyStock" layoutX="293.0" layoutY="44.0" prefHeight="25.0" prefWidth="203.0" />
+            <TextField fx:id="grossprofit" layoutX="293.0" layoutY="77.0" prefHeight="25.0" prefWidth="203.0" />
+            <TextField fx:id="amortization" layoutX="293.0" layoutY="115.0" prefHeight="25.0" prefWidth="203.0" />
+            <TextField fx:id="totalSales" layoutX="293.0" layoutY="155.0" prefHeight="25.0" prefWidth="203.0" />
+            <TextField fx:id="operationProfit" layoutX="293.0" layoutY="193.0" prefHeight="25.0" prefWidth="203.0" />
+            <TextField fx:id="credits" layoutX="293.0" layoutY="230.0" prefHeight="25.0" prefWidth="203.0" />
+         </children>
+      </Pane>
+      <JFXButton layoutX="23.0" layoutY="416.0" mnemonicParsing="false" onAction="#clearForm" prefHeight="26.0" prefWidth="164.0" style="-fx-background-color: linear-gradient(to bottom, #54dede, #63ccd3, #70bac4, #79a8b3, #7f979f);; -fx-background-radius: 16px; -fx-font-weight: bold; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); -fx-font-family: Arial Narrow;" text="Wyczyść formularz">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="200.0" layoutY="416.0" mnemonicParsing="false" onAction="#cancel" prefHeight="26.0" prefWidth="128.0" style="-fx-background-color: linear-gradient(to bottom, #de5454, #cd4948, #bd3d3c, #ac3231, #9c2626);; -fx-background-radius: 16px; -fx-font-weight: bold; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); -fx-font-family: Arial Narrow;" text="Przerwij">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="355.0" layoutY="416.0" mnemonicParsing="false" onAction="#doAnalysis" prefHeight="26.0" prefWidth="149.0" style="-fx-background-color: linear-gradient(to bottom, #60ff8b, #4edd7c, #3fbd6d, #329d5d, #277e4d);; -fx-background-radius: 16px; -fx-font-weight: bold; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); -fx-font-family: Arial Narrow;" text="Wykonaj analizę">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+      <Pane layoutX="152.0" layoutY="64.0" prefHeight="37.0" prefWidth="225.0" style="-fx-border-color: black; -fx-background-color: linear-gradient(to bottom, #54dede, #63ccd3, #70bac4, #79a8b3, #7f979f);;">
+         <children>
+            <TextField fx:id="yeartxt" layoutX="149.0" layoutY="5.0" prefHeight="25.0" prefWidth="61.0" style="-fx-background-color: linear-gradient(to bottom, #54dede, #63ccd3, #70bac4, #79a8b3, #7f979f);" />
+            <Label layoutX="14.0" layoutY="7.0" text="ROK BILANSOWY:">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</Pane>
