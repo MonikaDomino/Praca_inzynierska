@@ -21,7 +21,7 @@ public class Controller_AnalysisType {
 
     @FXML
     void goToQuickTest(ActionEvent event) throws IOException {
-        Pane newLoadPane = FXMLLoader.load(getClass().getResource("/fxml/panelUser_type/panelQuickTest_Data.fxml"));
+        Pane newLoadPane = FXMLLoader.load(getClass().getResource("/fxml/panelUser_type/panelTest_Data.fxml"));
         pane_Analysis.getChildren().add(newLoadPane);
 
 

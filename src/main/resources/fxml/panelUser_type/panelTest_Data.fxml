@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="paneData" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="479.0" prefWidth="546.0" style="-fx-background-color: linear-gradient(to top, #cedcf1, #b7cdee, #9fbeeb, #87b0e8, #6da1e5); -fx-border-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllery.panelUsers.Controller_Analysis_Data">
+<Pane fx:id="paneData" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="479.0" prefWidth="546.0" style="-fx-background-color: linear-gradient(to top, #cedcf1, #b7cdee, #9fbeeb, #87b0e8, #6da1e5); -fx-border-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllery.panelUsers.Controller_QuickTest_Data">
    <children>
       <Pane prefHeight="45.0" prefWidth="546.0" style="-fx-background-color: linear-gradient(to bottom, #24e0ee, #22d8fb, #43ceff, #66c4ff, #87b8ff); -fx-border-color: black;">
          <children>
@@ -20,45 +20,45 @@
       </Pane>
       <Pane layoutX="23.0" layoutY="114.0" prefHeight="283.0" prefWidth="508.0">
          <children>
-            <VBox layoutX="288.0" layoutY="16.0" prefHeight="254.0" prefWidth="215.0" spacing="10.0">
+            <VBox layoutX="291.0" layoutY="19.0" prefHeight="265.0" prefWidth="203.0" spacing="10.0">
                <children>
-                  <TextField fx:id="totalAssest" prefHeight="25.0" prefWidth="203.0" />
-                  <TextField fx:id="economyStock" prefHeight="25.0" prefWidth="203.0" />
-                  <TextField fx:id="grossprofit" prefHeight="25.0" prefWidth="203.0" />
-                  <TextField fx:id="amortization" prefHeight="25.0" prefWidth="203.0" />
-                  <TextField fx:id="totalSales" prefHeight="25.0" prefWidth="203.0" />
-                  <TextField fx:id="operationProfit" prefHeight="25.0" prefWidth="203.0" />
-                  <TextField fx:id="credits" prefHeight="25.0" prefWidth="203.0" />
+                  <TextField fx:id="total_assets" />
+                  <TextField fx:id="equity_capital" />
+                  <TextField fx:id="amortization" />
+                  <TextField fx:id="net_profit" />
+                  <TextField fx:id="operation_profit" />
+                  <TextField fx:id="total_Sales" />
+                  <TextField fx:id="credits" />
                </children>
             </VBox>
-            <VBox layoutY="14.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="254.0" prefWidth="281.0" spacing="15.0">
+            <VBox layoutX="-8.0" layoutY="19.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="246.0" prefWidth="280.0" spacing="15.0">
                <children>
                   <Label text="AKTYWA OGÓŁEM: ">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label text="ZAPASY:">
+                  <Label text="KAPITAŁ WŁASNY:">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label text="ZYSK BRUTTO:">
+                  <Label text="UMORZENIE ŚRODKA TRWAŁEGO:">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label text="ZUŻYCIE ŚRODKA TRWAŁEGO:">
+                  <Label text="ZYSK NETTO:">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label text="ZYSK Z DZIAŁALNOŚCI OPERACYJNEJ:">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
                   <Label text="PRZYCHODY ZE SPRZEDAŻY:">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label text="ZYSK Z DZIAŁALNOŚCI OPERACYJNEJ: ">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -82,12 +82,7 @@
             <Font size="14.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="355.0" layoutY="416.0" mnemonicParsing="false" onAction="#doAnalysis" prefHeight="26.0" prefWidth="149.0" style="-fx-background-color: linear-gradient(to bottom, #60ff8b, #4edd7c, #3fbd6d, #329d5d, #277e4d);; -fx-background-radius: 16px; -fx-font-weight: bold; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); -fx-font-family: Arial Narrow;" text="Wykonaj analizę">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </JFXButton>
-      <Pane layoutX="152.0" layoutY="64.0" prefHeight="37.0" prefWidth="225.0" style="-fx-border-color: black; -fx-background-color: linear-gradient(to bottom, #54dede, #63ccd3, #70bac4, #79a8b3, #7f979f);;">
+      <Pane layoutX="161.0" layoutY="61.0" prefHeight="37.0" prefWidth="225.0" style="-fx-border-color: black; -fx-background-color: linear-gradient(to bottom, #54dede, #63ccd3, #70bac4, #79a8b3, #7f979f);;">
          <children>
             <TextField fx:id="yeartxt" layoutX="149.0" layoutY="5.0" prefHeight="25.0" prefWidth="61.0" style="-fx-background-color: linear-gradient(to bottom, #54dede, #63ccd3, #70bac4, #79a8b3, #7f979f);" />
             <Label layoutX="14.0" layoutY="7.0" text="ROK BILANSOWY:">
@@ -97,5 +92,10 @@
             </Label>
          </children>
       </Pane>
+      <JFXButton layoutX="358.0" layoutY="416.0" mnemonicParsing="false" onAction="#doTest" prefHeight="26.0" prefWidth="149.0" style="-fx-background-color: linear-gradient(to bottom, #60ff8b, #4edd7c, #3fbd6d, #329d5d, #277e4d); -fx-background-radius: 16px; -fx-font-weight: bold; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); -fx-font-family: Arial Narrow;" text="Wykonaj test">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
    </children>
 </Pane>
