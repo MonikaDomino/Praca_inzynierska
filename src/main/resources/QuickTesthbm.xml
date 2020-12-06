@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="hibernate.QuickTest" table="quick_test" schema="inzynierka">
+        <id name="idTestu" column="id_testu"/>
+        <property name="x1" column="x1"/>
+        <property name="x2" column="x2"/>
+        <property name="x3" column="x3"/>
+        <property name="x4" column="x4"/>
+        <property name="wynikTestu" column="wynik_testu"/>
+        <property name="idDane" column="id_dane"/>
+    </class>
+</hibernate-mapping>

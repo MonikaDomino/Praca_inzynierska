@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="hibernate.Firma" table="firma" schema="inzynierka">
+        <id name="idFirmy" column="id_firmy"/>
+        <property name="nazwaFirmy" column="nazwa_firmy"/>
+        <property name="ulica" column="ulica"/>
+        <property name="numerBudynku" column="numer_budynku"/>
+        <property name="miasto" column="miasto"/>
+        <property name="kodPocztowy" column="kod_pocztowy"/>
+        <property name="numerLokalu" column="numer_lokalu"/>
+        <property name="idUzytkownika" column="id_uzytkownika"/>
+    </class>
+</hibernate-mapping>

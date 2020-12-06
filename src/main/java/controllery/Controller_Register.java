@@ -1,20 +1,15 @@
 package controllery;
 
 
+import hibernate.UzytkownikQuery;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
 
-import java.io.File;
 import java.net.URL;
-import java.util.Random;
 import java.util.ResourceBundle;
 
 public class Controller_Register extends openFXMl  implements Initializable {
@@ -35,20 +30,48 @@ public class Controller_Register extends openFXMl  implements Initializable {
     private PasswordField conpasswdtxt;
 
     @FXML
-    private TextField captchatxt;
-
-    @FXML
-    private ImageView imageV;
-
-    @FXML
-    private Label dane;
+    private TextField logintxt;
 
 
 
     @FXML
     void register(ActionEvent event) {
 
-    }
+        String firstName = fnametxt.getText();
+        String lastname = lnametxt.getText();
+        String email = emailtxt.getText();
+        String login = logintxt.getText();
+        String password = passwdtxt.getText();
+
+        UzytkownikQuery usser = new UzytkownikQuery();
+
+        try {
+
+            usser.register(firstName, lastname, login, password, email);
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("Rejestracja zakonczona sukcesem! Mozesz sie teraz zalogowac!");
+            alert.showAndWait();
+
+            if (alert.getResult() == ButtonType.OK) {
+
+                String adress = "/fxml/panelLogIN.fxml";
+                readFXML(event, adress);
+                frame(event);
+
+            }else{
+                    Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+                    alert2.setHeaderText("Rejestracja zakończyła się niepowodzeniem!");
+                    alert2.show();
+                }
+
+            }catch(Exception e){
+                System.out.println(e.getLocalizedMessage());
+            }
+
+
+        }
+
 
     @FXML
     void exit(ActionEvent event) {
