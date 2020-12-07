@@ -1087,61 +1087,61 @@
       <RefTableName>dane_finansowe</RefTableName>
       <RefColNames>id_dane</RefColNames>
     </foreign-key>
-    <column id="346" parent="335" name="rok_bilansowy">
+    <column id="346" parent="335" name="id_dane">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="347" parent="335" name="zysk_brutto">
+    <column id="347" parent="335" name="rok_bilansowy">
       <Position>2</Position>
-      <DataType>float|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="348" parent="335" name="zapasy">
+    <column id="348" parent="335" name="zysk_brutto">
       <Position>3</Position>
       <DataType>float|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="349" parent="335" name="aktywa_ogolem">
+    <column id="349" parent="335" name="zapasy">
       <Position>4</Position>
       <DataType>float|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="350" parent="335" name="przychodyS">
+    <column id="350" parent="335" name="aktywa_ogolem">
       <Position>5</Position>
       <DataType>float|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="351" parent="335" name="zobowiazania">
+    <column id="351" parent="335" name="przychodyS">
       <Position>6</Position>
       <DataType>float|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="352" parent="335" name="zysk_operacyjny">
+    <column id="352" parent="335" name="zobowiazania">
       <Position>7</Position>
       <DataType>float|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="353" parent="335" name="amortyzacja">
+    <column id="353" parent="335" name="zysk_operacyjny">
       <Position>8</Position>
       <DataType>float|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="354" parent="335" name="kapital_wlasny">
+    <column id="354" parent="335" name="amortyzacja">
       <Position>9</Position>
       <DataType>float|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="355" parent="335" name="zysk_netto">
+    <column id="355" parent="335" name="kapital_wlasny">
       <Position>10</Position>
       <DataType>float|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="356" parent="335" name="id_dane">
+    <column id="356" parent="335" name="zysk_netto">
       <Position>11</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>float|0s</DataType>
       <NotNull>1</NotNull>
-      <SequenceIdentity>null</SequenceIdentity>
     </column>
     <column id="357" parent="335" name="id_firmy">
       <Position>12</Position>
@@ -1303,26 +1303,26 @@
       <ColNames>id_uzytkownika</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="389" parent="339" name="ROE">
+    <column id="389" parent="339" name="id_wskazniki">
       <Position>1</Position>
-      <DataType>float|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="390" parent="339" name="ROA">
+    <column id="390" parent="339" name="ROE">
       <Position>2</Position>
       <DataType>float|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="391" parent="339" name="ROS">
+    <column id="391" parent="339" name="ROA">
       <Position>3</Position>
       <DataType>float|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="392" parent="339" name="id_wskazniki">
+    <column id="392" parent="339" name="ROS">
       <Position>4</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>float|0s</DataType>
       <NotNull>1</NotNull>
-      <SequenceIdentity>null</SequenceIdentity>
     </column>
     <column id="393" parent="339" name="marza_operacyjna">
       <Position>5</Position>

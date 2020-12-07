@@ -8,47 +8,16 @@ import java.util.Objects;
 
 @Entity
 public class Wskazniki {
+    private int idWskazniki;
     private double roe;
     private double roa;
     private double ros;
-    private int idWskazniki;
     private double marzaOperacyjna;
     private double roi;
     private int marzaZb;
     private int idDane;
 
-    @Basic
-    @Column(name = "ROE")
-    public double getRoe() {
-        return roe;
-    }
-
-    public void setRoe(double roe) {
-        this.roe = roe;
-    }
-
-    @Basic
-    @Column(name = "ROA")
-    public double getRoa() {
-        return roa;
-    }
-
-    public void setRoa(double roa) {
-        this.roa = roa;
-    }
-
-    @Basic
-    @Column(name = "ROS")
-    public double getRos() {
-        return ros;
-    }
-
-    public void setRos(double ros) {
-        this.ros = ros;
-    }
-
     @Id
-    @Column(name = "id_wskazniki")
     public int getIdWskazniki() {
         return idWskazniki;
     }
@@ -58,7 +27,33 @@ public class Wskazniki {
     }
 
     @Basic
-    @Column(name = "marza_operacyjna")
+    public double getRoe() {
+        return roe;
+    }
+
+    public void setRoe(double roe) {
+        this.roe = roe;
+    }
+
+    @Basic
+    public double getRoa() {
+        return roa;
+    }
+
+    public void setRoa(double roa) {
+        this.roa = roa;
+    }
+
+    @Basic
+    public double getRos() {
+        return ros;
+    }
+
+    public void setRos(double ros) {
+        this.ros = ros;
+    }
+
+    @Basic
     public double getMarzaOperacyjna() {
         return marzaOperacyjna;
     }
@@ -68,7 +63,7 @@ public class Wskazniki {
     }
 
     @Basic
-    @Column(name = "ROI")
+
     public double getRoi() {
         return roi;
     }
@@ -78,7 +73,6 @@ public class Wskazniki {
     }
 
     @Basic
-    @Column(name = "marza_ZB")
     public int getMarzaZb() {
         return marzaZb;
     }
@@ -88,7 +82,6 @@ public class Wskazniki {
     }
 
     @Basic
-    @Column(name = "id_dane")
     public int getIdDane() {
         return idDane;
     }
@@ -102,10 +95,10 @@ public class Wskazniki {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Wskazniki wskazniki = (Wskazniki) o;
-        return Double.compare(wskazniki.roe, roe) == 0 &&
+        return idWskazniki == wskazniki.idWskazniki &&
+                Double.compare(wskazniki.roe, roe) == 0 &&
                 Double.compare(wskazniki.roa, roa) == 0 &&
                 Double.compare(wskazniki.ros, ros) == 0 &&
-                idWskazniki == wskazniki.idWskazniki &&
                 Double.compare(wskazniki.marzaOperacyjna, marzaOperacyjna) == 0 &&
                 Double.compare(wskazniki.roi, roi) == 0 &&
                 marzaZb == wskazniki.marzaZb &&
@@ -114,6 +107,6 @@ public class Wskazniki {
 
     @Override
     public int hashCode() {
-        return Objects.hash(roe, roa, ros, idWskazniki, marzaOperacyjna, roi, marzaZb, idDane);
+        return Objects.hash(idWskazniki, roe, roa, ros, marzaOperacyjna, roi, marzaZb, idDane);
     }
 }

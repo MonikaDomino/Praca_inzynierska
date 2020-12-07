@@ -1,5 +1,6 @@
 package controllery;
 
+import hibernate.UzytkownikQuery;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,9 +33,17 @@ public class ControllerPLogin extends openFXMl implements Initializable {
     @FXML
     void logIN(ActionEvent event) throws IOException {
 
+    String login = loginUtxt.getText();
+    String passwd = passUtxt.getText();
+        UzytkownikQuery users = new UzytkownikQuery();
+        boolean userVerification = users.selectByLoginandPassword(login, passwd);
+
+
+    if(userVerification) {
         String link = "/fxml/panelUser.fxml";
         readFXML(event, link);
         frame(event);
+    }
 
     }
 

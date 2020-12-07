@@ -54,7 +54,9 @@ public class Controller_User extends openFXMl {
 
 
     @FXML
-    void goToPersonalData(ActionEvent event) {
+    void goToPersonalData(ActionEvent event) throws IOException {
+        Pane newLoadPane = FXMLLoader.load(getClass().getResource("/fxml/panelUser_type/panelPersonalData.fxml"));
+        changePane.getChildren().add(newLoadPane);
 
     }
 

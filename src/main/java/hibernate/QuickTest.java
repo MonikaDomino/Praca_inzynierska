@@ -4,7 +4,6 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "quick_test", schema = "inzynierka")
 public class QuickTest {
     private int idTestu;
     private double x1;
@@ -15,7 +14,6 @@ public class QuickTest {
     private int idDane;
 
     @Id
-    @Column(name = "id_testu")
     public int getIdTestu() {
         return idTestu;
     }
@@ -25,7 +23,6 @@ public class QuickTest {
     }
 
     @Basic
-    @Column(name = "x1")
     public double getX1() {
         return x1;
     }
@@ -35,7 +32,6 @@ public class QuickTest {
     }
 
     @Basic
-    @Column(name = "x2")
     public double getX2() {
         return x2;
     }
@@ -45,7 +41,6 @@ public class QuickTest {
     }
 
     @Basic
-    @Column(name = "x3")
     public double getX3() {
         return x3;
     }
@@ -55,7 +50,6 @@ public class QuickTest {
     }
 
     @Basic
-    @Column(name = "x4")
     public double getX4() {
         return x4;
     }
@@ -65,7 +59,6 @@ public class QuickTest {
     }
 
     @Basic
-    @Column(name = "wynik_testu")
     public double getWynikTestu() {
         return wynikTestu;
     }
@@ -75,7 +68,6 @@ public class QuickTest {
     }
 
     @Basic
-    @Column(name = "id_dane")
     public int getIdDane() {
         return idDane;
     }

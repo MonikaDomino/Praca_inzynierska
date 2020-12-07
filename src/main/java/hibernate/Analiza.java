@@ -4,14 +4,14 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "analiza__", schema = "inzynierka")
+
 public class Analiza {
     private int idAnalizy;
     private double wynikAnalizy;
     private int idDane;
 
     @Id
-    @Column(name = "id_analizy")
+
     public int getIdAnalizy() {
         return idAnalizy;
     }
@@ -21,7 +21,6 @@ public class Analiza {
     }
 
     @Basic
-    @Column(name = "wynik_analizy")
     public double getWynikAnalizy() {
         return wynikAnalizy;
     }
@@ -31,7 +30,7 @@ public class Analiza {
     }
 
     @Basic
-    @Column(name = "id_dane")
+
     public int getIdDane() {
         return idDane;
     }
