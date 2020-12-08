@@ -43,12 +43,15 @@ public class Controller_User extends openFXMl {
 
 
     @FXML
-    void backToStart(ActionEvent event) {
-
+    void backToStart(ActionEvent event) throws IOException {
+        Pane newLoadPane = FXMLLoader.load(getClass().getResource("/fxml/panelUser_type/panelStart.fxml"));
+        changePane.getChildren().add(newLoadPane);
     }
 
     @FXML
-    void goToCompanyData(ActionEvent event) {
+    void goToCompanyData(ActionEvent event) throws  IOException {
+        Pane newLoadPane = FXMLLoader.load(getClass().getResource("/fxml/panelUser_type/Company/panelCompany.fxml"));
+        changePane.getChildren().add(newLoadPane);
 
     }
 

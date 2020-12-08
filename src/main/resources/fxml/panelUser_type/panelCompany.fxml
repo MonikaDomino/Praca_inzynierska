@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="479.0" prefWidth="549.0" style="-fx-background-color: linear-gradient(to top, #cedcf1, #b7cdee, #9fbeeb, #87b0e8, #6da1e5);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllery.panelUsers.Company.Controller_CompanyData">
+   <children>
+      <Pane prefHeight="57.0" prefWidth="549.0">
+         <children>
+            <JFXButton layoutX="184.0" onAction="#goToDataFinicial" prefHeight="57.0" prefWidth="167.0" style="-fx-background-color: linear-gradient(to bottom, #24e0ee, #22d8fb, #43ceff, #66c4ff, #87b8ff); -fx-background-radius: 12px; -fx-border-color: linear-gradient(to right top, #051937, #022c60, #00418c, #0056bb, #126beb); -fx-border-radius: 12px;" text="DANE FINANSOWE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXButton>
+            <JFXButton onAction="#goToDataAdress" prefHeight="57.0" prefWidth="182.0" style="-fx-background-color: linear-gradient(to bottom, #24e0ee, #22d8fb, #43ceff, #66c4ff, #87b8ff); -fx-background-radius: 12px; -fx-border-color: linear-gradient(to right top, #051937, #022c60, #00418c, #0056bb, #126beb); -fx-border-radius: 12px;" text="DANE ADRESOWE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="351.0" onAction="#goToDataAnalysis" prefHeight="57.0" prefWidth="198.0" style="-fx-background-color: linear-gradient(to bottom, #24e0ee, #22d8fb, #43ceff, #66c4ff, #87b8ff); -fx-background-radius: 12px; -fx-border-color: linear-gradient(to right top, #051937, #022c60, #00418c, #0056bb, #126beb); -fx-border-radius: 12px;" text="ANALIZA RENTOWNOŚCI">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+      <Pane fx:id="paneCompany" layoutX="-2.0" layoutY="57.0" prefHeight="423.0" prefWidth="556.0">
+         <children>
+            <Pane layoutX="45.0" layoutY="198.0" prefHeight="178.0" prefWidth="466.0" style="-fx-background-color: linear-gradient(to bottom, #24e0ee, #22d8fb, #43ceff, #66c4ff, #87b8ff); -fx-background-radius: 12px; -fx-border-radius: 12px; -fx-border-color: linear-gradient(to right top, #051937, #002366, #002a95, #0029c2, #4912eb);">
+               <children>
+                  <Label fx:id="companyName" layoutX="191.0" layoutY="24.0" text="Name">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="companyStreet" layoutX="106.0" layoutY="66.0" text="ulica">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="companyNumberB" layoutX="175.0" layoutY="66.0" text="nr budynku">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="companyNumberL" layoutX="282.0" layoutY="66.0" text="/nr lokalu">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="companyPostCod" layoutX="106.0" layoutY="119.0" text="kod pocztowy">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="companyCity" layoutX="253.0" layoutY="113.0" text="miejscowość">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <ImageView fitHeight="150.0" fitWidth="144.0" layoutX="206.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/824-8243777_business-icon-establish-a-company-icon-removebg-preview.png" />
+               </image>
+            </ImageView>
+         </children></Pane>
+   </children>
+</Pane>
