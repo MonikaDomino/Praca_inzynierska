@@ -99,6 +99,10 @@
                         </JFXButton>
                      </children>
                   </Pane>
+                  <Label fx:id="dataId" layoutX="38.0" layoutY="88.0" />
+                  <Label fx:id="fnameU" layoutX="24.0" layoutY="14.0" />
+                  <Label fx:id="nameU" layoutX="15.0" layoutY="43.0" />
+                  <Label fx:id="mailU" layoutX="24.0" layoutY="71.0" />
                </children>
             </Pane>
             <Pane fx:id="changePane" layoutX="215.0" prefHeight="479.0" prefWidth="546.0">

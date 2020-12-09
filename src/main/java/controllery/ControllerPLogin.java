@@ -1,5 +1,7 @@
 package controllery;
 
+import controllery.panelUsers.Controller_PersonalData;
+import hibernate.Uzytkownik;
 import hibernate.UzytkownikQuery;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +16,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ControllerPLogin extends openFXMl implements Initializable {
+
+    Uzytkownik user;
 
     @FXML
     private TextField loginUtxt;
@@ -40,9 +44,18 @@ public class ControllerPLogin extends openFXMl implements Initializable {
 
 
     if(userVerification) {
+        Uzytkownik logowanie = users.selecyByLoginandPassword(login,passwd);
+        user = logowanie;
+
         String link = "/fxml/panelUser.fxml";
         readFXML(event, link);
+
+        Controller_User personalId = read.getController();
+        personalId.readIdUser(user.getIdUzytkownika());
+        personalId.readInfoUser(user.getImie(), user.getNazwisko(), user.getEmail());
         frame(event);
+
+
     }
 
     }

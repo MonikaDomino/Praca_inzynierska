@@ -10,7 +10,7 @@
 
 <Pane fx:id="panePData" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="479.0" prefWidth="549.0" style="-fx-background-color: linear-gradient(to top, #cedcf1, #b7cdee, #9fbeeb, #87b0e8, #6da1e5);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllery.panelUsers.Controller_PersonalData">
    <children>
-      <Pane layoutX="26.0" layoutY="19.0" prefHeight="210.0" prefWidth="494.0" style="-fx-background-color: linear-gradient(to bottom, #24e0ee, #22d8fb, #43ceff, #66c4ff, #87b8ff); -fx-border-color: linear-gradient(to right top, #051937, #002366, #002a95, #0029c2, #4912eb); -fx-background-radius: 12px; -fx-border-radius: 12px;">
+      <Pane layoutX="28.0" layoutY="83.0" prefHeight="210.0" prefWidth="494.0" style="-fx-background-color: linear-gradient(to bottom, #24e0ee, #22d8fb, #43ceff, #66c4ff, #87b8ff); -fx-border-color: linear-gradient(to right top, #051937, #002366, #002a95, #0029c2, #4912eb); -fx-background-radius: 12px; -fx-border-radius: 12px;">
          <children>
             <Label layoutX="153.0" layoutY="25.0" text="INFORMACJE O KONCIE">
                <font>
@@ -36,11 +36,20 @@
                   </Label>
                </children>
             </VBox>
-            <VBox layoutX="137.0" layoutY="74.0" prefHeight="86.0" prefWidth="192.0" spacing="15.0">
+            <VBox layoutX="137.0" layoutY="74.0" prefHeight="86.0" prefWidth="192.0" spacing="10.0">
                <children>
-                  <Label fx:id="FnameInfo" prefHeight="19.0" prefWidth="192.0" />
-                  <Label fx:id="NameInfo" prefHeight="19.0" prefWidth="192.0" />
-                  <Label fx:id="Emaill_Info" prefHeight="19.0" prefWidth="192.0" />
+                  <Label fx:id="FnameInfo" prefHeight="19.0" prefWidth="192.0">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font></Label>
+                  <Label fx:id="NameInfo" prefHeight="19.0" prefWidth="192.0">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font></Label>
+                  <Label fx:id="Emaill_Info" prefHeight="19.0" prefWidth="192.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Label>
                </children>
             </VBox>
             <ImageView fitHeight="109.0" fitWidth="133.0" layoutX="345.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
@@ -48,9 +57,10 @@
                   <Image url="@../../img/128-1280585_user-icon-fa-fa-user-circle-removebg-preview.png" />
                </image>
             </ImageView>
+            <Label fx:id="dataId" layoutX="46.0" layoutY="17.0" />
          </children>
       </Pane>
-      <Pane layoutX="23.0" layoutY="243.0" prefHeight="98.0" prefWidth="494.0" style="-fx-background-color: linear-gradient(to bottom, #24e0ee, #22d8fb, #43ceff, #66c4ff, #87b8ff); -fx-background-radius: 12px; -fx-border-radius: 12px; -fx-border-color: linear-gradient(to right top, #051937, #002366, #002a95, #0029c2, #4912eb);">
+      <Pane layoutX="28.0" layoutY="306.0" prefHeight="98.0" prefWidth="494.0" style="-fx-background-color: linear-gradient(to bottom, #24e0ee, #22d8fb, #43ceff, #66c4ff, #87b8ff); -fx-background-radius: 12px; -fx-border-radius: 12px; -fx-border-color: linear-gradient(to right top, #051937, #002366, #002a95, #0029c2, #4912eb);">
          <children>
             <Label layoutX="180.0" layoutY="14.0" text="ZMIANA HASŁA:">
                <font>
@@ -65,25 +75,6 @@
             <ImageView fitHeight="26.0" fitWidth="19.0" layoutX="169.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../img/change_button.png" />
-               </image>
-            </ImageView>
-         </children>
-      </Pane>
-      <Pane layoutX="25.0" layoutY="356.0" prefHeight="98.0" prefWidth="494.0" style="-fx-background-color: linear-gradient(to bottom, #24e0ee, #22d8fb, #43ceff, #66c4ff, #87b8ff); -fx-background-radius: 12px; -fx-border-radius: 12px; -fx-border-color: linear-gradient(to right top, #051937, #002366, #002a95, #0029c2, #4912eb);">
-         <children>
-            <Label layoutX="165.0" layoutY="14.0" text="USUŃ MOJE KONTO:">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-            <JFXButton alignment="CENTER" layoutX="159.0" layoutY="50.0" mnemonicParsing="false" onAction="#deleteAcount" prefHeight="25.0" prefWidth="160.0" style="-fx-background-color: linear-gradient(to bottom, #b2c4e0, #b4c4db, #b6c3d6, #b8c3d1, #bac2cc); -fx-background-radius: 16px; -fx-font-weight: bold; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); -fx-font-family: Arial Narrow;" text="Usuń konto">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </JFXButton>
-            <ImageView fitHeight="38.0" fitWidth="26.0" layoutX="159.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../img/remove_button.png" />
                </image>
             </ImageView>
          </children>

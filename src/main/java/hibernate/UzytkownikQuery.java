@@ -4,6 +4,7 @@ package hibernate;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
     public class UzytkownikQuery {
@@ -42,6 +43,18 @@ import org.hibernate.query.Query;
             return u;
         }
 
+        public Uzytkownik search (int id_user) {
+            Uzytkownik u = null;
+            session = HibernateUtill.getSessionFactory().openSession();
+            String hql = "SELECT Imie, nazwisko, email FROM uzytkownik WHERE = '" + id_user + "'";
+            query = session.createQuery(hql);
+            u = (Uzytkownik) query.uniqueResult();
+            session.close();
+
+            return u;
+        }
+
+
         public void register(String imie, String nazwisko, String email,
                              String login, String haslo) {
 
@@ -59,4 +72,6 @@ import org.hibernate.query.Query;
                 session.close();
             }
         }
+
+
 }

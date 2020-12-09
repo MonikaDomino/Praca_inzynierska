@@ -1,6 +1,7 @@
 package controllery.panelUsers;
 
 
+import hibernate.DaneFinansoweQuery;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -34,6 +35,9 @@ public class Controller_Analysis_Data {
     private TextField credits;
 
     @FXML
+    private TextField profit_net;
+
+    @FXML
     private TextField yeartxt;
 
     @FXML
@@ -57,16 +61,29 @@ public class Controller_Analysis_Data {
     @FXML
     void doAnalysis(ActionEvent event) {
 
-            double total_assest = Double.parseDouble(totalAssest.getText());  // aktywa ogółem
-            double economy_stock = Double.parseDouble(economyStock.getText()); // zapasy
-            double gross_profit = Double.parseDouble(grossprofit.getText());   // zysk brutto
-            double amort = Double.parseDouble(amortization.getText());      // amortyzacja
-            double total_Sales = Double.parseDouble(totalSales.getText());  // przychody ze sprzedaży
-            double operation_profit = Double.parseDouble(operationProfit.getText()); // zysk operacyjny
-            double credit = Double.parseDouble(credits.getText());     // zobowiązania ogółem
+            float total_assest = Float.parseFloat(totalAssest.getText());  // aktywa ogółem
+            float economy_stock = Float.parseFloat(economyStock.getText()); // zapasy
+            float gross_profit = Float.parseFloat(grossprofit.getText());   // zysk brutto
+            float net_profit = Float.parseFloat(profit_net.getText());      // zysk netto
+            float amort = Float.parseFloat(amortization.getText());      // amortyzacja
+            float total_Sales = Float.parseFloat(totalSales.getText());  // przychody ze sprzedaży
+            float operation_profit = Float.parseFloat(operationProfit.getText()); // zysk operacyjny
+            float credit = Float.parseFloat(credits.getText());     // zobowiązania ogółem
             int year_economy = Integer.parseInt(yeartxt.getText());    // rok bilansowy
 
-            double x1 = (gross_profit + amort)/credit;
+        int id_company = 1;
+
+
+        try{
+            DaneFinansoweQuery data = new DaneFinansoweQuery();
+            data.addNewFinancialDataAnalysis(year_economy, gross_profit,net_profit, total_assest, total_Sales,
+                    operation_profit, credit, amort, net_profit, id_company);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        double x1 = (gross_profit + amort)/credit;
             double x2 = total_assest/credit;
             double x3 = operation_profit/total_assest;
             double x4 = operation_profit/total_Sales;
@@ -74,6 +91,8 @@ public class Controller_Analysis_Data {
             double x6 = total_Sales/total_assest;
 
             double analysis = ((3*x1)/2) + ((8*x2)/100) + 10*x3 + 5*x4 + ((3*x5)/10) + (x6/10);
+        System.out.println(analysis);
+
 
         if(analysis < 0) System.out.println("Bardzo wysoka możliwość bankructwa!");
         if(analysis>0 && analysis <1) System.out.println("Słaba kondycja finansowa, ale niezagrożona bankructwem!");
