@@ -1,5 +1,7 @@
 package controllery;
 
+import controllery.panelUsers.Company.Controller_CompanyData;
+import controllery.panelUsers.Company.Controller_CompanyForm;
 import controllery.panelUsers.Controller_PersonalData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -38,9 +40,13 @@ public class Controller_User extends openFXMl {
 
     public  Controller_PersonalData date;
 
+    public Controller_CompanyData formC;
+
+
     public Controller_PersonalData getController(){
         return this.date;
     }
+
 
 
 
@@ -70,8 +76,19 @@ public class Controller_User extends openFXMl {
 
     @FXML
     void goToCompanyData(ActionEvent event) throws  IOException {
-        Pane newLoadPane = FXMLLoader.load(getClass().getResource("/fxml/panelUser_type/Company/panelCompany.fxml"));
-        changePane.getChildren().add(newLoadPane);
+
+        String link = "/fxml/panelUser_type/Company/panelCompany.fxml";
+        FXMLLoader loader= new FXMLLoader();
+        loader.setLocation(Controller_User.class.getResource(link));
+        Pane newPane = loader.load();
+        changePane.getChildren().add(newPane);
+
+        Controller_CompanyData companyData = loader.getController();
+        formC = companyData;
+        int id = Integer.parseInt(dataId.getText());
+        companyData.readIdUser(id);
+
+
 
     }
 
@@ -124,6 +141,7 @@ public class Controller_User extends openFXMl {
         mailU.setVisible(false);
 
     }
+
 
 
 

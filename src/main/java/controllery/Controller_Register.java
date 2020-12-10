@@ -37,9 +37,10 @@ public class Controller_Register extends openFXMl  implements Initializable {
 
         String firstName = fnametxt.getText();
         String lastname = lnametxt.getText();
-        String email = emailtxt.getText();
         String login = logintxt.getText();
         String password = passwdtxt.getText();
+        String email = emailtxt.getText();
+
 
         UzytkownikQuery usser = new UzytkownikQuery();
 

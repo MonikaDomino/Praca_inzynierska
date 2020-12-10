@@ -2,6 +2,8 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
@@ -9,14 +11,9 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="479.0" prefWidth="549.0" style="-fx-background-color: linear-gradient(to top, #cedcf1, #b7cdee, #9fbeeb, #87b0e8, #6da1e5);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllery.panelUsers.Company.Controller_CompanyData">
    <children>
-      <Pane prefHeight="57.0" prefWidth="549.0">
+      <Pane prefHeight="57.0" prefWidth="549.0" style="-fx-border-color: linear-gradient(to right top, #051937, #022c60, #00418c, #0056bb, #126beb);">
          <children>
             <JFXButton layoutX="184.0" onAction="#goToDataFinicial" prefHeight="57.0" prefWidth="167.0" style="-fx-background-color: linear-gradient(to bottom, #24e0ee, #22d8fb, #43ceff, #66c4ff, #87b8ff); -fx-background-radius: 12px; -fx-border-color: linear-gradient(to right top, #051937, #022c60, #00418c, #0056bb, #126beb); -fx-border-radius: 12px;" text="DANE FINANSOWE">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </JFXButton>
-            <JFXButton onAction="#goToDataAdress" prefHeight="57.0" prefWidth="182.0" style="-fx-background-color: linear-gradient(to bottom, #24e0ee, #22d8fb, #43ceff, #66c4ff, #87b8ff); -fx-background-radius: 12px; -fx-border-color: linear-gradient(to right top, #051937, #022c60, #00418c, #0056bb, #126beb); -fx-border-radius: 12px;" text="DANE ADRESOWE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -26,6 +23,14 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </JFXButton>
+            <MenuButton alignment="CENTER" layoutX="-1.0" layoutY="1.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="182.0" style="-fx-background-color: linear-gradient(to bottom, #24e0ee, #22d8fb, #43ceff, #66c4ff, #87b8ff); -fx-background-radius: 12px; -fx-border-color: linear-gradient(to right top, #051937, #022c60, #00418c, #0056bb, #126beb); -fx-border-radius: 12px;" text="O FIRMIE">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#goToCompanyForm" text="Dodaj firmę" />
+              </items>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </MenuButton>
          </children>
       </Pane>
       <Pane fx:id="paneCompany" layoutX="-2.0" layoutY="57.0" prefHeight="423.0" prefWidth="556.0">
@@ -69,6 +74,7 @@
                   <Image url="@../../../img/824-8243777_business-icon-establish-a-company-icon-removebg-preview.png" />
                </image>
             </ImageView>
+            <Label fx:id="idComap" layoutX="45.0" layoutY="56.0" />
          </children></Pane>
    </children>
 </Pane>

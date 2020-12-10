@@ -1,9 +1,11 @@
 package controllery.panelUsers;
 
 
+import hibernate.DaneFinansowe;
 import hibernate.DaneFinansoweQuery;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 
@@ -41,6 +43,11 @@ public class Controller_Analysis_Data {
     private TextField yeartxt;
 
     @FXML
+    private Label CompanyID;
+
+    private DaneFinansowe dataFinancial;
+
+    @FXML
     void cancel(ActionEvent event) {
 
     }
@@ -71,19 +78,23 @@ public class Controller_Analysis_Data {
             float credit = Float.parseFloat(credits.getText());     // zobowiązania ogółem
             int year_economy = Integer.parseInt(yeartxt.getText());    // rok bilansowy
 
-        int id_company = 1;
+        int id_company = Integer.parseInt(CompanyID.getText());
 
 
         try{
             DaneFinansoweQuery data = new DaneFinansoweQuery();
-            data.addNewFinancialDataAnalysis(year_economy, gross_profit,net_profit, total_assest, total_Sales,
+             data.addNewFinancialDataAnalysis(year_economy, gross_profit,net_profit, total_assest, total_Sales,
                     operation_profit, credit, amort, net_profit, id_company);
+
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        double x1 = (gross_profit + amort)/credit;
+
+
+
+            double x1 = (gross_profit + amort)/credit;
             double x2 = total_assest/credit;
             double x3 = operation_profit/total_assest;
             double x4 = operation_profit/total_Sales;
