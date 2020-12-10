@@ -75,6 +75,7 @@
                </image>
             </ImageView>
             <Label fx:id="idComap" layoutX="45.0" layoutY="56.0" />
+            <Label fx:id="idCompanyData" layoutX="91.0" layoutY="56.0" />
          </children></Pane>
    </children>
 </Pane>

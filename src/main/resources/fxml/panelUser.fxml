@@ -117,6 +117,7 @@
                         <Font name="Berlin Sans FB" size="30.0" />
                      </font>
                   </Label>
+                  <Label fx:id="companyID" layoutX="118.0" layoutY="45.0" />
                </children></Pane>
          </children></Pane>
    </center>

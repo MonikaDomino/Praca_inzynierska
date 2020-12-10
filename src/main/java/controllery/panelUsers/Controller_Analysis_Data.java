@@ -120,19 +120,13 @@ public class Controller_Analysis_Data {
            operating_profit_margin = operation_profit/total_Sales;
 
 
-
-
-
-
-
-
-
-
-
-
-
     }
 
+    public void readIDCompany (int id){
+        CompanyID.setText(Integer.toString(id));
+        CompanyID.setVisible(false);
+
+    }
 
 
 }

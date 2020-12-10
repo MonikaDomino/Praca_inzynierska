@@ -36,6 +36,9 @@ public class Controller_CompanyData   {
     @FXML
     private Label idComap;
 
+    @FXML
+    private Label idCompanyData;
+
     public Controller_CompanyForm formCompany;
 
     public  Controller_CompanyForm getController() { return  this.formCompany; }
@@ -70,6 +73,11 @@ public class Controller_CompanyData   {
     public void readIdUser(int id){
         idComap.setText(Integer.toString(id));
         idComap.setVisible(false);
+    }
+
+    public void readIdCompany(int id){
+        idCompanyData.setText(Integer.toString(id));
+
     }
 
 

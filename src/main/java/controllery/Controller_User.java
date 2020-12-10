@@ -2,7 +2,10 @@ package controllery;
 
 import controllery.panelUsers.Company.Controller_CompanyData;
 import controllery.panelUsers.Company.Controller_CompanyForm;
+import controllery.panelUsers.Controller_AnalysisType;
 import controllery.panelUsers.Controller_PersonalData;
+import hibernate.Firma;
+import hibernate.FirmaQuery;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,16 +41,17 @@ public class Controller_User extends openFXMl {
     @FXML
     private Label mailU;
 
+    @FXML
+    private Label companyID;
+
+    @FXML
+    private Label idCompanyData;
+
     public  Controller_PersonalData date;
 
     public Controller_CompanyData formC;
 
-
-    public Controller_PersonalData getController(){
-        return this.date;
-    }
-
-
+    public Controller_AnalysisType analType;
 
 
     @FXML
@@ -88,6 +92,9 @@ public class Controller_User extends openFXMl {
         int id = Integer.parseInt(dataId.getText());
         companyData.readIdUser(id);
 
+        FirmaQuery company = new FirmaQuery();
+        Firma com = company.showCompany(id);
+        companyData.readIdCompany(com.getIdFirmy());
 
 
     }
@@ -121,8 +128,20 @@ public class Controller_User extends openFXMl {
 
     @FXML
     void goToAnalysisType(ActionEvent event) throws IOException {
-        Pane newLoadPane = FXMLLoader.load(getClass().getResource("/fxml/panelUser_type/panelAnalysis_Type.fxml"));
-        changePane.getChildren().add(newLoadPane);
+        String link = "/fxml/panelUser_type/panelAnalysis_Type.fxml";
+        FXMLLoader loader= new FXMLLoader();
+        loader.setLocation(Controller_User.class.getResource(link));
+        Pane newPane = loader.load();
+        changePane.getChildren().add(newPane);
+
+        Controller_AnalysisType analize = loader.getController();
+        analType = analize;
+        int id = Integer.parseInt(dataId.getText());
+
+
+        FirmaQuery company = new FirmaQuery();
+        Firma com = company.showCompany(id);
+        analize.readIdCompany(com.getIdFirmy());
 
 
     }
@@ -131,6 +150,8 @@ public class Controller_User extends openFXMl {
         dataId.setText(Integer.toString(id));
         dataId.setVisible(false);
     }
+
+
 
     public void readInfoUser (String fname, String name, String mail){
         fnameU.setText(fname);

@@ -2,10 +2,13 @@ package hibernate;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
+
 
 public class FirmaQuery {
 
     Session session;
+    Query query;
 
     public void addCompany(String nameCompany, String street, String city, String postCode, int numberB, int numberF,
                            int idUser) {
@@ -32,6 +35,17 @@ public class FirmaQuery {
                 session.close();
             }
         }
+
+        public Firma showCompany(int id_user){
+            Firma f = null;
+            session = HibernateUtill.getSessionFactory().openSession();
+            String hql = "from Firma where idUzytkownika= '" + id_user +" '";
+            query = session.createQuery(hql);
+            f = (Firma) query.uniqueResult();
+            session.close();
+            return f;
+        }
+
 
 
     }

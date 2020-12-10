@@ -34,5 +34,6 @@
             <Font name="DejaVu Sans Condensed Bold" size="20.0" />
          </font>
       </Label>
+      <Label fx:id="idCompany" layoutX="20.0" layoutY="21.0" />
    </children>
 </Pane>
