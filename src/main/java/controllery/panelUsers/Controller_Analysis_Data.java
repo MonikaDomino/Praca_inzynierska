@@ -45,6 +45,10 @@ public class Controller_Analysis_Data {
     @FXML
     private Label CompanyID;
 
+    @FXML
+    private Label idDataFinancial;
+
+
     private DaneFinansowe dataFinancial;
 
     @FXML
@@ -85,13 +89,16 @@ public class Controller_Analysis_Data {
             DaneFinansoweQuery data = new DaneFinansoweQuery();
              data.addNewFinancialDataAnalysis(year_economy, gross_profit,net_profit, total_assest, total_Sales,
                     operation_profit, credit, amort, net_profit, id_company);
+           DaneFinansowe dataF = data.showID(year_economy,gross_profit, net_profit, total_assest, total_Sales,
+                 operation_profit, credit, amort, net_profit, id_company);
+            int id = dataF.getIdDane();
+                idDataFinancial.setText(Integer.toString(id));
+                idDataFinancial.setVisible(false);
 
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
 
 
             double x1 = (gross_profit + amort)/credit;

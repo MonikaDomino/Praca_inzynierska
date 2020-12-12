@@ -104,5 +104,6 @@
          </children>
       </Pane>
       <Label fx:id="CompanyID" layoutX="47.0" layoutY="68.0" />
+      <Label fx:id="idDataFinancial" layoutX="469.0" layoutY="68.0" />
    </children>
 </Pane>

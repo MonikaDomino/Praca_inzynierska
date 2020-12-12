@@ -95,6 +95,8 @@ public class Controller_User extends openFXMl {
         FirmaQuery company = new FirmaQuery();
         Firma com = company.showCompany(id);
         companyData.readIdCompany(com.getIdFirmy());
+        companyData.readDataCompany(com.getNazwaFirmy(), com.getUlica(), com.getNumerLokalu(), com.getNumerBudynku(),
+                com.getMiasto(), com.getKodPocztowy());
 
 
     }

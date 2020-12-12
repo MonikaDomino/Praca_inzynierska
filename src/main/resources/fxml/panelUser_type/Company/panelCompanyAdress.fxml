@@ -11,36 +11,15 @@
    <children>
       <Pane layoutX="45.0" layoutY="202.0" prefHeight="178.0" prefWidth="466.0" style="-fx-background-color: linear-gradient(to bottom, #24e0ee, #22d8fb, #43ceff, #66c4ff, #87b8ff); -fx-background-radius: 12px; -fx-border-radius: 12px; -fx-border-color: linear-gradient(to right top, #051937, #002366, #002a95, #0029c2, #4912eb);">
          <children>
-            <Label fx:id="companyName" layoutX="191.0" layoutY="24.0" text="Name">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <Label fx:id="companyStreet" layoutX="106.0" layoutY="66.0" text="ulica">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <Label fx:id="companyNumberB" layoutX="175.0" layoutY="66.0" text="nr budynku">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <Label fx:id="companyNumberL" layoutX="282.0" layoutY="66.0" text="/nr lokalu">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <Label fx:id="companyPostCod" layoutX="106.0" layoutY="119.0" text="kod pocztowy">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <Label fx:id="companyCity" layoutX="253.0" layoutY="113.0" text="miejscowość">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
+            <Pane layoutX="120.0" layoutY="14.0" prefHeight="41.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="companyName" layoutX="77.0" layoutY="6.0">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
          </children>
       </Pane>
       <ImageView fitHeight="150.0" fitWidth="144.0" layoutX="195.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
