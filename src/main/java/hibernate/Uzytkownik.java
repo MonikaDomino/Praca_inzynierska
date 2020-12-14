@@ -8,7 +8,7 @@ import java.util.Objects;
 
 @Entity
 public class Uzytkownik {
-    private int idUzytkownika;
+    private Integer idUzytkownika;
     private String imie;
     private String nazwisko;
     private String login;
@@ -17,11 +17,11 @@ public class Uzytkownik {
 
     @Id
     @Column(name = "id_uzytkownika")
-    public int getIdUzytkownika() {
+    public Integer getIdUzytkownika() {
         return idUzytkownika;
     }
 
-    public void setIdUzytkownika(int idUzytkownika) {
+    public void setIdUzytkownika(Integer idUzytkownika) {
         this.idUzytkownika = idUzytkownika;
     }
 
@@ -80,7 +80,7 @@ public class Uzytkownik {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Uzytkownik that = (Uzytkownik) o;
-        return idUzytkownika == that.idUzytkownika &&
+        return Objects.equals(idUzytkownika, that.idUzytkownika) &&
                 Objects.equals(imie, that.imie) &&
                 Objects.equals(nazwisko, that.nazwisko) &&
                 Objects.equals(login, that.login) &&

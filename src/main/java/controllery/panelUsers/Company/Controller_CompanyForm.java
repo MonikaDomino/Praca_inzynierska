@@ -33,8 +33,8 @@ public class Controller_CompanyForm {
 
         String nameCompany = nameCompanytxt.getText();
         String streetCompany = street.getText();
-        int numberBuilding = Integer.parseInt(numberB.getText());
-        int numberLocal = Integer.parseInt(numberF.getText());
+        String numberBuilding = numberB.getText();
+        String numberLocal = numberF.getText();
         String postC = postCode.getText();
         String cityC = city.getText();
         int idUser = Integer.parseInt(idUserC.getText());

@@ -42,6 +42,7 @@ public class Controller_Register extends openFXMl  implements Initializable {
         String email = emailtxt.getText();
 
 
+
         UzytkownikQuery usser = new UzytkownikQuery();
 
         try {

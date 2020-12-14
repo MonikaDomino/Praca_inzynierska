@@ -1,7 +1,6 @@
 package controllery.panelUsers;
 
 import controllery.openFXMl;
-import hibernate.DaneFinansoweQuery;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;

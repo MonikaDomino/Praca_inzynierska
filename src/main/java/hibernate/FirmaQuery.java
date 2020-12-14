@@ -10,19 +10,19 @@ public class FirmaQuery {
     Session session;
     Query query;
 
-    public void addCompany(String nameCompany, String street, String city, String postCode, int numberB, int numberF,
+    public void addCompany(String nameCompany, String street, String city, String postCode, String numberB, String numberF,
                            int idUser) {
 
         session = HibernateUtill.getSessionFactory().openSession();
         String query;
-        if (numberF != 0) {
+        if (!numberF.equals("")) {
             query = "INSERT INTO `firma` (`id_firmy`, `nazwa_firmy`, `ulica`, `numer_budynku`, `miasto`, `kod_pocztowy`, `numer_lokalu`, `id_uzytkownika`) " +
                     "VALUES (NULL , '" + nameCompany + "', '" + street + "', '" + numberB + "', '" + city + "', '" + postCode + "', '" + numberF + "', '"
                     + idUser + "')";
         }else{
                 query = "INSERT INTO `firma` (`id_firmy`, `nazwa_firmy`, `ulica`, `numer_budynku`, `miasto`, `kod_pocztowy`, `numer_lokalu`, `id_uzytkownika`) " +
-                        "VALUES (NULL , '" + nameCompany + "', '" + street + "', '" + numberB + "', '" + city + "', '" + postCode + "', 0 , '"
-                        + idUser + "')";
+                        "VALUES (NULL , '" + nameCompany + "', '" + street + "', '" + numberB + "', '" + city + "', '" + postCode +  "', "
+                        + "NULL, '" + idUser + "')";
 
             }
             try {

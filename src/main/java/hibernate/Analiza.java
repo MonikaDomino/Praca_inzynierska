@@ -1,41 +1,44 @@
 package hibernate;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
 
 @Entity
-
 public class Analiza {
-    private int idAnalizy;
-    private double wynikAnalizy;
-    private int idDane;
+    private Integer idAnalizy;
+    private Double wynikAnalizy;
+    private Integer idDane;
 
     @Id
-
-    public int getIdAnalizy() {
+    @Column(name = "id_analizy")
+    public Integer getIdAnalizy() {
         return idAnalizy;
     }
 
-    public void setIdAnalizy(int idAnalizy) {
+    public void setIdAnalizy(Integer idAnalizy) {
         this.idAnalizy = idAnalizy;
     }
 
     @Basic
-    public double getWynikAnalizy() {
+    @Column(name = "wynik_analizy")
+    public Double getWynikAnalizy() {
         return wynikAnalizy;
     }
 
-    public void setWynikAnalizy(double wynikAnalizy) {
+    public void setWynikAnalizy(Double wynikAnalizy) {
         this.wynikAnalizy = wynikAnalizy;
     }
 
     @Basic
-
-    public int getIdDane() {
+    @Column(name = "id_dane")
+    public Integer getIdDane() {
         return idDane;
     }
 
-    public void setIdDane(int idDane) {
+    public void setIdDane(Integer idDane) {
         this.idDane = idDane;
     }
 
@@ -44,9 +47,9 @@ public class Analiza {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Analiza analiza = (Analiza) o;
-        return idAnalizy == analiza.idAnalizy &&
-                Double.compare(analiza.wynikAnalizy, wynikAnalizy) == 0 &&
-                idDane == analiza.idDane;
+        return Objects.equals(idAnalizy, analiza.idAnalizy) &&
+                Objects.equals(wynikAnalizy, analiza.wynikAnalizy) &&
+                Objects.equals(idDane, analiza.idDane);
     }
 
     @Override

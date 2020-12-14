@@ -80,13 +80,13 @@ public class Controller_CompanyData   {
 
     }
 
-    public void readDataCompany(String nameC, String streetC, int numberLocal, int numberBuilding,
+    public void readDataCompany(String nameC, String streetC, String numberLocal, String numberBuilding,
                                 String city, String postCode){
 
             companyName.setText(nameC);
             companyStreet.setText("ul. " + streetC);
-            companyNumberB.setText(Integer.toString(numberBuilding));
-            companyNumberL.setText(Integer.toString(numberLocal));
+            companyNumberB.setText(numberBuilding);
+            companyNumberL.setText(numberLocal);
             companyCity.setText(city);
             companyPostCod.setText(postCode);
 

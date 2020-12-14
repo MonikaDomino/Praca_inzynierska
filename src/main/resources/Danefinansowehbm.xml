@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="hibernate.DaneFinansowe" table="dane_finansowe" schema="inzynierka">
+    <class name="hibernate.Danefinansowe" table="danefinansowe" schema="inzynierka">
         <id name="idDane" column="id_dane"/>
         <property name="rokBilansowy" column="rok_bilansowy"/>
         <property name="zyskBrutto" column="zysk_brutto"/>

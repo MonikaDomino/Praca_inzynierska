@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="hibernate.QuickTest" table="quick_test" schema="inzynierka">
+    <class name="hibernate.Quicktest" table="quicktest" schema="inzynierka">
         <id name="idTestu" column="id_testu"/>
         <property name="x1" column="x1"/>
         <property name="x2" column="x2"/>

@@ -55,8 +55,7 @@ import org.hibernate.query.Query;
         }
 
 
-        public void register(String imie, String nazwisko, String email,
-                             String login, String haslo) {
+        public void register(String imie, String nazwisko, String login, String haslo, String email) {
 
             session = HibernateUtill.getSessionFactory().openSession();
             String query = "INSERT INTO `uzytkownik` (`id_uzytkownika`, `Imie`, `nazwisko`, `login`, `password`, `email`) " +

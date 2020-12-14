@@ -48,7 +48,7 @@
                      </font></Label>
                   <Label fx:id="Emaill_Info" prefHeight="19.0" prefWidth="192.0">
                      <font>
-                        <Font size="15.0" />
+                        <Font name="System Bold" size="15.0" />
                      </font></Label>
                </children>
             </VBox>

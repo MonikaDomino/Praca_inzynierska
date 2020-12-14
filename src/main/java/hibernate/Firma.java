@@ -8,27 +8,25 @@ import java.util.Objects;
 
 @Entity
 public class Firma {
-    private int idFirmy;
+    private Integer idFirmy;
     private String nazwaFirmy;
     private String ulica;
-    private int numerBudynku;
+    private String numerBudynku;
     private String miasto;
     private String kodPocztowy;
-    private int numerLokalu;
-    private int idUzytkownika;
+    private String numerLokalu;
+    private Integer idUzytkownika;
 
     @Id
-    @Column(name = "id_firmy")
-    public int getIdFirmy() {
+    public Integer getIdFirmy() {
         return idFirmy;
     }
 
-    public void setIdFirmy(int idFirmy) {
+    public void setIdFirmy(Integer idFirmy) {
         this.idFirmy = idFirmy;
     }
 
     @Basic
-    @Column(name = "nazwa_firmy")
     public String getNazwaFirmy() {
         return nazwaFirmy;
     }
@@ -38,7 +36,6 @@ public class Firma {
     }
 
     @Basic
-    @Column(name = "ulica")
     public String getUlica() {
         return ulica;
     }
@@ -48,17 +45,15 @@ public class Firma {
     }
 
     @Basic
-    @Column(name = "numer_budynku")
-    public int getNumerBudynku() {
+    public String getNumerBudynku() {
         return numerBudynku;
     }
 
-    public void setNumerBudynku(int numerBudynku) {
+    public void setNumerBudynku(String numerBudynku) {
         this.numerBudynku = numerBudynku;
     }
 
     @Basic
-    @Column(name = "miasto")
     public String getMiasto() {
         return miasto;
     }
@@ -68,7 +63,6 @@ public class Firma {
     }
 
     @Basic
-    @Column(name = "kod_pocztowy")
     public String getKodPocztowy() {
         return kodPocztowy;
     }
@@ -78,22 +72,20 @@ public class Firma {
     }
 
     @Basic
-    @Column(name = "numer_lokalu")
-    public int getNumerLokalu() {
+    public String getNumerLokalu() {
         return numerLokalu;
     }
 
-    public void setNumerLokalu(int numerLokalu) {
+    public void setNumerLokalu(String numerLokalu) {
         this.numerLokalu = numerLokalu;
     }
 
     @Basic
-    @Column(name = "id_uzytkownika")
-    public int getIdUzytkownika() {
+    public Integer getIdUzytkownika() {
         return idUzytkownika;
     }
 
-    public void setIdUzytkownika(int idUzytkownika) {
+    public void setIdUzytkownika(Integer idUzytkownika) {
         this.idUzytkownika = idUzytkownika;
     }
 
@@ -102,14 +94,14 @@ public class Firma {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Firma firma = (Firma) o;
-        return idFirmy == firma.idFirmy &&
-                numerBudynku == firma.numerBudynku &&
-                numerLokalu == firma.numerLokalu &&
-                idUzytkownika == firma.idUzytkownika &&
+        return Objects.equals(idFirmy, firma.idFirmy) &&
                 Objects.equals(nazwaFirmy, firma.nazwaFirmy) &&
                 Objects.equals(ulica, firma.ulica) &&
+                Objects.equals(numerBudynku, firma.numerBudynku) &&
                 Objects.equals(miasto, firma.miasto) &&
-                Objects.equals(kodPocztowy, firma.kodPocztowy);
+                Objects.equals(kodPocztowy, firma.kodPocztowy) &&
+                Objects.equals(numerLokalu, firma.numerLokalu) &&
+                Objects.equals(idUzytkownika, firma.idUzytkownika);
     }
 
     @Override

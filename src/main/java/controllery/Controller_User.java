@@ -1,7 +1,6 @@
 package controllery;
 
 import controllery.panelUsers.Company.Controller_CompanyData;
-import controllery.panelUsers.Company.Controller_CompanyForm;
 import controllery.panelUsers.Controller_AnalysisType;
 import controllery.panelUsers.Controller_PersonalData;
 import hibernate.Firma;
@@ -95,8 +94,7 @@ public class Controller_User extends openFXMl {
         FirmaQuery company = new FirmaQuery();
         Firma com = company.showCompany(id);
         companyData.readIdCompany(com.getIdFirmy());
-        companyData.readDataCompany(com.getNazwaFirmy(), com.getUlica(), com.getNumerLokalu(), com.getNumerBudynku(),
-                com.getMiasto(), com.getKodPocztowy());
+        companyData.readDataCompany(com.getNazwaFirmy(), com.getUlica(), com.getNumerBudynku(), com.getNumerLokalu(), com.getMiasto(), com.getKodPocztowy());
 
 
     }
