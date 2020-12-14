@@ -4,6 +4,7 @@ package controllery.panelUsers;
 import hibernate.AnalizaQuery;
 import hibernate.Danefinansowe;
 import hibernate.DanefinansoweQuery;
+import hibernate.WskaznikiQuery;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -137,16 +138,33 @@ public class Controller_Analysis_Data {
             double ROE;
             double ROA;
             double ROS;
-            double ROI;
+            double ROI;                          // rentowność inwestycji
             double operating_profit_margin;     // marża operacyjna
             double expected_gross_margin;       // marża zysku brutto
 
+            double equity_multiplier;          // mnożnik kapitału własnego
+            double asset_rotation;             // rotacja aktywów
+
            operating_profit_margin = operation_profit/total_Sales;
            expected_gross_margin = gross_profit/total_Sales;
-           ROI = net_profit/capitalOwn;         // rentowność inwestycji
+           ROI = net_profit/total_assest;
            ROS = net_profit/total_Sales;
 
-           
+           equity_multiplier = total_assest/capitalOwn;
+           asset_rotation = total_Sales/total_assest;
+
+           ROA = operating_profit_margin * asset_rotation;
+
+           ROE = ROS * equity_multiplier * asset_rotation;
+
+            try{
+                WskaznikiQuery pointer = new WskaznikiQuery();
+                pointer.addNewPointers(ROE,ROA,ROS, operating_profit_margin,ROI,expected_gross_margin,idData);
+            }catch(Exception e){
+                e.getLocalizedMessage();
+            }
+
+
 
     }
 

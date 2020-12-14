@@ -1051,10 +1051,10 @@
       <ObjectGrants>ALL PRIVILEGES!
 </ObjectGrants>
     </user>
-    <table id="334" parent="3" name="analiza__"/>
-    <table id="335" parent="3" name="dane_finansowe"/>
+    <table id="334" parent="3" name="analiza"/>
+    <table id="335" parent="3" name="danefinansowe"/>
     <table id="336" parent="3" name="firma"/>
-    <table id="337" parent="3" name="quick_test"/>
+    <table id="337" parent="3" name="quicktest"/>
     <table id="338" parent="3" name="uzytkownik"/>
     <table id="339" parent="3" name="wskazniki"/>
     <column id="340" parent="334" name="id_analizy">
@@ -1065,7 +1065,7 @@
     </column>
     <column id="341" parent="334" name="wynik_analizy">
       <Position>2</Position>
-      <DataType>float|0s</DataType>
+      <DataType>double(20,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="342" parent="334" name="id_dane">
@@ -1082,9 +1082,9 @@
       <ColNames>id_analizy</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="345" parent="334" name="analiza___ibfk_1">
+    <foreign-key id="345" parent="334" name="analiza_ibfk_1">
       <ColNames>id_dane</ColNames>
-      <RefTableName>dane_finansowe</RefTableName>
+      <RefTableName>danefinansowe</RefTableName>
       <RefColNames>id_dane</RefColNames>
     </foreign-key>
     <column id="346" parent="335" name="id_dane">
@@ -1100,47 +1100,47 @@
     </column>
     <column id="348" parent="335" name="zysk_brutto">
       <Position>3</Position>
-      <DataType>float|0s</DataType>
+      <DataType>double(20,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="349" parent="335" name="zapasy">
       <Position>4</Position>
-      <DataType>float|0s</DataType>
+      <DataType>double(20,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="350" parent="335" name="aktywa_ogolem">
       <Position>5</Position>
-      <DataType>float|0s</DataType>
+      <DataType>double(20,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="351" parent="335" name="przychodyS">
       <Position>6</Position>
-      <DataType>float|0s</DataType>
+      <DataType>double(20,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="352" parent="335" name="zobowiazania">
       <Position>7</Position>
-      <DataType>float|0s</DataType>
+      <DataType>double(20,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="353" parent="335" name="zysk_operacyjny">
       <Position>8</Position>
-      <DataType>float|0s</DataType>
+      <DataType>double(20,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="354" parent="335" name="amortyzacja">
       <Position>9</Position>
-      <DataType>float|0s</DataType>
+      <DataType>double(20,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="355" parent="335" name="kapital_wlasny">
       <Position>10</Position>
-      <DataType>float|0s</DataType>
+      <DataType>double(20,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="356" parent="335" name="zysk_netto">
       <Position>11</Position>
-      <DataType>float|0s</DataType>
+      <DataType>double(20,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="357" parent="335" name="id_firmy">
@@ -1157,7 +1157,7 @@
       <ColNames>id_dane</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="360" parent="335" name="dane_finansowe_ibfk_1">
+    <foreign-key id="360" parent="335" name="danefinansowe_ibfk_1">
       <ColNames>id_firmy</ColNames>
       <RefTableName>firma</RefTableName>
       <RefColNames>id_firmy</RefColNames>
@@ -1180,7 +1180,7 @@
     </column>
     <column id="364" parent="336" name="numer_budynku">
       <Position>4</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="365" parent="336" name="miasto">
@@ -1195,7 +1195,7 @@
     </column>
     <column id="367" parent="336" name="numer_lokalu">
       <Position>7</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="368" parent="336" name="id_uzytkownika">
@@ -1225,27 +1225,27 @@
     </column>
     <column id="373" parent="337" name="x1">
       <Position>2</Position>
-      <DataType>float|0s</DataType>
+      <DataType>double(20,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="374" parent="337" name="x2">
       <Position>3</Position>
-      <DataType>float|0s</DataType>
+      <DataType>double(20,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="375" parent="337" name="x3">
       <Position>4</Position>
-      <DataType>float|0s</DataType>
+      <DataType>double(20,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="376" parent="337" name="x4">
       <Position>5</Position>
-      <DataType>float|0s</DataType>
+      <DataType>double(20,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="377" parent="337" name="wynik_testu">
       <Position>6</Position>
-      <DataType>float|0s</DataType>
+      <DataType>double(20,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="378" parent="337" name="id_dane">
@@ -1262,9 +1262,9 @@
       <ColNames>id_testu</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="381" parent="337" name="quick_test_ibfk_1">
+    <foreign-key id="381" parent="337" name="quicktest_ibfk_1">
       <ColNames>id_dane</ColNames>
-      <RefTableName>dane_finansowe</RefTableName>
+      <RefTableName>danefinansowe</RefTableName>
       <RefColNames>id_dane</RefColNames>
     </foreign-key>
     <column id="382" parent="338" name="id_uzytkownika">
@@ -1311,32 +1311,32 @@
     </column>
     <column id="390" parent="339" name="ROE">
       <Position>2</Position>
-      <DataType>float|0s</DataType>
+      <DataType>double(20,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="391" parent="339" name="ROA">
       <Position>3</Position>
-      <DataType>float|0s</DataType>
+      <DataType>double(20,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="392" parent="339" name="ROS">
       <Position>4</Position>
-      <DataType>float|0s</DataType>
+      <DataType>double(20,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="393" parent="339" name="marza_operacyjna">
       <Position>5</Position>
-      <DataType>float|0s</DataType>
+      <DataType>double(20,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="394" parent="339" name="ROI">
       <Position>6</Position>
-      <DataType>float|0s</DataType>
+      <DataType>double(20,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="395" parent="339" name="marza_ZB">
       <Position>7</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>double(20,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="396" parent="339" name="id_dane">
@@ -1355,7 +1355,7 @@
     </key>
     <foreign-key id="399" parent="339" name="wskazniki_ibfk_1">
       <ColNames>id_dane</ColNames>
-      <RefTableName>dane_finansowe</RefTableName>
+      <RefTableName>danefinansowe</RefTableName>
       <RefColNames>id_dane</RefColNames>
     </foreign-key>
   </database-model>

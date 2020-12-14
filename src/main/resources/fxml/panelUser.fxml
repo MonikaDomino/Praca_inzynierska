@@ -112,7 +112,7 @@
                         <Image url="@../img/analiza-finansowa-kurs-praktyczny-71140-removebg-preview.png" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER" layoutX="212.0" layoutY="45.0" prefHeight="51.0" prefWidth="123.0" text="WITAJ!">
+                  <Label fx:id="welcome" alignment="CENTER" layoutX="98.0" layoutY="45.0" prefHeight="51.0" prefWidth="362.0">
                      <font>
                         <Font name="Berlin Sans FB" size="30.0" />
                      </font>

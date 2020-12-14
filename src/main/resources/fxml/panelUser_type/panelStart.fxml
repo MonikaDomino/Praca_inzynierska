@@ -6,15 +6,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="479.0" prefWidth="546.0" style="-fx-background-color: linear-gradient(to top, #cedcf1, #b7cdee, #9fbeeb, #87b0e8, #6da1e5);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane prefHeight="479.0" prefWidth="546.0" style="-fx-background-color: linear-gradient(to top, #cedcf1, #b7cdee, #9fbeeb, #87b0e8, #6da1e5);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllery.panelUsers.Controller_Start">
    <children>
       <ImageView fitHeight="251.0" fitWidth="404.0" layoutX="66.0" layoutY="166.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../img/analiza-finansowa-kurs-praktyczny-71140-removebg-preview.png" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" layoutX="202.0" layoutY="51.0" prefHeight="51.0" prefWidth="123.0" text="WITAJ!">
+      <Label fx:id="welcome" alignment="CENTER" layoutX="102.0" layoutY="51.0" prefHeight="51.0" prefWidth="374.0">
          <font>
             <Font name="Berlin Sans FB" size="30.0" />
          </font>

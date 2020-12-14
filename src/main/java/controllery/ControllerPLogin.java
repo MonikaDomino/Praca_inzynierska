@@ -53,6 +53,7 @@ public class ControllerPLogin extends openFXMl implements Initializable {
             Controller_User personalId = read.getController();
             personalId.readIdUser(user.getIdUzytkownika());
             personalId.readInfoUser(user.getImie(), user.getNazwisko(), user.getEmail());
+            personalId.readLabel(user.getImie(), user.getNazwisko());
 
 
             frame(event);

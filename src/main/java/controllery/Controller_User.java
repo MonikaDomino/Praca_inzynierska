@@ -3,6 +3,7 @@ package controllery;
 import controllery.panelUsers.Company.Controller_CompanyData;
 import controllery.panelUsers.Controller_AnalysisType;
 import controllery.panelUsers.Controller_PersonalData;
+import controllery.panelUsers.Controller_Start;
 import hibernate.Firma;
 import hibernate.FirmaQuery;
 import javafx.event.ActionEvent;
@@ -46,11 +47,16 @@ public class Controller_User extends openFXMl {
     @FXML
     private Label idCompanyData;
 
+    @FXML
+    private Label welcome;
+
     public  Controller_PersonalData date;
 
     public Controller_CompanyData formC;
 
     public Controller_AnalysisType analType;
+
+    public Controller_Start start;
 
 
     @FXML
@@ -65,16 +71,28 @@ public class Controller_User extends openFXMl {
 
     @FXML
     void goToContact(ActionEvent event) throws IOException {
-        Pane newLoadPane = FXMLLoader.load(getClass().getResource("/fxml/panelUser_type/panelContact.fxml"));
-        changePane.getChildren().add(newLoadPane);
+       String link = "/fxml/panelUser_type/panelContact.fxml";
+       FXMLLoader loader= new FXMLLoader();
+       loader.setLocation(Controller_User.class.getResource(link));
+       Pane newPane = loader.load();
+       changePane.getChildren().add(newPane);
+
 
     }
 
 
     @FXML
     void backToStart(ActionEvent event) throws IOException {
-        Pane newLoadPane = FXMLLoader.load(getClass().getResource("/fxml/panelUser_type/panelStart.fxml"));
-        changePane.getChildren().add(newLoadPane);
+        String link ="/fxml/panelUser_type/panelStart.fxml";
+        FXMLLoader loader= new FXMLLoader();
+        loader.setLocation(Controller_User.class.getResource(link));
+        Pane newPane = loader.load();
+        changePane.getChildren().add(newPane);
+
+        Controller_Start startB = loader.getController();
+        start = startB;
+
+
     }
 
     @FXML
@@ -163,13 +181,13 @@ public class Controller_User extends openFXMl {
 
     }
 
-
+    public void readLabel(String imie, String nazwisko){
+        welcome.setText("Witaj, " +imie+ " " + nazwisko + "!" );
+    }
 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-
 
 
     }
