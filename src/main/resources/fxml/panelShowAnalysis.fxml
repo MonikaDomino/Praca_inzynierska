@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="479.0" prefWidth="549.0" style="-fx-background-color: linear-gradient(to top, #cedcf1, #b7cdee, #9fbeeb, #87b0e8, #6da1e5);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllery.panelUsers.Controller_ShowAnalysis">
+   <children>
+      <Pane layoutX="47.0" layoutY="52.0" prefHeight="384.0" prefWidth="466.0" style="-fx-background-color: white; -fx-border-color: BLACK;">
+         <children>
+            <Label fx:id="condition" alignment="CENTER" layoutX="36.0" layoutY="8.0" prefHeight="21.0" prefWidth="394.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Pane layoutX="18.0" layoutY="71.0" prefHeight="174.0" prefWidth="424.0">
+               <children>
+                  <VBox prefHeight="174.0" prefWidth="293.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="290.0" text="RENTOWNOŚĆ AKTYWÓW:">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="290.0" text="RENTOWNOŚĆ KAPITAŁU WŁASNEGO:">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="290.0" text="RENTOWNOŚĆ INWESTYCJI:">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="290.0" text="RENTOWNOŚĆ SPRZEDAŻY:">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="290.0" text="MARŻA ZYSKU BRUTTO:">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="290.0" text="MARŻA OPERACYJNA:">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="290.0" text="ROTACJA AKTYWÓW:">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="290.0" text="MNOŻNIK KAPITAŁU WŁASNEGO:">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="299.0" layoutY="-7.0" prefHeight="110.0" prefWidth="84.0" spacing="2.0">
+                     <children>
+                        <Label fx:id="resultROA" alignment="CENTER" prefHeight="22.0" prefWidth="90.0" textFill="#290aa7">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="resultROE" alignment="CENTER" prefHeight="22.0" prefWidth="89.0" textFill="#290aa7">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+            <Label fx:id="advantage" layoutX="21.0" layoutY="306.0" prefHeight="21.0" prefWidth="424.0">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Label layoutX="185.0" layoutY="13.0" text="WYNIK ANALIZY:">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="recordAnalysis" layoutX="47.0" layoutY="29.0" />
+   </children>
+</AnchorPane>
