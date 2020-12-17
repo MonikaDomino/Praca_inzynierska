@@ -57,6 +57,8 @@ public class Controller_Analysis_Data {
     @FXML
     private TextField capital;
 
+
+
     public Controller_ShowAnalysis show;
 
     @FXML
@@ -104,101 +106,106 @@ public class Controller_Analysis_Data {
                     operation_profit, amort, capitalOwn, net_profit, id_company);
 
 
-                int id = dataFinancial.getIdDane();
+            int id = dataFinancial.getIdDane();
 
-                idDataFinancial.setText(Integer.toString(id));
-                idDataFinancial.setVisible(false);
-
-
-            } catch(Exception e){
-                e.printStackTrace();
-            }
+            idDataFinancial.setText(Integer.toString(id));
+            idDataFinancial.setVisible(false);
 
 
-            double x1 = (gross_profit + amort) / credit;
-            double x2 = total_assest / credit;
-            double x3 = operation_profit / total_assest;
-            double x4 = operation_profit / total_Sales;
-            double x5 = economy_stock / total_Sales;
-            double x6 = total_Sales / total_assest;
-
-            double analysis = ((3 * x1) / 2) + ((8 * x2) / 100) + 10 * x3 + 5 * x4 + ((3 * x5) / 10) + (x6 / 10);
-
-
-            int idData = Integer.parseInt(idDataFinancial.getText());
-
-            try {
-                AnalizaQuery analyse = new AnalizaQuery();
-                analyse.addNewAnalysis(idData, analysis);
-
-            } catch (Exception e) {
-                e.getLocalizedMessage();
-            }
-
-            double ROE;
-            double ROA;
-            double ROS;
-            double ROI;                          // rentowność inwestycji
-            double operating_profit_margin;     // marża operacyjna
-            double expected_gross_margin;       // marża zysku brutto
-
-            double equity_multiplier;          // mnożnik kapitału własnego
-            double asset_rotation;             // rotacja aktywów
-
-            operating_profit_margin = operation_profit / total_Sales;
-            expected_gross_margin = gross_profit / total_Sales;
-            ROI = net_profit / total_assest;
-            ROS = net_profit / total_Sales;
-
-            equity_multiplier = total_assest / capitalOwn;
-            asset_rotation = total_Sales / total_assest;
-
-            ROA = operating_profit_margin * asset_rotation;
-        roundNumber(ROA);
-
-
-        ROE = ROS * equity_multiplier * asset_rotation;
-            roundNumber(ROE);
-
-
-
-            try {
-                WskaznikiQuery pointer = new WskaznikiQuery();
-                pointer.addNewPointers(ROE, ROA, ROS, operating_profit_margin, ROI, expected_gross_margin, idData);
-
-            } catch (Exception e) {
-                e.getLocalizedMessage();
-            }
-
-            String link = "/fxml/panelShowAnalysis.fxml";
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Controller_Analysis_Data.class.getResource(link));
-            Pane newPane = loader.load();
-            paneData.getChildren().add(newPane);
-
-            Controller_ShowAnalysis shown = loader.getController();
-            show = shown;
-            shown.readResultAnalysis(analysis);
-            shown.readCondition(analysis);
-            shown.readPointers(ROE, ROA);
-            shown.readAdvantage(ROE);
-
-
-
-
-
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
 
-    public void readIDCompany (int id){
+        double x1 = (gross_profit + amort) / credit;
+        double x2 = total_assest / credit;
+        double x3 = operation_profit / total_assest;
+        double x4 = operation_profit / total_Sales;
+        double x5 = economy_stock / total_Sales;
+        double x6 = total_Sales / total_assest;
+
+        double analysis = ((3 * x1) / 2) + ((8 * x2) / 100) + 10 * x3 + 5 * x4 + ((3 * x5) / 10) + (x6 / 10);
+
+
+        int idData = Integer.parseInt(idDataFinancial.getText());
+
+        try {
+            AnalizaQuery analyse = new AnalizaQuery();
+            analyse.addNewAnalysis(idData, analysis);
+
+        } catch (Exception e) {
+            e.getLocalizedMessage();
+        }
+
+        double ROE;
+        double ROA;
+        double ROS;
+        double ROI;                          // rentowność inwestycji
+        double operating_profit_margin;     // marża operacyjna
+        double expected_gross_margin;       // marża zysku brutto
+
+
+        operating_profit_margin = operation_profit / total_Sales;
+        expected_gross_margin = gross_profit / total_Sales;
+        ROI = net_profit / total_assest;
+        ROS = net_profit / total_Sales;
+
+
+        ROA = operation_profit/total_assest;
+
+
+        ROE = net_profit/capitalOwn;
+
+
+        try {
+            WskaznikiQuery pointer = new WskaznikiQuery();
+            pointer.addNewPointers(ROE, ROA, ROS, operating_profit_margin, ROI, expected_gross_margin, idData);
+
+        } catch (Exception e) {
+            e.getLocalizedMessage();
+        }
+
+        String link = "/fxml/panelShowAnalysis.fxml";
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Controller_Analysis_Data.class.getResource(link));
+        Pane newPane = loader.load();
+        paneData.getChildren().add(newPane);
+
+        Controller_ShowAnalysis shown = loader.getController();
+        show = shown;
+        shown.readResultAnalysis(analysis);
+        shown.readCondition(analysis);
+        ROE = roundNumber(ROE);
+        ROA = roundNumber(ROA);
+        ROS = roundNumber(ROS);
+        ROI = roundNumber(ROI);
+        operating_profit_margin = roundNumber(operating_profit_margin);
+        expected_gross_margin = roundNumber(expected_gross_margin);
+        shown.readPointers(ROE, ROA, ROS, ROI, operating_profit_margin, expected_gross_margin);
+        shown.readAdvantage(ROE);
+        shown.compare(ROA, ROE);
+        shown.readSales(ROS);
+        shown.readProfitA(ROA);
+        shown.readProfit(expected_gross_margin);
+        shown.readMO(operating_profit_margin);
+        shown.readROI(ROI);
+
+    }
+
+
+
+    public void readIDCompany(int id) {
         CompanyID.setText(Integer.toString(id));
         CompanyID.setVisible(false);
 
     }
 
-    public void roundNumber(double result){         // zaokrąglanie liczb do 2 miejsc po przecinku
-        result *=100;
+
+    public double roundNumber(double result) {         // zaokrąglanie liczb do 2 miejsc po przecinku
+        result *= 100;
         result = Math.round(result);
         result /= 100;
+
+        return  result;
     }
 }
