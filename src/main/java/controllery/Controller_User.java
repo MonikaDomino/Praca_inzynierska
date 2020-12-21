@@ -88,7 +88,6 @@ public class Controller_User extends openFXMl {
         loader.setLocation(Controller_User.class.getResource(link));
         Pane newPane = loader.load();
         changePane.getChildren().add(newPane);
-
         Controller_Start startB = loader.getController();
         start = startB;
 

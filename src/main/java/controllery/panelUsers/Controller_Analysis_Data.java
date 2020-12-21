@@ -9,11 +9,14 @@ import hibernate.WskaznikiQuery;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
+import java.util.Optional;
 
 public class Controller_Analysis_Data {
 
@@ -64,6 +67,13 @@ public class Controller_Analysis_Data {
     @FXML
     void cancel(ActionEvent event) {
 
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setHeaderText("Czy na pewno chcesz przerwaæ?");
+        Optional<ButtonType> result = alert.showAndWait();
+            if(result.get() == ButtonType.YES){
+
+            }
+
     }
 
     @FXML
@@ -77,6 +87,8 @@ public class Controller_Analysis_Data {
         credits.setText(null);
         yeartxt.setText(null);
         capital.setText(null);
+        profit_net.setText(null);
+
     }
 
     @FXML
@@ -85,13 +97,13 @@ public class Controller_Analysis_Data {
         int year_economy = Integer.parseInt(yeartxt.getText());    // rok bilansowy
         double gross_profit = Double.parseDouble(grossprofit.getText());   // zysk brutto
         double economy_stock = Double.parseDouble(economyStock.getText()); // zapasy
-        double total_assest = Double.parseDouble(totalAssest.getText());  // aktywa ogÃ³Å‚em
+        double total_assest = Double.parseDouble(totalAssest.getText());  // aktywa ogó³em
         double net_profit = Double.parseDouble(profit_net.getText());      // zysk netto
         double amort = Double.parseDouble(amortization.getText());      // amortyzacja
-        double total_Sales = Double.parseDouble(totalSales.getText());  // przychody ze sprzedaÅ¼y
+        double total_Sales = Double.parseDouble(totalSales.getText());  // przychody ze sprzeda¿y
         double operation_profit = Double.parseDouble(operationProfit.getText()); // zysk operacyjny
-        double capitalOwn = Double.parseDouble(capital.getText());  // kapitaÅ‚ wÅ‚asny
-        double credit = Double.parseDouble(credits.getText());     // zobowiÄ…zania ogÃ³Å‚em
+        double capitalOwn = Double.parseDouble(capital.getText());  // kapita³ w³asny
+        double credit = Double.parseDouble(credits.getText());     // zobowi¹zania ogó³em
 
         int id_company = Integer.parseInt(CompanyID.getText());
 
@@ -137,23 +149,19 @@ public class Controller_Analysis_Data {
             e.getLocalizedMessage();
         }
 
-        double ROE;
-        double ROA;
-        double ROS;
-        double ROI;                          // rentownoÅ›Ä‡ inwestycji
-        double operating_profit_margin;     // marÅ¼a operacyjna
-        double expected_gross_margin;       // marÅ¼a zysku brutto
+        double ROE;                             // rentownoœæ kapita³u w³asnego
+        double ROA;                            // rentownoœæ aktywów
+        double ROS;                           // rentownoœæ sprzeda¿y
+        double ROI;                          // rentownoœæ inwestycji
+        double operating_profit_margin;     // mar¿a operacyjna
+        double expected_gross_margin;      // mar¿a zysku brutto
 
 
         operating_profit_margin = operation_profit / total_Sales;
         expected_gross_margin = gross_profit / total_Sales;
         ROI = net_profit / total_assest;
         ROS = net_profit / total_Sales;
-
-
         ROA = operation_profit/total_assest;
-
-
         ROE = net_profit/capitalOwn;
 
 
@@ -201,7 +209,7 @@ public class Controller_Analysis_Data {
     }
 
 
-    public double roundNumber(double result) {         // zaokrÄ…glanie liczb do 2 miejsc po przecinku
+    public double roundNumber(double result) {         // zaokr¹glanie liczb do 2 miejsc po przecinku
         result *= 100;
         result = Math.round(result);
         result /= 100;

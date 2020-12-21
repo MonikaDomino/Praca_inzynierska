@@ -58,7 +58,9 @@ public class DanefinansoweQuery {
         session.close();
         return d;
 
+    }
 
+    public void DataFinancialSelectAll(){
 
     }
 

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="479.0" prefWidth="549.0" style="-fx-background-color: linear-gradient(to top, #cedcf1, #b7cdee, #9fbeeb, #87b0e8, #6da1e5);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllery.panelUsers.Controller_ChangeCPass">
+   <children>
+      <Label layoutX="180.0" layoutY="33.0" text="ZMIANA HASŁA">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <Pane layoutX="64.0" layoutY="104.0" prefHeight="278.0" prefWidth="442.0" style="-fx-background-color: linear-gradient(to bottom, #24e0ee, #22d8fb, #43ceff, #66c4ff, #87b8ff); -fx-background-radius: 12px; -fx-border-radius: 12px; -fx-border-color: linear-gradient(to right top, #051937, #002265, #002894, #0027c1, #1412eb);;">
+         <children>
+            <ImageView fitHeight="43.0" fitWidth="51.0" layoutX="200.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/change-password-1912344-1623467-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <VBox layoutX="221.0" layoutY="85.0" prefHeight="163.0" prefWidth="197.0" spacing="30.0">
+               <children>
+                  <PasswordField fx:id="currentPassword" prefHeight="25.0" prefWidth="190.0" style="-fx-border-color: linear-gradient(to right top, #051937, #002265, #002894, #0027c1, #1412eb);; -fx-border-radius: 8px; -fx-background-radius: 8px;" />
+                  <PasswordField fx:id="newPassword" prefHeight="25.0" prefWidth="190.0" style="-fx-border-color: linear-gradient(to right top, #051937, #002265, #002894, #0027c1, #1412eb);; -fx-border-radius: 8px; -fx-background-radius: 8px;" />
+                  <PasswordField fx:id="confirmPassword" prefHeight="25.0" prefWidth="190.0" style="-fx-border-color: linear-gradient(to right top, #051937, #002265, #002894, #0027c1, #1412eb);; -fx-border-radius: 8px; -fx-background-radius: 8px;" />
+               </children>
+            </VBox>
+            <VBox layoutX="49.0" layoutY="85.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="163.0" prefWidth="166.0" spacing="30.0">
+               <children>
+                  <Label text="OBECNE HASŁO:">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label text="NOWE HASŁO:">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label text="POWTÓRZ HASŁO:">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+      <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="71.0" layoutY="411.0" mnemonicParsing="false" onAction="#changePassword" prefHeight="32.0" prefWidth="190.0" style="-fx-background-color: linear-gradient(to bottom, #2caa68, #32b55d, #40bf4d, #53c938, #69d210);; -fx-background-radius: 16px; -fx-font-weight: bold; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); -fx-font-family: Arial Narrow;" text="Zmień hasło">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </JFXButton>
+      <JFXButton alignment="CENTER" layoutX="282.0" layoutY="411.0" mnemonicParsing="false" onAction="#cancel" prefHeight="32.0" prefWidth="198.0" style="-fx-background-color: linear-gradient(to bottom, #aa2c2c, #b42727, #bf2121, #c81a1a, #d21010);; -fx-background-radius: 16px; -fx-font-weight: bold; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); -fx-font-family: Arial Narrow;" text="Anuluj">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </JFXButton>
+   </children>
+</Pane>

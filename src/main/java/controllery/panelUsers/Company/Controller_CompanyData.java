@@ -77,6 +77,7 @@ public class Controller_CompanyData   {
 
     public void readIdCompany(int id){
         idCompanyData.setText(Integer.toString(id));
+        idCompanyData.setVisible(false);
 
     }
 
