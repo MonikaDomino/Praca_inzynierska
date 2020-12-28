@@ -2,6 +2,7 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="windows-1250" />
+    <file url="file://$PROJECT_DIR$/src/main/java/controllery/Controller_Register.java" charset="windows-1250" />
     <file url="file://$PROJECT_DIR$/src/main/java/controllery/panelUsers/Controller_Analysis_Data.java" charset="windows-1250" />
     <file url="file://$PROJECT_DIR$/src/main/java/controllery/panelUsers/Controller_ShowAnalysis.java" charset="windows-1250" />
     <file url="PROJECT" charset="windows-1250" />

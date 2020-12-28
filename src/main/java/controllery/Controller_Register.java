@@ -50,7 +50,7 @@ public class Controller_Register extends openFXMl  implements Initializable {
             usser.register(firstName, lastname, login, password, email);
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setHeaderText("Rejestracja zakonczona sukcesem! Mozesz sie teraz zalogowac!");
+            alert.setHeaderText("Rejestracja zakoñczona sukcesem! Mo¿esz sie teraz zalogowaæ!");
             alert.showAndWait();
 
             if (alert.getResult() == ButtonType.OK) {
@@ -61,7 +61,7 @@ public class Controller_Register extends openFXMl  implements Initializable {
 
             }else{
                     Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
-                    alert2.setHeaderText("Rejestracja zakoÅ„czyÅ‚a siÄ™ niepowodzeniem!");
+                    alert2.setHeaderText("Rejestracja zakoñczy³a siê niepowodzeniem!");
                     alert2.show();
                 }
 
@@ -77,6 +77,9 @@ public class Controller_Register extends openFXMl  implements Initializable {
     void exit(ActionEvent event) {
 
         String link = "/fxml/panelLogIN.fxml";
+        Alert alert_exit = new Alert(Alert.AlertType.CONFIRMATION);
+        alert_exit.setHeaderText("Czy na pewno chcesz przerwaæ rejestracjê?");
+        alert_exit.showAndWait();
         readFXML(event, link);
         frame(event);
 
