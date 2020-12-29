@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,6 +30,8 @@ public class Controller_PersonalData implements Initializable {
 
     @FXML
     private Label dataId;
+
+    Controller_ChangeCPass passCP;
 
 
     public void readId(int id){
@@ -52,6 +55,11 @@ public class Controller_PersonalData implements Initializable {
         loader.setLocation(Controller_PersonalData.class.getResource(link));
         Pane newPane = loader.load();
         panePData.getChildren().add(newPane);
+
+        Controller_ChangeCPass changeP = loader.getController();
+        passCP = changeP;
+        int id = Integer.parseInt(dataId.getText());
+        changeP.readId(id);
 
     }
 

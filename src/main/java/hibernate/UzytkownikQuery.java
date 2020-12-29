@@ -54,6 +54,38 @@ import org.hibernate.query.Query;
             return u;
         }
 
+        public Uzytkownik searchPassword(String currentPassword, int idUser) {
+            Uzytkownik uk = null;
+            session = HibernateUtill.getSessionFactory().openSession();
+            String hql = "From Uzytkownik WHERE password  = '" + currentPassword + "'"
+                    + " and idUzytkownika = '" + idUser + "'";
+            query = session.createQuery(hql);
+            uk = (Uzytkownik) query.uniqueResult();
+            session.close();
+
+            return uk;
+        }
+
+        public void changePasswordUser(String currentPass, String newPassword, int id) {
+            session = HibernateUtill.getSessionFactory().openSession();
+            Transaction tx = null;
+            try {
+                tx = session.beginTransaction();
+                Uzytkownik user = new UzytkownikQuery().searchPassword(currentPass,id);
+                user.setPassword(newPassword);
+                session.update(user);
+                tx.commit();
+
+            } catch (HibernateException e) {
+                if (tx != null) {
+                    tx.rollback();
+                }
+                e.printStackTrace();
+            } finally {
+                session.close();
+            }
+        }
+
 
         public void register(String imie, String nazwisko, String login, String haslo, String email) {
 
