@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
@@ -24,44 +25,41 @@
                   <Image url="@../../img/change-password-1912344-1623467-removebg-preview.png" />
                </image>
             </ImageView>
-            <VBox layoutX="221.0" layoutY="85.0" prefHeight="65.0" prefWidth="197.0" spacing="10.0">
+            <VBox layoutX="181.0" layoutY="85.0" prefHeight="65.0" prefWidth="197.0" spacing="10.0">
                <children>
-                  <PasswordField fx:id="currentPassword" prefHeight="25.0" prefWidth="190.0" style="-fx-border-color: linear-gradient(to right top, #051937, #002265, #002894, #0027c1, #1412eb);; -fx-border-radius: 8px; -fx-background-radius: 8px;" />
-                  <PasswordField fx:id="newPassword" onKeyPressed="#howStrong" prefHeight="25.0" prefWidth="190.0" style="-fx-border-color: linear-gradient(to right top, #051937, #002265, #002894, #0027c1, #1412eb);; -fx-border-radius: 8px; -fx-background-radius: 8px;" />
+                  <PasswordField fx:id="currentPassword" onKeyTyped="#searchInDatabase" prefHeight="25.0" prefWidth="190.0" style="-fx-border-color: linear-gradient(to right top, #051937, #002265, #002894, #0027c1, #1412eb);; -fx-border-radius: 8px; -fx-background-radius: 8px;" />
+                  <PasswordField fx:id="newPassword" onKeyTyped="#howStrong" prefHeight="25.0" prefWidth="190.0" style="-fx-border-color: linear-gradient(to right top, #051937, #002265, #002894, #0027c1, #1412eb);; -fx-border-radius: 8px; -fx-background-radius: 8px;" />
                </children>
             </VBox>
-            <Label fx:id="correctStatus" layoutX="221.0" layoutY="244.0" prefHeight="17.0" prefWidth="197.0">
+            <Label fx:id="correctStatus" layoutX="186.0" layoutY="236.0" prefHeight="17.0" prefWidth="197.0">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="68.0" layoutY="85.0" text="OBECNE HASŁO:">
+            <Label layoutX="30.0" layoutY="85.0" text="OBECNE HASŁO:">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
             </Label>
-            <Label layoutX="75.0" layoutY="126.0" text="NOWE HASŁO:">
+            <Label layoutX="43.0" layoutY="126.0" text="NOWE HASŁO:">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
             </Label>
-            <Label layoutX="58.0" layoutY="210.0" text="POWTÓRZ HASŁO:">
+            <Label layoutX="20.0" layoutY="198.0" text="POWTÓRZ HASŁO:">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
             </Label>
-            <Label fx:id="checkSecurity" contentDisplay="RIGHT" layoutX="220.0" layoutY="172.0" prefHeight="11.0" prefWidth="198.0">
+            <Label fx:id="checkSecurity" layoutX="180.0" layoutY="169.0" prefHeight="11.0" prefWidth="198.0" textAlignment="RIGHT">
                <font>
-                  <Font name="System Bold" size="10.0" />
+                  <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <ProgressBar fx:id="progressPassword" layoutX="219.0" layoutY="154.0" prefHeight="17.0" prefWidth="200.0" progress="0.0" style="-fx-border-color: black;" />
-            <PasswordField fx:id="confirmPassword" layoutX="224.0" layoutY="209.0" onKeyPressed="#checkIsTheSame" prefHeight="25.0" prefWidth="190.0" style="-fx-border-color: linear-gradient(to right top, #051937, #002265, #002894, #0027c1, #1412eb);; -fx-border-radius: 8px; -fx-background-radius: 8px;" />
-            <Label fx:id="tipsPassword" layoutX="219.0" layoutY="187.0" prefHeight="17.0" prefWidth="219.0">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Label>
+            <ProgressBar fx:id="progressPassword" layoutX="179.0" layoutY="152.0" prefHeight="17.0" prefWidth="200.0" progress="0.0" style="-fx-border-color: black;" />
+            <PasswordField fx:id="confirmPassword" layoutX="189.0" layoutY="197.0" onKeyTyped="#checkIsTheSame" prefHeight="25.0" prefWidth="190.0" style="-fx-border-color: linear-gradient(to right top, #051937, #002265, #002894, #0027c1, #1412eb);; -fx-border-radius: 8px; -fx-background-radius: 8px;" />
             <Label fx:id="idCP" layoutX="30.0" layoutY="14.0" />
+            <ProgressIndicator fx:id="progresSearch" layoutX="398.0" layoutY="85.0" progress="0.0" style="visibility: hidden;" />
          </children>
       </Pane>
       <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="71.0" layoutY="411.0" mnemonicParsing="false" onAction="#changePassword" prefHeight="32.0" prefWidth="190.0" style="-fx-background-color: linear-gradient(to bottom, #2caa68, #32b55d, #40bf4d, #53c938, #69d210);; -fx-background-radius: 16px; -fx-font-weight: bold; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); -fx-font-family: Arial Narrow;" text="Zmień hasło">

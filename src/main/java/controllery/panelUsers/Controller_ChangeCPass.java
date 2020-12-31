@@ -1,19 +1,22 @@
 package controllery.panelUsers;
 
 import controllery.Controller_User;
+import hibernate.Uzytkownik;
 import hibernate.UzytkownikQuery;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.ProgressBar;
+import javafx.scene.control.*;
+import javafx.scene.control.skin.ProgressIndicatorSkin;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.util.Optional;
 import java.util.regex.Pattern;
 
 public class Controller_ChangeCPass {
@@ -39,23 +42,32 @@ public class Controller_ChangeCPass {
     @FXML
     private ProgressBar progressPassword;
 
-    @FXML
-    private Label tipsPassword;
 
     @FXML
     private Label idCP;
 
-
+    @FXML
+    private ProgressIndicator progresSearch;
 
 
     @FXML
     void cancel(ActionEvent event) throws IOException {
-        String link = "/fxml/panelUser.fxml";
+
+        ButtonType buttonYES = new ButtonType("Tak", ButtonBar.ButtonData.YES);
+        ButtonType buttonNO = new ButtonType("No", ButtonBar.ButtonData.NO);
+        Alert alertC = new Alert(Alert.AlertType.CONFIRMATION, " ", buttonYES,buttonNO);
+        String s = "Czy na pewno chcesz przerwaæ zmianê has³a?";
+        alertC.setHeaderText(s);
+        Optional<ButtonType> result = alertC.showAndWait();
+
+    if(result.orElse(buttonNO) == buttonYES) {
+
+        String link = "/fxml/panelUser_type/panelStart.fxml";
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Controller_ChangeCPass.class.getResource(link));
         Pane newLoadPane = loader.load();
         changePpane.getChildren().add(newLoadPane);
-
+    }
     }
 
     // method to check how strong is password
@@ -68,43 +80,45 @@ public class Controller_ChangeCPass {
         final Pattern hasNumber = Pattern.compile(".*[0-9].*");
         final Pattern hasSpecialChar = Pattern.compile(".*[@#$%!].*");
 
+
         if(nPass.length() < 6){
             checkSecurity.setText("Bardzo s³abe");
-            progressPassword.setProgress(0);
-            tipsPassword.setText("Minimum 6 znaków");
-            tipsPassword.setTextFill(Color.RED);
+            progressPassword.setProgress(0.05);
+            progressPassword.setStyle("-fx-accent: red;");
             progressPassword.setProgress(0);
 
 
         }
         if (nPass.length() >= 6 || hasLowercase.matcher(nPass).find()) {
             checkSecurity.setText("Bardzo s³abe");
-            progressPassword.setProgress(0);
-            tipsPassword.setText("Minimum jedna wielka litera");
-            tipsPassword.setTextFill(Color.GREEN);
+            progressPassword.setProgress(0.05);
+            progressPassword.setStyle("-fx-accent: red;");
+
+          //  tipsPassword.setText("Minimum jedna wielka litera");
+           // tipsPassword.setTextFill(Color.GREEN);
 
             if (hasUppercase.matcher(nPass).find()) {
                 checkSecurity.setText("S³abo");
                 progressPassword.setProgress(0.5);
-                tipsPassword.setText("Minimum jedna cyfra");
+                progressPassword.setStyle("-fx-accent: #0027c1");
+               // tipsPassword.setText("Minimum jedna cyfra");
 
             }
 
             if (hasNumber.matcher(nPass).find()) {
                 checkSecurity.setText("Dobre");
                 progressPassword.setProgress(0.75);
-                tipsPassword.setText("Minimum jeden znak specjalny ");
+                progressPassword.setStyle("-fx-accent: #24d160");
+
 
             }
 
 
             if (hasSpecialChar.matcher(nPass).find()) {
                 checkSecurity.setText("Silne");
+                progressPassword.setStyle("-fx-accent: #098534");
                 progressPassword.setProgress(1);
-                tipsPassword.setText(" ");
-
             }
-
         }
 
     }
@@ -159,11 +173,43 @@ public class Controller_ChangeCPass {
             System.out.println(e.getLocalizedMessage());
         }
 
-
-
-
     }
-}
+
+    @FXML
+    void searchInDatabase(KeyEvent event) {
+
+        int idUser = Integer.parseInt(idCP.getText());
+
+        String currentPword = currentPassword.getText();
+
+
+
+        try {
+            Uzytkownik us;
+            us = user.searchPassword(currentPword,idUser);
+            final Text text = (Text) progresSearch.lookup(".percentage");
+            if(us != null) {
+
+                progresSearch.progressProperty().addListener(new ChangeListener<Number>() {
+                    @Override
+                    public void changed(ObservableValue<? extends Number> ov, Number t, Number newValue) {
+                        // If progress is 100% then show Text
+                        if (newValue.doubleValue() >= 1) {
+                            // This text replaces "Done"
+                            text.setText(" ");
+                        }
+                    }
+                });
+                progresSearch.setProgress(1);
+                progresSearch.setStyle("-fx-progress-color: green");
+
+            }
+
+        } catch (Exception e) {
+                e.getLocalizedMessage();
+        }
+
+    }}
 
 
 
