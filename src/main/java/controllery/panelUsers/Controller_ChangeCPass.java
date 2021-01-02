@@ -8,10 +8,15 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.skin.ProgressIndicatorSkin;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
@@ -53,11 +58,21 @@ public class Controller_ChangeCPass {
     @FXML
     void cancel(ActionEvent event) throws IOException {
 
-        ButtonType buttonYES = new ButtonType("Tak", ButtonBar.ButtonData.YES);
-        ButtonType buttonNO = new ButtonType("No", ButtonBar.ButtonData.NO);
-        Alert alertC = new Alert(Alert.AlertType.CONFIRMATION, " ", buttonYES,buttonNO);
-        String s = "Czy na pewno chcesz przerwaæ zmianê has³a?";
+        ButtonType buttonYES = new ButtonType("Tak, chce", ButtonBar.ButtonData.YES);
+        ButtonType buttonNO = new ButtonType("Nie, zostañ", ButtonBar.ButtonData.NO);
+        Alert alertC = new Alert(Alert.AlertType.NONE, " ", buttonYES,buttonNO);
+        String s = "Czy na pewno chcesz przerwaæ?";
         alertC.setHeaderText(s);
+
+
+        DialogPane dialogPane = alertC.getDialogPane();
+        dialogPane.getStylesheets().add(
+                getClass().getResource("/fxml/alert.css").toExternalForm());
+        dialogPane.getStyleClass().add("myAlerts");
+        dialogPane.setMaxSize(350, 5);
+
+
+        alertC.setTitle(" ");
         Optional<ButtonType> result = alertC.showAndWait();
 
     if(result.orElse(buttonNO) == buttonYES) {
@@ -68,11 +83,14 @@ public class Controller_ChangeCPass {
         Pane newLoadPane = loader.load();
         changePpane.getChildren().add(newLoadPane);
     }
+
     }
 
     // method to check how strong is password
     @FXML
     void howStrong(KeyEvent event) {
+
+        progressPassword.setVisible(true);
         String nPass = newPassword.getText();
 
         final Pattern hasUppercase = Pattern.compile(".*[A-Z].*");
@@ -159,7 +177,14 @@ public class Controller_ChangeCPass {
             user.changePasswordUser(currentPass,nPassword,idUser);
             Alert alert_exit = new Alert(Alert.AlertType.INFORMATION);
             alert_exit.setHeaderText("Has³o zosta³o zmienione");
+            DialogPane dialogPane = alert_exit.getDialogPane();
+            dialogPane.getStylesheets().add(
+                    getClass().getResource("/fxml/alert.css").toExternalForm());
+            dialogPane.getStyleClass().add("myAlerts");
+            dialogPane.setMaxSize(280,0);
             alert_exit.showAndWait();
+
+
 
             String link = "/fxml/panelUser_type/panelStart.fxml";
             FXMLLoader loader= new FXMLLoader();
@@ -174,6 +199,13 @@ public class Controller_ChangeCPass {
         }
 
     }
+
+    public void hidden () {
+        progressPassword.setVisible(false);
+    }
+
+
+
 
     @FXML
     void searchInDatabase(KeyEvent event) {
@@ -210,7 +242,6 @@ public class Controller_ChangeCPass {
         }
 
     }}
-
 
 
 

@@ -60,6 +60,7 @@ public class Controller_PersonalData implements Initializable {
         passCP = changeP;
         int id = Integer.parseInt(dataId.getText());
         changeP.readId(id);
+        changeP.hidden();
 
     }
 
