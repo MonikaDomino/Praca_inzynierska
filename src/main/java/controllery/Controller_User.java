@@ -6,6 +6,8 @@ import controllery.panelUsers.Controller_PersonalData;
 import controllery.panelUsers.Controller_Start;
 import hibernate.Firma;
 import hibernate.FirmaQuery;
+import hibernate.Uzytkownik;
+import hibernate.UzytkownikQuery;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -90,6 +92,10 @@ public class Controller_User extends openFXMl {
         changePane.getChildren().add(newPane);
         Controller_Start startB = loader.getController();
         start = startB;
+        int id = Integer.parseInt(dataId.getText());
+        UzytkownikQuery userQ = new UzytkownikQuery();
+        Uzytkownik userBS = userQ.showData(id);
+        startB.readLabel(userBS.getImie(), userBS.getNazwisko());
 
 
     }

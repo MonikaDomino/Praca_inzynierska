@@ -86,6 +86,15 @@ import org.hibernate.query.Query;
             }
         }
 
+        public Uzytkownik showData(int id_user){
+            Uzytkownik u = null;
+            session = HibernateUtill.getSessionFactory().openSession();
+            String hql = "from Uzytkownik where idUzytkownika= '" + id_user +" '";
+            query = session.createQuery(hql);
+            u = (Uzytkownik) query.uniqueResult();
+            session.close();
+            return u;
+        }
 
         public void register(String imie, String nazwisko, String login, String haslo, String email) {
 

@@ -111,7 +111,7 @@ public class Controller_Contact {
             dialogPane.setMaxSize(400, 0);
             alert_send.showAndWait();
 
-            String link = "/fxml/panelUser_type/panelStart.fxml";
+            String link = "/fxml/panelUser_type/panelContact.fxml";
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Controller_Contact.class.getResource(link));
             Pane newPane = loader.load();

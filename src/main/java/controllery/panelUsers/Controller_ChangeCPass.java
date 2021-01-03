@@ -54,6 +54,7 @@ public class Controller_ChangeCPass {
     @FXML
     private ProgressIndicator progresSearch;
 
+    public Controller_Start startCCP;
 
     @FXML
     void cancel(ActionEvent event) throws IOException {
@@ -77,11 +78,21 @@ public class Controller_ChangeCPass {
 
     if(result.orElse(buttonNO) == buttonYES) {
 
-        String link = "/fxml/panelUser_type/panelStart.fxml";
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(Controller_ChangeCPass.class.getResource(link));
-        Pane newLoadPane = loader.load();
+        String linkC = "/fxml/panelUser_type/panelStart.fxml";
+        FXMLLoader loaderCancel = new FXMLLoader();
+        loaderCancel.setLocation(Controller_ChangeCPass.class.getResource(linkC));
+        Pane newLoadPane = loaderCancel.load();
         changePpane.getChildren().add(newLoadPane);
+
+        Controller_Start CNstart = loaderCancel.getController();
+
+        startCCP= CNstart;
+        int id = Integer.parseInt(idCP.getText());
+        UzytkownikQuery userP = new UzytkownikQuery();
+        Uzytkownik userCP = userP.showData(id);
+        CNstart.readLabel(userCP.getImie(), userCP.getNazwisko());
+
+
     }
 
     }
@@ -184,13 +195,20 @@ public class Controller_ChangeCPass {
             dialogPane.setMaxSize(280,0);
             alert_exit.showAndWait();
 
-
-
             String link = "/fxml/panelUser_type/panelStart.fxml";
-            FXMLLoader loader= new FXMLLoader();
-            loader.setLocation(Controller_ChangeCPass.class.getResource(link));
-            Pane newPane = loader.load();
+            FXMLLoader loaderCp= new FXMLLoader();
+            loaderCp.setLocation(Controller_ChangeCPass.class.getResource(link));
+            Pane newPane = loaderCp.load();
             changePpane.getChildren().add(newPane);
+            Controller_Start CPstart = loaderCp.getController();
+
+            startCCP= CPstart;
+            int id = Integer.parseInt(idCP.getText());
+            UzytkownikQuery userP = new UzytkownikQuery();
+            Uzytkownik userCP = userP.showData(id);
+            CPstart.readLabel(userCP.getImie(), userCP.getNazwisko());
+
+
 
 
 

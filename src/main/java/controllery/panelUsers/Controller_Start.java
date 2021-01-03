@@ -11,4 +11,6 @@ public class Controller_Start {
     public void readLabel(String imie, String nazwisko){
         welcome.setText("Witaj, " +imie+ " " + nazwisko + "!" );
     }
+
+
 }
