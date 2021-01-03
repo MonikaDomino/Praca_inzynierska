@@ -31,6 +31,18 @@
     -fx-text-origin: top;
 }
 
+.myAlerts > *.label.content{
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-text-origin: top;
+}
+
+.myAlerts .imageview {
+    -fx-padding: 0,10px,0,10px;
+
+}
+
 
 
 
