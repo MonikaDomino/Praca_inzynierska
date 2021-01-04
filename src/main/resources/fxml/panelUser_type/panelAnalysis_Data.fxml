@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.Tooltip?>
 <Pane fx:id="paneData" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="479.0" prefWidth="546.0" style="-fx-background-color: linear-gradient(to top, #cedcf1, #b7cdee, #9fbeeb, #87b0e8, #6da1e5); -fx-border-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllery.panelUsers.Controller_Analysis_Data">
    <children>
       <Pane prefHeight="36.0" prefWidth="546.0" style="-fx-background-color: linear-gradient(to bottom, #24e0ee, #22d8fb, #43ceff, #66c4ff, #87b8ff); -fx-border-color: black;">
@@ -22,15 +23,15 @@
          <children>
             <VBox layoutX="288.0" layoutY="2.0" prefHeight="305.0" prefWidth="215.0" spacing="10.0">
                <children>
-                  <TextField fx:id="grossprofit" prefHeight="25.0" prefWidth="203.0" />
-                  <TextField fx:id="economyStock" prefHeight="25.0" prefWidth="203.0" />
-                  <TextField fx:id="totalAssest" prefHeight="25.0" prefWidth="203.0" />
-                  <TextField fx:id="totalSales" prefHeight="25.0" prefWidth="203.0" />
-                  <TextField fx:id="credits" prefHeight="25.0" prefWidth="203.0" />
-                  <TextField fx:id="operationProfit" prefHeight="25.0" prefWidth="203.0" />
-                  <TextField fx:id="amortization" prefHeight="25.0" prefWidth="203.0" />
-                  <TextField fx:id="capital" prefHeight="26.0" prefWidth="215.0" />
-                  <TextField fx:id="profit_net" prefHeight="25.0" prefWidth="203.0" />
+                  <TextField fx:id="grossprofit" onKeyTyped="#checkIsCorrectNumber" prefHeight="25.0" prefWidth="203.0"/>
+                  <TextField fx:id="economyStock" onKeyTyped="#checkIsCorrectNumber" prefHeight="25.0" prefWidth="203.0" />
+                  <TextField fx:id="totalAssest" onKeyTyped="#checkIsCorrectNumber" prefHeight="25.0" prefWidth="203.0" />
+                  <TextField fx:id="totalSales" onKeyTyped="#checkIsCorrectNumber" prefHeight="25.0" prefWidth="203.0" />
+                  <TextField fx:id="credits" onKeyTyped="#checkIsCorrectNumber" prefHeight="25.0" prefWidth="203.0" />
+                  <TextField fx:id="operationProfit" onKeyTyped="#checkIsCorrectNumber" prefHeight="25.0" prefWidth="203.0" />
+                  <TextField fx:id="amortization" onKeyTyped="#checkIsCorrectNumber" prefHeight="25.0" prefWidth="203.0" />
+                  <TextField fx:id="capital" onKeyTyped="#checkIsCorrectNumber" prefHeight="26.0" prefWidth="215.0" />
+                  <TextField fx:id="profit_net" onKeyTyped="#checkIsCorrectNumber" prefHeight="25.0" prefWidth="203.0" />
                </children>
             </VBox>
             <VBox nodeOrientation="RIGHT_TO_LEFT" prefHeight="314.0" prefWidth="281.0" spacing="15.0">
@@ -106,7 +107,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="yeartxt" layoutX="452.0" layoutY="50.0" prefHeight="25.0" prefWidth="61.0" />
+      <TextField fx:id="yeartxt" layoutX="452.0" layoutY="50.0" onKeyTyped="#checkIsCorrectNumber" prefHeight="25.0" prefWidth="61.0" />
       <Label fx:id="idUserAT" layoutX="47.0" layoutY="60.0" />
    </children>
 </Pane>

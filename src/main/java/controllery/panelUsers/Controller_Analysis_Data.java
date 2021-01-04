@@ -5,9 +5,15 @@ import hibernate.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Point2D;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.TextAlignment;
+import javafx.stage.Stage;
 
+import java.util.regex.Pattern;
 import java.io.IOException;
 import java.util.Optional;
 
@@ -61,6 +67,7 @@ public class Controller_Analysis_Data {
 
     @FXML
     private Label idUserAT;
+
 
     @FXML
     void cancel(ActionEvent event) throws IOException {
@@ -236,6 +243,169 @@ public class Controller_Analysis_Data {
     }
     }
 
+    @FXML
+    void checkIsCorrectNumber(KeyEvent event) {
+        Pattern doublePattern = Pattern.compile("\\d+\\.\\d+"); // check doubt in double number
+        Pattern nDecimal = Pattern.compile("^(\\d+)(?:\\.(\\d{1,2}))?$");
+        Pattern numberPattern = Pattern.compile(".*[0-9].*");
+
+
+        String grossP = grossprofit.getText();
+        String stockEconomy = economyStock.getText();
+        String assesTotal = totalAssest.getText();
+        String profitNet = profit_net.getText();
+        String amortT = amortization.getText();
+        String salesTotal = totalSales.getText();
+        String operPofit = operationProfit.getText();
+        String capitalAD = capital.getText();
+        String credit = credits.getText();
+        String year = yeartxt.getText();
+
+
+        if (numberPattern.matcher(year).matches() || nDecimal.matcher(year).matches()) {
+            yeartxt.setStyle("");
+
+        } else if (year.trim().isEmpty()) {
+            yeartxt.setStyle("");
+
+        } else {
+            String toolY = "Rok musi byæ liczb¹!";
+            Tooltip yearT = new Tooltip(toolY);
+            yeartxt.setTooltip(yearT);
+
+            yearT.setPrefSize(150, 50);
+            yearT.setStyle("-fx-font-size: 14; -fx-text-alignment: center;");
+            yeartxt.setStyle("-fx-background-color: #FF8080");
+
+        }
+
+        if (doublePattern.matcher(operPofit).matches() || nDecimal.matcher(operPofit).matches()) {
+            operationProfit.setStyle("");
+
+        }else if(operPofit.trim().isEmpty()){
+            operationProfit.setStyle("");
+
+        }else {
+            Tooltip toolOp = new Tooltip("Oczekiwane: 5.0");
+            toolOp.setPrefSize(150,50);
+            toolOp.setStyle("-fx-font-size: 14; -fx-text-alignment: center;");
+
+            operationProfit.setTooltip(toolOp);
+            operationProfit.setStyle("-fx-background-color: #FF8080");
+        }
+
+        if (doublePattern.matcher(credit).matches() || nDecimal.matcher(credit).matches()) {
+            credits.setStyle("");
+
+        }else if(credit.trim().isEmpty()){
+            credits.setStyle("");
+
+        } else {
+            Tooltip toolCr = new Tooltip("Oczekiwane: 5.0");
+            toolCr.setPrefSize(150,50);
+            toolCr.setStyle("-fx-font-size: 14; -fx-text-alignment: center;");
+
+            credits.setTooltip(toolCr);
+            credits.setStyle("-fx-background-color: #FF8080");
+
+        }
+
+        if (doublePattern.matcher(capitalAD).matches() || nDecimal.matcher(capitalAD).matches()) {
+            capital.setStyle(" ");
+
+        } else if(capitalAD.trim().isEmpty()){
+                capital.setStyle("");
+
+        } else {
+            Tooltip toolC = new Tooltip("Oczekiwane: 5.0");
+            toolC.setPrefSize(150,50);
+            toolC.setStyle("-fx-font-size: 14; -fx-text-alignment: center;");
+
+            capital.setTooltip(toolC);
+            capital.setStyle("-fx-background-color: #FF8080");
+        }
+
+        if (doublePattern.matcher(salesTotal).matches() || nDecimal.matcher(salesTotal).matches()) {
+            totalSales.setStyle(" ");
+
+        }else if(salesTotal.trim().isEmpty()){
+                totalSales.setStyle("");
+        } else {
+            Tooltip toolS = new Tooltip("Oczekiwane: 5.0");
+            toolS.setPrefSize(150,50);
+            toolS.setStyle("-fx-font-size: 14; -fx-text-alignment: center;");
+
+            totalSales.setTooltip(toolS);
+            totalSales.setStyle("-fx-background-color: #FF8080");
+
+        }
+
+        if (doublePattern.matcher(amortT).matches() || nDecimal.matcher(amortT).matches()) {
+            amortization.setStyle(" ");
+        } else if(amortT.trim().isEmpty()){
+                amortization.setStyle("");
+        } else {
+            amortization.setStyle("-fx-background-color: #FF8080");
+            Tooltip toolA = new Tooltip("Oczekiwane: 5.0");
+            toolA.setPrefSize(150,50);
+            toolA.setStyle("-fx-font-size: 14; -fx-text-alignment: center;");
+            amortization.setTooltip(toolA);
+        }
+
+        if (doublePattern.matcher(profitNet).matches() || nDecimal.matcher(profitNet).matches() ) {
+            profit_net.setStyle("");
+        }else if(profitNet.trim().isEmpty()){
+                profit_net.setStyle("");
+        } else {
+            profit_net.setStyle("-fx-background-color: #FF8080");
+            Tooltip toolPN = new Tooltip("Oczekiwane: 5.0");
+            toolPN.setPrefSize(150,50);
+            toolPN.setStyle("-fx-font-size: 14; -fx-text-alignment: center;");
+            profit_net.setTooltip(toolPN);
+
+        }
+        if (doublePattern.matcher(assesTotal).matches()|| nDecimal.matcher(assesTotal).matches()) {
+            totalAssest.setStyle("");
+        }else if(assesTotal.trim().isEmpty()){
+                totalAssest.setStyle("");
+        } else {
+            totalAssest.setStyle("-fx-background-color: #FF8080");
+            Tooltip toolTA = new Tooltip("Oczekiwane: 5.0");
+            toolTA.setPrefSize(150,50);
+            toolTA.setStyle("-fx-font-size: 14; -fx-text-alignment: center;");
+            totalAssest.setTooltip(toolTA);
+        }
+        if (nDecimal.matcher(stockEconomy).matches() || doublePattern.matcher(stockEconomy).matches()) {
+            economyStock.setStyle("");
+        }else if(stockEconomy.trim().isEmpty()){
+                economyStock.setStyle("");
+        } else {
+            economyStock.setStyle("-fx-background-color: #FF8080");
+            Tooltip toolES= new Tooltip("Oczekiwane: 5.0");
+            toolES.setPrefSize(150,50);
+            toolES.setStyle("-fx-font-size: 14; -fx-text-alignment: center;");
+            grossprofit.setTooltip(toolES);
+
+        }
+        if (doublePattern.matcher(grossP).matches() || nDecimal.matcher(grossP).matches()) {
+            grossprofit.setStyle("");
+        }  else if(grossP.trim().isEmpty()){
+                grossprofit.setStyle("");
+
+        } else {
+            grossprofit.setStyle("-fx-background-color: #FF8080");
+            Tooltip toolSG = new Tooltip("Oczekiwane: 5.0");
+            toolSG.setPrefSize(150,50);
+            toolSG.setStyle("-fx-font-size: 14; -fx-text-alignment: center;");
+
+            grossprofit.setTooltip(toolSG);
+
+
+        }
+
+    }
+
+
 
 
     public void readIDCompany(int id) {
@@ -257,4 +427,6 @@ public class Controller_Analysis_Data {
 
         return  result;
     }
+
+
 }
