@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Popup;
@@ -59,10 +60,16 @@ public class ControllerPLogin extends openFXMl implements Initializable {
             frame(event);
 
         } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText("Niepoprawna nazwa uzytkownika lub haslo! ");
-            alert.setContentText("Sprawdz dane!");
-            alert.show();
+            Alert alert_El = new Alert(Alert.AlertType.ERROR);
+            alert_El.setHeaderText(null);
+            alert_El.setContentText("Niepoprawna nazwa u¿ytkownika lub has³o! ");
+            DialogPane dialogPane = alert_El.getDialogPane();
+            dialogPane.getStylesheets().add(
+                    getClass().getResource("/fxml/alert.css").toExternalForm());
+            dialogPane.getStyleClass().add("myAlerts");
+
+            dialogPane.setPrefSize(450, 20);
+            alert_El.showAndWait();
 
         }
     }

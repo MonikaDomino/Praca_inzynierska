@@ -52,7 +52,7 @@ public class Controller_Contact {
         String nameForm = nameF.getText();
         String messageForm = messageF.getText();
 
-        if (mailForm.trim().isEmpty() || nameForm.trim().isEmpty()) {
+        if (mailForm.trim().isEmpty() || mailForm.trim().isEmpty()) {
             mailF.setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-border-radius: 12px; " +
                     "-fx-background-radius: 12px;");
             emailError.setText("Uzupe³nij adres e-mail");
@@ -97,7 +97,7 @@ public class Controller_Contact {
 
             Alert alert_send = new Alert(Alert.AlertType.INFORMATION);
             alert_send.setContentText("Twoja wiadomoœc zosta³a wys³ana");
-            alert_send.setHeaderText("");
+            alert_send.setHeaderText(null);
             DialogPane dialogPane = alert_send.getDialogPane();
             dialogPane.getStylesheets().add(
                     getClass().getResource("/fxml/alert.css").toExternalForm());

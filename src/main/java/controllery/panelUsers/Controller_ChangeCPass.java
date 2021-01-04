@@ -195,9 +195,9 @@ public class Controller_ChangeCPass {
             dialogPane.setMaxSize(280,0);
             alert_exit.showAndWait();
 
-            String link = "/fxml/panelUser_type/panelStart.fxml";
+            String linkS = "/fxml/panelUser_type/panelStart.fxml";
             FXMLLoader loaderCp= new FXMLLoader();
-            loaderCp.setLocation(Controller_ChangeCPass.class.getResource(link));
+            loaderCp.setLocation(Controller_ChangeCPass.class.getResource(linkS));
             Pane newPane = loaderCp.load();
             changePpane.getChildren().add(newPane);
             Controller_Start CPstart = loaderCp.getController();

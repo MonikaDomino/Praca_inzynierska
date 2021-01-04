@@ -35,5 +35,6 @@
          </font>
       </Label>
       <Label fx:id="idCompany" layoutX="20.0" layoutY="21.0" />
+      <Label fx:id="idUser" layoutX="56.0" layoutY="421.0" />
    </children>
 </Pane>

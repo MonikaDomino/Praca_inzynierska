@@ -159,12 +159,14 @@ public class Controller_User extends openFXMl {
 
         Controller_AnalysisType analize = loader.getController();
         analType = analize;
-        int id = Integer.parseInt(dataId.getText());
+        int idU = Integer.parseInt(dataId.getText());
 
 
         FirmaQuery company = new FirmaQuery();
-        Firma com = company.showCompany(id);
+        Firma com = company.showCompany(idU);
         analize.readIdCompany(com.getIdFirmy());
+
+        analize.readIdUs(idU);
 
 
     }

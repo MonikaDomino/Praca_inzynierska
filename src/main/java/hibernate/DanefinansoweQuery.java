@@ -3,12 +3,16 @@ package hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
+import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+
+import java.util.List;
 
 
 public class DanefinansoweQuery {
     Session session;
     Query query;
+    SessionFactory sf = null;
 
     public void addNewFinancialDataAnalysis(int year, double profitB, double economic_stocks, double assest,
                                             double totalSales, double operationProfit, double credit,
@@ -60,9 +64,16 @@ public class DanefinansoweQuery {
 
     }
 
-    public void DataFinancialSelectAll(){
-
+    public  Danefinansowe checkYear(int idCompany){
+        Danefinansowe df = null;
+        session = HibernateUtill.getSessionFactory().openSession();
+        String hql = "from Danefinansowe where idFirmy = '" + idCompany +" '";
+        query = session.createQuery(hql);
+        df = (Danefinansowe)query.setMaxResults(1).uniqueResult();
+        session.close();
+        return df;
     }
+
 
 
 

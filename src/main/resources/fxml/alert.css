@@ -25,16 +25,17 @@
 
 
 .myAlerts > *.header-panel *.label{
-    -fx-font-size: 15px;
+    -fx-font-size: 16px;
     -fx-font-weight: bold;
     -fx-text-fill: white;
     -fx-text-origin: top;
+    -fx-alignment: center;
 }
 
 .myAlerts > *.label.content{
-    -fx-font-size: 15px;
+    -fx-font-size: 16px;
     -fx-font-weight: bold;
-    -fx-text-fill: white;
+    -fx-text-fill:  white;
     -fx-text-origin: top;
 }
 

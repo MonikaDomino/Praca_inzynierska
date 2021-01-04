@@ -1,22 +1,17 @@
 package controllery.panelUsers;
 
 
-import controllery.Controller_User;
-import hibernate.AnalizaQuery;
-import hibernate.Danefinansowe;
-import hibernate.DanefinansoweQuery;
-import hibernate.WskaznikiQuery;
+import hibernate.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.util.Optional;
+
+
 
 public class Controller_Analysis_Data {
 
@@ -60,21 +55,53 @@ public class Controller_Analysis_Data {
     @FXML
     private TextField capital;
 
-
-
     public Controller_ShowAnalysis show;
 
+    public Controller_Start conS;
+
     @FXML
-    void cancel(ActionEvent event) {
+    private Label idUserAT;
 
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setHeaderText("Czy na pewno chcesz przerwaæ?");
-        Optional<ButtonType> result = alert.showAndWait();
-            if(result.get() == ButtonType.YES){
+    @FXML
+    void cancel(ActionEvent event) throws IOException {
+        ButtonType buttonYES = new ButtonType("Tak, chce", ButtonBar.ButtonData.YES);
+        ButtonType buttonNO = new ButtonType("Nie, zostañ", ButtonBar.ButtonData.NO);
+        Alert alertC = new Alert(Alert.AlertType.NONE, " ", buttonYES, buttonNO);
+        String s = "Czy na pewno chcesz przerwaæ analizê?";
+        alertC.setHeaderText(s);
 
-            }
 
+        DialogPane dialogPane = alertC.getDialogPane();
+        dialogPane.getStylesheets().add(
+                getClass().getResource("/fxml/alert.css").toExternalForm());
+        dialogPane.getStyleClass().add("myAlerts");
+        dialogPane.setMaxSize(350, 5);
+
+
+        alertC.setTitle(" ");
+        Optional<ButtonType> result = alertC.showAndWait();
+
+        if (result.orElse(buttonNO) == buttonYES) {
+
+            String linkC = "/fxml/panelUser_type/panelStart.fxml";
+            FXMLLoader loaderCancel = new FXMLLoader();
+            loaderCancel.setLocation(Controller_Analysis_Data.class.getResource(linkC));
+            Pane newLoadPane = loaderCancel.load();
+            paneData.getChildren().add(newLoadPane);
+
+            Controller_Start CNstart = loaderCancel.getController();
+
+            conS= CNstart;
+            int id = Integer.parseInt(idUserAT.getText());
+            UzytkownikQuery userP = new UzytkownikQuery();
+            Uzytkownik userCP = userP.showData(id);
+            CNstart.readLabel(userCP.getImie(), userCP.getNazwisko());
+
+
+
+        }
     }
+
 
     @FXML
     void clearForm(ActionEvent event) {
@@ -92,7 +119,7 @@ public class Controller_Analysis_Data {
     }
 
     @FXML
-    void doAnalysis(ActionEvent event) throws IOException {
+    void doAnalysis(ActionEvent event) throws Exception {
 
         int year_economy = Integer.parseInt(yeartxt.getText());    // rok bilansowy
         double gross_profit = Double.parseDouble(grossprofit.getText());   // zysk brutto
@@ -108,25 +135,23 @@ public class Controller_Analysis_Data {
         int id_company = Integer.parseInt(CompanyID.getText());
 
 
-        try {
-            DanefinansoweQuery data = new DanefinansoweQuery();
+        DanefinansoweQuery data = new DanefinansoweQuery();
 
-            data.addNewFinancialDataAnalysis(year_economy, gross_profit, economy_stock, total_assest, total_Sales, credit,
-                    operation_profit, amort, capitalOwn, net_profit, id_company);
+        int companyId = Integer.parseInt(CompanyID.getText());
+        Danefinansowe dft = data.checkYear(companyId);
 
-            Danefinansowe dataFinancial = data.showID(year_economy, gross_profit, economy_stock, total_assest, total_Sales, credit,
-                    operation_profit, amort, capitalOwn, net_profit, id_company);
+    if(dft.getRokBilansowy() != year_economy) {
+        data.addNewFinancialDataAnalysis(year_economy, gross_profit, economy_stock, total_assest, total_Sales, credit,
+                operation_profit, amort, capitalOwn, net_profit, id_company);
 
-
-            int id = dataFinancial.getIdDane();
-
-            idDataFinancial.setText(Integer.toString(id));
-            idDataFinancial.setVisible(false);
+        Danefinansowe dataFinancial = data.showID(year_economy, gross_profit, economy_stock, total_assest, total_Sales, credit,
+                operation_profit, amort, capitalOwn, net_profit, id_company);
 
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        int id = dataFinancial.getIdDane();
+
+        idDataFinancial.setText(Integer.toString(id));
+        idDataFinancial.setVisible(false);
 
 
         double x1 = (gross_profit + amort) / credit;
@@ -161,8 +186,8 @@ public class Controller_Analysis_Data {
         expected_gross_margin = gross_profit / total_Sales;
         ROI = net_profit / total_assest;
         ROS = net_profit / total_Sales;
-        ROA = operation_profit/total_assest;
-        ROE = net_profit/capitalOwn;
+        ROA = operation_profit / total_assest;
+        ROE = net_profit / capitalOwn;
 
 
         try {
@@ -197,7 +222,18 @@ public class Controller_Analysis_Data {
         shown.readProfit(expected_gross_margin);
         shown.readMO(operating_profit_margin);
         shown.readROI(ROI);
+    }else{
+        Alert error = new Alert(Alert.AlertType.ERROR);
+        error.setContentText("SprawdŸ zak³adkê ");
+        error.setHeaderText("Analiza rentownoœci dla " + year_economy + "r. zosta³a ju¿ wykonana.");
+        DialogPane dialogPane =error.getDialogPane();
+        dialogPane.getStylesheets().add(
+                getClass().getResource("/fxml/alert.css").toExternalForm());
+        dialogPane.getStyleClass().add("myAlerts");
+        dialogPane.setMaxSize(500,200);
+        error.showAndWait();
 
+    }
     }
 
 
@@ -206,6 +242,11 @@ public class Controller_Analysis_Data {
         CompanyID.setText(Integer.toString(id));
         CompanyID.setVisible(false);
 
+    }
+
+    public void readIDUser (int id){
+        idUserAT.setText(Integer.toString(id));
+        idUserAT.setVisible(false);
     }
 
 

@@ -16,6 +16,10 @@ public class Controller_AnalysisType {
     @FXML
     private Label idCompany;
 
+
+    @FXML
+    private Label idUser;
+
     Controller_Analysis_Data analysis;
 
 
@@ -31,6 +35,8 @@ public class Controller_AnalysisType {
         analysis = analyType;
         int id = Integer.parseInt(idCompany.getText());
         analyType.readIDCompany(id);
+        int idU = Integer.parseInt(idUser.getText());
+        analyType.readIDUser(idU);
 
 
 
@@ -50,6 +56,8 @@ public class Controller_AnalysisType {
 
     }
 
-
-
+    public  void readIdUs (int id){
+        idUser.setText(Integer.toString(id));
+        idUser.setVisible(false);
+    }
 }

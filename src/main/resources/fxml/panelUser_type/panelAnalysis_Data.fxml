@@ -9,9 +9,9 @@
 
 <Pane fx:id="paneData" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="479.0" prefWidth="546.0" style="-fx-background-color: linear-gradient(to top, #cedcf1, #b7cdee, #9fbeeb, #87b0e8, #6da1e5); -fx-border-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllery.panelUsers.Controller_Analysis_Data">
    <children>
-      <Pane prefHeight="45.0" prefWidth="546.0" style="-fx-background-color: linear-gradient(to bottom, #24e0ee, #22d8fb, #43ceff, #66c4ff, #87b8ff); -fx-border-color: black;">
+      <Pane prefHeight="36.0" prefWidth="546.0" style="-fx-background-color: linear-gradient(to bottom, #24e0ee, #22d8fb, #43ceff, #66c4ff, #87b8ff); -fx-border-color: black;">
          <children>
-            <Label layoutX="188.0" layoutY="9.0" text="WPROWADŹ DANE">
+            <Label layoutX="191.0" layoutY="5.0" text="WPROWADŹ DANE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -99,17 +99,14 @@
             <Font size="14.0" />
          </font>
       </JFXButton>
-      <Pane layoutX="307.0" layoutY="45.0" prefHeight="33.0" prefWidth="225.0" style="-fx-border-color: black; -fx-background-color: linear-gradient(to bottom, #54dede, #63ccd3, #70bac4, #79a8b3, #7f979f);;">
-         <children>
-            <TextField fx:id="yeartxt" layoutX="149.0" layoutY="5.0" prefHeight="25.0" prefWidth="61.0" style="-fx-background-color: linear-gradient(to bottom, #54dede, #63ccd3, #70bac4, #79a8b3, #7f979f);" />
-            <Label layoutX="14.0" layoutY="7.0" text="ROK BILANSOWY:">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
       <Label fx:id="CompanyID" layoutX="47.0" layoutY="68.0" />
       <Label fx:id="idDataFinancial" layoutX="469.0" layoutY="68.0" />
+      <Label layoutX="313.0" layoutY="52.0" text="ROK BILANSOWY:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="yeartxt" layoutX="452.0" layoutY="50.0" prefHeight="25.0" prefWidth="61.0" />
+      <Label fx:id="idUserAT" layoutX="47.0" layoutY="60.0" />
    </children>
 </Pane>
