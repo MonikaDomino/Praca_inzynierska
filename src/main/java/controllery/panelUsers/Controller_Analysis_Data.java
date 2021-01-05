@@ -112,6 +112,9 @@ public class Controller_Analysis_Data {
 
     @FXML
     void clearForm(ActionEvent event) {
+
+        cleanColor();           // delete background color textfield
+
         totalAssest.setText(null);
         economyStock.setText(null);
         grossprofit.setText(null);
@@ -122,6 +125,7 @@ public class Controller_Analysis_Data {
         yeartxt.setText(null);
         capital.setText(null);
         profit_net.setText(null);
+
 
     }
 
@@ -245,9 +249,8 @@ public class Controller_Analysis_Data {
 
     @FXML
     void checkIsCorrectNumber(KeyEvent event) {
-        Pattern doublePattern = Pattern.compile("\\d+\\.\\d+"); // check doubt in double number
-        Pattern nDecimal = Pattern.compile("^(\\d+)(?:\\.(\\d{1,2}))?$");
-        Pattern numberPattern = Pattern.compile(".*[0-9].*");
+        Pattern intNumber = Pattern.compile("^-?\\d+$");
+
 
 
         String grossP = grossprofit.getText();
@@ -262,7 +265,7 @@ public class Controller_Analysis_Data {
         String year = yeartxt.getText();
 
 
-        if (numberPattern.matcher(year).matches() || nDecimal.matcher(year).matches()) {
+        if (intNumber.matcher(year).matches()) {
             yeartxt.setStyle("");
 
         } else if (year.trim().isEmpty()) {
@@ -279,7 +282,7 @@ public class Controller_Analysis_Data {
 
         }
 
-        if (doublePattern.matcher(operPofit).matches() || nDecimal.matcher(operPofit).matches()) {
+        if (checkPatterns(operPofit)) {
             operationProfit.setStyle("");
 
         }else if(operPofit.trim().isEmpty()){
@@ -294,7 +297,7 @@ public class Controller_Analysis_Data {
             operationProfit.setStyle("-fx-background-color: #FF8080");
         }
 
-        if (doublePattern.matcher(credit).matches() || nDecimal.matcher(credit).matches()) {
+        if (checkPatterns(credit)) {
             credits.setStyle("");
 
         }else if(credit.trim().isEmpty()){
@@ -310,7 +313,7 @@ public class Controller_Analysis_Data {
 
         }
 
-        if (doublePattern.matcher(capitalAD).matches() || nDecimal.matcher(capitalAD).matches()) {
+        if (checkPatterns(capitalAD)) {
             capital.setStyle(" ");
 
         } else if(capitalAD.trim().isEmpty()){
@@ -325,7 +328,7 @@ public class Controller_Analysis_Data {
             capital.setStyle("-fx-background-color: #FF8080");
         }
 
-        if (doublePattern.matcher(salesTotal).matches() || nDecimal.matcher(salesTotal).matches()) {
+        if (checkPatterns(salesTotal)) {
             totalSales.setStyle(" ");
 
         }else if(salesTotal.trim().isEmpty()){
@@ -340,7 +343,7 @@ public class Controller_Analysis_Data {
 
         }
 
-        if (doublePattern.matcher(amortT).matches() || nDecimal.matcher(amortT).matches()) {
+        if (checkPatterns(amortT)) {
             amortization.setStyle(" ");
         } else if(amortT.trim().isEmpty()){
                 amortization.setStyle("");
@@ -352,7 +355,7 @@ public class Controller_Analysis_Data {
             amortization.setTooltip(toolA);
         }
 
-        if (doublePattern.matcher(profitNet).matches() || nDecimal.matcher(profitNet).matches() ) {
+        if (checkPatterns(profitNet) ) {
             profit_net.setStyle("");
         }else if(profitNet.trim().isEmpty()){
                 profit_net.setStyle("");
@@ -364,7 +367,7 @@ public class Controller_Analysis_Data {
             profit_net.setTooltip(toolPN);
 
         }
-        if (doublePattern.matcher(assesTotal).matches()|| nDecimal.matcher(assesTotal).matches()) {
+        if (checkPatterns(assesTotal)) {
             totalAssest.setStyle("");
         }else if(assesTotal.trim().isEmpty()){
                 totalAssest.setStyle("");
@@ -375,19 +378,19 @@ public class Controller_Analysis_Data {
             toolTA.setStyle("-fx-font-size: 14; -fx-text-alignment: center;");
             totalAssest.setTooltip(toolTA);
         }
-        if (nDecimal.matcher(stockEconomy).matches() || doublePattern.matcher(stockEconomy).matches()) {
+        if (checkPatterns(stockEconomy)) {
             economyStock.setStyle("");
         }else if(stockEconomy.trim().isEmpty()){
                 economyStock.setStyle("");
         } else {
-            economyStock.setStyle("-fx-background-color: #FF8080");
+            economyStock.setStyle("-fx-background-color: #ff8080");
             Tooltip toolES= new Tooltip("Oczekiwane: 5.0");
             toolES.setPrefSize(150,50);
             toolES.setStyle("-fx-font-size: 14; -fx-text-alignment: center;");
             grossprofit.setTooltip(toolES);
 
         }
-        if (doublePattern.matcher(grossP).matches() || nDecimal.matcher(grossP).matches()) {
+        if (checkPatterns(grossP)) {
             grossprofit.setStyle("");
         }  else if(grossP.trim().isEmpty()){
                 grossprofit.setStyle("");
@@ -426,6 +429,33 @@ public class Controller_Analysis_Data {
         result /= 100;
 
         return  result;
+    }
+
+    public void cleanColor(){
+        totalSales.setStyle(" ");
+        totalAssest.setStyle(" ");
+        economyStock.setStyle(" ");
+        grossprofit.setStyle(" ");
+        amortization.setStyle(" ");
+        credits.setStyle("");
+        operationProfit.setStyle("");
+        yeartxt.setStyle("");
+        capital.setStyle("");
+        profit_net.setStyle("");
+
+    }
+
+    public boolean checkPatterns(String text){
+        Pattern doublePattern = Pattern.compile("\\d+\\.\\d+"); // check doubt in double number
+        Pattern nDecimal = Pattern.compile("^(\\d+)(?:\\.(\\d{1,2}))?$");
+
+
+        boolean decimalCheck = nDecimal.matcher(text).matches();
+        boolean doubleCheck = doublePattern.matcher(text).matches();
+
+        return decimalCheck || doubleCheck;
+
+
     }
 
 
