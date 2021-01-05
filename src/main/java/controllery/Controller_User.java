@@ -1,7 +1,7 @@
 package controllery;
 
 import controllery.panelUsers.Company.Controller_CompanyData;
-import controllery.panelUsers.Controller_AnalysisType;
+import controllery.panelUsers.Controller_Analysis_Data;
 import controllery.panelUsers.Controller_PersonalData;
 import controllery.panelUsers.Controller_Start;
 import hibernate.Firma;
@@ -56,7 +56,7 @@ public class Controller_User extends openFXMl {
 
     public Controller_CompanyData formC;
 
-    public Controller_AnalysisType analType;
+    public Controller_Analysis_Data analType;
 
     public Controller_Start start;
 
@@ -151,22 +151,22 @@ public class Controller_User extends openFXMl {
 
     @FXML
     void goToAnalysisType(ActionEvent event) throws IOException {
-        String link = "/fxml/panelUser_type/panelAnalysis_Type.fxml";
+        String link = "/fxml/panelUser_type/panelAnalysis_Data.fxml";
         FXMLLoader loader= new FXMLLoader();
         loader.setLocation(Controller_User.class.getResource(link));
         Pane newPane = loader.load();
         changePane.getChildren().add(newPane);
 
-        Controller_AnalysisType analize = loader.getController();
+        Controller_Analysis_Data analize = loader.getController();
         analType = analize;
         int idU = Integer.parseInt(dataId.getText());
 
 
         FirmaQuery company = new FirmaQuery();
         Firma com = company.showCompany(idU);
-        analize.readIdCompany(com.getIdFirmy());
+        analize.readIDCompany(com.getIdFirmy());
 
-        analize.readIdUs(idU);
+        analize.readIDUser(idU);
 
 
     }

@@ -9,7 +9,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Popup;
 
 import javax.management.Notification;
 import java.io.IOException;

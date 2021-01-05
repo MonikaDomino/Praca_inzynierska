@@ -3,7 +3,6 @@ package controllery.panelUsers.Company;
 import com.jfoenix.controls.JFXComboBox;
 import hibernate.Danefinansowe;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
 public class Controller_CompanyFinancial {

@@ -5,13 +5,9 @@ import hibernate.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Point2D;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.TextAlignment;
-import javafx.stage.Stage;
 
 import java.util.regex.Pattern;
 import java.io.IOException;
@@ -250,8 +246,6 @@ public class Controller_Analysis_Data {
     @FXML
     void checkIsCorrectNumber(KeyEvent event) {
         Pattern intNumber = Pattern.compile("^-?\\d+$");
-
-
 
         String grossP = grossprofit.getText();
         String stockEconomy = economyStock.getText();
