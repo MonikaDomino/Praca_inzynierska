@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="contactPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="479.0" prefWidth="549.0" style="-fx-background-color: linear-gradient(to top, #cedcf1, #b7cdee, #9fbeeb, #87b0e8, #6da1e5);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllery.panelUsers.Controller_Contact">
+   <children>
+      <Pane layoutX="35.0" layoutY="22.0" prefHeight="435.0" prefWidth="480.0" style="-fx-background-color: linear-gradient(to bottom, #24e0ee, #22d8fb, #43ceff, #66c4ff, #87b8ff); -fx-border-color: black; -fx-border-radius: 12px; -fx-background-radius: 12px;">
+         <children>
+            <Label layoutX="89.0" layoutY="22.0" text="FORMULARZ KONTAKTOWY">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="sendButton" alignment="CENTER" layoutX="170.0" layoutY="379.0" mnemonicParsing="false" onAction="#sendEmail" prefHeight="32.0" prefWidth="229.0" style="-fx-background-color: linear-gradient(to bottom, #b2c4e0, #b4c4db, #b6c3d6, #b8c3d1, #bac2cc); -fx-background-radius: 16px; -fx-font-weight: bold; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); -fx-font-family: Arial Narrow;" text="Wyślij wiadomość">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="21.0" fitWidth="20.0" layoutX="180.0" layoutY="385.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/Inbox-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <VBox alignment="TOP_RIGHT" layoutX="25.0" layoutY="93.0" prefHeight="187.0" prefWidth="145.0" spacing="27.0">
+               <children>
+                  <Label text="IMIĘ I NAZWISKO:">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label text="EMAIL:">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label text="TEMAT:">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label text="WIADOMOŚĆ:">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox layoutX="180.0" layoutY="89.0" prefHeight="280.0" prefWidth="256.0" spacing="1.0">
+               <children>
+                  <TextField fx:id="nameF" prefHeight="32.0" prefWidth="256.0" promptText="Wpisz imię i nazwisko" style="-fx-background-radius: 16px; -fx-border-color: black; -fx-border-radius: 16px;">
+                     <font>
+                        <Font name="Bookman Old Style" size="15.0" />
+                     </font>
+                  </TextField>
+                  <Label fx:id="nameError" prefHeight="18.0" prefWidth="254.0" />
+                  <TextField fx:id="mailF" prefHeight="32.0" prefWidth="256.0" promptText="Wpisz adres e-mail" style="-fx-background-radius: 16px; -fx-border-color: black; -fx-border-radius: 16px;">
+                     <font>
+                        <Font name="Bookman Old Style" size="15.0" />
+                     </font>
+                  </TextField>
+                  <Label fx:id="emailError" prefHeight="18.0" prefWidth="266.0" />
+                  <TextField fx:id="topicF" prefHeight="32.0" prefWidth="256.0" promptText="Wpisz temat wiadomości" style="-fx-background-radius: 16px; -fx-border-color: black; -fx-border-radius: 16px;">
+                     <font>
+                        <Font name="Bookman Old Style" size="15.0" />
+                     </font>
+                  </TextField>
+                  <Label fx:id="topicError" prefHeight="18.0" prefWidth="289.0" />
+                  <TextArea fx:id="messageF" prefHeight="109.0" prefWidth="256.0" promptText="Przykładowa treść wiadomości" style="-fx-border-color: black; -fx-background-radius: 16px;">
+                     <font>
+                        <Font name="Bookman Old Style" size="15.0" />
+                     </font>
+                  </TextArea>
+                  <Label fx:id="messageError" prefHeight="18.0" prefWidth="270.0" />
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+   </children>
+</Pane>

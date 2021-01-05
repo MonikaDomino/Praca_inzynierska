@@ -1,0 +1,58 @@
+.myAlerts {
+    -fx-background-color: #160385;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+
+}
+
+
+.myAlerts > *.button-bar > *.container {
+    -fx-background-color:#160385;
+
+}
+
+
+
+.myAlerts > *.header-panel{
+    -fx-background-color: #160385;
+
+}
+
+.myAlerts .button {
+    -fx-font-weight: bold;
+    -fx-text-fill: #160385;
+}
+
+
+.myAlerts > *.header-panel *.label{
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-text-origin: top;
+    -fx-alignment: center;
+}
+
+.myAlerts > *.label.content{
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill:  white;
+    -fx-text-origin: top;
+}
+
+.myAlerts .imageview {
+    -fx-padding: 0,10px,0,10px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

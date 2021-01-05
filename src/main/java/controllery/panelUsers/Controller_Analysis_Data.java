@@ -147,7 +147,7 @@ public class Controller_Analysis_Data {
         int companyId = Integer.parseInt(CompanyID.getText());
         Danefinansowe dft = data.checkYear(companyId);
 
-    if(dft.getRokBilansowy() != year_economy) {
+//    if(dft.getRokBilansowy() != year_economy) {
         data.addNewFinancialDataAnalysis(year_economy, gross_profit, economy_stock, total_assest, total_Sales, credit,
                 operation_profit, amort, capitalOwn, net_profit, id_company);
 
@@ -229,7 +229,7 @@ public class Controller_Analysis_Data {
         shown.readProfit(expected_gross_margin);
         shown.readMO(operating_profit_margin);
         shown.readROI(ROI);
-    }else{
+   /* }else{
         Alert error = new Alert(Alert.AlertType.ERROR);
         error.setContentText("SprawdŸ zak³adkê ");
         error.setHeaderText("Analiza rentownoœci dla " + year_economy + "r. zosta³a ju¿ wykonana.");
@@ -239,9 +239,9 @@ public class Controller_Analysis_Data {
         dialogPane.getStyleClass().add("myAlerts");
         dialogPane.setMaxSize(500,200);
         error.showAndWait();
-
+*/
     }
-    }
+   // }
 
     @FXML
     void checkIsCorrectNumber(KeyEvent event) {

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="hibernate.Danefinansowe" table="danefinansowe" schema="inzynierka">
+        <id name="idDane" column="id_dane"/>
+        <property name="rokBilansowy" column="rok_bilansowy"/>
+        <property name="zyskBrutto" column="zysk_brutto"/>
+        <property name="zapasy" column="zapasy"/>
+        <property name="aktywaOgolem" column="aktywa_ogolem"/>
+        <property name="przychodyS" column="przychodyS"/>
+        <property name="zobowiazania" column="zobowiazania"/>
+        <property name="zyskOperacyjny" column="zysk_operacyjny"/>
+        <property name="amortyzacja" column="amortyzacja"/>
+        <property name="kapitalWlasny" column="kapital_wlasny"/>
+        <property name="zyskNetto" column="zysk_netto"/>
+        <property name="idFirmy" column="id_firmy"/>
+    </class>
+</hibernate-mapping>

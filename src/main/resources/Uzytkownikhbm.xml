@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="hibernate.Uzytkownik" table="uzytkownik" schema="inzynierka">
+        <id name="idUzytkownika" column="id_uzytkownika"/>
+        <property name="imie" column="Imie"/>
+        <property name="nazwisko" column="nazwisko"/>
+        <property name="login" column="login"/>
+        <property name="password" column="password"/>
+        <property name="email" column="email"/>
+    </class>
+</hibernate-mapping>
