@@ -2,6 +2,7 @@ package controllery;
 
 import controllery.panelUsers.Company.Controller_CompanyData;
 import controllery.panelUsers.Controller_Analysis_Data;
+import controllery.panelUsers.Controller_ChangeCPass;
 import controllery.panelUsers.Controller_PersonalData;
 import controllery.panelUsers.Controller_Start;
 import hibernate.Firma;
@@ -11,16 +12,16 @@ import hibernate.UzytkownikQuery;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class Controller_User extends openFXMl {
-
 
 
     @FXML
@@ -52,7 +53,7 @@ public class Controller_User extends openFXMl {
     @FXML
     private Label welcome;
 
-    public  Controller_PersonalData date;
+    public Controller_PersonalData date;
 
     public Controller_CompanyData formC;
 
@@ -70,14 +71,13 @@ public class Controller_User extends openFXMl {
     }
 
 
-
     @FXML
     void goToContact(ActionEvent event) throws IOException {
-       String link = "/fxml/panelUser_type/panelContact.fxml";
-       FXMLLoader loader= new FXMLLoader();
-       loader.setLocation(Controller_User.class.getResource(link));
-       Pane newPane = loader.load();
-       changePane.getChildren().add(newPane);
+        String link = "/fxml/panelUser_type/panelContact.fxml";
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Controller_User.class.getResource(link));
+        Pane newPane = loader.load();
+        changePane.getChildren().add(newPane);
 
 
     }
@@ -85,8 +85,8 @@ public class Controller_User extends openFXMl {
 
     @FXML
     void backToStart(ActionEvent event) throws IOException {
-        String link ="/fxml/panelUser_type/panelStart.fxml";
-        FXMLLoader loader= new FXMLLoader();
+        String link = "/fxml/panelUser_type/panelStart.fxml";
+        FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Controller_User.class.getResource(link));
         Pane newPane = loader.load();
         changePane.getChildren().add(newPane);
@@ -101,10 +101,10 @@ public class Controller_User extends openFXMl {
     }
 
     @FXML
-    void goToCompanyData(ActionEvent event) throws  IOException {
+    void goToCompanyData(ActionEvent event) throws IOException {
 
         String link = "/fxml/panelUser_type/Company/panelCompany.fxml";
-        FXMLLoader loader= new FXMLLoader();
+        FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Controller_User.class.getResource(link));
         Pane newPane = loader.load();
         changePane.getChildren().add(newPane);
@@ -142,43 +142,41 @@ public class Controller_User extends openFXMl {
         String mailUser = mailU.getText();
         persona.readData(fnameUser, nameUser, mailUser);
 
-
-
-
     }
-
 
 
     @FXML
     void goToAnalysisType(ActionEvent event) throws IOException {
+
+        int idU = Integer.parseInt(dataId.getText());
+        FirmaQuery company = new FirmaQuery();
+
+
         String link = "/fxml/panelUser_type/panelAnalysis_Data.fxml";
-        FXMLLoader loader= new FXMLLoader();
+        FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Controller_User.class.getResource(link));
         Pane newPane = loader.load();
         changePane.getChildren().add(newPane);
 
+        Firma com = company.showCompany(idU);
         Controller_Analysis_Data analize = loader.getController();
         analType = analize;
-        int idU = Integer.parseInt(dataId.getText());
 
-
-        FirmaQuery company = new FirmaQuery();
-        Firma com = company.showCompany(idU);
-        analize.readIDCompany(com.getIdFirmy());
-
-        analize.readIDUser(idU);
-
+        if(com == null) {
+            analize.showAlert();
+        }else {
+            analize.readIDCompany(com.getIdFirmy());
+            analize.readIDUser(idU);
+        }
 
     }
 
-    public void readIdUser(int id){
+    public void readIdUser(int id) {
         dataId.setText(Integer.toString(id));
         dataId.setVisible(false);
     }
 
-
-
-    public void readInfoUser (String fname, String name, String mail){
+    public void readInfoUser(String fname, String name, String mail) {
         fnameU.setText(fname);
         fnameU.setVisible(false);
         nameU.setText(name);
@@ -188,14 +186,15 @@ public class Controller_User extends openFXMl {
 
     }
 
-    public void readLabel(String imie, String nazwisko){
-        welcome.setText("Witaj, " +imie+ " " + nazwisko + "!" );
+    public void readLabel(String imie, String nazwisko) {
+        welcome.setText("Witaj, " + imie + " " + nazwisko + "!");
     }
 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-
     }
+
+
 }

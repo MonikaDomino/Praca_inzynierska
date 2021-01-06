@@ -83,9 +83,12 @@ public class ControllerPLogin extends openFXMl implements Initializable {
     }
 
 
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
 
     }
+
+
 }

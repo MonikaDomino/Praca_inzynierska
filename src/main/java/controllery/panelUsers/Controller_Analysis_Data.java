@@ -144,104 +144,104 @@ public class Controller_Analysis_Data {
 
         DanefinansoweQuery data = new DanefinansoweQuery();
 
-        int companyId = Integer.parseInt(CompanyID.getText());
-        Danefinansowe dft = data.checkYear(companyId);
+        Danefinansowe dft = data.checkYear(id_company);
 
-//    if(dft.getRokBilansowy() != year_economy) {
-        data.addNewFinancialDataAnalysis(year_economy, gross_profit, economy_stock, total_assest, total_Sales, credit,
-                operation_profit, amort, capitalOwn, net_profit, id_company);
+        if (dft.getRokBilansowy() != year_economy) {
+            data.addNewFinancialDataAnalysis(year_economy, gross_profit, economy_stock, total_assest, total_Sales, credit,
+                    operation_profit, amort, capitalOwn, net_profit, id_company);
 
-        Danefinansowe dataFinancial = data.showID(year_economy, gross_profit, economy_stock, total_assest, total_Sales, credit,
-                operation_profit, amort, capitalOwn, net_profit, id_company);
-
-
-        int id = dataFinancial.getIdDane();
-
-        idDataFinancial.setText(Integer.toString(id));
-        idDataFinancial.setVisible(false);
+            Danefinansowe dataFinancial = data.showID(year_economy, gross_profit, economy_stock, total_assest, total_Sales, credit,
+                    operation_profit, amort, capitalOwn, net_profit, id_company);
 
 
-        double x1 = (gross_profit + amort) / credit;
-        double x2 = total_assest / credit;
-        double x3 = operation_profit / total_assest;
-        double x4 = operation_profit / total_Sales;
-        double x5 = economy_stock / total_Sales;
-        double x6 = total_Sales / total_assest;
+            int id = dataFinancial.getIdDane();
 
-        double analysis = ((3 * x1) / 2) + ((8 * x2) / 100) + 10 * x3 + 5 * x4 + ((3 * x5) / 10) + (x6 / 10);
+            idDataFinancial.setText(Integer.toString(id));
+            idDataFinancial.setVisible(false);
 
 
-        int idData = Integer.parseInt(idDataFinancial.getText());
+            double x1 = (gross_profit + amort) / credit;
+            double x2 = total_assest / credit;
+            double x3 = operation_profit / total_assest;
+            double x4 = operation_profit / total_Sales;
+            double x5 = economy_stock / total_Sales;
+            double x6 = total_Sales / total_assest;
 
-        try {
-            AnalizaQuery analyse = new AnalizaQuery();
-            analyse.addNewAnalysis(idData, analysis);
+            double analysis = ((3 * x1) / 2) + ((8 * x2) / 100) + 10 * x3 + 5 * x4 + ((3 * x5) / 10) + (x6 / 10);
 
-        } catch (Exception e) {
-            e.getLocalizedMessage();
+
+            int idData = Integer.parseInt(idDataFinancial.getText());
+
+            try {
+                AnalizaQuery analyse = new AnalizaQuery();
+                analyse.addNewAnalysis(idData, analysis);
+
+            } catch (Exception e) {
+                e.getLocalizedMessage();
+            }
+
+            double ROE;                             // rentownoœæ kapita³u w³asnego
+            double ROA;                            // rentownoœæ aktywów
+            double ROS;                           // rentownoœæ sprzeda¿y
+            double ROI;                          // rentownoœæ inwestycji
+            double operating_profit_margin;     // mar¿a operacyjna
+            double expected_gross_margin;      // mar¿a zysku brutto
+
+
+            operating_profit_margin = operation_profit / total_Sales;
+            expected_gross_margin = gross_profit / total_Sales;
+            ROI = net_profit / total_assest;
+            ROS = net_profit / total_Sales;
+            ROA = operation_profit / total_assest;
+            ROE = net_profit / capitalOwn;
+
+
+            try {
+                WskaznikiQuery pointer = new WskaznikiQuery();
+                pointer.addNewPointers(ROE, ROA, ROS, operating_profit_margin, ROI, expected_gross_margin, idData);
+
+            } catch (Exception e) {
+                e.getLocalizedMessage();
+            }
+
+            String link = "/fxml/panelShowAnalysis.fxml";
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Controller_Analysis_Data.class.getResource(link));
+            Pane newPane = loader.load();
+            paneData.getChildren().add(newPane);
+
+            Controller_ShowAnalysis shown = loader.getController();
+            show = shown;
+            shown.readResultAnalysis(analysis);
+            shown.readCondition(analysis);
+            ROE = roundNumber(ROE);
+            ROA = roundNumber(ROA);
+            ROS = roundNumber(ROS);
+            ROI = roundNumber(ROI);
+            operating_profit_margin = roundNumber(operating_profit_margin);
+            expected_gross_margin = roundNumber(expected_gross_margin);
+            shown.readPointers(ROE, ROA, ROS, ROI, operating_profit_margin, expected_gross_margin);
+            shown.readAdvantage(ROE);
+            shown.compare(ROA, ROE);
+            shown.readSales(ROS);
+            shown.readProfitA(ROA);
+            shown.readProfit(expected_gross_margin);
+            shown.readMO(operating_profit_margin);
+            shown.readROI(ROI);
+        } else {
+            Alert error = new Alert(Alert.AlertType.ERROR);
+            error.setContentText("SprawdŸ zak³adkê ");
+            error.setHeaderText("Analiza rentownoœci dla " + year_economy + "r. zosta³a ju¿ wykonana.");
+            DialogPane dialogPane = error.getDialogPane();
+            dialogPane.getStylesheets().add(
+                    getClass().getResource("/fxml/alert.css").toExternalForm());
+            dialogPane.getStyleClass().add("myAlerts");
+            dialogPane.setMaxSize(500, 200);
+            error.showAndWait();
+
         }
-
-        double ROE;                             // rentownoœæ kapita³u w³asnego
-        double ROA;                            // rentownoœæ aktywów
-        double ROS;                           // rentownoœæ sprzeda¿y
-        double ROI;                          // rentownoœæ inwestycji
-        double operating_profit_margin;     // mar¿a operacyjna
-        double expected_gross_margin;      // mar¿a zysku brutto
-
-
-        operating_profit_margin = operation_profit / total_Sales;
-        expected_gross_margin = gross_profit / total_Sales;
-        ROI = net_profit / total_assest;
-        ROS = net_profit / total_Sales;
-        ROA = operation_profit / total_assest;
-        ROE = net_profit / capitalOwn;
-
-
-        try {
-            WskaznikiQuery pointer = new WskaznikiQuery();
-            pointer.addNewPointers(ROE, ROA, ROS, operating_profit_margin, ROI, expected_gross_margin, idData);
-
-        } catch (Exception e) {
-            e.getLocalizedMessage();
-        }
-
-        String link = "/fxml/panelShowAnalysis.fxml";
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(Controller_Analysis_Data.class.getResource(link));
-        Pane newPane = loader.load();
-        paneData.getChildren().add(newPane);
-
-        Controller_ShowAnalysis shown = loader.getController();
-        show = shown;
-        shown.readResultAnalysis(analysis);
-        shown.readCondition(analysis);
-        ROE = roundNumber(ROE);
-        ROA = roundNumber(ROA);
-        ROS = roundNumber(ROS);
-        ROI = roundNumber(ROI);
-        operating_profit_margin = roundNumber(operating_profit_margin);
-        expected_gross_margin = roundNumber(expected_gross_margin);
-        shown.readPointers(ROE, ROA, ROS, ROI, operating_profit_margin, expected_gross_margin);
-        shown.readAdvantage(ROE);
-        shown.compare(ROA, ROE);
-        shown.readSales(ROS);
-        shown.readProfitA(ROA);
-        shown.readProfit(expected_gross_margin);
-        shown.readMO(operating_profit_margin);
-        shown.readROI(ROI);
-   /* }else{
-        Alert error = new Alert(Alert.AlertType.ERROR);
-        error.setContentText("SprawdŸ zak³adkê ");
-        error.setHeaderText("Analiza rentownoœci dla " + year_economy + "r. zosta³a ju¿ wykonana.");
-        DialogPane dialogPane =error.getDialogPane();
-        dialogPane.getStylesheets().add(
-                getClass().getResource("/fxml/alert.css").toExternalForm());
-        dialogPane.getStyleClass().add("myAlerts");
-        dialogPane.setMaxSize(500,200);
-        error.showAndWait();
-*/
     }
-   // }
+
 
     @FXML
     void checkIsCorrectNumber(KeyEvent event) {
@@ -377,7 +377,7 @@ public class Controller_Analysis_Data {
         }else if(stockEconomy.trim().isEmpty()){
                 economyStock.setStyle("");
         } else {
-            economyStock.setStyle("-fx-background-color: #ff8080");
+             economyStock.setStyle("-fx-background-color: #ff8080");
             Tooltip toolES= new Tooltip("Oczekiwane: 5.0");
             toolES.setPrefSize(150,50);
             toolES.setStyle("-fx-font-size: 14; -fx-text-alignment: center;");
@@ -451,6 +451,32 @@ public class Controller_Analysis_Data {
 
 
     }
+    public void showAlert() throws IOException {
+        ButtonType buttonYES = new ButtonType("Dodaj firmê", ButtonBar.ButtonData.YES);
+        ButtonType buttonNO = new ButtonType("Ok", ButtonBar.ButtonData.NO);
+        Alert alertC = new Alert(Alert.AlertType.NONE, " ", buttonYES, buttonNO);
+        String s = "Przed wykonaniem analizy dodaj firmê!";
+        alertC.setHeaderText(s);
 
+
+        DialogPane dialogPane = alertC.getDialogPane();
+        dialogPane.getStylesheets().add(
+                getClass().getResource("/fxml/alert.css").toExternalForm());
+        dialogPane.getStyleClass().add("myAlerts");
+        dialogPane.setMaxSize(350, 5);
+
+
+        alertC.setTitle(" ");
+        Optional<ButtonType> result = alertC.showAndWait();
+
+        if (result.orElse(buttonNO) == buttonYES) {
+            String linkC = "/fxml/panelUser_type/Company/CompanyForm.fxml";
+            FXMLLoader loaderCancel = new FXMLLoader();
+            loaderCancel.setLocation(Controller_ChangeCPass.class.getResource(linkC));
+            Pane newLoadPane = loaderCancel.load();
+            paneData.getChildren().add(newLoadPane);
+        }
+
+    }
 
 }
