@@ -454,7 +454,7 @@ public class Controller_Analysis_Data {
     public void showAlert() throws IOException {
         ButtonType buttonYES = new ButtonType("Dodaj firmê", ButtonBar.ButtonData.YES);
         ButtonType buttonNO = new ButtonType("Ok", ButtonBar.ButtonData.NO);
-        Alert alertC = new Alert(Alert.AlertType.NONE, " ", buttonYES, buttonNO);
+        Alert alertC = new Alert(Alert.AlertType.INFORMATION, " ", buttonYES, buttonNO);
         String s = "Przed wykonaniem analizy dodaj firmê!";
         alertC.setHeaderText(s);
 

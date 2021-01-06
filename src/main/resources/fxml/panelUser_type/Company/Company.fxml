@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="changePaneC" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="479.0" prefWidth="546.0" style="-fx-background-color: linear-gradient(to top, #cedcf1, #b7cdee, #9fbeeb, #87b0e8, #6da1e5);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllery.panelUsers.Company.Controller_Company">
+   <children>
+      <Pane layoutX="-8.0" prefHeight="66.0" prefWidth="517.0">
+         <children>
+            <HBox layoutX="9.0" prefHeight="64.0" prefWidth="546.0">
+               <children>
+                  <JFXButton prefHeight="64.0" prefWidth="165.0" style="-fx-border-color: linear-gradient(to bottom, #1f2dff, #0032e7, #0034ce, #0033b5, #04329c); -fx-border-radius: 6px; -fx-background-radius: 6px; -fx-background-color: linear-gradient(to bottom, #59cbff, #40bdff, #35afff, #409eff, #598cff); -fx-border-width: 2px; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );" text="ADRES FIRMY" textFill="#0b0340">
+                     <font>
+                        <Font name="Bookman Old Style Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton onAction="#goToDataFinancial" prefHeight="64.0" prefWidth="193.0" style="-fx-border-color: linear-gradient(to bottom, #1f2dff, #0032e7, #0034ce, #0033b5, #04329c); -fx-border-radius: 6px; -fx-background-radius: 6px; -fx-background-color: linear-gradient(to bottom, #59cbff, #40bdff, #35afff, #409eff, #598cff); -fx-border-width: 2px; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );" text="DANE FINANSOWE" textFill="#0b0340">
+                     <font>
+                        <Font name="Bookman Old Style Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton prefHeight="64.0" prefWidth="191.0" style="-fx-border-color: linear-gradient(to bottom, #1f2dff, #0032e7, #0034ce, #0033b5, #04329c); -fx-border-radius: 6px; -fx-background-radius: 6px; -fx-background-color: linear-gradient(to bottom, #59cbff, #40bdff, #35afff, #409eff, #598cff); -fx-border-width: 2px; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );" text="ANALIZA RENTOWNOŚCI" textFill="#0b0340">
+                     <font>
+                        <Font name="Bookman Old Style Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+      <Pane fx:id="paneChange" layoutY="68.0" prefHeight="412.0" prefWidth="546.0" />
+   </children>
+</Pane>

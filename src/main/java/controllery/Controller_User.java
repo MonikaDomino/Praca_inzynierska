@@ -1,8 +1,7 @@
 package controllery;
 
-import controllery.panelUsers.Company.Controller_CompanyData;
+import controllery.panelUsers.Company.Controller_Company;
 import controllery.panelUsers.Controller_Analysis_Data;
-import controllery.panelUsers.Controller_ChangeCPass;
 import controllery.panelUsers.Controller_PersonalData;
 import controllery.panelUsers.Controller_Start;
 import hibernate.Firma;
@@ -18,7 +17,6 @@ import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class Controller_User extends openFXMl {
@@ -55,7 +53,7 @@ public class Controller_User extends openFXMl {
 
     public Controller_PersonalData date;
 
-    public Controller_CompanyData formC;
+    public Controller_Company formC;
 
     public Controller_Analysis_Data analType;
 
@@ -103,21 +101,21 @@ public class Controller_User extends openFXMl {
     @FXML
     void goToCompanyData(ActionEvent event) throws IOException {
 
-        String link = "/fxml/panelUser_type/Company/panelCompany.fxml";
+        String link = "/fxml/panelUser_type/Company/Company.fxml";
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Controller_User.class.getResource(link));
         Pane newPane = loader.load();
         changePane.getChildren().add(newPane);
 
-        Controller_CompanyData companyData = loader.getController();
+        Controller_Company companyData = loader.getController();
         formC = companyData;
         int id = Integer.parseInt(dataId.getText());
-        companyData.readIdUser(id);
+        //companyData.readIdUser(id);
 
         FirmaQuery company = new FirmaQuery();
         Firma com = company.showCompany(id);
-        companyData.readIdCompany(com.getIdFirmy());
-        companyData.readDataCompany(com.getNazwaFirmy(), com.getUlica(), com.getNumerBudynku(), com.getNumerLokalu(), com.getMiasto(), com.getKodPocztowy());
+        //companyData.readIdCompany(com.getIdFirmy());
+      //  companyData.readDataCompany(com.getNazwaFirmy(), com.getUlica(), com.getNumerBudynku(), com.getNumerLokalu(), com.getMiasto(), com.getKodPocztowy());
 
 
     }
