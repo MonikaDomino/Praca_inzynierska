@@ -15,6 +15,8 @@ public class Controller_Company {
     @FXML
     private Pane paneChange;
 
+    Controller_CompanyFinancial financial;
+
     @FXML
     void goToDataFinancial(ActionEvent event) throws IOException {
         String link = "/fxml/panelUser_type/Company/CompanyDataFinancial.fxml";
@@ -23,6 +25,13 @@ public class Controller_Company {
         Pane newPane = loader.load();
         paneChange.getChildren().add(newPane);
 
+        Controller_CompanyFinancial cf = loader.getController();
+        financial = cf;
+        cf.comboBox();
+
+
     }
+
+
 
 }

@@ -2,7 +2,10 @@ package hibernate;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+
+import java.util.List;
 
 public class DanefinansoweQuery {
     Session session;
@@ -12,7 +15,7 @@ public class DanefinansoweQuery {
     public void addNewFinancialDataAnalysis(int year, double profitB, double economic_stocks, double assest,
                                             double totalSales, double operationProfit, double credit,
                                             double amort, double capital, double profit_net, int id_company)
-            throws Exception {
+             {
 
 
         session = HibernateUtill.getSessionFactory().openSession();
@@ -41,7 +44,7 @@ public class DanefinansoweQuery {
                                 double totalSales, double credit, double operationProfit,
                                 double amort, double capital, double profit_net, int id_company) {
 
-        Danefinansowe d = null;
+        Danefinansowe d;
         session = HibernateUtill.getSessionFactory().openSession();
         String hql;
         hql = "from Danefinansowe as dane where dane.rokBilansowy ='" +year+ "' and dane.zyskBrutto= '" +profitB+ "' " +
@@ -60,13 +63,36 @@ public class DanefinansoweQuery {
     }
 
     public  Danefinansowe checkYear(int idCompany){
-        Danefinansowe df = null;
+        Danefinansowe dc;
         session = HibernateUtill.getSessionFactory().openSession();
         String hql = "from Danefinansowe where idFirmy = '" + idCompany +" '";
+        query = session.createQuery(hql);
+        dc = (Danefinansowe)query.setMaxResults(1).uniqueResult();
+        session.close();
+        return dc;
+    }
+
+    public Danefinansowe readDatafromYear (int year){
+        Danefinansowe df;
+        session = HibernateUtill.getSessionFactory().openSession();
+        String hql = "from Danefinansowe where rokBilansowy = '" + year + "'";
         query = session.createQuery(hql);
         df = (Danefinansowe)query.setMaxResults(1).uniqueResult();
         session.close();
         return df;
     }
+
+    public List<Danefinansowe> DaneFinansoweSelectAll() {
+        session = HibernateUtill.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        String hql = "from Danefinansowe";
+        query = session.createQuery(hql);
+        List<Danefinansowe> df = query.list();
+        tx.commit();
+        session.close();
+        return df;
+    }
+
+
 
 }

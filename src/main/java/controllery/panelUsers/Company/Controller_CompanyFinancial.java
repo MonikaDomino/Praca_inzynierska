@@ -1,67 +1,95 @@
 package controllery.panelUsers.Company;
 
-import com.jfoenix.controls.JFXComboBox;
 import hibernate.Danefinansowe;
+import hibernate.DanefinansoweConverter;
+import hibernate.DanefinansoweQuery;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
 public class Controller_CompanyFinancial {
 
-
     @FXML
-    private JFXComboBox<Danefinansowe> yearCombo;
-
-    @FXML
-    private Label assestCF;
-
-    @FXML
-    private Label economyCF;
-
-    @FXML
-    private Label grossCF;
-
-    @FXML
-    private Label amortCF;
-
-    @FXML
-    private Label salesCF;
-
-    @FXML
-    private Label capitalCF;
+    private ComboBox<Danefinansowe> comboYear;
 
 
     @FXML
-    private Label profitCF;
-
+    private Label readProfitGross;
 
     @FXML
-    private Label creditCF;
+    private Label readEcoStock;
+
+    @FXML
+    private Label readAssestTotal;
+
+    @FXML
+    private Label readSales;
+
+    @FXML
+    private Label readOpProfit;
+
+    @FXML
+    private Label readAmort;
+
+    @FXML
+    private Label readNetProfit;
+
+    @FXML
+    private Label readCapital;
+
+    @FXML
+    private Label readCredit;
 
     @FXML
     private Label selectedYear;
 
 
-    public void getData (double assest, double economyS, double gross,
-            double amort, double profitNet, double sales, double capital, double credit) {
+    public void comboBox(){
+        selectedYear.setText("");
+        DanefinansoweQuery dq = new DanefinansoweQuery();
+        comboYear.getItems().addAll(dq.DaneFinansoweSelectAll());
+        comboYear.setConverter(new DanefinansoweConverter());
 
-        assestCF.setText(Double.toString(assest));
-        economyCF.setText(Double.toString(economyS));
-        grossCF.setText(Double.toString(gross));
-        amortCF.setText(Double.toString(amort));
-        profitCF.setText(Double.toString(profitNet));
-        salesCF.setText(Double.toString(sales));
-        capitalCF.setText(Double.toString(capital));
-        creditCF.setText(Double.toString(credit));
-
-
-    }
-
-    public void comboYear(){
-        selectedYear.setText(" ");
-        yearCombo.getItems().clear();
+        comboYear.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                comboValue(comboYear);
+            }
+        });
 
 
     }
+
+    public void comboValue (ComboBox<Danefinansowe> comboYear){
+
+        Danefinansowe df = comboYear.getValue();
+        if(df!= null){
+            int year = df.getRokBilansowy();
+            DanefinansoweQuery dqr = new DanefinansoweQuery();
+            Danefinansowe dr = dqr.readDatafromYear(year);
+
+            readProfitGross.setText(Double.toString(dr.getZyskBrutto()));
+            readEcoStock.setText(Double.toString(dr.getZapasy()));
+            readAssestTotal.setText(Double.toString(dr.getAktywaOgolem()));
+            readSales.setText(Double.toString(dr.getPrzychodyS()));
+            readOpProfit.setText(Double.toString(dr.getZyskOperacyjny()));
+            readAmort.setText(Double.toString(dr.getAmortyzacja()));
+            readNetProfit.setText(Double.toString(dr.getZyskNetto()));
+            readCapital.setText(Double.toString(dr.getKapitalWlasny()));
+            readCredit.setText(Double.toString(dr.getZobowiazania()));
+
+
+        }
+    }
+
+
+
+
+
+
+
 
 
 }
