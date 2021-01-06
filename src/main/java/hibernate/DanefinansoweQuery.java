@@ -93,6 +93,17 @@ public class DanefinansoweQuery {
         return df;
     }
 
+    public List<Danefinansowe> DaneFinansoweSelectForYear(int year) {
+        session = HibernateUtill.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        String hql = "from Danefinansowe where rokBilansowy = '" + year + "'";
+        query = session.createQuery(hql);
+        List<Danefinansowe> df = query.list();
+        tx.commit();
+        session.close();
+        return df;
+    }
+
 
 
 }

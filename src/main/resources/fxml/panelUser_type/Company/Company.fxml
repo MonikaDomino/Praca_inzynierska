@@ -21,7 +21,7 @@
                         <Font name="Bookman Old Style Bold" size="13.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton prefHeight="64.0" prefWidth="191.0" style="-fx-border-color: linear-gradient(to bottom, #1f2dff, #0032e7, #0034ce, #0033b5, #04329c); -fx-border-radius: 6px; -fx-background-radius: 6px; -fx-background-color: linear-gradient(to bottom, #59cbff, #40bdff, #35afff, #409eff, #598cff); -fx-border-width: 2px; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );" text="ANALIZA RENTOWNOŚCI" textFill="#0b0340">
+                  <JFXButton onAction="#goToDataAnalysis" prefHeight="64.0" prefWidth="191.0" style="-fx-border-color: linear-gradient(to bottom, #1f2dff, #0032e7, #0034ce, #0033b5, #04329c); -fx-border-radius: 6px; -fx-background-radius: 6px; -fx-background-color: linear-gradient(to bottom, #59cbff, #40bdff, #35afff, #409eff, #598cff); -fx-border-width: 2px; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );" text="ANALIZA RENTOWNOŚCI" textFill="#0b0340">
                      <font>
                         <Font name="Bookman Old Style Bold" size="13.0" />
                      </font>

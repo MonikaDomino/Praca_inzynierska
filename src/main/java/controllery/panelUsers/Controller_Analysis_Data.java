@@ -64,6 +64,8 @@ public class Controller_Analysis_Data {
     @FXML
     private Label idUserAT;
 
+    Controller_Start start;
+
 
     @FXML
     void cancel(ActionEvent event) throws IOException {
@@ -94,12 +96,11 @@ public class Controller_Analysis_Data {
 
             Controller_Start CNstart = loaderCancel.getController();
 
-            conS= CNstart;
+            conS = CNstart;
             int id = Integer.parseInt(idUserAT.getText());
             UzytkownikQuery userP = new UzytkownikQuery();
             Uzytkownik userCP = userP.showData(id);
             CNstart.readLabel(userCP.getImie(), userCP.getNazwisko());
-
 
 
         }
@@ -453,7 +454,7 @@ public class Controller_Analysis_Data {
     }
     public void showAlert() throws IOException {
         ButtonType buttonYES = new ButtonType("Dodaj firmê", ButtonBar.ButtonData.YES);
-        ButtonType buttonNO = new ButtonType("Ok", ButtonBar.ButtonData.NO);
+        ButtonType buttonNO = new ButtonType("Anuluj", ButtonBar.ButtonData.NO);
         Alert alertC = new Alert(Alert.AlertType.INFORMATION, " ", buttonYES, buttonNO);
         String s = "Przed wykonaniem analizy dodaj firmê!";
         alertC.setHeaderText(s);
@@ -463,7 +464,7 @@ public class Controller_Analysis_Data {
         dialogPane.getStylesheets().add(
                 getClass().getResource("/fxml/alert.css").toExternalForm());
         dialogPane.getStyleClass().add("myAlerts");
-        dialogPane.setMaxSize(350, 5);
+        dialogPane.setMaxSize(400, 5);
 
 
         alertC.setTitle(" ");
@@ -475,6 +476,7 @@ public class Controller_Analysis_Data {
             loaderCancel.setLocation(Controller_ChangeCPass.class.getResource(linkC));
             Pane newLoadPane = loaderCancel.load();
             paneData.getChildren().add(newLoadPane);
+        } else{
         }
 
     }

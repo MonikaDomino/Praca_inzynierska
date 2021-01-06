@@ -2,7 +2,10 @@ package hibernate;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+
+import java.util.List;
 
 public class WskaznikiQuery {
     Session session;
@@ -27,6 +30,16 @@ public class WskaznikiQuery {
             session.getTransaction().rollback();
             session.close();
         }
+    }
+
+    public Wskazniki showCompany(int idData){
+        Wskazniki w = null;
+        session = HibernateUtill.getSessionFactory().openSession();
+        String hql = "from Wskazniki where idDane= '" + idData +" '";
+        query = session.createQuery(hql);
+        w = (Wskazniki) query.uniqueResult();
+        session.close();
+        return w;
     }
 }
 

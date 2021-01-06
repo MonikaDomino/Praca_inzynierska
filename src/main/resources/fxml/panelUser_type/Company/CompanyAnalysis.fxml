@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="paneCA" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="415.0" prefWidth="546.0" style="-fx-background-color: linear-gradient(to top, #cedcf1, #b7cdee, #9fbeeb, #87b0e8, #6da1e5);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllery.panelUsers.Company.Controller_CompanyAnalysis">
+   <children>
+      <ComboBox fx:id="yearCombo" layoutX="242.0" layoutY="37.0" prefWidth="150.0" />
+      <Label layoutX="84.0" layoutY="36.0" prefHeight="27.0" prefWidth="158.0" text="ROK BILANSOWY:">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Pane layoutX="25.0" layoutY="126.0" prefHeight="184.0" prefWidth="507.0" style="-fx-border-color: black; -fx-border-width: 2px; -fx-background-color: linear-gradient(to bottom, #cecece, #cecece, #cfcfcf, #cfcfcf, #cfcfcf);;">
+         <children>
+            <VBox layoutY="1.0" prefHeight="181.0" prefWidth="378.0" spacing="2.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="26.0" prefWidth="377.0" text="WSKAŹNIK RENTOWNOŚCI KAPITAŁU WŁASNEGO:" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="26.0" prefWidth="377.0" text="WSKAŹNIK RENTOWNOŚCI AKTYWÓW:" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="26.0" prefWidth="377.0" text="WSKAŹNIK RENTOWNOŚCI SPRZEDAŻY:" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="26.0" prefWidth="377.0" text="MARŻA OPERACYJNA:" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="26.0" prefWidth="377.0" text="WSKAŹNIK RENTOWNOŚCI INWESTYCJI:" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="26.0" prefWidth="377.0" text="MARŻA ZYSKU BRUTTO:" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox layoutX="393.0" layoutY="1.0" prefHeight="181.0" prefWidth="112.0" spacing="2.0" style="-fx-border-color: BLACK;">
+               <children>
+                  <Label fx:id="readROE" alignment="CENTER" prefHeight="26.0" prefWidth="112.0">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="readROA" alignment="CENTER" prefHeight="26.0" prefWidth="112.0">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="readROS" alignment="CENTER" prefHeight="26.0" prefWidth="112.0">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="readMO" alignment="CENTER" prefHeight="26.0" prefWidth="112.0">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="readROI" alignment="CENTER" prefHeight="26.0" prefWidth="112.0">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="readMZB" alignment="CENTER" prefHeight="26.0" prefWidth="112.0">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+   </children>
+</Pane>
