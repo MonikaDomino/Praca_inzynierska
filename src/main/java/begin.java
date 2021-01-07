@@ -1,9 +1,15 @@
 
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.DialogPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 
 import java.io.IOException;
@@ -28,6 +34,32 @@ public class begin extends Application  {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent e) {
+
+                ButtonType buttonYES = new ButtonType("Tak");
+                ButtonType buttonNO = new ButtonType("Nie");
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"", buttonYES, buttonNO);
+                alert.setHeaderText("Chcesz zakoñczyæ pracê z aplikacj¹? ");
+                DialogPane dialogPane = alert.getDialogPane();
+                dialogPane.getStylesheets().add(
+                        getClass().getResource("/fxml/alert.css").toExternalForm());
+                dialogPane.getStyleClass().add("myAlerts");
+                dialogPane.setMaxSize(400,0);
+
+                alert.showAndWait();
+
+                if (alert.getResult() == buttonYES) {
+                    Platform.exit();
+
+                }
+
+
+
+            }
+        });
 
 
 
