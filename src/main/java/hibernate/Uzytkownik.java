@@ -1,14 +1,18 @@
 package hibernate;
 
+
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Uzytkownik {
+public class Uzytkownik implements Serializable {
     private Integer idUzytkownika;
     private String imie;
     private String nazwisko;
     private String login;
     private String password;
     private String email;
+
+
 
     public Integer getIdUzytkownika() {
         return idUzytkownika;
@@ -58,6 +62,8 @@ public class Uzytkownik {
         this.email = email;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -70,6 +76,7 @@ public class Uzytkownik {
                 Objects.equals(password, that.password) &&
                 Objects.equals(email, that.email);
     }
+
 
     @Override
     public int hashCode() {

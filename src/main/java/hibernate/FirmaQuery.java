@@ -13,15 +13,14 @@ public class FirmaQuery {
 
         session = HibernateUtill.getSessionFactory().openSession();
         String query;
-        if (!numberF.equals("")) {
+        if (numberF != " ") {
             query = "INSERT INTO `firma` (`id_firmy`, `nazwa_firmy`, `ulica`, `numer_budynku`, `miasto`, `kod_pocztowy`, `numer_lokalu`, `id_uzytkownika`) " +
                     "VALUES (NULL , '" + nameCompany + "', '" + street + "', '" + numberB + "', '" + city + "', '" + postCode + "', '" + numberF + "', '"
                     + idUser + "')";
         }else{
-            query = "INSERT INTO `firma` (`id_firmy`, `nazwa_firmy`, `ulica`, `numer_budynku`, `miasto`, `kod_pocztowy`, `numer_lokalu`, `id_uzytkownika`) " +
-                    "VALUES (NULL , '" + nameCompany + "', '" + street + "', '" + numberB + "', '" + city + "', '" + postCode +  "', "
-                    + "NULL, '" + idUser + "')";
-
+            query = "INSERT INTO `firma` (`id_firmy`, `nazwa_firmy`, `ulica`, `numer_budynku`, `miasto`, `kod_pocztowy`,  `id_uzytkownika`) " +
+                    "VALUES (NULL , '" + nameCompany + "', '" + street + "', '" + numberB + "', '" + city + "', '" + postCode +  "', '"
+                    + idUser + "')";
         }
         try {
             session.getTransaction().begin();
@@ -38,6 +37,16 @@ public class FirmaQuery {
         Firma f = null;
         session = HibernateUtill.getSessionFactory().openSession();
         String hql = "from Firma where idUzytkownika= '" + id_user +" '";
+        query = session.createQuery(hql);
+        f = (Firma) query.uniqueResult();
+        session.close();
+        return f;
+    }
+
+    public Firma showCompanyData(int idCompany){
+        Firma f = null;
+        session = HibernateUtill.getSessionFactory().openSession();
+        String hql = "from Firma where idFirmy= '" + idCompany +" '";
         query = session.createQuery(hql);
         f = (Firma) query.uniqueResult();
         session.close();

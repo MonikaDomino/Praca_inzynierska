@@ -1,6 +1,8 @@
 package controllery.panelUsers;
 
 
+import controllery.Controller_User;
+import controllery.panelUsers.Company.Controller_Company;
 import controllery.panelUsers.Company.Controller_CompanyForm;
 import hibernate.*;
 import javafx.event.ActionEvent;
@@ -58,16 +60,14 @@ public class Controller_Analysis_Data {
     @FXML
     private TextField capital;
 
-    public Controller_ShowAnalysis show;
+   Controller_ShowAnalysis show;
 
-    public Controller_Start conS;
+  Controller_Start conS;
 
     @FXML
     private Label idUserAT;
 
-    Controller_Start start;
-    Controller_CompanyForm formC;
-
+    Controller_Company comPan;
 
     @FXML
     void cancel(ActionEvent event) throws IOException {
@@ -149,7 +149,11 @@ public class Controller_Analysis_Data {
 
         Danefinansowe dft = data.checkYear(id_company);
 
-        if (dft.getRokBilansowy() != year_economy) {
+    if(dft == null){
+        data.addNewFinancialDataAnalysis(year_economy, gross_profit, economy_stock, total_assest, total_Sales, credit,
+                operation_profit, amort,capitalOwn, net_profit, id_company);
+    }
+       else if (year_economy != dft.getRokBilansowy()) {
             data.addNewFinancialDataAnalysis(year_economy, gross_profit, economy_stock, total_assest, total_Sales, credit,
                     operation_profit, amort, capitalOwn, net_profit, id_company);
 
@@ -233,7 +237,7 @@ public class Controller_Analysis_Data {
             shown.readROI(ROI);
         } else {
             Alert error = new Alert(Alert.AlertType.ERROR);
-            error.setContentText("SprawdŸ zak³adkê ");
+            error.setContentText("SprawdŸ zak³adkê Firma -> Dane finansowe ");
             error.setHeaderText("Analiza rentownoœci dla " + year_economy + "r. zosta³a ju¿ wykonana.");
             DialogPane dialogPane = error.getDialogPane();
             dialogPane.getStylesheets().add(
@@ -460,34 +464,27 @@ public class Controller_Analysis_Data {
         Alert alertC = new Alert(Alert.AlertType.INFORMATION, " ", buttonYES, buttonNO);
         String s = "Przed wykonaniem analizy dodaj firmê!";
         alertC.setHeaderText(s);
-
-
+        alertC.setContentText(null);
         DialogPane dialogPane = alertC.getDialogPane();
         dialogPane.getStylesheets().add(
                 getClass().getResource("/fxml/alert.css").toExternalForm());
         dialogPane.getStyleClass().add("myAlerts");
-        dialogPane.setMaxSize(400, 5);
+        dialogPane.setMaxSize(450,0);;
+        alertC.showAndWait();
 
+        if(alertC.getResult() == buttonYES){
+            String link = "/fxml/panelUser_type/Company/Company.fxml";
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Controller_User.class.getResource(link));
+            Pane newPane = loader.load();
+            paneData.getChildren().add(newPane);
 
-        alertC.setTitle(" ");
-        Optional<ButtonType> result = alertC.showAndWait();
-
-        if (result.orElse(buttonNO) == buttonYES) {
-            String linkC = "/fxml/panelUser_type/Company/CompanyForm.fxml";
-            FXMLLoader loaderCancel = new FXMLLoader();
-            loaderCancel.setLocation(Controller_ChangeCPass.class.getResource(linkC));
-            Pane newLoadPane = loaderCancel.load();
-            paneData.getChildren().add(newLoadPane);
-
-            Controller_CompanyForm form = loaderCancel.getController();
-            formC = form;
-
+            Controller_Company Ccom = loader.getController();
+            comPan = Ccom;
             int id = Integer.parseInt(idUserAT.getText());
-            form.readIdUser(id);
-
-        }else{
-
+            comPan.readIdUser(id);
         }
+
 
 
     }

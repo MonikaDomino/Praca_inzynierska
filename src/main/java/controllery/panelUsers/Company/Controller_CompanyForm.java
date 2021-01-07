@@ -1,10 +1,15 @@
 package controllery.panelUsers.Company;
 
+import controllery.Controller_User;
+import controllery.panelUsers.Controller_Start;
 import hibernate.FirmaQuery;
+import hibernate.Uzytkownik;
+import hibernate.UzytkownikQuery;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
 
 public class Controller_CompanyForm {
     @FXML
@@ -23,10 +28,15 @@ public class Controller_CompanyForm {
     private TextField city;
 
     @FXML
+    private Pane changeCF;
+
+    @FXML
     private TextField numberF;
 
     @FXML
     private Label idUserC;
+
+    Controller_Start startC;
 
     @FXML
     void addCompany(ActionEvent event) {
@@ -43,6 +53,26 @@ public class Controller_CompanyForm {
         try{
             FirmaQuery company = new FirmaQuery();
             company.addCompany(nameCompany,streetCompany,cityC, postC,numberBuilding,numberLocal,idUser);
+
+            Alert alert_correct = new Alert(Alert.AlertType.INFORMATION);
+            alert_correct.setHeaderText("Firma zosta³a dodana ");
+            DialogPane dialogPane = alert_correct.getDialogPane();
+            dialogPane.getStylesheets().add(
+                    getClass().getResource("/fxml/alert.css").toExternalForm());
+            dialogPane.getStyleClass().add("myAlerts");
+            dialogPane.setMaxSize(400,0);
+
+            alert_correct.showAndWait();
+
+            if(alert_correct.getResult() == ButtonType.OK){
+
+                String link = "/fxml/panelUser_type/Company/Company.fxml";
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(Controller_CompanyForm.class.getResource(link));
+                Pane newPane = loader.load();
+                changeCF.getChildren().add(newPane);
+           }
+
 
         }catch (Exception e){
             e.getLocalizedMessage();

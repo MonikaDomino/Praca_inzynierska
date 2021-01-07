@@ -8,13 +8,13 @@
 
 <Pane fx:id="paneCA" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="415.0" prefWidth="546.0" style="-fx-background-color: linear-gradient(to top, #cedcf1, #b7cdee, #9fbeeb, #87b0e8, #6da1e5);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllery.panelUsers.Company.Controller_CompanyAnalysis">
    <children>
-      <ComboBox fx:id="yearCombo" layoutX="242.0" layoutY="37.0" prefWidth="150.0" />
-      <Label layoutX="84.0" layoutY="36.0" prefHeight="27.0" prefWidth="158.0" text="ROK BILANSOWY:">
+      <ComboBox fx:id="yearCombo" layoutX="242.0" layoutY="72.0" prefWidth="150.0" />
+      <Label layoutX="84.0" layoutY="71.0" prefHeight="27.0" prefWidth="158.0" text="ROK BILANSOWY:">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
-      <Pane layoutX="20.0" layoutY="153.0" prefHeight="184.0" prefWidth="507.0" style="-fx-border-color: black; -fx-border-width: 2px; -fx-background-color: linear-gradient(to bottom, #cecece, #cecece, #cfcfcf, #cfcfcf, #cfcfcf);;">
+      <Pane layoutX="20.0" layoutY="182.0" prefHeight="184.0" prefWidth="507.0" style="-fx-border-color: black; -fx-border-width: 2px; -fx-background-color: linear-gradient(to bottom, #cecece, #cecece, #cfcfcf, #cfcfcf, #cfcfcf);;">
          <children>
             <VBox layoutY="1.0" prefHeight="181.0" prefWidth="378.0" spacing="2.0">
                <children>
@@ -86,11 +86,16 @@
             </VBox>
          </children>
       </Pane>
-      <Label fx:id="condition" alignment="CENTER" layoutX="21.0" layoutY="101.0" prefHeight="26.0" prefWidth="507.0">
+      <Label fx:id="condition" alignment="CENTER" layoutX="20.0" layoutY="127.0" prefHeight="26.0" prefWidth="507.0">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
       <Label fx:id="resultAnalysis" layoutX="20.0" layoutY="28.0" />
+      <Label layoutX="22.0" layoutY="20.0" prefHeight="17.0" prefWidth="507.0" text="WYBIERZ ROK, ABY ZOBACZYĆ WYNIKI ANALIZY RENTOWNOŚCI">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

@@ -114,9 +114,11 @@ public class Controller_User extends openFXMl {
 
         FirmaQuery company = new FirmaQuery();
         Firma com = company.showCompany(id);
-        //companyData.readIdCompany(com.getIdFirmy());
-      //  companyData.readDataCompany(com.getNazwaFirmy(), com.getUlica(), com.getNumerBudynku(), com.getNumerLokalu(), com.getMiasto(), com.getKodPocztowy());
-
+        if (com != null) {
+            companyData.readIdCompany(com.getIdFirmy());
+            companyData.readCompanyData(com.getNazwaFirmy(), com.getUlica(), com.getNumerBudynku(),
+                    com.getNumerLokalu(), com.getKodPocztowy(), com.getMiasto(), id);
+        }
 
     }
 
@@ -159,12 +161,13 @@ public class Controller_User extends openFXMl {
         Firma com = company.showCompany(idU);
         Controller_Analysis_Data analize = loader.getController();
         analType = analize;
+        analize.readIDUser(idU);
+
 
         if(com == null) {
             analize.showAlert();
         }else {
             analize.readIDCompany(com.getIdFirmy());
-            analize.readIDUser(idU);
         }
 
     }

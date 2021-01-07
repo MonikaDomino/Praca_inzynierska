@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import de.jensd.fx.glyphs.GlyphsStack?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -9,9 +8,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="479.0" prefWidth="549.0" style="-fx-background-color: linear-gradient(to top, #cedcf1, #b7cdee, #9fbeeb, #87b0e8, #6da1e5);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllery.panelUsers.Company.Controller_CompanyForm">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="415.0" prefWidth="546.0" style="-fx-background-color: linear-gradient(to top, #cedcf1, #b7cdee, #9fbeeb, #87b0e8, #6da1e5);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllery.panelUsers.Company.Controller_CompanyForm">
    <children>
-      <Pane layoutX="67.0" layoutY="37.0" prefHeight="377.0" prefWidth="438.0" style="-fx-background-color: linear-gradient(to right top, #6b7cd1, #5b8dda, #519ddf, #51ace1,    #5cb9e1, #5abbe4, #58bde7, #55bfea, #42b6f1, #3cacf7, #48a1fb, #5f94fb); -fx-background-radius: 10%; -fx-border-color: black; -fx-border-radius: 10%;">
+      <Pane layoutX="54.0" layoutY="19.0" prefHeight="377.0" prefWidth="438.0" style="-fx-background-color: linear-gradient(to right top, #6b7cd1, #5b8dda, #519ddf, #51ace1,    #5cb9e1, #5abbe4, #58bde7, #55bfea, #42b6f1, #3cacf7, #48a1fb, #5f94fb); -fx-background-radius: 10%; -fx-border-color: black; -fx-border-radius: 10%;">
          <children>
             <TextField fx:id="street" layoutX="13.0" layoutY="157.0" prefHeight="32.0" prefWidth="152.0" promptText="Street" style="-fx-background-radius: 16px;">
                <font>
@@ -51,7 +50,7 @@
             </TextField>
             <ImageView fitHeight="51.0" fitWidth="97.0" layoutX="182.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../img/824-8243777_business-icon-establish-a-company-icon-removebg-preview.png" />
+                  <Image url="@824-8243777_business-icon-establish-a-company-icon-removebg-preview.png" />
                </image>
             </ImageView>
             <TextField fx:id="postCode" layoutX="13.0" layoutY="237.0" prefHeight="32.0" prefWidth="142.0" promptText="Post code" style="-fx-background-radius: 16px;">
@@ -79,7 +78,6 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <GlyphsStack />
             <Label fx:id="idUserC" layoutX="341.0" layoutY="14.0" />
          </children>
       </Pane>

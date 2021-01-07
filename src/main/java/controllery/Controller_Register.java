@@ -9,7 +9,6 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
@@ -47,6 +46,7 @@ public class Controller_Register extends openFXMl  implements Initializable {
         String login = logintxt.getText();
         String password = passwdtxt.getText();
         String email = emailtxt.getText();
+
 
         UzytkownikQuery usser = new UzytkownikQuery();
 
@@ -230,6 +230,8 @@ public class Controller_Register extends openFXMl  implements Initializable {
     public void hidden (){
         strongPass.setVisible(false);
     }
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
