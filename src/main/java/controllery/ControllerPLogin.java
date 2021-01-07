@@ -25,7 +25,8 @@ public class ControllerPLogin extends openFXMl implements Initializable {
     @FXML
     private PasswordField passUtxt;
 
-    Notification notification;
+    Controller_Register regist;
+    Controller_Pass password;
 
     @FXML
     void changePassword(ActionEvent event)  {
@@ -33,6 +34,10 @@ public class ControllerPLogin extends openFXMl implements Initializable {
         String link = "/fxml/panelPass.fxml";
         readFXML(event, link);
         frame(event);
+
+        Controller_Pass passW = read.getController();
+        password = passW;
+        passW.hidden();
 
 
     }
@@ -82,6 +87,10 @@ public class ControllerPLogin extends openFXMl implements Initializable {
         String link = "/fxml/panelRegist.fxml";
         readFXML(event, link);
         frame(event);
+
+        Controller_Register register = read.getController();
+        regist =register;
+        register.hidden();
 
     }
 

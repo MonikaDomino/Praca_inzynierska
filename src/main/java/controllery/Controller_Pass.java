@@ -120,6 +120,8 @@ public class Controller_Pass extends openFXMl{
     @FXML
     void howStrong(KeyEvent event) {
 
+        securityCheck.setVisible(true);
+
         String passwr;
                passwr = newPassword.getText();
 
@@ -132,8 +134,9 @@ public class Controller_Pass extends openFXMl{
          Pattern hasSpecialChar;
         hasSpecialChar= Pattern.compile(".*[@#$%!].*");
 
+        int sizePass = passwr.length();
 
-        if(passwr.length() < 6){
+        if(sizePass < 6){
             strongPass.setText("Bardzo s³abe");
             securityCheck.setProgress(0.05);
             securityCheck.setStyle("-fx-accent: red;");
@@ -209,8 +212,9 @@ public class Controller_Pass extends openFXMl{
 
     }
 
-
-
+    public void hidden(){
+        securityCheck.setVisible(false);
+    }
 
 
 
