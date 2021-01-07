@@ -94,6 +94,7 @@ public class Controller_Company {
         Firma f = fq.showCompanyData(id);
         changeA.readDataCompany(f.getNazwaFirmy(), f.getUlica(), f.getNumerBudynku(), f.getNumerLokalu(),
                 f.getKodPocztowy(), f.getMiasto());
+        changeA.readIdCompany(id);
     }
 
     @FXML

@@ -53,4 +53,63 @@ public class FirmaQuery {
         return f;
     }
 
+    public void changeAddress(int IDcompany, String name, String city,
+                              String street, String buildingNr, String localNumber, String postcode)
+            throws Exception {
+
+        session = HibernateUtill.getSessionFactory().openSession();
+
+        String query = "UPDATE `firma` SET";
+
+
+        if (!query.equals("UPDATE `firma` SET"))
+            query += ",";
+
+        if (name.length() > 0) {
+            query = query + " `nazwa_firmy` = '" + name + "'";
+        }
+
+        if (city.length() > 0) {
+            if (!query.equals("UPDATE `firma` SET"))
+                query += ",";
+            query = query + " `miasto` = '" + city + "'";
+        }
+
+        if (street.length() > 0) {
+            if (!query.equals("UPDATE `firma` SET"))
+                query += ",";
+            query = query + " `ulica` = '" + street + "'";
+        }
+
+        if (buildingNr.length() > 0) {
+            if (!query.equals("UPDATE `firma` SET"))
+                query += ",";
+            query = query + " `numer_budynku` = '" + buildingNr + "'";
+        }
+
+        if (localNumber.length() > 0) {
+            if (!query.equals("UPDATE `firma` SET"))
+                query += ",";
+            query = query + " `numer_lokalu`= '" + localNumber + "'";
+        }
+
+        if (postcode.length() > 0) {
+            if (!query.equals("UPDATE `firma` SET"))
+                query += ",";
+            query = query + " `kod_pocztowy` = '" + postcode + "'";
+        }
+
+        query = query + " WHERE " + " `id_uzytkownika` = " + IDcompany;
+
+        try {
+            session.getTransaction().begin();
+            session.createSQLQuery(query).executeUpdate();
+            session.getTransaction().commit();
+            session.close();
+        } catch (HibernateException error) {
+            session.getTransaction().rollback();
+            session.close();
+        }
+    }
+
 }
