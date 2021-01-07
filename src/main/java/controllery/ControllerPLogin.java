@@ -30,6 +30,9 @@ public class ControllerPLogin extends openFXMl implements Initializable {
     @FXML
     void changePassword(ActionEvent event)  {
 
+        String link = "/fxml/panelPass.fxml";
+        readFXML(event, link);
+        frame(event);
 
 
     }

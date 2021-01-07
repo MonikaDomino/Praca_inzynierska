@@ -110,4 +110,35 @@ public class UzytkownikQuery {
         }
     }
 
+    public Uzytkownik searchEmail(String mail) {
+        Uzytkownik uk = null;
+        session = HibernateUtill.getSessionFactory().openSession();
+        String hql = "From Uzytkownik WHERE email = '" + mail + "'";
+        query = session.createQuery(hql);
+        uk = (Uzytkownik) query.uniqueResult();
+        session.close();
+
+        return uk;
+    }
+
+    public void changePassword(String mail, String newPasswor) {
+        session = HibernateUtill.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Uzytkownik user = new UzytkownikQuery().searchEmail(mail);
+            user.setPassword(newPasswor);
+            session.update(user);
+            tx.commit();
+
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+
 }

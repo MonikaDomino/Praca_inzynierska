@@ -51,7 +51,7 @@
    </Pane>
    <ImageView fitHeight="222.0" fitWidth="360.0" layoutX="26.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
       <image>
-         <Image url="@../img/analiza.png" />
+         <Image url="@../img/analiza-removebg-preview.png" />
       </image>
    </ImageView>
 

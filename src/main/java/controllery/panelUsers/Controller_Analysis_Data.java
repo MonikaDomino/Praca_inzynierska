@@ -1,6 +1,7 @@
 package controllery.panelUsers;
 
 
+import controllery.panelUsers.Company.Controller_CompanyForm;
 import hibernate.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -65,6 +66,7 @@ public class Controller_Analysis_Data {
     private Label idUserAT;
 
     Controller_Start start;
+    Controller_CompanyForm formC;
 
 
     @FXML
@@ -476,8 +478,17 @@ public class Controller_Analysis_Data {
             loaderCancel.setLocation(Controller_ChangeCPass.class.getResource(linkC));
             Pane newLoadPane = loaderCancel.load();
             paneData.getChildren().add(newLoadPane);
-        } else{
+
+            Controller_CompanyForm form = loaderCancel.getController();
+            formC = form;
+
+            int id = Integer.parseInt(idUserAT.getText());
+            form.readIdUser(id);
+
+        }else{
+
         }
+
 
     }
 

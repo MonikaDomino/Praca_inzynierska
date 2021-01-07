@@ -154,7 +154,7 @@ public class Controller_ChangeCPass {
             correctStatus.setText("Has³a s¹ takie same");
             correctStatus.setTextFill(Color.GREEN);
         }else{
-            correctStatus.setText("Has³a nie s¹ takie same!");
+            correctStatus.setText("Has³a siê ró¿ni¹!");
             correctStatus.setTextFill(Color.RED);
         }
 

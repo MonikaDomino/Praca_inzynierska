@@ -2,11 +2,13 @@ package hibernate;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
+
 
 public class AnalizaQuery {
 
     Session session;
-
+    Query query;
 
     public void addNewAnalysis(int id_data, double result) {
         session = HibernateUtill.getSessionFactory().openSession();
@@ -24,5 +26,15 @@ public class AnalizaQuery {
         }
 
 
+    }
+
+    public Analiza showResult(int idData){
+        Analiza a = null;
+        session = HibernateUtill.getSessionFactory().openSession();
+        String hql = "from Analiza where idDane= '" + idData +" '";
+        query = session.createQuery(hql);
+        a = (Analiza) query.uniqueResult();
+        session.close();
+        return a;
     }
 }

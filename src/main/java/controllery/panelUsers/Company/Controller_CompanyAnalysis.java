@@ -37,6 +37,12 @@ public class Controller_CompanyAnalysis {
     @FXML
     private Label readMZB;
 
+    @FXML
+    private Label condition;
+
+    @FXML
+    private Label resultAnalysis;
+
 
     public void comboBox(){
         DanefinansoweQuery dq = new DanefinansoweQuery();
@@ -64,7 +70,10 @@ public class Controller_CompanyAnalysis {
             int idData = dr.getIdDane();
 
             WskaznikiQuery point = new WskaznikiQuery();
-            Wskazniki pointers = point.showCompany(idData);
+            Wskazniki pointers = point.showPointers(idData);
+
+            AnalizaQuery analys = new AnalizaQuery();
+            Analiza analize = analys.showResult(idData);
 
             double ROE = pointers.getRoe();
             double ROA = pointers.getRoa();
@@ -72,6 +81,7 @@ public class Controller_CompanyAnalysis {
             double MO = pointers.getMarzaOperacyjna();
             double MZB = pointers.getMarzaZb();
             double ROS = pointers.getRos();
+            double resultA = analize.getWynikAnalizy();
 
             readROE.setText(Double.toString(ROE));
             readROA.setText(Double.toString(ROA));
@@ -79,6 +89,10 @@ public class Controller_CompanyAnalysis {
             readMO.setText(Double.toString(MO));
             readMZB.setText(Double.toString(MZB));
             readROS.setText(Double.toString(ROS));
+            showCondition(resultA);
+
+            resultAnalysis.setText(Double.toString(resultA));
+            resultAnalysis.setVisible(false);
 
 
             if(ROE < 0)  readROE.setStyle("-fx-text-fill: red");
@@ -91,4 +105,17 @@ public class Controller_CompanyAnalysis {
 
         }
     }
-}
+
+    public void showCondition(double result){
+        if (result < 0) {
+            condition.setText("Bardzo wysoka mo¿liwoœæ bankructwa!");
+        } else if (result > 0 && result < 1) {
+            condition.setText("S³aba kondycja finansowa.");
+        } else if (result > 1 && result < 2) {
+            condition.setText("Dobra kondycja finansowa");
+        } else {
+            condition.setText("Bardzo dobra kondycja finansowa!");
+        }
+    }
+    }
+

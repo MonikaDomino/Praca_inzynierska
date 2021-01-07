@@ -32,7 +32,7 @@ public class WskaznikiQuery {
         }
     }
 
-    public Wskazniki showCompany(int idData){
+    public Wskazniki showPointers(int idData){
         Wskazniki w = null;
         session = HibernateUtill.getSessionFactory().openSession();
         String hql = "from Wskazniki where idDane= '" + idData +" '";

@@ -3,22 +3,26 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="455.0" prefWidth="719.0" style="-fx-background-color: linear-gradient(to top, #cedcf1, #b7cdee, #9fbeeb, #87b0e8, #6da1e5);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllery.Controller_Pass">
+<AnchorPane fx:id="panePF" prefHeight="455.0" prefWidth="719.0" style="-fx-background-color: linear-gradient(to top, #cedcf1, #b7cdee, #9fbeeb, #87b0e8, #6da1e5);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllery.Controller_Pass">
    <children>
-      <Pane layoutX="328.0" layoutY="31.0" prefHeight="382.0" prefWidth="352.0" style="-fx-background-color: linear-gradient(to right top, #6b7cd1, #5b8dda, #519ddf, #51ace1,    #5cb9e1, #5abbe4, #58bde7, #55bfea, #42b6f1, #3cacf7, #48a1fb, #5f94fb); -fx-background-radius: 10%; -fx-border-color: black; -fx-border-radius: 10%;">
+      <Pane layoutX="359.0" layoutY="20.0" prefHeight="414.0" prefWidth="340.0" style="-fx-background-color: linear-gradient(to right top, #6b7cd1, #5b8dda, #519ddf, #51ace1,    #5cb9e1, #5abbe4, #58bde7, #55bfea, #42b6f1, #3cacf7, #48a1fb, #5f94fb); -fx-background-radius: 10%; -fx-border-color: black; -fx-border-radius: 10%;">
          <children>
-            <TextField fx:id="emailtxt" layoutX="18.0" layoutY="154.0" prefHeight="32.0" prefWidth="317.0" promptText="Email" style="-fx-background-radius: 16px;">
+            <TextField fx:id="mail" layoutX="15.0" layoutY="122.0" onKeyTyped="#searchInDatabase" prefHeight="25.0" prefWidth="267.0" promptText="Email" style="-fx-background-radius: 16px;">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>
             </TextField>
-            <JFXButton layoutX="94.0" layoutY="312.0" mnemonicParsing="false" onAction="#changePassword" prefHeight="38.0" prefWidth="182.0" style="-fx-background-color: linear-gradient(to bottom, #b2c4e0, #b4c4db, #b6c3d6, #b8c3d1, #bac2cc); -fx-background-radius: 16px; -fx-font-weight: bold; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); -fx-font-family: Arial Narrow;" text="Odzyskaj hasło">
+            <JFXButton layoutX="85.0" layoutY="351.0" mnemonicParsing="false" onAction="#changePassword" prefHeight="38.0" prefWidth="182.0" style="-fx-background-color: linear-gradient(to bottom, #b2c4e0, #b4c4db, #b6c3d6, #b8c3d1, #bac2cc); -fx-background-radius: 16px; -fx-font-weight: bold; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); -fx-font-family: Arial Narrow;" text="Odzyskaj hasło">
                <font>
                   <Font size="14.0" />
                </font>
@@ -33,19 +37,42 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </JFXButton>
-            <FontAwesomeIcon glyphName="USERS" layoutX="159.0" layoutY="42.0" size="2EM" />
-            <Label layoutX="88.0" layoutY="80.0" text="Odzyskiwanie hasła:">
-               <font>
-                  <Font name="Arial Bold" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="29.0" layoutY="127.0" text="Twój adres email:">
+            <FontAwesomeIcon glyphName="USERS" layoutX="148.0" layoutY="58.0" size="3EM" wrappingWidth="26.1357421875" />
+            <Label layoutX="14.0" layoutY="100.0" text="Adres e-mail:">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>
             </Label>
-            <ImageView fitHeight="100.0" fitWidth="169.0" layoutX="100.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" />
+            <ProgressIndicator fx:id="checkEmail" layoutX="296.0" layoutY="117.0" progress="0.0" style="visibility: hidden;" />
+            <Label layoutX="15.0" layoutY="175.0" text="Nowe hasło:">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Label>
+            <ProgressBar fx:id="securityCheck" layoutX="85.0" layoutY="235.0" prefHeight="10.0" prefWidth="200.0" progress="0.0" />
+            <PasswordField fx:id="newPassword" layoutX="12.0" layoutY="202.0" onKeyTyped="#howStrong" prefHeight="26.0" prefWidth="274.0" style="-fx-background-radius: 16px;" />
+            <Label fx:id="strongPass" alignment="CENTER_RIGHT" layoutX="87.0" layoutY="245.0" prefHeight="17.0" prefWidth="192.0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="15.0" layoutY="262.0" text="Powtórz hasło:">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="confirmPassword" layoutX="11.0" layoutY="286.0" onKeyTyped="#checkTheSame" prefHeight="26.0" prefWidth="274.0" style="-fx-background-radius: 16px;" />
+            <Label fx:id="checkSame" alignment="CENTER" layoutX="11.0" layoutY="320.0" prefHeight="17.0" prefWidth="283.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
+      <ImageView fitHeight="276.0" fitWidth="257.0" layoutX="55.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/unnamed__1_-removebg-preview.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

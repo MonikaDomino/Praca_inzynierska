@@ -73,7 +73,7 @@
                   </Pane>
                   <Pane layoutX="14.0" layoutY="349.0" prefHeight="42.0" prefWidth="192.0" style="-fx-background-color: linear-gradient(to bottom, #24e0ee, #22d8fb, #43ceff, #66c4ff, #87b8ff); -fx-background-radius: 12px; -fx-border-radius: 12px; -fx-border-color: linear-gradient(to right top, #051937, #022c60, #00418c, #0056bb, #126beb);">
                      <children>
-                        <ImageView fitHeight="32.0" fitWidth="46.0" layoutX="21.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="32.0" fitWidth="46.0" layoutX="21.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../img/contact-icon.png" />
                            </image>
