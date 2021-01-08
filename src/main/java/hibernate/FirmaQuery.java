@@ -53,8 +53,8 @@ public class FirmaQuery {
         return f;
     }
 
-    public void changeAddress(int IDcompany, String name, String city,
-                              String street, String buildingNr, String localNumber, String postcode)
+    public void changeAddress(String name, String street,
+                               String buildingNr, String city, String postcode, String localNumber, int idCom)
             throws Exception {
 
         session = HibernateUtill.getSessionFactory().openSession();
@@ -69,12 +69,6 @@ public class FirmaQuery {
             query = query + " `nazwa_firmy` = '" + name + "'";
         }
 
-        if (city.length() > 0) {
-            if (!query.equals("UPDATE `firma` SET"))
-                query += ",";
-            query = query + " `miasto` = '" + city + "'";
-        }
-
         if (street.length() > 0) {
             if (!query.equals("UPDATE `firma` SET"))
                 query += ",";
@@ -87,19 +81,25 @@ public class FirmaQuery {
             query = query + " `numer_budynku` = '" + buildingNr + "'";
         }
 
-        if (localNumber.length() > 0) {
+        if (city.length() > 0) {
             if (!query.equals("UPDATE `firma` SET"))
                 query += ",";
-            query = query + " `numer_lokalu`= '" + localNumber + "'";
+            query = query + " `miasto` = '" + city + "'";
         }
 
         if (postcode.length() > 0) {
             if (!query.equals("UPDATE `firma` SET"))
                 query += ",";
-            query = query + " `kod_pocztowy` = '" + postcode + "'";
+            query = query + " `kod_pocztowy`= '" + postcode + "'";
         }
 
-        query = query + " WHERE " + " `id_uzytkownika` = " + IDcompany;
+        if (localNumber.length() > 0) {
+            if (!query.equals("UPDATE `firma` SET"))
+                query += ",";
+            query = query + " `numer_lokalu` = '" + localNumber + "'";
+        }
+
+        query = query + " WHERE " + " `id_firmy` = " + idCom;
 
         try {
             session.getTransaction().begin();

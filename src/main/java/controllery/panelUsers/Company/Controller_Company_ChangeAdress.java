@@ -4,6 +4,8 @@ import com.jfoenix.controls.JFXTextField;
 import hibernate.FirmaQuery;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 
 public class Controller_Company_ChangeAdress {
@@ -43,7 +45,18 @@ public class Controller_Company_ChangeAdress {
 
         try{
             FirmaQuery company = new FirmaQuery();
-            company.changeAddress(idCom, nameC, city, streetC,nBuild, nLocal,postcode);
+            company.changeAddress(nameC, streetC, nBuild, city, postcode, nLocal, idCom);
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("Dane firmy zosta³y zaktualizowane");
+            DialogPane dialogPane = alert.getDialogPane();
+            dialogPane.getStylesheets().add(
+                    getClass().getResource("/fxml/alert.css").toExternalForm());
+            dialogPane.getStyleClass().add("myAlerts");
+            dialogPane.setMaxSize(400,0);
+
+            alert.showAndWait();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
