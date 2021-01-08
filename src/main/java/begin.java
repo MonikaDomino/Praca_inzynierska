@@ -48,7 +48,7 @@ public class begin extends Application  {
                         getClass().getResource("/fxml/alert.css").toExternalForm());
                 dialogPane.getStyleClass().add("myAlerts");
                 dialogPane.setMaxSize(400,0);
-
+                alert.setTitle("");
                 alert.showAndWait();
 
                 if (alert.getResult() == buttonYES) {

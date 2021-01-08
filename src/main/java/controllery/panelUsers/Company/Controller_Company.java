@@ -1,7 +1,6 @@
 package controllery.panelUsers.Company;
 
 import com.jfoenix.controls.JFXButton;
-import controllery.panelUsers.Controller_Analysis_Data;
 import hibernate.Firma;
 import hibernate.FirmaQuery;
 import javafx.event.ActionEvent;
@@ -38,6 +37,11 @@ public class Controller_Company {
     @FXML
     private JFXButton changeDataA;
 
+    @FXML
+    private Label idUshow;
+
+    @FXML
+    private Label idCAR;
 
     @FXML
     private JFXButton addCompanyBtn;
@@ -57,7 +61,12 @@ public class Controller_Company {
 
         Controller_CompanyFinancial cf = loader.getController();
         financial = cf;
-        cf.comboBox();
+        int idD = Integer.parseInt(idUshow.getText());
+        FirmaQuery company = new FirmaQuery();
+        Firma com = company.showCompany(idD);
+
+        cf.comboBox(com.getIdFirmy());
+
 
     }
 
@@ -73,6 +82,7 @@ public class Controller_Company {
         comForm = fCom;
         int idUs = Integer.parseInt(idUCom.getText());
         fCom.readIdUser(idUs);
+
 
 
 
@@ -107,7 +117,11 @@ public class Controller_Company {
 
         Controller_CompanyAnalysis analsis = loader.getController();
         analysis = analsis;
-        analsis.comboBox();
+        int idCpman = Integer.parseInt(idCAR.getText());
+        analsis.comboBox(idCpman);
+        int com = Integer.parseInt(idCompany.getText());
+        analsis.readIdCompany(com);
+
 
     }
 
@@ -140,6 +154,16 @@ public class Controller_Company {
     public void readIdUser (int idU){
         idUCom.setText(Integer.toString(idU));
         idUCom.setVisible(false);
+    }
+
+    public void readIDu (int idUS){
+        idUshow.setText(Integer.toString(idUS));
+        idUshow.setVisible(false);
+    }
+
+    public void readIdCAR (int idC ){
+        idCAR.setText(Integer.toString(idC));
+        idCAR.setVisible(false);
     }
 
 }

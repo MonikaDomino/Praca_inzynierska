@@ -66,6 +66,8 @@
                </image>
             </ImageView>
             <Label fx:id="idUCom" layoutX="45.0" layoutY="61.0" />
+            <Label fx:id="idUshow" layoutX="453.0" layoutY="61.0" />
+            <Label fx:id="idCAR" layoutX="232.0" layoutY="14.0" />
          </children></Pane>
    </children>
 </Pane>

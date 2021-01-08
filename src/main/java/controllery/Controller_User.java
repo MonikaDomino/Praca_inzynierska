@@ -110,7 +110,6 @@ public class Controller_User extends openFXMl {
         Controller_Company companyData = loader.getController();
         formC = companyData;
         int id = Integer.parseInt(dataId.getText());
-        //companyData.readIdUser(id);
 
         FirmaQuery company = new FirmaQuery();
         Firma com = company.showCompany(id);
@@ -119,7 +118,8 @@ public class Controller_User extends openFXMl {
             companyData.readCompanyData(com.getNazwaFirmy(), com.getUlica(), com.getNumerBudynku(),
                     com.getNumerLokalu(), com.getKodPocztowy(), com.getMiasto(), id);
         }
-
+        companyData.readIDu(id);
+        companyData.readIdCAR(com.getIdFirmy());
     }
 
 

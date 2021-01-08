@@ -43,10 +43,14 @@ public class Controller_CompanyAnalysis {
     @FXML
     private Label resultAnalysis;
 
+    @FXML
+    private Label idCompany;
 
-    public void comboBox(){
+
+    public void comboBox(int idCom){
         DanefinansoweQuery dq = new DanefinansoweQuery();
-        yearCombo.getItems().addAll(dq.DaneFinansoweSelectAll());
+
+        yearCombo.getItems().addAll(dq.DaneFinansoweSelectForYear(idCom));
         yearCombo.setConverter(new DanefinansoweConverter());
 
         yearCombo.setOnAction(new EventHandler<ActionEvent>() {
@@ -117,5 +121,11 @@ public class Controller_CompanyAnalysis {
             condition.setText("Bardzo dobra kondycja finansowa!");
         }
     }
+
+    public void readIdCompany (int id){
+        idCompany.setText(Integer.toString(id));
+        idCompany.setVisible(false);
+    }
+
     }
 

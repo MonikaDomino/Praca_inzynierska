@@ -45,11 +45,14 @@ public class Controller_CompanyFinancial {
     @FXML
     private Label selectedYear;
 
+    @FXML
+    private Label companyId;
 
-    public void comboBox(){
+
+    public void comboBox(int idComp){
         selectedYear.setText("");
         DanefinansoweQuery dq = new DanefinansoweQuery();
-        comboYear.getItems().addAll(dq.DaneFinansoweSelectAll());
+        comboYear.getItems().addAll(dq.DaneFinansoweSelectForYear(idComp));
         comboYear.setConverter(new DanefinansoweConverter());
 
         comboYear.setOnAction(new EventHandler<ActionEvent>() {

@@ -23,10 +23,9 @@ public class DanefinansoweQuery {
         String query = "INSERT INTO `danefinansowe`(`id_dane`, `rok_bilansowy`, "
                 + "`zysk_brutto`, `zapasy`, `aktywa_ogolem`, `przychodyS`, `zobowiazania`, `zysk_operacyjny`," +
                 "`amortyzacja` , `kapital_wlasny` , `zysk_netto`, `id_firmy`)" +
-                " SELECT NULL, '" + year + "', '" + profitB + "', '" + economic_stocks + "', '" + assest + "', '" +
+                " VALUES (NULL, '" + year + "', '" + profitB + "', '" + economic_stocks + "', '" + assest + "', '" +
                 +totalSales + "', '" + operationProfit + "', '" + credit + "', '" + amort + "', '" + capital + "', '"
-                + profit_net + "', '" + id_company + "'FROM DUAL WHERE NOT EXISTS (SELECT id_dane FROM danefinansowe " +
-                "WHERE rok_bilansowy = '" +year+  "')";
+                + profit_net + "', '" + id_company + "')";
 
 
         try {
@@ -93,15 +92,21 @@ public class DanefinansoweQuery {
         return df;
     }
 
-    public List<Danefinansowe> DaneFinansoweSelectForYear(int year) {
+    public List<Danefinansowe> DaneFinansoweSelectForYear(int idCompany) {
         session = HibernateUtill.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
-        String hql = "from Danefinansowe where rokBilansowy = '" + year + "'";
-        query = session.createQuery(hql);
-        List<Danefinansowe> df = query.list();
-        tx.commit();
+        String hql = "from Danefinansowe where idFirmy = '" + idCompany + "'";
+        Query query = session.createQuery(hql);
+        List <Danefinansowe> df = query.list();
         session.close();
+        int i = 0;
+        for(Danefinansowe d : df){
+            if(d.getIdFirmy() != idCompany){
+                df.remove(i);
+            }
+            i++;
+        }
         return df;
+
     }
 
 

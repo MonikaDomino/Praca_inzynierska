@@ -149,11 +149,8 @@ public class Controller_Analysis_Data {
 
         Danefinansowe dft = data.checkYear(id_company);
 
-    if(dft == null){
-        data.addNewFinancialDataAnalysis(year_economy, gross_profit, economy_stock, total_assest, total_Sales, credit,
-                operation_profit, amort,capitalOwn, net_profit, id_company);
-    }
-       else if (year_economy != dft.getRokBilansowy()) {
+
+     if (dft == null || dft.getRokBilansowy() != year_economy) {
             data.addNewFinancialDataAnalysis(year_economy, gross_profit, economy_stock, total_assest, total_Sales, credit,
                     operation_profit, amort, capitalOwn, net_profit, id_company);
 
@@ -237,7 +234,7 @@ public class Controller_Analysis_Data {
             shown.readROI(ROI);
         } else {
             Alert error = new Alert(Alert.AlertType.ERROR);
-            error.setContentText("SprawdŸ zak³adkê Firma -> Dane finansowe ");
+            error.setContentText("SprawdŸ zak³adkê Firma ");
             error.setHeaderText("Analiza rentownoœci dla " + year_economy + "r. zosta³a ju¿ wykonana.");
             DialogPane dialogPane = error.getDialogPane();
             dialogPane.getStylesheets().add(
@@ -248,6 +245,7 @@ public class Controller_Analysis_Data {
 
         }
     }
+
 
 
     @FXML
