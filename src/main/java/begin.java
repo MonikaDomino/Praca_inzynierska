@@ -51,7 +51,7 @@ public class begin extends Application  {
                 alert.setTitle("");
 
                 Optional<ButtonType> result = alert.showAndWait();
-                if (result.get() != buttonNO) {
+                if (result.get() == buttonYES) {
                     Platform.exit();
 
                 } else {

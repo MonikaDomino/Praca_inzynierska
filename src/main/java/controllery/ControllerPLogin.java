@@ -37,6 +37,7 @@ public class ControllerPLogin extends openFXMl implements Initializable {
         readFXML(event, link);
         frame(event);
 
+
         Controller_Pass passW = read.getController();
         password = passW;
         passW.hidden();
@@ -65,9 +66,15 @@ public class ControllerPLogin extends openFXMl implements Initializable {
             personalId.readInfoUser(user.getImie(), user.getNazwisko(), user.getEmail());
             personalId.readLabel(user.getImie(), user.getNazwisko());
 
-
-
             frame(event);
+
+            FirmaQuery company = new FirmaQuery();
+            Firma comp = company.showCompany(user.getIdUzytkownika());
+
+            if(comp == null){
+                personalId.showAlert();
+            }
+
 
         } else {
             Alert alert_El = new Alert(Alert.AlertType.ERROR);

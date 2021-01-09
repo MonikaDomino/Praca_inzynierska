@@ -23,10 +23,10 @@ public class DanefinansoweQuery {
         String query = "INSERT INTO `danefinansowe`(`id_dane`, `rok_bilansowy`, "
                 + "`zysk_brutto`, `zapasy`, `aktywa_ogolem`, `przychodyS`, `zobowiazania`, `zysk_operacyjny`," +
                 "`amortyzacja` , `kapital_wlasny` , `zysk_netto`, `id_firmy`)" +
-                " VALUES (NULL, '" + year + "', '" + profitB + "', '" + economic_stocks + "', '" + assest + "', '" +
+                " SELECT NULL, '" + year + "', '" + profitB + "', '" + economic_stocks + "', '" + assest + "', '" +
                 +totalSales + "', '" + operationProfit + "', '" + credit + "', '" + amort + "', '" + capital + "', '"
-                + profit_net + "', '" + id_company + "')";
-
+                + profit_net + "', '" + id_company + "'FROM DUAL WHERE NOT EXISTS (SELECT id_dane FROM danefinansowe " +
+                "WHERE rok_bilansowy = '" +year+  "' and  id_firmy = '" +id_company+ "')";
 
         try {
             session.getTransaction().begin();

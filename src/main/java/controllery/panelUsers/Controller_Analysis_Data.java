@@ -160,8 +160,8 @@ public class Controller_Analysis_Data {
 
             int id = dataFinancial.getIdDane();
 
-            idDataFinancial.setText(Integer.toString(id));
-            idDataFinancial.setVisible(false);
+            //idDataFinancial.setText(Integer.toString(id));
+           // idDataFinancial.setVisible(false);
 
 
             double x1 = (gross_profit + amort) / credit;
@@ -174,11 +174,11 @@ public class Controller_Analysis_Data {
             double analysis = ((3 * x1) / 2) + ((8 * x2) / 100) + 10 * x3 + 5 * x4 + ((3 * x5) / 10) + (x6 / 10);
 
 
-            int idData = Integer.parseInt(idDataFinancial.getText());
+           // int idData = Integer.parseInt(idDataFinancial.getText());
 
             try {
                 AnalizaQuery analyse = new AnalizaQuery();
-                analyse.addNewAnalysis(idData, analysis);
+                analyse.addNewAnalysis(id, analysis);
 
             } catch (Exception e) {
                 e.getLocalizedMessage();
@@ -202,7 +202,7 @@ public class Controller_Analysis_Data {
 
             try {
                 WskaznikiQuery pointer = new WskaznikiQuery();
-                pointer.addNewPointers(ROE, ROA, ROS, operating_profit_margin, ROI, expected_gross_margin, idData);
+                pointer.addNewPointers(ROE, ROA, ROS, operating_profit_margin, ROI, expected_gross_margin, id);
 
             } catch (Exception e) {
                 e.getLocalizedMessage();

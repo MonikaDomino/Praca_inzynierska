@@ -23,8 +23,6 @@ public abstract class openFXMl {
     FXMLLoader read;
     Stage app;
 
-    Pane pane;
-    BorderPane border;
 
 
 
