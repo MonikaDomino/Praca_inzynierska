@@ -71,7 +71,7 @@ public class Controller_ShowAnalysis {
             if(ROE > ROA) {
                 compare.setText("Kapita³ w³asny jest efektywnie wykorzystywany.");
             } else if (ROE < ROA){
-                compare.setText("Koszty z tytu³u zobowi¹zañ s¹ wy¿sze ni¿ uzyskiwane przychody.");
+                compare.setText("Koszty  s¹ wy¿sze ni¿ uzyskiwane przychody.");
             } else{
                 compare.setText(" ");
             }

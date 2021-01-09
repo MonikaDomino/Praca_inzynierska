@@ -150,7 +150,7 @@ public class Controller_Analysis_Data {
         Danefinansowe dft = data.checkYear(id_company);
 
 
-     if (dft == null || dft.getRokBilansowy() != year_economy) {
+     if (dft == null || year_economy != dft.getRokBilansowy()) {
             data.addNewFinancialDataAnalysis(year_economy, gross_profit, economy_stock, total_assest, total_Sales, credit,
                     operation_profit, amort, capitalOwn, net_profit, id_company);
 

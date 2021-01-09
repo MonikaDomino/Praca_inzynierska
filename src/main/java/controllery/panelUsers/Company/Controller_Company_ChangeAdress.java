@@ -4,9 +4,11 @@ import com.jfoenix.controls.JFXTextField;
 import hibernate.FirmaQuery;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
 public class Controller_Company_ChangeAdress {
 
@@ -25,11 +27,21 @@ public class Controller_Company_ChangeAdress {
     @FXML
     private JFXTextField numberFCch;
 
+
+    @FXML
+    private Pane paneCC;
+
     @FXML
     private JFXTextField postCodeCh;
 
     @FXML
     private JFXTextField cityChc;
+
+    @FXML
+    private Label idCompaChange;
+
+
+    Controller_CompanyData compData;
 
     @FXML
     void changeDataCompany(ActionEvent event) {
@@ -57,6 +69,18 @@ public class Controller_Company_ChangeAdress {
 
             alert.showAndWait();
 
+            String link = "/fxml/panelUser_type/Company/CompanyData.fxml";
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Controller_Company.class.getResource(link));
+            Pane newPane = loader.load();
+            paneCC.getChildren().add(newPane);
+
+            int idC = Integer.parseInt(idCompaChange.getText());
+
+            Controller_CompanyData cdata = loader.getController();
+            compData = cdata;
+            cdata.readCompanyData(idC);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -75,5 +99,8 @@ public class Controller_Company_ChangeAdress {
     public void readIdCompany (int id){
         idCompany.setText(Integer.toString(id));
         idCompany.setVisible(false);
+
+        idCompaChange.setText(Integer.toString(id));
+        idCompaChange.setVisible(false);
     }
 }
