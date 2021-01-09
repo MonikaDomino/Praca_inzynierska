@@ -252,6 +252,7 @@ public class Controller_Analysis_Data {
     void checkIsCorrectNumber(KeyEvent event) {
         Pattern intNumber = Pattern.compile("^-?\\d+$");
 
+
         String grossP = grossprofit.getText();
         String stockEconomy = economyStock.getText();
         String assesTotal = totalAssest.getText();
@@ -444,15 +445,12 @@ public class Controller_Analysis_Data {
 
     }
 
+    // method to check to number is double (9.0)
     public boolean checkPatterns(String text){
-        Pattern doublePattern = Pattern.compile("\\d+\\.\\d+"); // check doubt in double number
-        Pattern nDecimal = Pattern.compile("^(\\d+)(?:\\.(\\d{1,2}))?$");
-
-
+        Pattern nDecimal = Pattern.compile("^[+-]?([0-9]*[.])?[0-9]+$");
         boolean decimalCheck = nDecimal.matcher(text).matches();
-        boolean doubleCheck = doublePattern.matcher(text).matches();
 
-        return decimalCheck || doubleCheck;
+        return decimalCheck;
 
 
     }
