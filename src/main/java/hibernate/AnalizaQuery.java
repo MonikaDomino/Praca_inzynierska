@@ -33,7 +33,7 @@ public class AnalizaQuery {
         session = HibernateUtill.getSessionFactory().openSession();
         String hql = "from Analiza where idDane= '" + idData +" '";
         query = session.createQuery(hql);
-        a = (Analiza) query.uniqueResult();
+        a = (Analiza) query.setMaxResults(1).uniqueResult();
         session.close();
         return a;
     }

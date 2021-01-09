@@ -61,25 +61,28 @@ public class DanefinansoweQuery {
 
     }
 
-    public  Danefinansowe checkYear(int idCompany){
+    public  Danefinansowe checkYear(int idCompany, int year){
         Danefinansowe dc;
         session = HibernateUtill.getSessionFactory().openSession();
-        String hql = "from Danefinansowe where idFirmy = '" + idCompany +" '";
+        String hql = "from Danefinansowe where idFirmy = '" + idCompany + "'and rokBilansowy = '" + year + "'";
         query = session.createQuery(hql);
         dc = (Danefinansowe)query.setMaxResults(1).uniqueResult();
         session.close();
         return dc;
     }
 
-    public Danefinansowe readDatafromYear (int year){
+
+    public Danefinansowe readDatafromYearComp (int year, int idCompany){
         Danefinansowe df;
         session = HibernateUtill.getSessionFactory().openSession();
-        String hql = "from Danefinansowe where rokBilansowy = '" + year + "'";
+        String hql = "from Danefinansowe where idFirmy = '" + idCompany + "'and rokBilansowy = '" + year + "'";
         query = session.createQuery(hql);
-        df = (Danefinansowe)query.setMaxResults(1).uniqueResult();
+        df = (Danefinansowe)query.uniqueResult();
         session.close();
         return df;
     }
+
+
 
     public List<Danefinansowe> DaneFinansoweSelectAll() {
         session = HibernateUtill.getSessionFactory().openSession();

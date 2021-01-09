@@ -68,24 +68,28 @@ public class Controller_CompanyAnalysis {
         Danefinansowe df = yearCombo.getValue();
         if(df!= null){
             int year = df.getRokBilansowy();
+            int idC = Integer.parseInt(idCompany.getText());
             DanefinansoweQuery dqr = new DanefinansoweQuery();
-            Danefinansowe dr = dqr.readDatafromYear(year);
+            Danefinansowe dr = dqr.readDatafromYearComp(year, idC);
 
             int idData = dr.getIdDane();
 
             WskaznikiQuery point = new WskaznikiQuery();
             Wskazniki pointers = point.showPointers(idData);
 
-            AnalizaQuery analys = new AnalizaQuery();
-            Analiza analize = analys.showResult(idData);
+            int idPoint = pointers.getIdWskazniki();
 
-            double ROE = pointers.getRoe();
+
+           AnalizaQuery analys = new AnalizaQuery();
+           Analiza analize = analys.showResult(idData);
+
+          double ROE = pointers.getRoe();
             double ROA = pointers.getRoa();
             double ROI = pointers.getRoi();
             double MO = pointers.getMarzaOperacyjna();
             double MZB = pointers.getMarzaZb();
             double ROS = pointers.getRos();
-            double resultA = analize.getWynikAnalizy();
+           double resultA = analize.getWynikAnalizy();
 
             readROE.setText(Double.toString(ROE));
             readROA.setText(Double.toString(ROA));
@@ -95,7 +99,7 @@ public class Controller_CompanyAnalysis {
             readROS.setText(Double.toString(ROS));
             showCondition(resultA);
 
-            resultAnalysis.setText(Double.toString(resultA));
+           resultAnalysis.setText(Double.toString(resultA));
             resultAnalysis.setVisible(false);
 
 

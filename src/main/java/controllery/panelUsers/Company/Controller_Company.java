@@ -17,6 +17,9 @@ public class Controller_Company {
     private Pane changePaneC;
 
     @FXML
+    private Label idUsC;
+
+    @FXML
     private Pane paneChange;
 
     @FXML
@@ -66,6 +69,7 @@ public class Controller_Company {
         Firma com = company.showCompany(idD);
 
         cf.comboBox(com.getIdFirmy());
+        cf.readIdCompany(com.getIdFirmy());
 
 
     }
@@ -80,7 +84,7 @@ public class Controller_Company {
 
         Controller_CompanyForm fCom = load.getController();
         comForm = fCom;
-        int idUs = Integer.parseInt(idUCom.getText());
+        int idUs = Integer.parseInt(idUshow.getText());
         fCom.readIdUser(idUs);
 
 
@@ -151,10 +155,14 @@ public class Controller_Company {
         idCompany.setVisible(false);
     }
 
+    public void readIdUCom (){
+        idUsC.setText(idUshow.getText());
+        idUsC.setVisible(false);
+    }
+
     public void readIdUser (int idU){
         idUCom.setText(Integer.toString(idU));
-        idUCom.setVisible(false);
-    }
+        idUCom.setVisible(false);    }
 
     public void readIDu (int idUS){
         idUshow.setText(Integer.toString(idUS));

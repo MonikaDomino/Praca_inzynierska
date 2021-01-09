@@ -70,8 +70,9 @@ public class Controller_CompanyFinancial {
         Danefinansowe df = comboYear.getValue();
         if(df!= null){
             int year = df.getRokBilansowy();
+            int idCmp = Integer.parseInt(companyId.getText());
             DanefinansoweQuery dqr = new DanefinansoweQuery();
-            Danefinansowe dr = dqr.readDatafromYear(year);
+            Danefinansowe dr = dqr.readDatafromYearComp(year, idCmp);
 
             readProfitGross.setText(Double.toString(dr.getZyskBrutto()));
             readEcoStock.setText(Double.toString(dr.getZapasy()));
@@ -85,6 +86,11 @@ public class Controller_CompanyFinancial {
 
 
         }
+    }
+
+    public void readIdCompany (int idComp){
+        companyId.setText(Integer.toString(idComp));
+        companyId.setVisible(false);
     }
 
 

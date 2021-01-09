@@ -147,104 +147,100 @@ public class Controller_Analysis_Data {
 
         DanefinansoweQuery data = new DanefinansoweQuery();
 
-        Danefinansowe dft = data.checkYear(id_company);
+        Danefinansowe dft = data.checkYear(id_company, year_economy);
+
+     if (dft == null) {
+         data.addNewFinancialDataAnalysis(year_economy, gross_profit, economy_stock, total_assest, total_Sales, credit,
+                 operation_profit, amort, capitalOwn, net_profit, id_company);
+
+         Danefinansowe dataFinancial = data.showID(year_economy, gross_profit, economy_stock, total_assest, total_Sales, credit,
+                   operation_profit, amort, capitalOwn, net_profit, id_company);
+
+         int id = dataFinancial.getIdDane();
+
+         double x1 = (gross_profit + amort) / credit;
+         double x2 = total_assest / credit;
+         double x3 = operation_profit / total_assest;
+         double x4 = operation_profit / total_Sales;
+         double x5 = economy_stock / total_Sales;
+         double x6 = total_Sales / total_assest;
+
+         double analysis = ((3 * x1) / 2) + ((8 * x2) / 100) + 10 * x3 + 5 * x4 + ((3 * x5) / 10) + (x6 / 10);
+
+         try {
+             AnalizaQuery analyse = new AnalizaQuery();
+             analyse.addNewAnalysis(id, analysis);
+
+         } catch (Exception e) {
+             e.getLocalizedMessage();
+         }
+
+         double ROE;                             // rentownoœæ kapita³u w³asnego
+         double ROA;                            // rentownoœæ aktywów
+         double ROS;                           // rentownoœæ sprzeda¿y
+         double ROI;                          // rentownoœæ inwestycji
+         double operating_profit_margin;     // mar¿a operacyjna
+         double expected_gross_margin;      // mar¿a zysku brutto
 
 
-     if (dft == null || year_economy != dft.getRokBilansowy()) {
-            data.addNewFinancialDataAnalysis(year_economy, gross_profit, economy_stock, total_assest, total_Sales, credit,
-                    operation_profit, amort, capitalOwn, net_profit, id_company);
-
-            Danefinansowe dataFinancial = data.showID(year_economy, gross_profit, economy_stock, total_assest, total_Sales, credit,
-                    operation_profit, amort, capitalOwn, net_profit, id_company);
-
-
-            int id = dataFinancial.getIdDane();
-
-            //idDataFinancial.setText(Integer.toString(id));
-           // idDataFinancial.setVisible(false);
+         operating_profit_margin = operation_profit / total_Sales;
+         expected_gross_margin = gross_profit / total_Sales;
+         ROI = net_profit / total_assest;
+         ROS = net_profit / total_Sales;
+         ROA = operation_profit / total_assest;
+         ROE = net_profit / capitalOwn;
 
 
-            double x1 = (gross_profit + amort) / credit;
-            double x2 = total_assest / credit;
-            double x3 = operation_profit / total_assest;
-            double x4 = operation_profit / total_Sales;
-            double x5 = economy_stock / total_Sales;
-            double x6 = total_Sales / total_assest;
-
-            double analysis = ((3 * x1) / 2) + ((8 * x2) / 100) + 10 * x3 + 5 * x4 + ((3 * x5) / 10) + (x6 / 10);
 
 
-           // int idData = Integer.parseInt(idDataFinancial.getText());
+         try {
+             WskaznikiQuery pointer = new WskaznikiQuery();
+             pointer.addNewPointers(ROE, ROA, ROS, operating_profit_margin, ROI, expected_gross_margin, id);
 
-            try {
-                AnalizaQuery analyse = new AnalizaQuery();
-                analyse.addNewAnalysis(id, analysis);
+         } catch (Exception e) {
+             e.getLocalizedMessage();
+         }
 
-            } catch (Exception e) {
-                e.getLocalizedMessage();
-            }
+         String link = "/fxml/panelShowAnalysis.fxml";
+         FXMLLoader loader = new FXMLLoader();
+         loader.setLocation(Controller_Analysis_Data.class.getResource(link));
+         Pane newPane = loader.load();
+         paneData.getChildren().add(newPane);
 
-            double ROE;                             // rentownoœæ kapita³u w³asnego
-            double ROA;                            // rentownoœæ aktywów
-            double ROS;                           // rentownoœæ sprzeda¿y
-            double ROI;                          // rentownoœæ inwestycji
-            double operating_profit_margin;     // mar¿a operacyjna
-            double expected_gross_margin;      // mar¿a zysku brutto
+         Controller_ShowAnalysis shown = loader.getController();
+         show = shown;
+         shown.readResultAnalysis(analysis);
+         shown.readCondition(analysis);
+         ROE = roundNumber(ROE);
+         ROA = roundNumber(ROA);
+         ROS = roundNumber(ROS);
+         ROI = roundNumber(ROI);
+         operating_profit_margin = roundNumber(operating_profit_margin);
+         expected_gross_margin = roundNumber(expected_gross_margin);
+         shown.readPointers(ROE, ROA, ROS, ROI, operating_profit_margin, expected_gross_margin);
+         shown.readAdvantage(ROE);
+         shown.compare(ROA, ROE);
+         shown.readSales(ROS);
+         shown.readProfitA(ROA);
+         shown.readProfit(expected_gross_margin);
+         shown.readMO(operating_profit_margin);
+         shown.readROI(ROI);
 
+     } else{
+             Alert error = new Alert(Alert.AlertType.ERROR);
+             error.setTitle("");
+             error.setContentText("SprawdŸ zak³adkê Firma -> ANALIZA RENTOWNOŒCI");
+             error.setHeaderText("Analiza rentownoœci dla " + year_economy + "r. zosta³a ju¿ wykonana.");
+             DialogPane dialogPane = error.getDialogPane();
+             dialogPane.getStylesheets().add(
+                     getClass().getResource("/fxml/alert.css").toExternalForm());
+             dialogPane.getStyleClass().add("myAlerts");
+             dialogPane.setMaxSize(500, 200);
+             error.showAndWait();
 
-            operating_profit_margin = operation_profit / total_Sales;
-            expected_gross_margin = gross_profit / total_Sales;
-            ROI = net_profit / total_assest;
-            ROS = net_profit / total_Sales;
-            ROA = operation_profit / total_assest;
-            ROE = net_profit / capitalOwn;
+         }
+     }
 
-
-            try {
-                WskaznikiQuery pointer = new WskaznikiQuery();
-                pointer.addNewPointers(ROE, ROA, ROS, operating_profit_margin, ROI, expected_gross_margin, id);
-
-            } catch (Exception e) {
-                e.getLocalizedMessage();
-            }
-
-            String link = "/fxml/panelShowAnalysis.fxml";
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Controller_Analysis_Data.class.getResource(link));
-            Pane newPane = loader.load();
-            paneData.getChildren().add(newPane);
-
-            Controller_ShowAnalysis shown = loader.getController();
-            show = shown;
-            shown.readResultAnalysis(analysis);
-            shown.readCondition(analysis);
-            ROE = roundNumber(ROE);
-            ROA = roundNumber(ROA);
-            ROS = roundNumber(ROS);
-            ROI = roundNumber(ROI);
-            operating_profit_margin = roundNumber(operating_profit_margin);
-            expected_gross_margin = roundNumber(expected_gross_margin);
-            shown.readPointers(ROE, ROA, ROS, ROI, operating_profit_margin, expected_gross_margin);
-            shown.readAdvantage(ROE);
-            shown.compare(ROA, ROE);
-            shown.readSales(ROS);
-            shown.readProfitA(ROA);
-            shown.readProfit(expected_gross_margin);
-            shown.readMO(operating_profit_margin);
-            shown.readROI(ROI);
-        } else {
-            Alert error = new Alert(Alert.AlertType.ERROR);
-            error.setContentText("SprawdŸ zak³adkê Firma ");
-            error.setHeaderText("Analiza rentownoœci dla " + year_economy + "r. zosta³a ju¿ wykonana.");
-            DialogPane dialogPane = error.getDialogPane();
-            dialogPane.getStylesheets().add(
-                    getClass().getResource("/fxml/alert.css").toExternalForm());
-            dialogPane.getStyleClass().add("myAlerts");
-            dialogPane.setMaxSize(500, 200);
-            error.showAndWait();
-
-        }
-    }
 
 
 
