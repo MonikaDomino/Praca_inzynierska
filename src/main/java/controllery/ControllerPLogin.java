@@ -1,5 +1,7 @@
 package controllery;
 
+import hibernate.Firma;
+import hibernate.FirmaQuery;
 import hibernate.Uzytkownik;
 import hibernate.UzytkownikQuery;
 import javafx.event.ActionEvent;
@@ -62,6 +64,7 @@ public class ControllerPLogin extends openFXMl implements Initializable {
             personalId.readIdUser(user.getIdUzytkownika());
             personalId.readInfoUser(user.getImie(), user.getNazwisko(), user.getEmail());
             personalId.readLabel(user.getImie(), user.getNazwisko());
+
 
 
             frame(event);

@@ -13,7 +13,7 @@ import javafx.stage.WindowEvent;
 
 
 import java.io.IOException;
-
+import java.util.Optional;
 
 
 public class begin extends Application  {
@@ -39,24 +39,24 @@ public class begin extends Application  {
             @Override
             public void handle(WindowEvent e) {
 
-                ButtonType buttonYES = new ButtonType("Tak");
-                ButtonType buttonNO = new ButtonType("Nie");
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"", buttonYES, buttonNO);
+                ButtonType buttonYES = new ButtonType("Zakoñcz");
+                ButtonType buttonNO = new ButtonType("Anuluj");
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", buttonYES, buttonNO);
                 alert.setHeaderText("Chcesz zakoñczyæ pracê z aplikacj¹? ");
                 DialogPane dialogPane = alert.getDialogPane();
                 dialogPane.getStylesheets().add(
                         getClass().getResource("/fxml/alert.css").toExternalForm());
                 dialogPane.getStyleClass().add("myAlerts");
-                dialogPane.setMaxSize(400,0);
+                dialogPane.setMaxSize(400, 0);
                 alert.setTitle("");
-                alert.showAndWait();
 
-                if (alert.getResult() == buttonYES) {
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() != buttonNO) {
                     Platform.exit();
 
+                } else {
+                    e.consume();
                 }
-
-
 
             }
         });

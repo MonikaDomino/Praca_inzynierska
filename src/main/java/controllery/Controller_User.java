@@ -191,9 +191,25 @@ public class Controller_User extends openFXMl {
         welcome.setText("Witaj, " + imie + " " + nazwisko + "!");
     }
 
+    public void showAlert (){
+
+        Alert alertC = new Alert(Alert.AlertType.INFORMATION);
+        String s = "Dodaj dane o firmie w zak³adce FIRMA!";
+        alertC.setHeaderText(s);
+        alertC.setContentText(null);
+        DialogPane dialogPane = alertC.getDialogPane();
+        dialogPane.getStylesheets().add(
+                getClass().getResource("/fxml/alert.css").toExternalForm());
+        dialogPane.getStyleClass().add("myAlerts");
+        dialogPane.setMaxSize(450,0);;
+        alertC.showAndWait();
+
+
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
 
     }
 
