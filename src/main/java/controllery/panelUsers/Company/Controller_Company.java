@@ -85,7 +85,6 @@ public class Controller_Company {
         fCom.readIdUser(idU);
 
 
-
     }
 
     @FXML

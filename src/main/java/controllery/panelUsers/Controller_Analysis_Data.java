@@ -229,7 +229,7 @@ public class Controller_Analysis_Data {
      } else{
              Alert error = new Alert(Alert.AlertType.ERROR);
              error.setTitle("");
-             error.setContentText("SprawdŸ zak³adkê Firma -> ANALIZA RENTOWNOŒCI");
+             error.setContentText("SprawdŸ zak³adkê FIRMA -> ANALIZA RENTOWNOŒCI");
              error.setHeaderText("Analiza rentownoœci dla " + year_economy + "r. zosta³a ju¿ wykonana.");
              DialogPane dialogPane = error.getDialogPane();
              dialogPane.getStylesheets().add(

@@ -42,5 +42,23 @@ public class WskaznikiQuery {
         session.close();
         return w;
     }
+
+    public List<Wskazniki> WskaznikiSelectForYear(int dataID) {
+        session = HibernateUtill.getSessionFactory().openSession();
+        String hql = "from Wskazniki where idDane = '" + dataID + "'";
+        Query query = session.createQuery(hql);
+        List <Wskazniki> wq = query.list();
+        session.close();
+        int i = 0;
+        for(Wskazniki w : wq){
+            if(w.getIdDane() != dataID){
+                wq.remove(i);
+            }
+            i++;
+        }
+        return wq;
+
+    }
+
 }
 
