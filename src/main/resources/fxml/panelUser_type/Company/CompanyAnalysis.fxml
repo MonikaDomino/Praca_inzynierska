@@ -101,7 +101,7 @@
             </Pane>
             <BarChart fx:id="barPointers" layoutX="-20.0" prefHeight="217.0" prefWidth="258.0">
               <xAxis>
-                <CategoryAxis side="BOTTOM" tickLabelGap="2.0">
+                <CategoryAxis fx:id="categoryAxis" side="BOTTOM" tickLabelGap="2.0">
                      <tickLabelFont>
                         <Font name="System Bold" size="10.0" />
                      </tickLabelFont></CategoryAxis>

@@ -2,12 +2,14 @@ package controllery.panelUsers.Company;
 
 import hibernate.*;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 
 import javafx.scene.chart.BarChart;
 ;
+import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -52,6 +54,10 @@ public class Controller_CompanyAnalysis {
 
     @FXML
     private Label idCompany;
+
+
+    @FXML
+    private CategoryAxis categoryAxis;
 
     @FXML
     private Pane chartPane;
@@ -154,15 +160,20 @@ public void loadBarChart(int idData){
                 dataSeries1.getData().add(new XYChart.Data<String, Double>(ROI, w.getRoi()));
                 dataSeries1.getData().add(new XYChart.Data<String, Double>(GM, w.getMarzaZb()));
 
+                categoryAxis.setCategories(FXCollections.observableArrayList("ROE", "ROA", "ROS",
+                       "OPM", "ROI", "GM"));
+
             barPointers.getData().setAll(dataSeries1);
             barPointers.setPrefSize(240, 200);
             barPointers.setLegendVisible(false);
 
 
 
+
+
         }
 
-        
+
 }
 
 
