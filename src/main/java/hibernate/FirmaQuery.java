@@ -33,6 +33,25 @@ public class FirmaQuery {
         }
     }
 
+    public Firma showIdCompany (String nameCompany, String street, String numberB, String numberF, String postcode,
+                               String city, int idUser){
+
+        Firma cp;
+       session = HibernateUtill.getSessionFactory().openSession();
+        String hql;
+        hql = "from Firma as company where company.nazwaFirmy ='" +nameCompany+ "' and company.ulica= '" +street+ "' " +
+                "and  company.numerBudynku ='" +numberB+ "' and  company.numerLokalu= '" +numberF+ "' " +
+                "and company.kodPocztowy = '" +postcode+ "' AND company.miasto = '" +city+ "'" +
+                "AND company.idUzytkownika = '" +idUser+ "'";
+        query = session.createQuery(hql);
+        cp = (Firma) query.uniqueResult();
+        session.close();
+        return cp;
+
+
+
+    }
+
     public Firma showCompany(int id_user){
         Firma f = null;
         session = HibernateUtill.getSessionFactory().openSession();

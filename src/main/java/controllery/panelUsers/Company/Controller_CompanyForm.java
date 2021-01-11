@@ -2,6 +2,7 @@ package controllery.panelUsers.Company;
 
 import controllery.Controller_User;
 import controllery.panelUsers.Controller_Start;
+import hibernate.Firma;
 import hibernate.FirmaQuery;
 import hibernate.Uzytkownik;
 import hibernate.UzytkownikQuery;
@@ -36,9 +37,7 @@ public class Controller_CompanyForm {
     @FXML
     private Label idUserForm;
 
-
-    Controller_Start startC;
-
+    Controller_CompanyData compData;
     @FXML
     void addCompany(ActionEvent event) {
 
@@ -54,6 +53,11 @@ public class Controller_CompanyForm {
         try{
             FirmaQuery company = new FirmaQuery();
             company.addCompany(nameCompany,streetCompany,cityC, postC,numberBuilding,numberLocal,idUser);
+            Firma comF = company.showIdCompany(nameCompany, streetCompany, numberBuilding, numberLocal,postC, cityC, idUser);
+
+            int id = comF.getIdFirmy();
+
+
 
             Alert alert_correct = new Alert(Alert.AlertType.INFORMATION);
             alert_correct.setHeaderText("Firma zosta³a dodana ");
@@ -65,14 +69,17 @@ public class Controller_CompanyForm {
 
             alert_correct.showAndWait();
 
-            if(alert_correct.getResult() == ButtonType.OK){
+            String link = "/fxml/panelUser_type/Company/CompanyData.fxml";
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Controller_CompanyForm.class.getResource(link));
+            Pane newPane = loader.load();
+            changeCF.getChildren().add(newPane);
 
-                String link = "/fxml/panelUser_type/Company/Company.fxml";
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(Controller_CompanyForm.class.getResource(link));
-                Pane newPane = loader.load();
-                changeCF.getChildren().add(newPane);
-           }
+            Controller_CompanyData cp = loader.getController();
+
+            compData = cp;
+            cp.readCompanyData(id);
+
 
 
         }catch (Exception e){
