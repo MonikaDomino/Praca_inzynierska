@@ -17,9 +17,6 @@ public class Controller_Company {
     private Pane changePaneC;
 
     @FXML
-    private Label idUsC;
-
-    @FXML
     private Pane paneChange;
 
     @FXML
@@ -84,10 +81,8 @@ public class Controller_Company {
 
         Controller_CompanyForm fCom = load.getController();
         comForm = fCom;
-        int idUs = Integer.parseInt(idUshow.getText());
-        fCom.readIdUser(idUs);
-
-
+        int idU = Integer.parseInt(idUCom.getText());
+        fCom.readIdUser(idU);
 
 
 
@@ -149,29 +144,31 @@ public class Controller_Company {
     }
 
 
+// read id company for analysis data show
 
     public void readIdCompany(int id){
         idCompany.setText(Integer.toString(id));
         idCompany.setVisible(false);
     }
 
-    public void readIdUCom (){
-        idUsC.setText(idUshow.getText());
-        idUsC.setVisible(false);
-    }
-
     public void readIdUser (int idU){
         idUCom.setText(Integer.toString(idU));
         idUCom.setVisible(false);    }
 
+     // read id user for data financial
     public void readIDu (int idUS){
         idUshow.setText(Integer.toString(idUS));
         idUshow.setVisible(false);
     }
 
+    // read id company for analysis - combobox
+
     public void readIdCAR (int idC ){
         idCAR.setText(Integer.toString(idC));
         idCAR.setVisible(false);
     }
+
+
+
 
 }

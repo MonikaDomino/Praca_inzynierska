@@ -34,7 +34,8 @@ public class Controller_CompanyForm {
     private TextField numberF;
 
     @FXML
-    private Label idUserC;
+    private Label idUserForm;
+
 
     Controller_Start startC;
 
@@ -47,7 +48,7 @@ public class Controller_CompanyForm {
         String numberLocal = numberF.getText();
         String postC = postCode.getText();
         String cityC = city.getText();
-        int idUser = Integer.parseInt(idUserC.getText());
+        int idUser = Integer.parseInt(idUserForm.getText());
 
 
         try{
@@ -83,9 +84,10 @@ public class Controller_CompanyForm {
     }
 
     public void readIdUser(int id){
-        idUserC.setText(Integer.toString(id));
-        idUserC.setVisible(false);
+        idUserForm.setText(Integer.toString(id));
+        idUserForm.setVisible(false);
     }
+
 
 
 }
