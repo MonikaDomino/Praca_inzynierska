@@ -291,12 +291,6 @@ public class Controller_Analysis_Data {
             yeartxt.setStyle("");
 
         } else {
-            String toolY = "Rok musi byæ liczb¹!";
-            Tooltip yearT = new Tooltip(toolY);
-            yeartxt.setTooltip(yearT);
-
-            yearT.setPrefSize(150, 50);
-            yearT.setStyle("-fx-font-size: 14; -fx-text-alignment: center;");
             yeartxt.setStyle("-fx-background-color: #FF8080");
 
         }
@@ -308,11 +302,6 @@ public class Controller_Analysis_Data {
             operationProfit.setStyle("");
 
         }else {
-            Tooltip toolOp = new Tooltip("Oczekiwane: 5.0");
-            toolOp.setPrefSize(150,50);
-            toolOp.setStyle("-fx-font-size: 14; -fx-text-alignment: center;");
-
-            operationProfit.setTooltip(toolOp);
             operationProfit.setStyle("-fx-background-color: #FF8080");
         }
 
@@ -323,11 +312,8 @@ public class Controller_Analysis_Data {
             credits.setStyle("");
 
         } else {
-            Tooltip toolCr = new Tooltip("Oczekiwane: 5.0");
-            toolCr.setPrefSize(150,50);
-            toolCr.setStyle("-fx-font-size: 14; -fx-text-alignment: center;");
 
-            credits.setTooltip(toolCr);
+
             credits.setStyle("-fx-background-color: #FF8080");
 
         }
@@ -339,11 +325,7 @@ public class Controller_Analysis_Data {
                 capital.setStyle("");
 
         } else {
-            Tooltip toolC = new Tooltip("Oczekiwane: 5.0");
-            toolC.setPrefSize(150,50);
-            toolC.setStyle("-fx-font-size: 14; -fx-text-alignment: center;");
 
-            capital.setTooltip(toolC);
             capital.setStyle("-fx-background-color: #FF8080");
         }
 
@@ -353,25 +335,19 @@ public class Controller_Analysis_Data {
         }else if(salesTotal.trim().isEmpty()){
                 totalSales.setStyle("");
         } else {
-            Tooltip toolS = new Tooltip("Oczekiwane: 5.0");
-            toolS.setPrefSize(150,50);
-            toolS.setStyle("-fx-font-size: 14; -fx-text-alignment: center;");
 
-            totalSales.setTooltip(toolS);
             totalSales.setStyle("-fx-background-color: #FF8080");
 
         }
 
         if (checkPatterns(amortT)) {
             amortization.setStyle(" ");
+
         } else if(amortT.trim().isEmpty()){
                 amortization.setStyle("");
         } else {
             amortization.setStyle("-fx-background-color: #FF8080");
-            Tooltip toolA = new Tooltip("Oczekiwane: 5.0");
-            toolA.setPrefSize(150,50);
-            toolA.setStyle("-fx-font-size: 14; -fx-text-alignment: center;");
-            amortization.setTooltip(toolA);
+
         }
 
         if (checkPatterns(profitNet) ) {
@@ -380,10 +356,6 @@ public class Controller_Analysis_Data {
                 profit_net.setStyle("");
         } else {
             profit_net.setStyle("-fx-background-color: #FF8080");
-            Tooltip toolPN = new Tooltip("Oczekiwane: 5.0");
-            toolPN.setPrefSize(150,50);
-            toolPN.setStyle("-fx-font-size: 14; -fx-text-alignment: center;");
-            profit_net.setTooltip(toolPN);
 
         }
         if (checkPatterns(assesTotal)) {
@@ -392,10 +364,7 @@ public class Controller_Analysis_Data {
                 totalAssest.setStyle("");
         } else {
             totalAssest.setStyle("-fx-background-color: #FF8080");
-            Tooltip toolTA = new Tooltip("Oczekiwane: 5.0");
-            toolTA.setPrefSize(150,50);
-            toolTA.setStyle("-fx-font-size: 14; -fx-text-alignment: center;");
-            totalAssest.setTooltip(toolTA);
+
         }
         if (checkPatterns(stockEconomy)) {
             economyStock.setStyle("");
@@ -403,10 +372,7 @@ public class Controller_Analysis_Data {
                 economyStock.setStyle("");
         } else {
              economyStock.setStyle("-fx-background-color: #ff8080");
-            Tooltip toolES= new Tooltip("Oczekiwane: 5.0");
-            toolES.setPrefSize(150,50);
-            toolES.setStyle("-fx-font-size: 14; -fx-text-alignment: center;");
-            grossprofit.setTooltip(toolES);
+
 
         }
         if (checkPatterns(grossP)) {
@@ -416,11 +382,6 @@ public class Controller_Analysis_Data {
 
         } else {
             grossprofit.setStyle("-fx-background-color: #FF8080");
-            Tooltip toolSG = new Tooltip("Oczekiwane: 5.0");
-            toolSG.setPrefSize(150,50);
-            toolSG.setStyle("-fx-font-size: 14; -fx-text-alignment: center;");
-
-            grossprofit.setTooltip(toolSG);
 
 
         }
@@ -487,10 +448,10 @@ public class Controller_Analysis_Data {
 
     }
 
-    // method to check to number is double (9.0)
+    // method to check to number is double
     public boolean checkPatterns(String text){
-        Pattern nDecimal = Pattern.compile("^[+-]?([0-9]*[.])?[0-9]+$");
-        boolean decimalCheck = nDecimal.matcher(text).matches();
+        Pattern nDecimal = Pattern.compile("[+-]?\\d*\\d+");
+        boolean decimalCheck = nDecimal.matcher(text).find();
 
         return decimalCheck;
 
