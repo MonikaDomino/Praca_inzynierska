@@ -12,6 +12,10 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.util.Locale;
 import java.util.regex.Pattern;
 import java.io.IOException;
 import java.util.Optional;
@@ -131,18 +135,37 @@ public class Controller_Analysis_Data {
     @FXML
     void doAnalysis(ActionEvent event) throws Exception {
 
-        int year_economy = Integer.parseInt(yeartxt.getText());    // rok bilansowy
-        double gross_profit = Double.parseDouble(grossprofit.getText());   // zysk brutto
-        double economy_stock = Double.parseDouble(economyStock.getText()); // zapasy
-        double total_assest = Double.parseDouble(totalAssest.getText());  // aktywa ogó³em
-        double net_profit = Double.parseDouble(profit_net.getText());      // zysk netto
-        double amort = Double.parseDouble(amortization.getText());      // amortyzacja
-        double total_Sales = Double.parseDouble(totalSales.getText());  // przychody ze sprzeda¿y
-        double operation_profit = Double.parseDouble(operationProfit.getText()); // zysk operacyjny
-        double capitalOwn = Double.parseDouble(capital.getText());  // kapita³ w³asny
-        double credit = Double.parseDouble(credits.getText());     // zobowi¹zania ogó³em
+        int year_economy = Integer.parseInt(yeartxt.getText());
+
+        String gP = grossprofit.getText();
+        double gross_profit = formatInputDatatoDouble(gP);
+
+        String eS = economyStock.getText();
+        double economy_stock = formatInputDatatoDouble(eS);
+
+        String tA = totalAssest.getText();
+        double total_assest = formatInputDatatoDouble(tA);
+
+        String pN = profit_net.getText();
+        double net_profit = formatInputDatatoDouble(pN);
+
+        String am = amortization.getText();
+        double amort = formatInputDatatoDouble(am);
+
+        String tS = totalSales.getText();
+        double total_Sales = formatInputDatatoDouble(tS);
+
+        String oP = operationProfit.getText();
+        double operation_profit = formatInputDatatoDouble(oP);
+
+        String cO = capital.getText();
+        double capitalOwn = formatInputDatatoDouble(cO);
+
+        String cR = credits.getText();
+        double credit = formatInputDatatoDouble(cR);
 
         int id_company = Integer.parseInt(CompanyID.getText());
+
 
 
         DanefinansoweQuery data = new DanefinansoweQuery();
@@ -411,6 +434,29 @@ public class Controller_Analysis_Data {
         CompanyID.setText(Integer.toString(id));
         CompanyID.setVisible(false);
 
+    }
+
+    public Double formatInputDatatoDouble (String text)  {
+        text = removeAllWhitespaces(text);
+        text = text.replace(',', '.');
+        int decimalSeperator = text.lastIndexOf('.');
+
+        if (decimalSeperator > -1) {
+            text = text.substring(0, decimalSeperator).replace(".", "") + text.substring(decimalSeperator);
+        }
+
+        return Double.valueOf(text);
+    }
+
+    private static String removeAllWhitespaces(String str2) {
+        char[] chars = str2.toCharArray();
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < chars.length; i++) {
+            if(!Character.isWhitespace(chars[i])) {
+                sb.append(chars[i]);
+            }
+        }
+        return sb.toString();
     }
 
     public void readIDUser (int id){
