@@ -9,6 +9,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
+import java.text.DecimalFormat;
+
 public class Controller_CompanyFinancial {
 
     @FXML
@@ -74,18 +76,47 @@ public class Controller_CompanyFinancial {
             DanefinansoweQuery dqr = new DanefinansoweQuery();
             Danefinansowe dr = dqr.readDatafromYearComp(year, idCmp);
 
-            readProfitGross.setText(Double.toString(dr.getZyskBrutto()));
-            readEcoStock.setText(Double.toString(dr.getZapasy()));
-            readAssestTotal.setText(Double.toString(dr.getAktywaOgolem()));
-            readSales.setText(Double.toString(dr.getPrzychodyS()));
-            readOpProfit.setText(Double.toString(dr.getZyskOperacyjny()));
-            readAmort.setText(Double.toString(dr.getAmortyzacja()));
-            readNetProfit.setText(Double.toString(dr.getZyskNetto()));
-            readCapital.setText(Double.toString(dr.getKapitalWlasny()));
-            readCredit.setText(Double.toString(dr.getZobowiazania()));
+            String profitG = getDoubleFormat(dr.getZyskBrutto());
+            readProfitGross.setText(profitG);
+
+            String stockEco = getDoubleFormat(dr.getZapasy());
+            readEcoStock.setText(stockEco);
+
+            String totalAssest = getDoubleFormat(dr.getAktywaOgolem());
+            readAssestTotal.setText(totalAssest);
+
+            String totalSale = getDoubleFormat(dr.getPrzychodyS());
+            readSales.setText(totalSale);
+
+            String profitOp = getDoubleFormat(dr.getZyskOperacyjny());
+            readOpProfit.setText(profitOp);
+
+            String amort = getDoubleFormat(dr.getAmortyzacja());
+            readAmort.setText(amort);
+
+            String netP = getDoubleFormat(dr.getZyskNetto());
+            readNetProfit.setText(netP);
+
+            String capital = getDoubleFormat(dr.getKapitalWlasny());
+            readCapital.setText(capital);
+
+            String credits = getDoubleFormat(dr.getZobowiazania());
+            readCredit.setText(credits);
 
 
         }
+    }
+
+    public String getDoubleFormat(double number){
+
+       if(number > 0.0) {
+            DecimalFormat dt = new DecimalFormat("#,###.00");
+            String formatted = dt.format(number);
+            return formatted;
+       }
+       int value = (int) number;
+       String doubleS = Integer.toString(value);
+       return doubleS;
     }
 
     public void readIdCompany (int idComp){

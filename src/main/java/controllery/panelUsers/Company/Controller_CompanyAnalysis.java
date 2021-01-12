@@ -3,10 +3,10 @@ package controllery.panelUsers.Company;
 import hibernate.*;
 
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+
 import javafx.fxml.FXML;
 
+import javafx.geometry.Side;
 import javafx.scene.chart.BarChart;
 ;
 import javafx.scene.chart.CategoryAxis;
@@ -18,9 +18,6 @@ import javafx.scene.layout.Pane;
 
 public class Controller_CompanyAnalysis {
 
-
-    @FXML
-    private Pane paneCA;
 
     @FXML
     private ComboBox<Danefinansowe> yearCombo;
@@ -69,12 +66,7 @@ public class Controller_CompanyAnalysis {
         yearCombo.getItems().addAll(dq.DaneFinansoweSelectForYear(idCom));
         yearCombo.setConverter(new DanefinansoweConverter());
 
-        yearCombo.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                comboValue(yearCombo);
-            }
-        });
+        yearCombo.setOnAction(event -> comboValue(yearCombo));
 
 
     }
@@ -90,13 +82,12 @@ public class Controller_CompanyAnalysis {
 
             int idData = dr.getIdDane();
 
-            loadBarChart(idData);
-
             AnalizaQuery aq = new AnalizaQuery();
             Analiza aw = aq.showResult(idData);
 
             double result = aw.getWynikAnalizy();
 
+            loadBarChart(idData);
             showCondition(result);
             showPointers(idData);
 
@@ -166,7 +157,7 @@ public void loadBarChart(int idData){
             barPointers.getData().setAll(dataSeries1);
             barPointers.setPrefSize(240, 200);
             barPointers.setLegendVisible(false);
-
+           // barPointers.setLegendSide(Side.LEFT);
 
 
 

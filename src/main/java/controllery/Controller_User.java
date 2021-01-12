@@ -201,6 +201,7 @@ public class Controller_User extends openFXMl {
         String s = "Dodaj dane o firmie w zak³adce FIRMA!";
         alertC.setHeaderText(s);
         alertC.setContentText(null);
+        alertC.setTitle(null);
         DialogPane dialogPane = alertC.getDialogPane();
         dialogPane.getStylesheets().add(
                 getClass().getResource("/fxml/alert.css").toExternalForm());

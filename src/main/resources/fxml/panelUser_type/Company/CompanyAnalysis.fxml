@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="paneCA" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="415.0" prefWidth="546.0" style="-fx-background-color: linear-gradient(to top, #cedcf1, #b7cdee, #9fbeeb, #87b0e8, #6da1e5);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllery.panelUsers.Company.Controller_CompanyAnalysis">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="415.0" prefWidth="546.0" style="-fx-background-color: linear-gradient(to top, #cedcf1, #b7cdee, #9fbeeb, #87b0e8, #6da1e5);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllery.panelUsers.Company.Controller_CompanyAnalysis">
    <children>
       <ComboBox fx:id="yearCombo" layoutX="242.0" layoutY="72.0" prefWidth="150.0" />
       <Label layoutX="84.0" layoutY="71.0" prefHeight="27.0" prefWidth="158.0" text="ROK BILANSOWY:">
@@ -51,12 +51,12 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="37.0" prefWidth="210.0" text="MARŻA OPERACYJNA (OPR):">
+                        <Label alignment="CENTER" prefHeight="37.0" prefWidth="210.0" text="MARŻA OPERACYJNA (OPM):">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="37.0" prefWidth="210.0" text="MARŻA ZYSKU BRUTTO:">
+                        <Label alignment="CENTER" prefHeight="37.0" prefWidth="210.0" text="MARŻA ZYSKU BRUTTO (GPM):">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
