@@ -234,11 +234,17 @@ public class Controller_Analysis_Data {
          show = shown;
          shown.readResultAnalysis(analysis);
          shown.readCondition(analysis);
+         ROE *= 100;
          ROE = roundNumber(ROE);
+         ROA *= 100;
          ROA = roundNumber(ROA);
+         ROS *= 100;
          ROS = roundNumber(ROS);
+         ROI *= 100;
          ROI = roundNumber(ROI);
+         operating_profit_margin *= 100;
          operating_profit_margin = roundNumber(operating_profit_margin);
+         expected_gross_margin *= 100;
          expected_gross_margin = roundNumber(expected_gross_margin);
          shown.readPointers(ROE, ROA, ROS, ROI, operating_profit_margin, expected_gross_margin);
          shown.readAdvantage(ROE);

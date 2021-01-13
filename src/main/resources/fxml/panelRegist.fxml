@@ -4,7 +4,6 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -14,13 +13,13 @@
 
 <AnchorPane prefHeight="455.0" prefWidth="719.0" style="-fx-background-color: linear-gradient(to top, #cedcf1, #b7cdee, #9fbeeb, #87b0e8, #6da1e5);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllery.Controller_Register">
    <children>
-      <Pane layoutX="346.0" layoutY="30.0" prefHeight="396.0" prefWidth="352.0" style="-fx-background-color: linear-gradient(to right top, #6b7cd1, #5b8dda, #519ddf, #51ace1,    #5cb9e1, #5abbe4, #58bde7, #55bfea, #42b6f1, #3cacf7, #48a1fb, #5f94fb); -fx-background-radius: 10%; -fx-border-color: black; -fx-border-radius: 10%;">
-            <TextField fx:id="fnametxt" layoutX="14.0" layoutY="84.0" onKeyTyped="#validate" prefHeight="32.0" prefWidth="152.0" promptText="First Name" style="-fx-background-radius: 16px;">
+      <Pane fx:id="error" layoutX="346.0" layoutY="30.0" prefHeight="396.0" prefWidth="352.0" style="-fx-background-color: linear-gradient(to right top, #6b7cd1, #5b8dda, #519ddf, #51ace1,    #5cb9e1, #5abbe4, #58bde7, #55bfea, #42b6f1, #3cacf7, #48a1fb, #5f94fb); -fx-background-radius: 10%; -fx-border-color: black; -fx-border-radius: 10%;">
+            <TextField fx:id="fnametxt" layoutX="13.0" layoutY="77.0" onKeyTyped="#validate" prefHeight="32.0" prefWidth="152.0" promptText="First Name" style="-fx-background-radius: 16px;">
             <font>
                <Font name="Arial" size="13.0" />
             </font></TextField>
        
-            <TextField fx:id="lnametxt" layoutX="178.0" layoutY="84.0" onKeyTyped="#validate" prefHeight="32.0" prefWidth="160.0" promptText="Last Name" style="-fx-background-radius: 16px;">
+            <TextField fx:id="lnametxt" layoutX="178.0" layoutY="77.0" onKeyTyped="#validate" prefHeight="32.0" prefWidth="160.0" promptText="Last Name" style="-fx-background-radius: 16px;">
             <font>
                <Font name="Arial" size="13.0" />
             </font></TextField>
@@ -63,12 +62,12 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="19.0" layoutY="57.0" text="Imię:">
+            <Label layoutX="23.0" layoutY="47.0" text="Imię:">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="186.0" layoutY="57.0" text="Nazwisko:">
+            <Label layoutX="185.0" layoutY="47.0" text="Nazwisko:">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -79,17 +78,52 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </JFXButton>
-         <FontAwesomeIcon glyphName="USERS" layoutX="159.0" layoutY="42.0" size="2EM" />
+         <FontAwesomeIcon glyphName="USERS" layoutX="145.0" layoutY="29.0" size="2EM" />
          <Label layoutX="185.0" layoutY="130.0" text="Login:">
             <font>
                <Font name="System Bold" size="14.0" />
             </font>
          </Label>
-         <ProgressBar fx:id="strongPass" layoutX="24.0" layoutY="279.0" prefHeight="11.0" prefWidth="130.0" progress="0.0" />
-         <Label fx:id="checkSecurity" alignment="TOP_RIGHT" layoutX="26.0" layoutY="290.0" prefHeight="17.0" prefWidth="130.0">
+         <Label fx:id="errorFname" alignment="CENTER" layoutX="6.0" layoutY="108.0" prefHeight="17.0" prefWidth="170.0" textFill="#871414">
             <font>
-               <Font name="System Bold" size="12.0" />
-            </font></Label>
+               <Font name="System Bold" size="10.0" />
+            </font>
+         </Label>
+         <Label fx:id="errorName" alignment="CENTER" layoutX="168.0" layoutY="108.0" prefHeight="17.0" prefWidth="170.0" textFill="#871414">
+            <font>
+               <Font name="System Bold" size="10.0" />
+            </font>
+         </Label>
+         <Label fx:id="errorEmail" alignment="CENTER" layoutX="13.0" layoutY="190.0" prefHeight="17.0" prefWidth="152.0" textFill="#871414">
+            <font>
+               <Font name="System Bold" size="10.0" />
+            </font>
+         </Label>
+         <Label fx:id="errorLogin" alignment="CENTER" layoutX="164.0" layoutY="190.0" prefHeight="17.0" prefWidth="182.0" textFill="#871414">
+            <font>
+               <Font name="System Bold" size="10.0" />
+            </font>
+         </Label>
+         <Label fx:id="errorPassLen" alignment="CENTER" layoutX="6.0" layoutY="271.0" prefHeight="17.0" prefWidth="182.0" textFill="#871414">
+            <font>
+               <Font name="System Bold" size="10.0" />
+            </font>
+         </Label>
+         <Label fx:id="errorPassLet" alignment="CENTER" layoutX="3.0" layoutY="288.0" prefHeight="17.0" prefWidth="194.0" textFill="#871414">
+            <font>
+               <Font name="System Bold" size="10.0" />
+            </font>
+         </Label>
+         <Label fx:id="errorPassNum" alignment="CENTER" layoutX="3.0" layoutY="297.0" prefHeight="17.0" prefWidth="97.0" textFill="#871414">
+            <font>
+               <Font name="System Bold" size="10.0" />
+            </font>
+         </Label>
+         <Label fx:id="errorSpecCh" alignment="CENTER" layoutX="90.0" layoutY="297.0" prefHeight="17.0" prefWidth="121.0" textFill="#871414">
+            <font>
+               <Font name="System Bold" size="10.0" />
+            </font>
+         </Label>
       </Pane>
       <ImageView fitHeight="248.0" fitWidth="286.0" layoutX="39.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
          <image>

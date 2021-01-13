@@ -116,10 +116,9 @@ public class FirmaQuery {
             if (!query.equals("UPDATE `firma` SET"))
                 query += ",";
             query = query + " `numer_lokalu` = '" + localNumber + "'";
+
+            query = query + " WHERE " + " `id_firmy` = " + idCom;
         }
-
-        query = query + " WHERE " + " `id_firmy` = " + idCom;
-
         try {
             session.getTransaction().begin();
             session.createSQLQuery(query).executeUpdate();

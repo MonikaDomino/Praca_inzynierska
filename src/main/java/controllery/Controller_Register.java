@@ -33,10 +33,27 @@ public class Controller_Register extends openFXMl  implements Initializable {
     private TextField logintxt;
 
     @FXML
-    private ProgressBar strongPass;
+    private Label errorEmail;
 
     @FXML
-    private Label checkSecurity;
+    private Label errorFname;
+
+    @FXML
+    private Label errorName;
+
+    @FXML
+    private Label errorLogin;
+
+    @FXML
+    private Label errorPassLen;
+    @FXML
+    private Label errorPassLet;
+
+    @FXML
+    private Label errorPassNum;
+
+    @FXML
+    private Label errorSpecCh;
 
     @FXML
     void register(ActionEvent event) {
@@ -56,6 +73,7 @@ public class Controller_Register extends openFXMl  implements Initializable {
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText("Rejestracja zakoñczona sukcesem! ");
+            alert.setTitle(null);
             DialogPane dialogPane = alert.getDialogPane();
             dialogPane.getStylesheets().add(
                     getClass().getResource("/fxml/alert.css").toExternalForm());
@@ -88,6 +106,7 @@ public class Controller_Register extends openFXMl  implements Initializable {
         Alert alert_exit = new Alert(Alert.AlertType.CONFIRMATION, "", buttonYES, buttonNO);
         alert_exit.setHeaderText("Czy na pewno chcesz przerwaæ rejestracjê?");
         alert_exit.setContentText(null);
+        alert_exit.setTitle(null);
         DialogPane dialogPane = alert_exit.getDialogPane();
         dialogPane.getStylesheets().add(
                 getClass().getResource("/fxml/alert.css").toExternalForm());
@@ -105,53 +124,36 @@ public class Controller_Register extends openFXMl  implements Initializable {
 
     @FXML
     void howStrong(KeyEvent event) {
-        strongPass.setVisible(true);
         String nP = passwdtxt.getText();
 
-       Pattern hasUpper = Pattern.compile(".*[A-Z].*");
-       Pattern hasLowercase = Pattern.compile(".*[a-z].*");
-       Pattern hasNumber = Pattern.compile(".*[0-9].*");
-       Pattern hasSpecialChar = Pattern.compile(".*[@#$%!].*");
+        Pattern hasUpper = Pattern.compile(".*[A-Z].*");
+        Pattern hasLowercase = Pattern.compile(".*[a-z].*");
+        Pattern hasNumber = Pattern.compile(".*[0-9].*");
+        Pattern hasSpecialChar = Pattern.compile(".*[@#$%!].*");
+        Pattern lenght = Pattern.compile(".{8,}");
 
-        int len = nP.length();
 
-        if(len< 6){
-            checkSecurity.setText("Bardzo s³abe");
-            strongPass.setProgress(0.05);
-            strongPass.setStyle("-fx-accent: red;");
-            strongPass.setProgress(0);
+        if (!lenght.matcher(nP).matches()) {
+            errorPassLen.setText("Has³o musi zawieraæ min 8 znaków!");
+            passwdtxt.setStyle("-fx-background-radius:16px; -fx-background-color:#FF4747 ");
 
+            if (!hasLowercase.matcher(nP).matches() || !hasUpper.matcher(nP).matches())
+                errorPassLet.setText("Musi posiadaæ jedn¹ wielk¹ i ma³¹ literê,");
+
+
+            if (!hasNumber.matcher(nP).matches())
+                errorPassNum.setText("jedn¹ cyfrê oraz");
+
+            if (!hasSpecialChar.matcher(nP).matches())
+                errorSpecCh.setText("jeden symbol specjalny.");
+
+        }else{
+            errorPassNum.setText(null);
+            errorSpecCh.setText(null);
+            errorPassLet.setText(null);
+            errorPassLen.setText(null);
+            passwdtxt.setStyle("-fx-background-radius: 16px");
         }
-        if (len>= 6 || hasLowercase.matcher(nP).find()) {
-            checkSecurity.setText("Bardzo s³abe");
-            strongPass.setProgress(0.05);
-            strongPass.setStyle("-fx-accent: red;");
-
-
-
-            if (hasUpper.matcher(nP).find()) {
-                checkSecurity.setText("S³abo");
-                strongPass.setProgress(0.5);
-                strongPass.setStyle("-fx-accent: #0027c1");
-
-            }
-
-            if (hasNumber.matcher(nP).find()) {
-                checkSecurity.setText("Dobre");
-                strongPass.setProgress(0.75);
-                strongPass.setStyle("-fx-accent: #24d160");
-
-
-            }
-
-
-            if (hasSpecialChar.matcher(nP).find()) {
-                checkSecurity.setText("Silne");
-                strongPass.setStyle("-fx-accent: #098534");
-                strongPass.setProgress(1);
-            }
-        }
-
 
 
     }
@@ -159,54 +161,68 @@ public class Controller_Register extends openFXMl  implements Initializable {
     @FXML
     void validate(KeyEvent event) {
 
-        // first name and name must begin for upper letter
-        Pattern letter = Pattern.compile("(.*[A-Z].*)(.*[a-z].*)");
+        // first name and name must have only letters
+        Pattern letter = Pattern.compile("^[a-zA-Z\\s]+");
 
         String fnameR = fnametxt.getText();
         String nameR = lnametxt.getText();
 
         if(letter.matcher(fnameR).matches()) {
             fnametxt.setStyle("-fx-background-radius:16px;");
+            errorFname.setText(null);
         }else if(fnameR.isEmpty()){
             fnametxt.setStyle("-fx-background-radius: 16px;");
+            errorFname.setText(null);
         }else{
             fnametxt.setStyle("-fx-background-radius:16px; -fx-background-color: #FF4747");
+            errorFname.setText("Imiê nie mo¿e zawieraæ liczb!");
+
         }
 
         if(letter.matcher(nameR).matches()) {
             lnametxt.setStyle("-fx-background-radius: 16px");
+            errorName.setText(null);
         }else if(nameR.isEmpty()){
             lnametxt.setStyle("-fx-background-radius: 16px;");
+            errorName.setText(null);
         }else{
             lnametxt.setStyle("-fx-background-radius:16px;-fx-background-color: #FF4747");
+            errorName.setText("Nazwisko nie mo¿e zawieraæ liczb!");
         }
 
         // validation for email
 
-        Pattern email = Pattern.compile("[A-Za-z0-9+_.]+@[a-z]+.[a-z]{2,}");
+        Pattern email = Pattern.compile("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$");
 
         String mailR = emailtxt.getText();
 
         if(email.matcher(mailR).matches()) {
             emailtxt.setStyle("-fx-background-radius: 16px;");
+            errorEmail.setText(null);
         }else if(mailR.isEmpty()){
             emailtxt.setStyle("-fx-background-radius: 16px");
+            errorEmail.setText(null);
         }else{
             emailtxt.setStyle("-fx-background-radius: 16px; -fx-background-color:#FF4747 ");
+            errorEmail.setText("Niepoprawny email!");
         }
 
         // validate for login
 
-        Pattern loginUser = Pattern.compile("[A-Za-z0-9]");
+        Pattern loginUser = Pattern.compile("^[a-zA-Z0-9]{5,}$");
 
         String log = logintxt.getText();
 
         if(loginUser.matcher(log).find()) {
             logintxt.setStyle("-fx-background-radius: 16px");
+            errorLogin.setText(null);
+
         }else if(log.isEmpty()){
             logintxt.setStyle("-fx-background-radius: 16px");
+            errorLogin.setText(null);
         }else{
             logintxt.setStyle("-fx-background-radius: 16px; -fx-background-color:#FF4747");
+            errorLogin.setText("Login musi zawieraæ min 5 znaki!");
         }
     }
 
@@ -217,7 +233,7 @@ public class Controller_Register extends openFXMl  implements Initializable {
         String confirmPass = conpasswdtxt.getText();
 
         if(confirmPass.equals(newPass)) {
-            conpasswdtxt.setStyle("-fx-background-radius: 16px;-fx-background-color: #7BCE7D;");
+            conpasswdtxt.setStyle("-fx-background-radius: 16px;");
         }else if(confirmPass.isEmpty()){
             conpasswdtxt.setStyle("-fx-background-radius: 16px;");
         }else{
@@ -227,9 +243,6 @@ public class Controller_Register extends openFXMl  implements Initializable {
 
     }
 
-    public void hidden (){
-        strongPass.setVisible(false);
-    }
 
 
 
