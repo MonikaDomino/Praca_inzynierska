@@ -32,19 +32,26 @@ public class Controller_Pass extends openFXMl{
     private ProgressIndicator checkEmail;
 
     @FXML
-    private ProgressBar securityCheck;
-
-    @FXML
     private PasswordField newPassword;
 
-    @FXML
-    private Label strongPass;
 
     @FXML
     private PasswordField confirmPassword;
 
     @FXML
     private Label checkSame;
+
+    @FXML
+    private Label errorPassLen;
+
+    @FXML
+    private Label errorPassLet;
+
+    @FXML
+    private Label errorPassNum;
+
+    @FXML
+    private Label errorSpecCh;
 
     @FXML
     void changePassword(ActionEvent event) {
@@ -56,6 +63,7 @@ public class Controller_Pass extends openFXMl{
             userQr.changePassword(emal, nPass);
             Alert alert_exit = new Alert(Alert.AlertType.INFORMATION);
             alert_exit.setHeaderText("Has³o zosta³o zmienione");
+            alert_exit.setTitle(null);
             DialogPane dialogPane = alert_exit.getDialogPane();
             dialogPane.getStylesheets().add(
                     getClass().getResource("/fxml/alert.css").toExternalForm());
@@ -82,10 +90,10 @@ public class Controller_Pass extends openFXMl{
 
         if(nPass.equals(confimPass)){
             checkSame.setText("Has³a s¹ takie same!");
-            checkSame.setTextFill(Color.GREEN);
+            checkSame.setStyle("-fx-text-fill:#0E7B19 ");
         }else{
             checkSame.setText("Has³a sie ró¿ni¹!");
-            checkSame.setTextFill(Color.RED);
+            checkSame.setStyle("-fx-text-fill: #871414");
         }
 
     }
@@ -120,8 +128,6 @@ public class Controller_Pass extends openFXMl{
     @FXML
     void howStrong(KeyEvent event) {
 
-        securityCheck.setVisible(true);
-
         String passwr;
                passwr = newPassword.getText();
 
@@ -134,46 +140,29 @@ public class Controller_Pass extends openFXMl{
          Pattern hasSpecialChar;
         hasSpecialChar= Pattern.compile(".*[@#$%!].*");
 
-        int sizePass = passwr.length();
-
-        if(sizePass < 6){
-            strongPass.setText("Bardzo s³abe");
-            securityCheck.setProgress(0.05);
-            securityCheck.setStyle("-fx-accent: red;");
-            securityCheck.setProgress(0);
+        Pattern lenght = Pattern.compile(".{8,}");
 
 
-        }
-        if (passwr.length() >= 6 || hasLowercase.matcher(passwr).find()) {
-            strongPass.setText("Bardzo s³abe");
-            securityCheck.setProgress(0.05);
-            securityCheck.setStyle("-fx-accent: red;");
+        if (!lenght.matcher(passwr).matches()) {
+            errorPassLen.setText("Has³o musi zawieraæ min 8 znaków!");
+            newPassword.setStyle("-fx-background-radius:16px; -fx-background-color:#FF4747 ");
 
-            //  tipsPassword.setText("Minimum jedna wielka litera");
-            // tipsPassword.setTextFill(Color.GREEN);
-
-            if (hasUpper.matcher(passwr).find()) {
-                strongPass.setText("S³abo");
-                securityCheck.setProgress(0.5);
-                securityCheck.setStyle("-fx-accent: #0027c1");
-                // tipsPassword.setText("Minimum jedna cyfra");
-
-            }
-
-            if (hasNumber.matcher(passwr).find()) {
-                strongPass.setText("Dobre");
-                securityCheck.setProgress(0.75);
-                securityCheck.setStyle("-fx-accent: #24d160");
+            if (!hasLowercase.matcher(passwr).matches() || !hasUpper.matcher(passwr).matches())
+                errorPassLet.setText("Musi posiadaæ jedn¹ wielk¹ i ma³¹ literê,");
 
 
-            }
+            if (!hasNumber.matcher(passwr).matches())
+                errorPassNum.setText("jedn¹ cyfrê oraz");
 
+            if (!hasSpecialChar.matcher(passwr).matches())
+                errorSpecCh.setText("jeden symbol specjalny.");
 
-            if (hasSpecialChar.matcher(passwr).find()) {
-                strongPass.setText("Silne");
-                securityCheck.setStyle("-fx-accent: #098534");
-                securityCheck.setProgress(1);
-            }
+        }else{
+            errorPassNum.setText(null);
+            errorSpecCh.setText(null);
+            errorPassLet.setText(null);
+            errorPassLen.setText(null);
+            newPassword.setStyle("-fx-background-radius: 16px");
         }
 
 
@@ -212,9 +201,7 @@ public class Controller_Pass extends openFXMl{
 
     }
 
-    public void hidden(){
-        securityCheck.setVisible(false);
-    }
+
 
 
 

@@ -111,7 +111,7 @@ public class Controller_Register extends openFXMl  implements Initializable {
         dialogPane.getStylesheets().add(
                 getClass().getResource("/fxml/alert.css").toExternalForm());
         dialogPane.getStyleClass().add("myAlerts");
-        dialogPane.setMaxSize(450,0);;
+        dialogPane.setMaxSize(450,0);
         alert_exit.showAndWait();
 
 
@@ -192,7 +192,7 @@ public class Controller_Register extends openFXMl  implements Initializable {
 
         // validation for email
 
-        Pattern email = Pattern.compile("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$");
+        Pattern email = Pattern.compile("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$");
 
         String mailR = emailtxt.getText();
 
