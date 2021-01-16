@@ -1,5 +1,6 @@
 package controllery.panelUsers;
 
+import controllery.Controller_User;
 import hibernate.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -53,8 +54,7 @@ public class Controller_Analysis_Data2 {
     @FXML
     private Label idYear;
 
-
-
+    Controller_ShowAnalysis shown;
 
     @FXML
     void cancel(ActionEvent event) throws IOException {
@@ -109,19 +109,8 @@ public class Controller_Analysis_Data2 {
         String operPofit = operationProfit.getText();
         String capitalAD = capital.getText();
         String credit = credits.getText();
-        String year = yeartxt.getText();
 
 
-        if (intNum.matcher(year).matches()) {
-            yeartxt.setStyle("");
-
-        } else if (year.trim().isEmpty()) {
-            yeartxt.setStyle("");
-
-        } else {
-            yeartxt.setStyle("-fx-background-color: #FF8080");
-
-        }
 
         if (checkPattern(operPofit)) {
             operationProfit.setStyle("");
@@ -243,8 +232,12 @@ public class Controller_Analysis_Data2 {
     }
 
     @FXML
-    void doAnalysis(ActionEvent event) {
-        int year_economy = Integer.parseInt(yeartxt.getText());
+    void doAnalysis(ActionEvent event) throws IOException {
+
+        DanefinansoweQuery q = new DanefinansoweQuery();
+        int nYear = Integer.parseInt(idYear.getText());
+        Danefinansowe dft= q.readDatafromYear(nYear);
+        int year = (dft.getRokBilansowy()) - 1;
 
         String gP = grossprofit.getText();
         double gross_profit = formatInputDatatoDouble(gP);
@@ -278,10 +271,10 @@ public class Controller_Analysis_Data2 {
 
         DanefinansoweQuery data = new DanefinansoweQuery();
 
-        data.addNewFinancialDataAnalysis(year_economy, gross_profit, economy_stock, total_assest, total_Sales, credit,
+        data.addNewFinancialDataAnalysis(year, gross_profit, economy_stock, total_assest, total_Sales, credit,
                 operation_profit, amort, capitalOwn, net_profit, id_company);
 
-        Danefinansowe dataFinancial = data.showID(year_economy, gross_profit, economy_stock, total_assest, total_Sales, credit,
+        Danefinansowe dataFinancial = data.showID(year, gross_profit, economy_stock, total_assest, total_Sales, credit,
                 operation_profit, amort, capitalOwn, net_profit, id_company);
 
         int idDate = dataFinancial.getIdDane();
@@ -329,6 +322,29 @@ public class Controller_Analysis_Data2 {
             e.getLocalizedMessage();
         }
 
+        String link = "/fxml/panelShowAnalysis.fxml";
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Controller_User.class.getResource(link));
+        Pane newPane = loader.load();
+        paneData.getChildren().add(newPane);
+
+        Controller_ShowAnalysis showAnalysis = loader.getController();
+        shown = showAnalysis;
+
+        DanefinansoweQuery dataP = new DanefinansoweQuery();
+        int idComa = Integer.parseInt(idCompa.getText());
+        int nowYear = Integer.parseInt(idYear.getText());
+        Danefinansowe dftw= dataP.checkYear(idComa,nowYear);
+        Danefinansowe dftp = dataP.checkYear(idComa,idDate);
+        showAnalysis.readYear(dftw.getRokBilansowy(), dftp.getRokBilansowy());
+
+        WskaznikiQuery wsq = new WskaznikiQuery();
+        Wskazniki ws = wsq.showPointers(nowYear);
+        showAnalysis.readPointersNow(ws.getRoe(), ws.getRoa(),ws.getRos(), ws.getRoi(),
+                ws.getMarzaOperacyjna(), ws.getMarzaZb());
+        Wskazniki w = wsq.showPointers(idDate);
+        showAnalysis.readPointersPreview(w.getRoe(), w.getRoa(),w.getRos(), w.getRoi(),
+                w.getMarzaOperacyjna(), w.getMarzaZb());
 
 
 
