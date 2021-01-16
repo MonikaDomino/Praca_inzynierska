@@ -71,6 +71,7 @@ public class ControllerPLogin extends openFXMl implements Initializable {
         } else {
             Alert alert_El = new Alert(Alert.AlertType.ERROR);
             alert_El.setHeaderText(null);
+            alert_El.setTitle(null);
             alert_El.setContentText("Niepoprawna nazwa u¿ytkownika lub has³o! ");
             DialogPane dialogPane = alert_El.getDialogPane();
             dialogPane.getStylesheets().add(

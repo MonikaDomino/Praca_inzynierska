@@ -98,7 +98,12 @@ public class Controller_CompanyAnalysis {
         WskaznikiQuery wsq = new WskaznikiQuery();
         Wskazniki w = wsq.showPointers(idData);
 
-        readROS.setText(Double.toString(w.getRos()));
+        double ROSr = w.getRos();
+        //double roundROS = roundNumber(ROSr);
+        double rROS = ROSr * 100;
+        double ROS = roundNumber(rROS);
+
+        readROS.setText(Double.toString(ROS) + "%");
         readMZB.setText(Double.toString(w.getMarzaZb()));
         readMO.setText(Double.toString(w.getMarzaOperacyjna()));
         readROI.setText(Double.toString(w.getRoi()));
@@ -163,6 +168,13 @@ public void loadBarChart(int idData){
 
 
         }
+
+    public double roundNumber(double result) {         // zaokr¹glanie liczb do 2 miejsc po przecinku
+        result = Math.round(result);
+
+
+        return  result;
+    }
 
 
 }

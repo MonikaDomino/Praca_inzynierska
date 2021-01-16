@@ -11,7 +11,7 @@
    <children>
       <Pane prefHeight="36.0" prefWidth="546.0" style="-fx-background-color: linear-gradient(to bottom, #24e0ee, #22d8fb, #43ceff, #66c4ff, #87b8ff); -fx-border-color: black;">
          <children>
-            <Label layoutX="191.0" layoutY="5.0" text="WPROWADŹ DANE">
+            <Label layoutX="113.0" layoutY="5.0" text="1. WPROWADŹ DANE ZA OBECNY ROK:">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -94,7 +94,7 @@
             <Font size="14.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="357.0" layoutY="429.0" mnemonicParsing="false" onAction="#doAnalysis" prefHeight="26.0" prefWidth="149.0" style="-fx-background-color: linear-gradient(to bottom, #60ff8b, #4edd7c, #3fbd6d, #329d5d, #277e4d);; -fx-background-radius: 16px; -fx-font-weight: bold; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); -fx-font-family: Arial Narrow;" text="Wykonaj analizę">
+      <JFXButton layoutX="357.0" layoutY="429.0" mnemonicParsing="false" onAction="#goToNextPage" prefHeight="26.0" prefWidth="149.0" style="-fx-background-color: linear-gradient(to bottom, #5d9bfa, #4c8aff, #4877ff, #5361ff, #6744ff);; -fx-background-radius: 16px; -fx-font-weight: bold; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); -fx-font-family: Arial Narrow;" text="Dalej">
          <font>
             <Font size="14.0" />
          </font>

@@ -18,9 +18,8 @@ public class WskaznikiQuery {
 
         session = HibernateUtill.getSessionFactory().openSession();
         String query = "INSERT INTO `wskazniki` (`id_wskazniki`, `ROE`, `ROA`, `ROS`, `marza_operacyjna`, `ROI`, " +
-                "`marza_ZB`, `id_dane`) SELECT NULL,  '"  +ROE+ "', '" +ROA + "', '" + ROS + "', '" +operation_margin
-                + "', '" +ROI+ "', '" +profit_margin+ "', '" +idData + "'FROM DUAL WHERE NOT EXISTS (SELECT id_wskazniki FROM" +
-                " wskazniki WHERE id_dane = '" +idData+ "')";
+                "`marza_ZB`, `id_dane`) VALUES (NULL,  '"  +ROE+ "', '" +ROA + "', '" + ROS + "', '" +operation_margin
+                + "', '" +ROI+ "', '" +profit_margin+ "', '" +idData + "')";
 
         try {
             session.getTransaction().begin();

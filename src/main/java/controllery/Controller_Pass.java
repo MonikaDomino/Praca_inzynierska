@@ -104,15 +104,15 @@ public class Controller_Pass extends openFXMl{
         ButtonType buttonYES = new ButtonType("Tak, chce", ButtonBar.ButtonData.YES);
         ButtonType buttonNO = new ButtonType("Nie, zostañ", ButtonBar.ButtonData.NO);
         Alert alertC = new Alert(Alert.AlertType.NONE, " ", buttonYES, buttonNO);
-        String s = "Czy na pewno chcesz przerwaæ?";
+        String s = "Czy na pewno chcesz przerwaæ zmianê has³a?";
         alertC.setHeaderText(s);
-
+        alertC.setTitle(null);
 
         DialogPane dialogPane = alertC.getDialogPane();
         dialogPane.getStylesheets().add(
                 getClass().getResource("/fxml/alert.css").toExternalForm());
         dialogPane.getStyleClass().add("myAlerts");
-        dialogPane.setMaxSize(350, 5);
+        dialogPane.setMaxSize(400, 5);
 
 
         alertC.setTitle(" ");

@@ -3,7 +3,6 @@ package controllery.panelUsers;
 
 import controllery.Controller_User;
 import controllery.panelUsers.Company.Controller_Company;
-import controllery.panelUsers.Company.Controller_CompanyForm;
 import hibernate.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,10 +11,6 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.text.ParseException;
-import java.util.Locale;
 import java.util.regex.Pattern;
 import java.io.IOException;
 import java.util.Optional;
@@ -64,9 +59,8 @@ public class Controller_Analysis_Data {
     @FXML
     private TextField capital;
 
-   Controller_ShowAnalysis show;
-
   Controller_Start conS;
+  Controller_Analysis_Data2 analysisData2;
 
     @FXML
     private Label idUserAT;
@@ -133,7 +127,7 @@ public class Controller_Analysis_Data {
     }
 
     @FXML
-    void doAnalysis(ActionEvent event) throws Exception {
+    void goToNextPage(ActionEvent event) throws Exception {
 
         int year_economy = Integer.parseInt(yeartxt.getText());
 
@@ -167,12 +161,8 @@ public class Controller_Analysis_Data {
         int id_company = Integer.parseInt(CompanyID.getText());
 
 
-
         DanefinansoweQuery data = new DanefinansoweQuery();
 
-        Danefinansowe dft = data.checkYear(id_company, year_economy);
-
-     if (dft == null) {
          data.addNewFinancialDataAnalysis(year_economy, gross_profit, economy_stock, total_assest, total_Sales, credit,
                  operation_profit, amort, capitalOwn, net_profit, id_company);
 
@@ -180,6 +170,8 @@ public class Controller_Analysis_Data {
                    operation_profit, amort, capitalOwn, net_profit, id_company);
 
          int id = dataFinancial.getIdDane();
+        idDataFinancial.setText(Integer.toString(id));
+        idDataFinancial.setVisible(false);
 
          double x1 = (gross_profit + amort) / credit;
          double x2 = total_assest / credit;
@@ -224,50 +216,19 @@ public class Controller_Analysis_Data {
              e.getLocalizedMessage();
          }
 
-         String link = "/fxml/panelShowAnalysis.fxml";
+         String link = "/fxml/panelUser_type/panelAnalysis_Data2.fxml";
          FXMLLoader loader = new FXMLLoader();
          loader.setLocation(Controller_Analysis_Data.class.getResource(link));
          Pane newPane = loader.load();
          paneData.getChildren().add(newPane);
 
-         Controller_ShowAnalysis shown = loader.getController();
-         show = shown;
-         shown.readResultAnalysis(analysis);
-         shown.readCondition(analysis);
-         ROE *= 100;
-         ROE = roundNumber(ROE);
-         ROA *= 100;
-         ROA = roundNumber(ROA);
-         ROS *= 100;
-         ROS = roundNumber(ROS);
-         ROI *= 100;
-         ROI = roundNumber(ROI);
-         operating_profit_margin *= 100;
-         operating_profit_margin = roundNumber(operating_profit_margin);
-         expected_gross_margin *= 100;
-         expected_gross_margin = roundNumber(expected_gross_margin);
-         shown.readPointers(ROE, ROA, ROS, ROI, operating_profit_margin, expected_gross_margin);
-         shown.readAdvantage(ROE);
-         shown.compare(ROA, ROE);
-         shown.readSales(ROS);
-         shown.readProfitA(ROA);
-         shown.readProfit(expected_gross_margin);
-         shown.readMO(operating_profit_margin);
-         shown.readROI(ROI);
+         Controller_Analysis_Data2 data2 = loader.getController();
+         analysisData2 = data2;
+         int idCp = Integer.parseInt(CompanyID.getText());
+         data2.readIdCompany(idCp);
+         int year = Integer.parseInt(idDataFinancial.getText());
+         data2.readIdFData(year);
 
-     } else{
-             Alert error = new Alert(Alert.AlertType.ERROR);
-             error.setTitle("");
-             error.setContentText("SprawdŸ zak³adkê FIRMA -> ANALIZA RENTOWNOŒCI");
-             error.setHeaderText("Analiza rentownoœci dla " + year_economy + "r. zosta³a ju¿ wykonana.");
-             DialogPane dialogPane = error.getDialogPane();
-             dialogPane.getStylesheets().add(
-                     getClass().getResource("/fxml/alert.css").toExternalForm());
-             dialogPane.getStyleClass().add("myAlerts");
-             dialogPane.setMaxSize(500, 200);
-             error.showAndWait();
-
-         }
      }
 
 
@@ -429,15 +390,6 @@ public class Controller_Analysis_Data {
     public void readIDUser (int id){
         idUserAT.setText(Integer.toString(id));
         idUserAT.setVisible(false);
-    }
-
-
-    public double roundNumber(double result) {         // zaokr¹glanie liczb do 2 miejsc po przecinku
-        result *= 100;
-        result = Math.round(result);
-        result /= 100;
-
-        return  result;
     }
 
     public void cleanColor(){
