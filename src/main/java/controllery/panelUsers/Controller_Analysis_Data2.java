@@ -345,7 +345,19 @@ public class Controller_Analysis_Data2 {
         Wskazniki w = wsq.showPointers(idDate);
         showAnalysis.readPointersPreview(w.getRoe(), w.getRoa(),w.getRos(), w.getRoi(),
                 w.getMarzaOperacyjna(), w.getMarzaZb());
+        showAnalysis.readValueN(ws.getRoe(), ws.getRoa(),ws.getRos(), ws.getRoi(),
+                ws.getMarzaOperacyjna(), ws.getMarzaZb());
+        showAnalysis.readValue(w.getRoe(), w.getRoa(),w.getRos(), w.getRoi(),
+                w.getMarzaOperacyjna(), w.getMarzaZb());
 
+      double devRoe = showAnalysis.readDeviation(ws.getRoe(), w.getRoe());
+      double devROA = showAnalysis.readDeviation(ws.getRoa(),w.getRoa());
+      double devROS = showAnalysis.readDeviation(ws.getRos(), w.getRos());
+      double devROI = showAnalysis.readDeviation(ws.getRoi(), w.getRoi());
+      double devMO = showAnalysis.readDeviation(ws.getMarzaOperacyjna(), w.getMarzaOperacyjna());
+      double devMG = showAnalysis.readDeviation(ws.getMarzaZb(), w.getMarzaZb());
+
+        showAnalysis.readDev(devRoe, devROA, devROS, devROI,devMO, devMG);
 
 
     }
@@ -363,11 +375,11 @@ public class Controller_Analysis_Data2 {
     }
 
     private static String removeAllWhitespaces(String str2) {
-        char[] chars = str2.toCharArray();
+        var chars = str2.toCharArray();
         StringBuilder sb = new StringBuilder();
-        for(int i = 0; i < chars.length; i++) {
-            if(!Character.isWhitespace(chars[i])) {
-                sb.append(chars[i]);
+        for (char aChar : chars) {
+            if (!Character.isWhitespace(aChar)) {
+                sb.append(aChar);
             }
         }
         return sb.toString();

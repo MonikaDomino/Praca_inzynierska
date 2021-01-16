@@ -104,9 +104,7 @@ public class Controller_ShowAnalysis {
 
     public double roundPointer(double point){
         double poi = point * 100.0;
-        double pointer = Math.round(poi * 100.0) / 100.0;
-
-        return pointer;
+        return  Math.round(poi * 100.0) / 100.0;
     }
 
     public String readPointers(double point) {
@@ -141,6 +139,64 @@ public class Controller_ShowAnalysis {
 
     }
 
+    public void readDev (double ROE, double ROA, double ROS, double ROI, double MO,
+                         double MG){
+
+        String ROEdev = readPointers(ROE);
+        compareROE.setText(ROEdev +"%");
+
+        String ROAdev = readPointers(ROA);
+        compareROA.setText(ROAdev + "%");
+
+        String ROSdev = readPointers(ROS);
+        compareROS.setText(ROSdev + "%");
+
+        String ROIdev = readPointers(ROI);
+        compareROI.setText(ROIdev+ "%");
+
+        String MOdev = readPointers(MO);
+        compareMO.setText(MOdev +"%");
+
+        String MGdev = readPointers(MG);
+        compareMG.setText(MGdev+"%");
+
+        if(MG > 0){
+            compareMG.setStyle(null);
+        }else{
+            compareMG.setStyle("-fx-text-fill: #690C00");
+        }
+
+        if(MO < 0){
+            compareMO.setStyle("-fx-text-fill: #690C00");
+        }else{
+            compareMO.setStyle(null);
+        }
+
+        if(ROI < 0){
+            compareROI.setStyle("-fx-text-fill: #690C00");
+        }else{
+            compareROI.setStyle(null);
+        }
+
+        if(ROA < 0){
+            compareROA.setStyle("-fx-text-fill: #690C00");
+        }else{
+            compareROA.setStyle(null);
+        }
+
+        if(ROE < 0){
+            compareROE.setStyle("-fx-text-fill: #690C00");
+        }else{
+            compareROE.setStyle(null);
+        }
+
+        if(ROS < 0){
+            compareROS.setStyle("-fx-text-fill: #690C00");
+        }else{
+            compareROS.setStyle(null);
+        }
+    }
+
     public void readPointersPreview(double ROE, double ROA, double ROS, double ROI, double MO,
                                     double MG){
 
@@ -162,6 +218,94 @@ public class Controller_ShowAnalysis {
         String MGs = readPointers(MG);
         resultMG.setText(MGs + "%");
 
+
+    }
+
+    public double readDeviation(double pointN, double pointP){
+        double dev = pointN - pointP;
+       return dev;
+
+    }
+
+
+
+    public void readValueN (double ROE, double ROA, double ROS, double ROI, double MO,
+                        double MG){
+
+        if(ROE > 0){
+            resultROEn.setStyle(null);
+        }else{
+            resultROEn.setStyle("-fx-text-fill: #690C00");
+        }
+
+        if(ROA < 0){
+            resultROAn.setStyle("-fx-text-fill: #690C00");
+        }else{
+            resultROAn.setStyle(null);
+        }
+
+        if(ROS < 0){
+            resultROSn.setStyle("-fx-text-fill: #690C00");
+        }else{
+            resultROSn.setStyle(null);
+        }
+        if(ROI < 0){
+            resultROIn.setStyle("-fx-text-fill: #690C00");
+        }else{
+            resultROIn.setStyle(null);
+        }
+
+        if(MO < 0){
+            resultMOn.setStyle("-fx-text-fill: #690C00");
+        }else{
+            resultMOn.setStyle(null);
+        }
+
+        if(MG < 0){
+            resultMGn.setStyle("-fx-text-fill: #690C00");
+        }else{
+            resultMGn.setStyle(null);
+        }
+
+    }
+
+    public void readValue (double ROE, double ROA, double ROS, double ROI, double MO,
+                            double MG){
+
+        if(ROE < 0){
+            resultROE.setStyle("-fx-text-fill: #690C00");
+        }else{
+            resultROE.setStyle(null);
+        }
+
+        if(ROA < 0){
+            resultROA.setStyle("-fx-text-fill: #690C00");
+        }else{
+            resultROA.setStyle(null);
+        }
+
+        if(ROS < 0){
+            resultROS.setStyle("-fx-text-fill: #690C00");
+        }else{
+            resultROS.setStyle(null);
+        }
+        if(ROI < 0){
+            resultROI.setStyle("-fx-text-fill: #690C00");
+        }else{
+            resultROI.setStyle(null);
+        }
+
+        if(MO < 0){
+            resultOM.setStyle("-fx-text-fill: #690C00");
+        }else{
+            resultOM.setStyle(null);
+        }
+
+        if(MG < 0){
+            resultMG.setStyle("-fx-text-fill: #690C00");
+        }else{
+            resultMG.setStyle(null);
+        }
 
     }
     }

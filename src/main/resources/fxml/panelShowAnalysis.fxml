@@ -209,9 +209,9 @@
                   </Label>
                </children>
             </Pane>
-            <Label alignment="CENTER" layoutX="465.0" layoutY="57.0" prefHeight="23.0" prefWidth="79.0" text="RÓŻNICA">
+            <Label layoutX="470.0" layoutY="57.0" prefHeight="23.0" prefWidth="79.0" text="ODCHYLENIE">
                <font>
-                  <Font name="System Bold" size="13.0" />
+                  <Font name="System Bold" size="10.0" />
                </font>
             </Label>
          </children>

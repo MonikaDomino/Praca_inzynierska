@@ -11,7 +11,7 @@
    <children>
       <Pane prefHeight="36.0" prefWidth="546.0" style="-fx-background-color: linear-gradient(to bottom, #24e0ee, #22d8fb, #43ceff, #66c4ff, #87b8ff); -fx-border-color: black;">
          <children>
-            <Label layoutX="113.0" layoutY="5.0" text="2.WPROWADŹ DANE ZA POPRZEDNI ROK">
+            <Label layoutX="113.0" layoutY="5.0" text="2. WPROWADŹ DANE ZA POPRZEDNI ROK">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
