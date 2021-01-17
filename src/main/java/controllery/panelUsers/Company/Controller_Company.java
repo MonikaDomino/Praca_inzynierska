@@ -131,7 +131,6 @@ public class Controller_Company {
 
         if (compa != null) {
             addCompanyBtn.setVisible(false);
-            changeDataA.setText("ZMIEÑ DANE ADRESOWE");
             nameCompany.setText(nameC);
             if (!local.isEmpty()) {
                 streetCompany.setText("ul. " + street + " " + numberBuilding + "/" + local);
@@ -139,6 +138,7 @@ public class Controller_Company {
                 streetCompany.setText("ul. " + street + " " + numberBuilding);
             }
             cityCompany.setText(postC + " " + city);
+
         }
     }
 

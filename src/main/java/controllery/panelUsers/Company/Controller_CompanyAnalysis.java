@@ -98,17 +98,19 @@ public class Controller_CompanyAnalysis {
         WskaznikiQuery wsq = new WskaznikiQuery();
         Wskazniki w = wsq.showPointers(idData);
 
-        double ROSr = w.getRos();
-        //double roundROS = roundNumber(ROSr);
-        double rROS = ROSr * 100;
-        double ROS = roundNumber(rROS);
+        String ROEs = readPointers(w.getRoe());
+        String ROAs = readPointers(w.getRoa());
+        String ROIs = readPointers(w.getRoi());
+        String MOs = readPointers(w.getMarzaOperacyjna());
+        String MGs = readPointers(w.getMarzaZb());
+        String ROSs = readPointers(w.getRos());
 
-        readROS.setText(Double.toString(ROS) + "%");
-        readMZB.setText(Double.toString(w.getMarzaZb()));
-        readMO.setText(Double.toString(w.getMarzaOperacyjna()));
-        readROI.setText(Double.toString(w.getRoi()));
-        readROA.setText(Double.toString(w.getRoa()));
-        readROE.setText(Double.toString(w.getRoe()));
+        readROS.setText(ROSs +"%");
+        readMZB.setText(MGs+"%");
+        readMO.setText(MOs+"%");
+        readROI.setText(ROIs+"%");
+        readROA.setText(ROAs+"%");
+        readROE.setText(ROEs+"%");
     }
 
     public void showCondition(double result) {
@@ -147,14 +149,30 @@ public void loadBarChart(int idData){
             final String ROI = "ROI";
             final String GM = "GM";
 
+            double ROEd = w.getRoe();
+            double ROEp = roundPointer(ROEd);
 
+            double ROAd = w.getRoa();
+            double ROAp = roundPointer(ROAd);
 
-            dataSeries1.getData().addAll(new XYChart.Data<String, Double>(ROE, w.getRoe()));
-                dataSeries1.getData().add(new XYChart.Data<String, Double>(ROA, w.getRoa()));
-                dataSeries1.getData().add(new XYChart.Data<String, Double>(ROS, w.getRoe()));
-                dataSeries1.getData().add(new XYChart.Data<String, Double>(OPM, w.getMarzaOperacyjna()));
-                dataSeries1.getData().add(new XYChart.Data<String, Double>(ROI, w.getRoi()));
-                dataSeries1.getData().add(new XYChart.Data<String, Double>(GM, w.getMarzaZb()));
+            double ROSd = w.getRos();
+            double ROSp = roundPointer(ROSd);
+
+            double MOd = w.getMarzaOperacyjna();
+            double MOp = roundPointer(MOd);
+
+            double ROId = w.getRoi();
+            double ROIp = roundPointer(ROId);
+
+            double MGd = w.getMarzaZb();
+            double MGp = roundPointer(MGd);
+
+            dataSeries1.getData().addAll(new XYChart.Data<String, Double>(ROE, ROEp));
+                dataSeries1.getData().add(new XYChart.Data<String, Double>(ROA, ROAp));
+                dataSeries1.getData().add(new XYChart.Data<String, Double>(ROS, ROSp));
+                dataSeries1.getData().add(new XYChart.Data<String, Double>(OPM, MOp));
+                dataSeries1.getData().add(new XYChart.Data<String, Double>(ROI, ROIp));
+                dataSeries1.getData().add(new XYChart.Data<String, Double>(GM, MGp));
 
                 categoryAxis.setCategories(FXCollections.observableArrayList("ROE", "ROA", "ROS",
                        "OPM", "ROI", "GM"));
@@ -162,19 +180,25 @@ public void loadBarChart(int idData){
             barPointers.getData().setAll(dataSeries1);
             barPointers.setPrefSize(240, 200);
             barPointers.setLegendVisible(false);
-           // barPointers.setLegendSide(Side.LEFT);
 
 
 
 
         }
 
-    public double roundNumber(double result) {         // zaokr¹glanie liczb do 2 miejsc po przecinku
-        result = Math.round(result);
-
-
-        return  result;
+    public double roundPointer(double point){
+        double poi = point * 100.0;
+        return  Math.round(poi * 100.0) / 100.0;
     }
+
+    public String readPointers(double point) {
+
+        double pointD = roundPointer(point);
+        String pointS = Double.toString(pointD);
+
+        return pointS;
+    }
+
 
 
 }
