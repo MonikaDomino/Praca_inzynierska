@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="415.0" prefWidth="546.0" style="-fx-background-color: linear-gradient(to top, #cedcf1, #b7cdee, #9fbeeb, #87b0e8, #6da1e5);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllery.panelUsers.Company.Controller_CompanyData">
    <children>
-      <Pane layoutX="81.0" layoutY="116.0" prefHeight="149.0" prefWidth="383.0" style="-fx-background-color: linear-gradient(to right top, #5fc7ff, #5bbcff, #62afff, #70a1fe, #8392f7);; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); -fx-border-color: #4730FF; -fx-border-width: 2px; -fx-border-radius: 10px; -fx-background-radius: 10px;">
+      <Pane layoutX="81.0" layoutY="198.0" prefHeight="149.0" prefWidth="383.0" style="-fx-background-color: linear-gradient(to right top, #5fc7ff, #5bbcff, #62afff, #70a1fe, #8392f7);; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); -fx-border-color: #4730FF; -fx-border-width: 2px; -fx-border-radius: 10px; -fx-background-radius: 10px;">
          <children>
             <Label fx:id="nameCompanyR" alignment="CENTER" layoutX="27.0" layoutY="14.0" prefHeight="27.0" prefWidth="325.0">
                <font>
@@ -26,10 +28,10 @@
             </Label>
          </children>
       </Pane>
-      <Label layoutX="135.0" layoutY="63.0" text="Czy wszystkie dane się zgadzają?">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="198.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@824-8243777_business-icon-establish-a-company-icon-removebg-preview.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
