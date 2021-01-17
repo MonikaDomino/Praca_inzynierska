@@ -112,6 +112,7 @@ public class Controller_User extends openFXMl {
         int id = Integer.parseInt(dataId.getText());
 
         FirmaQuery company = new FirmaQuery();
+        companyData.getChangePaneC(this.changePane);
         Firma com = company.showCompany(id);
         if (com != null) {
             companyData.readIdCompany(com.getIdFirmy());
@@ -119,6 +120,7 @@ public class Controller_User extends openFXMl {
                     com.getNumerLokalu(), com.getKodPocztowy(), com.getMiasto(), id);
             companyData.readIDu(id);
             companyData.readIdCAR(com.getIdFirmy());
+
         }else{
             companyData.readIdUser(id);
 
@@ -211,6 +213,7 @@ public class Controller_User extends openFXMl {
 
 
     }
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

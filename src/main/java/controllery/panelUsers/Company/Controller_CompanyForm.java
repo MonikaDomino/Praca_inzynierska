@@ -1,9 +1,10 @@
 package controllery.panelUsers.Company;
 
-import controllery.Controller_User;
+
 import controllery.panelUsers.Controller_Start;
 import hibernate.Firma;
 import hibernate.FirmaQuery;
+
 import hibernate.Uzytkownik;
 import hibernate.UzytkownikQuery;
 import javafx.event.ActionEvent;
@@ -12,9 +13,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 
+
 public class Controller_CompanyForm {
     @FXML
     private TextField street;
+
+    @FXML
+    private Pane allPane;
 
     @FXML
     private TextField nameCompanytxt;
@@ -37,7 +42,7 @@ public class Controller_CompanyForm {
     @FXML
     private Label idUserForm;
 
-    Controller_CompanyData compData;
+    Controller_Start compData;
     @FXML
     void addCompany(ActionEvent event) {
 
@@ -69,16 +74,18 @@ public class Controller_CompanyForm {
 
             alert_correct.showAndWait();
 
-            String link = "/fxml/panelUser_type/Company/CompanyData.fxml";
+            String link = "/fxml/panelUser_type/panelStart.fxml";
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Controller_CompanyForm.class.getResource(link));
             Pane newPane = loader.load();
-            changeCF.getChildren().add(newPane);
+            allPane.getChildren().add(newPane);
 
-            Controller_CompanyData cp = loader.getController();
+            Controller_Start start = loader.getController();
 
-            compData = cp;
-            cp.readCompanyData(id);
+            compData = start;
+            UzytkownikQuery usq = new UzytkownikQuery();
+            Uzytkownik u = usq.showData(idUser);
+            start.readLabel(u.getImie(), u.getNazwisko());
 
 
 
@@ -93,6 +100,10 @@ public class Controller_CompanyForm {
     public void readIdUser(int id){
         idUserForm.setText(Integer.toString(id));
         idUserForm.setVisible(false);
+    }
+
+    public void readPane(Pane pt){
+        allPane = pt;
     }
 
 

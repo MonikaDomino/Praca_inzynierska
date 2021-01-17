@@ -68,6 +68,7 @@
             <Label fx:id="idUCom" layoutX="45.0" layoutY="61.0" />
             <Label fx:id="idUshow" layoutX="453.0" layoutY="61.0" />
             <Label fx:id="idCAR" layoutX="232.0" layoutY="14.0" />
+            <Pane fx:id="behindPane" layoutX="19.0" layoutY="14.0" prefHeight="66.0" prefWidth="52.0" />
          </children></Pane>
    </children>
 </Pane>

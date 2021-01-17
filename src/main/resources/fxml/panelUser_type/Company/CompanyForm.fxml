@@ -79,6 +79,7 @@
                </font>
             </Label>
             <Label fx:id="idUserForm" layoutX="299.0" layoutY="31.0" />
+            <Pane fx:id="allPane" layoutX="444.0" layoutY="279.0" prefHeight="110.0" prefWidth="44.0" />
          </children>
       </Pane>
    </children>

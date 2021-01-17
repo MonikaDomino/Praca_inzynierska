@@ -34,6 +34,10 @@ public class Controller_Company {
     @FXML
     private Label idUCom;
 
+
+    @FXML
+    private Pane behindPane;
+
     @FXML
     private JFXButton changeDataA;
 
@@ -83,6 +87,8 @@ public class Controller_Company {
         comForm = fCom;
         int idU = Integer.parseInt(idUCom.getText());
         fCom.readIdUser(idU);
+        fCom.readPane(this.behindPane);
+
 
 
     }
@@ -167,7 +173,9 @@ public class Controller_Company {
         idCAR.setVisible(false);
     }
 
-
+    public void getChangePaneC (Pane p){
+        behindPane = p;
+    }
 
 
 }
