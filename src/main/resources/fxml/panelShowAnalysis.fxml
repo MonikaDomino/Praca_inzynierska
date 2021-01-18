@@ -15,42 +15,26 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <VBox layoutX="10.0" layoutY="228.0" prefHeight="148.0" prefWidth="499.0">
+            <VBox layoutX="11.0" layoutY="238.0" prefHeight="148.0" prefWidth="499.0">
                <children>
-                  <Label fx:id="recordAnalysis" prefHeight="18.0" prefWidth="515.0" />
                   <Label fx:id="advantage" alignment="CENTER" prefHeight="22.0" prefWidth="526.0">
                      <font>
-                        <Font name="System Bold" size="15.0" />
+                        <Font name="System Bold" size="17.0" />
                      </font>
                   </Label>
                   <Label fx:id="compare" alignment="CENTER" prefHeight="22.0" prefWidth="521.0">
                      <font>
-                        <Font name="System Bold" size="15.0" />
+                        <Font name="System Bold" size="17.0" />
                      </font>
                   </Label>
                   <Label fx:id="sales" alignment="CENTER" prefHeight="21.0" prefWidth="512.0">
                      <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="assest" alignment="CENTER" prefHeight="21.0" prefWidth="512.0">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="marginGross" alignment="CENTER" prefHeight="21.0" prefWidth="512.0">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="marginOp" alignment="CENTER" prefHeight="21.0" prefWidth="512.0">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
+                        <Font name="System Bold" size="17.0" />
                      </font>
                   </Label>
                   <Label fx:id="invest" alignment="CENTER" prefHeight="21.0" prefWidth="512.0">
                      <font>
-                        <Font name="System Bold" size="15.0" />
+                        <Font name="System Bold" size="17.0" />
                      </font>
                   </Label>
                </children>

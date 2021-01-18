@@ -308,5 +308,50 @@ public class Controller_ShowAnalysis {
         }
 
     }
+
+    public void readCondition(double result) {
+
+        if (result < 0) {
+            condition.setText("Bardzo wysoka mo?liwo?? bankructwa!");
+        } else if (result > 0 && result < 1) {
+            condition.setText("S?aba kondycja finansowa.");
+        } else if (result > 1 && result < 2) {
+            condition.setText("Dobra kondycja finansowa");
+        } else {
+            condition.setText("Bardzo dobra kondycja finansowa!");
+        }
+    }
+
+    public void compare (double ROA, double ROE){
+        if(ROE >= ROA){
+            advantage.setText("Przedsiêbiorstwo odnosi sukces finansowy");
+        }else {
+            advantage.setText("Przedsiêbiorstwo poniesie pora¿kê finansow¹");
+        }
+    }
+
+    public void readRoi (double ROI){
+        if(ROI > 0){
+            invest.setText("Posiadane aktywa generuja zysk netto");
+        }else{
+            invest.setText("Posiadane aktywa nie s¹ w stanie generowaæ zysku!");
+        }
+    }
+
+    public void readRoA (double ROA){
+        if(ROA > 0){
+            compare.setText("Maj¹tek przedsiêbiorstwa generuje zysk");
+        }else{
+            compare.setText("Maj¹tek przedsiêbiorstwo generuje stratê.");
+        }
+    }
+
+    public void readRos(double ROS){
+        if(ROS < 0){
+            sales.setText("Przedsiêbiorstwo musi osi¹gaæ wiêksz¹ sprzeda¿, aby generowaæ zysk!  ");
+        }else{
+            sales.setText("Przedsiêbiorstwo generuje zysk na sprzeda¿y.");
+        }
+    }
     }
 

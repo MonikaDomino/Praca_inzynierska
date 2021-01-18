@@ -162,7 +162,7 @@ public class Controller_Register extends openFXMl  implements Initializable {
     void validate(KeyEvent event) {
 
         // first name and name must have only letters
-        Pattern letter = Pattern.compile("^[a-zA-Z\\s]+");
+        Pattern letter = Pattern.compile("^[A-Za-z]+$");
 
         String fnameR = fnametxt.getText();
         String nameR = lnametxt.getText();

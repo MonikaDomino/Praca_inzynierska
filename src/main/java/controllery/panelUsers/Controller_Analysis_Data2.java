@@ -217,7 +217,7 @@ public class Controller_Analysis_Data2 {
 
     @FXML
     void clearForm(ActionEvent event) {
-        cleanColor();           // delete background color textfield
+
 
         totalAssest.setText(null);
         economyStock.setText(null);
@@ -358,6 +358,13 @@ public class Controller_Analysis_Data2 {
       double devMG = showAnalysis.readDeviation(ws.getMarzaZb(), w.getMarzaZb());
 
         showAnalysis.readDev(devRoe, devROA, devROS, devROI,devMO, devMG);
+        AnalizaQuery analise = new AnalizaQuery();
+        Analiza analize = analise.showResult(nowYear);
+        showAnalysis.readCondition(analize.getWynikAnalizy());
+        showAnalysis.compare(ws.getRoa(), ws.getRoe());
+        showAnalysis.readRoA(w.getRoa());
+        showAnalysis.readRoi(w.getRoi());
+        showAnalysis.readRos(w.getRos());
 
 
     }
@@ -394,7 +401,7 @@ public class Controller_Analysis_Data2 {
         amortization.setStyle(" ");
         credits.setStyle("");
         operationProfit.setStyle("");
-        yeartxt.setStyle("");
+//        yeartxt.setStyle("");
         capital.setStyle("");
         profit_net.setStyle("");
 
