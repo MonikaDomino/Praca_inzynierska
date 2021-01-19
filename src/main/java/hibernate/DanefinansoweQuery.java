@@ -20,13 +20,14 @@ public class DanefinansoweQuery {
 
         session = HibernateUtill.getSessionFactory().openSession();
 
-        String query = "INSERT INTO `danefinansowe`(`id_dane`, `rok_bilansowy`, "
+        String query = "INSERT INTO `dane_finansowe`(`id_dane`, `rok_bilansowy`, "
                 + "`zysk_brutto`, `zapasy`, `aktywa_ogolem`, `przychodyS`, `zobowiazania`, `zysk_operacyjny`," +
                 "`amortyzacja` , `kapital_wlasny` , `zysk_netto`, `id_firmy`)" +
                 " SELECT NULL, '" + year + "', '" + profitB + "', '" + economic_stocks + "', '" + assest + "', '" +
                 +totalSales + "', '" + operationProfit + "', '" + credit + "', '" + amort + "', '" + capital + "', '"
-                + profit_net + "', '" + id_company + "'FROM DUAL WHERE NOT EXISTS (SELECT id_dane FROM danefinansowe " +
-                "WHERE rok_bilansowy = '" +year+  "' and  id_firmy = '" +id_company+ "')";
+                + profit_net + "', '" + id_company + "'FROM DUAL WHERE NOT EXISTS (SELECT " +
+                "inzynierka.dane_finansowe.id_dane FROM dane_finansowe " +
+                "WHERE inzynierka.dane_finansowe.rok_bilansowy = '" +year+  "' and  inzynierka.dane_finansowe.id_firmy = '" +id_company+ "')";
 
         try {
             session.getTransaction().begin();
@@ -39,14 +40,14 @@ public class DanefinansoweQuery {
         }
     }
 
-    public Danefinansowe showID(int year, double profitB, double economic_stocks, double assest,
+    public DaneFinansowe showID(int year, double profitB, double economic_stocks, double assest,
                                 double totalSales, double credit, double operationProfit,
                                 double amort, double capital, double profit_net, int id_company) {
 
-        Danefinansowe d;
+        DaneFinansowe d;
         session = HibernateUtill.getSessionFactory().openSession();
         String hql;
-        hql = "from Danefinansowe as dane where dane.rokBilansowy ='" +year+ "' and dane.zyskBrutto= '" +profitB+ "' " +
+        hql = "from DaneFinansowe as dane where dane.rokBilansowy ='" +year+ "' and dane.zyskBrutto= '" +profitB+ "' " +
                 "and  dane.zapasy ='" +economic_stocks+ "' and dane.aktywaOgolem= '" +assest+ "' " +
                 "and dane.przychodyS = '" +totalSales+ "' AND dane.zobowiazania = '" +credit+ "'" +
                 " AND dane.zyskOperacyjny = '" +operationProfit+ "' AND dane.amortyzacja = '" +amort+ "'" +
@@ -55,63 +56,52 @@ public class DanefinansoweQuery {
 
 
         query = session.createQuery(hql);
-        d = (Danefinansowe)query.uniqueResult();
+        d = (DaneFinansowe)query.uniqueResult();
         session.close();
         return d;
 
     }
 
-    public  Danefinansowe checkYear(int idCompany, int idData){
-        Danefinansowe dc;
+    public  DaneFinansowe checkYear(int idCompany, int idData){
+        DaneFinansowe dc;
         session = HibernateUtill.getSessionFactory().openSession();
-        String hql = "from Danefinansowe where idFirmy = '" + idCompany + "'and idDane = '" + idData + "'";
+        String hql = "from DaneFinansowe where idFirmy = '" + idCompany + "'and idDane = '" + idData + "'";
         query = session.createQuery(hql);
-        dc = (Danefinansowe)query.setMaxResults(1).uniqueResult();
+        dc = (DaneFinansowe)query.setMaxResults(1).uniqueResult();
         session.close();
         return dc;
     }
 
-    public Danefinansowe readDatafromYear (int id){
-        Danefinansowe df;
+    public DaneFinansowe readDatafromYear (int id){
+        DaneFinansowe df;
         session = HibernateUtill.getSessionFactory().openSession();
-        String hql = "from Danefinansowe where idDane = '" + id + "'";
+        String hql = "from DaneFinansowe where idDane = '" + id + "'";
         query = session.createQuery(hql);
-        df = (Danefinansowe)query.uniqueResult();
+        df = (DaneFinansowe)query.uniqueResult();
         session.close();
         return df;
     }
 
-    public Danefinansowe readDatafromYearComp (int year, int idCompany){
-        Danefinansowe df;
+    public DaneFinansowe readDatafromYearComp (int year, int idCompany){
+        DaneFinansowe df;
         session = HibernateUtill.getSessionFactory().openSession();
-        String hql = "from Danefinansowe where idFirmy = '" + idCompany + "'and rokBilansowy = '" + year + "'";
+        String hql = "from DaneFinansowe where idFirmy = '" + idCompany + "'and rokBilansowy = '" + year + "'";
         query = session.createQuery(hql);
-        df = (Danefinansowe)query.uniqueResult();
+        df = (DaneFinansowe)query.uniqueResult();
         session.close();
         return df;
     }
 
 
 
-    public List<Danefinansowe> DaneFinansoweSelectAll() {
+    public List<DaneFinansowe> DaneFinansoweSelectForYear(int idCompany) {
         session = HibernateUtill.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
-        String hql = "from Danefinansowe";
-        query = session.createQuery(hql);
-        List<Danefinansowe> df = query.list();
-        tx.commit();
-        session.close();
-        return df;
-    }
-
-    public List<Danefinansowe> DaneFinansoweSelectForYear(int idCompany) {
-        session = HibernateUtill.getSessionFactory().openSession();
-        String hql = "from Danefinansowe where idFirmy = '" + idCompany + "'";
+        String hql = "from DaneFinansowe where idFirmy = '" + idCompany + "'";
         Query query = session.createQuery(hql);
-        List <Danefinansowe> df = query.list();
+        List <DaneFinansowe> df = query.list();
         session.close();
         int i = 0;
-        for(Danefinansowe d : df){
+        for(DaneFinansowe d : df){
             if(d.getIdFirmy() != idCompany){
                 df.remove(i);
             }

@@ -19,7 +19,7 @@ public class UzytkownikQuery {
         Uzytkownik u;
         session = HibernateUtill.getSessionFactory().openSession();
         String hql = "from Uzytkownik where login = '" + login + "'"
-                + " and password = '" + password + "'";
+                + " and haslo = '" + password + "'";
         query = session.createQuery(hql);
         u = (Uzytkownik) query.uniqueResult();
         session.close();
@@ -33,28 +33,17 @@ public class UzytkownikQuery {
         Uzytkownik u;
         session = HibernateUtill.getSessionFactory().openSession();
         String hql = "from Uzytkownik where login = '" + login + "'"
-                + " and password = '" + password + "'";
+                + " and haslo = '" + password + "'";
         query = session.createQuery(hql);
         u = (Uzytkownik) query.uniqueResult();
         session.close();
-        return u;
-    }
-
-    public Uzytkownik search (int id_user) {
-        Uzytkownik u = null;
-        session = HibernateUtill.getSessionFactory().openSession();
-        String hql = "SELECT Imie, nazwisko, email FROM uzytkownik WHERE = '" + id_user + "'";
-        query = session.createQuery(hql);
-        u = (Uzytkownik) query.uniqueResult();
-        session.close();
-
         return u;
     }
 
     public Uzytkownik searchPassword(String currentPassword, int idUser) {
         Uzytkownik uk = null;
         session = HibernateUtill.getSessionFactory().openSession();
-        String hql = "From Uzytkownik WHERE password  = '" + currentPassword + "'"
+        String hql = "From Uzytkownik WHERE haslo = '" + currentPassword + "'"
                 + " and idUzytkownika = '" + idUser + "'";
         query = session.createQuery(hql);
         uk = (Uzytkownik) query.uniqueResult();
@@ -63,13 +52,13 @@ public class UzytkownikQuery {
         return uk;
     }
 
-    public void changePasswordUser(String currentPass, String newPassword, int id) {
+    public void addCompany (int idUser, int idCompany) {
         session = HibernateUtill.getSessionFactory().openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            Uzytkownik user = new UzytkownikQuery().searchPassword(currentPass,id);
-            user.setPassword(newPassword);
+            Uzytkownik user = new UzytkownikQuery().showData(idUser);
+            user.setIdFirmy(idCompany);
             session.update(user);
             tx.commit();
 
@@ -96,8 +85,9 @@ public class UzytkownikQuery {
     public void register(String imie, String nazwisko, String login, String haslo, String email) {
 
         session = HibernateUtill.getSessionFactory().openSession();
-        String query = "INSERT INTO `uzytkownik` (`id_uzytkownika`, `Imie`, `nazwisko`, `login`, `password`, `email`) " +
-                "VALUES (NULL , '" + imie + "', '" + nazwisko + "', '" + login + "', '" + haslo + "', '" + email + "')";
+        String query = "INSERT INTO `uzytkownik` (`id_uzytkownika`, `Imie`, `nazwisko`, `login`, `haslo`, `email`," +
+                " `id_firmy`) " +
+                "VALUES (NULL , '" + imie + "', '" + nazwisko + "', '" + login + "', '" + haslo + "', '"+ email+ "', NULL) ";
 
         try {
             session.getTransaction().begin();
@@ -121,13 +111,15 @@ public class UzytkownikQuery {
         return uk;
     }
 
+
+
     public void changePassword(String mail, String newPasswor) {
         session = HibernateUtill.getSessionFactory().openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
             Uzytkownik user = new UzytkownikQuery().searchEmail(mail);
-            user.setPassword(newPasswor);
+            user.setHaslo(newPasswor);
             session.update(user);
             tx.commit();
 

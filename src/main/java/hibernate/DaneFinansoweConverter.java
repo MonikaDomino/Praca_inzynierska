@@ -2,15 +2,15 @@ package hibernate;
 
 import javafx.util.StringConverter;
 
-public class DanefinansoweConverter extends StringConverter<Danefinansowe> {
+public class DaneFinansoweConverter extends StringConverter<DaneFinansowe> {
     @Override
-    public String toString(Danefinansowe danefinansowe) {
+    public String toString(DaneFinansowe danefinansowe) {
         return danefinansowe == null ? null : danefinansowe.getRokBilansowy().toString();
 
     }
 
     @Override
-    public Danefinansowe fromString(String s) {
+    public DaneFinansowe fromString(String s) {
         return null;
     }
 }

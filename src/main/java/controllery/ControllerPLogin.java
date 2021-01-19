@@ -12,7 +12,6 @@ import javafx.scene.control.DialogPane;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-import javax.management.Notification;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -60,13 +59,12 @@ public class ControllerPLogin extends openFXMl implements Initializable {
 
             frame(event);
 
-            FirmaQuery company = new FirmaQuery();
-            Firma comp = company.showCompany(user.getIdUzytkownika());
+            UzytkownikQuery userq = new UzytkownikQuery();
+            Uzytkownik us = userq.showData(user.getIdUzytkownika());
 
-            if(comp == null){
+            if(us.getIdFirmy() == null) {
                 personalId.showAlert();
             }
-
 
         } else {
             Alert alert_El = new Alert(Alert.AlertType.ERROR);

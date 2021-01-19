@@ -85,7 +85,7 @@
                   <Font name="System Bold" size="10.0" />
                </font>
             </Label>
-            <Label fx:id="cityError" alignment="CENTER" layoutX="172.0" layoutY="280.0" prefHeight="17.0" prefWidth="224.0">
+            <Label fx:id="cityError" alignment="CENTER" layoutX="172.0" layoutY="280.0" prefHeight="17.0" prefWidth="262.0">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>

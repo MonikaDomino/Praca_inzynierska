@@ -8,19 +8,19 @@ public class FirmaQuery {
     Session session;
     Query query;
 
-    public void addCompany(String nameCompany, String street, String city, String postCode, String numberB, String numberF,
-                           int idUser) {
+    public void addCompany(String nameCompany, String street, String city, String postCode, String numberB,
+                           String numberF) {
 
         session = HibernateUtill.getSessionFactory().openSession();
         String query;
         if (numberF != " ") {
-            query = "INSERT INTO `firma` (`id_firmy`, `nazwa_firmy`, `ulica`, `numer_budynku`, `miasto`, `kod_pocztowy`, `numer_lokalu`, `id_uzytkownika`) " +
-                    "VALUES (NULL , '" + nameCompany + "', '" + street + "', '" + numberB + "', '" + city + "', '" + postCode + "', '" + numberF + "', '"
-                    + idUser + "')";
+            query = "INSERT INTO `firma` (`id_firmy`, `nazwa_firmy`, `ulica`, `numer_budynku`, `miasto`, `kod_pocztowy`, `numer_lokalu`) " +
+                    "VALUES (NULL , '" + nameCompany + "', '" + street + "', '" + numberB + "', '" + city + "', '" +postCode  + "', '"
+                    + numberF + "')";
         }else{
-            query = "INSERT INTO `firma` (`id_firmy`, `nazwa_firmy`, `ulica`, `numer_budynku`, `miasto`, `kod_pocztowy`,  `id_uzytkownika`) " +
+            query = "INSERT INTO `firma` (`id_firmy`, `nazwa_firmy`, `ulica`, `numer_budynku`, `miasto`, `kod_pocztowy`) " +
                     "VALUES (NULL , '" + nameCompany + "', '" + street + "', '" + numberB + "', '" + city + "', '" + postCode +  "', '"
-                    + idUser + "')";
+                   + "')";
         }
         try {
             session.getTransaction().begin();
@@ -33,16 +33,16 @@ public class FirmaQuery {
         }
     }
 
+
     public Firma showIdCompany (String nameCompany, String street, String numberB, String numberF, String postcode,
-                               String city, int idUser){
+                               String city){
 
         Firma cp;
        session = HibernateUtill.getSessionFactory().openSession();
         String hql;
         hql = "from Firma as company where company.nazwaFirmy ='" +nameCompany+ "' and company.ulica= '" +street+ "' " +
                 "and  company.numerBudynku ='" +numberB+ "' and  company.numerLokalu= '" +numberF+ "' " +
-                "and company.kodPocztowy = '" +postcode+ "' AND company.miasto = '" +city+ "'" +
-                "AND company.idUzytkownika = '" +idUser+ "'";
+                "and company.kodPocztowy = '" +postcode+ "' AND company.miasto = '" +city+ "'";
         query = session.createQuery(hql);
         cp = (Firma) query.uniqueResult();
         session.close();
@@ -52,15 +52,6 @@ public class FirmaQuery {
 
     }
 
-    public Firma showCompany(int id_user){
-        Firma f = null;
-        session = HibernateUtill.getSessionFactory().openSession();
-        String hql = "from Firma where idUzytkownika= '" + id_user +" '";
-        query = session.createQuery(hql);
-        f = (Firma) query.uniqueResult();
-        session.close();
-        return f;
-    }
 
     public Firma showCompanyData(int idCompany){
         Firma f = null;

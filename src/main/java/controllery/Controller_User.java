@@ -111,21 +111,21 @@ public class Controller_User extends openFXMl {
         formC = companyData;
         int id = Integer.parseInt(dataId.getText());
 
-        FirmaQuery company = new FirmaQuery();
+        UzytkownikQuery user = new UzytkownikQuery();
+        Uzytkownik us = user.showData(id);
+
         companyData.getChangePaneC(this.changePane);
-        Firma com = company.showCompany(id);
-        if (com != null) {
-            companyData.readIdCompany(com.getIdFirmy());
-            companyData.readCompanyData(com.getNazwaFirmy(), com.getUlica(), com.getNumerBudynku(),
-                    com.getNumerLokalu(), com.getKodPocztowy(), com.getMiasto(), id);
-            companyData.readIDu(id);
-            companyData.readIdCAR(com.getIdFirmy());
 
-        }else{
-            companyData.readIdUser(id);
-
-        }
-
+     if(us.getIdFirmy() != null){
+        companyData.readIdCompany(us.getIdFirmy());
+        int idF = us.getIdFirmy();
+        FirmaQuery fq = new FirmaQuery();
+        Firma f = fq.showCompanyData(idF);
+        companyData.readCompanyData(f.getNazwaFirmy(), f.getUlica(), f.getNumerBudynku(), f.getNumerLokalu(),
+                f.getMiasto(), f.getKodPocztowy(), idF);
+        companyData.readIdCAR(idF);
+        companyData.readIDu(idF);
+    }
     }
 
 
@@ -164,11 +164,15 @@ public class Controller_User extends openFXMl {
         Pane newPane = loader.load();
         changePane.getChildren().add(newPane);
 
-        Firma com = company.showCompany(idU);
         Controller_Analysis_Data analize = loader.getController();
         analType = analize;
-        analize.readIDUser(idU);
+       // analize.readIDUser(idU);
+        UzytkownikQuery usq = new UzytkownikQuery();
+        Uzytkownik u = usq.showData(idU);
 
+        int idCom = u.getIdFirmy();
+        FirmaQuery fcom = new FirmaQuery();
+        Firma com = fcom.showCompanyData(idCom);
 
         if(com == null) {
             analize.showAlert();
