@@ -3,6 +3,8 @@ package controllery.panelUsers.Company;
 import com.jfoenix.controls.JFXButton;
 import hibernate.Firma;
 import hibernate.FirmaQuery;
+import hibernate.Uzytkownik;
+import hibernate.UzytkownikQuery;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -66,11 +68,12 @@ public class Controller_Company {
         Controller_CompanyFinancial cf = loader.getController();
         financial = cf;
         int idD = Integer.parseInt(idUshow.getText());
-        FirmaQuery company = new FirmaQuery();
-        Firma com = company.showCompany(idD);
+        UzytkownikQuery user = new UzytkownikQuery();
+        Uzytkownik us = user.showData(idD);
 
-        cf.comboBox(com.getIdFirmy());
-        cf.readIdCompany(com.getIdFirmy());
+        int idCompa = us.getIdFirmy();
+        cf.comboBox(idCompa);
+       cf.readIdCompany(idCompa);
 
 
     }
@@ -85,7 +88,7 @@ public class Controller_Company {
 
         Controller_CompanyForm fCom = load.getController();
         comForm = fCom;
-        int idU = Integer.parseInt(idUCom.getText());
+         int idU = Integer.parseInt(idUCom.getText());
         fCom.readIdUser(idU);
         fCom.readPane(this.behindPane);
 
@@ -130,10 +133,10 @@ public class Controller_Company {
     }
 
     public void readCompanyData(String nameC, String street, String numberBuilding, String local, String postC,
-                                String city, int idUser) {
+                                String city, int idCompany) {
 
         FirmaQuery comData = new FirmaQuery();
-        Firma compa = comData.showCompany(idUser);
+            Firma compa = comData.showCompanyData(idCompany);
 
         if (compa != null) {
             addCompanyBtn.setVisible(false);
@@ -158,7 +161,8 @@ public class Controller_Company {
 
     public void readIdUser (int idU){
         idUCom.setText(Integer.toString(idU));
-        idUCom.setVisible(false);    }
+        // idUCom.setVisible(false);
+    }
 
      // read id user for data financial
     public void readIDu (int idUS){

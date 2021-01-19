@@ -14,6 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 
+import java.io.IOException;
 import java.util.regex.Pattern;
 
 
@@ -64,7 +65,7 @@ public class Controller_CompanyForm {
     Controller_Start compData;
 
     @FXML
-    void addCompany(ActionEvent event) {
+    void addCompany(ActionEvent event) throws IOException {
 
         String nameCompany = nameCompanytxt.getText();
         String streetCompany = street.getText();
@@ -72,40 +73,46 @@ public class Controller_CompanyForm {
         String numberLocal = numberF.getText();
         String postC = postCode.getText();
         String cityC = city.getText();
-        int idUser = Integer.parseInt(idUserForm.getText());
+       int idUser = Integer.parseInt(idUserForm.getText());
 
 
         try{
             FirmaQuery company = new FirmaQuery();
-            company.addCompany(nameCompany,streetCompany,cityC, postC,numberBuilding,numberLocal,idUser);
-            Firma comF = company.showIdCompany(nameCompany, streetCompany, numberBuilding, numberLocal,postC, cityC, idUser);
 
-            int id = comF.getIdFirmy();
+            Firma com =company.showIdCompany(nameCompany, streetCompany, cityC, postC, numberBuilding, numberLocal);
+
+            if(com == null){
+                company.addCompany(nameCompany, streetCompany, cityC, postC, numberBuilding, numberLocal);
+            }
+            int idComa = com.getIdFirmy();
+                UzytkownikQuery usq = new UzytkownikQuery();
+                //usq.addCompany(,idComa);
 
 
 
-            Alert alert_correct = new Alert(Alert.AlertType.INFORMATION);
-            alert_correct.setHeaderText("Przedsiêbiorstwo zosta³o dodane! ");
-            DialogPane dialogPane = alert_correct.getDialogPane();
-            dialogPane.getStylesheets().add(
-                    getClass().getResource("/fxml/alert.css").toExternalForm());
-            dialogPane.getStyleClass().add("myAlerts");
-            dialogPane.setMaxSize(400,0);
 
-            alert_correct.showAndWait();
+                Alert alert_correct = new Alert(Alert.AlertType.INFORMATION);
+                alert_correct.setHeaderText("Przedsiêbiorstwo zosta³o dodane do bazy! ");
+                DialogPane dialogPane = alert_correct.getDialogPane();
+                dialogPane.getStylesheets().add(
+                        getClass().getResource("/fxml/alert.css").toExternalForm());
+                dialogPane.getStyleClass().add("myAlerts");
+                dialogPane.setMaxSize(400, 0);
 
-            String link = "/fxml/panelUser_type/panelStart.fxml";
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Controller_CompanyForm.class.getResource(link));
-            Pane newPane = loader.load();
-            allPane.getChildren().add(newPane);
+                alert_correct.showAndWait();
 
-            Controller_Start start = loader.getController();
+                String link = "/fxml/panelUser_type/panelStart.fxml";
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(Controller_CompanyForm.class.getResource(link));
+                Pane newPane = loader.load();
+                allPane.getChildren().add(newPane);
 
-            compData = start;
-            UzytkownikQuery usq = new UzytkownikQuery();
-            Uzytkownik u = usq.showData(idUser);
-            start.readLabel(u.getImie(), u.getNazwisko());
+                Controller_Start start = loader.getController();
+
+                compData = start;
+                //UzytkownikQuery usq = new UzytkownikQuery();
+               // Uzytkownik u = usq.showData(idUser);
+                //start.readLabel(u.getImie(), u.getNazwisko());
 
 
 
@@ -119,7 +126,7 @@ public class Controller_CompanyForm {
     void validate(KeyEvent event) {
 
         Pattern postcodeP = Pattern.compile("^\\d{2}(?:-\\d{3}$)");
-        Pattern citySP = Pattern.compile("^[A-Za-z]+$");
+        Pattern citySP = Pattern.compile("[^\\W\\d_]$");
         Pattern numberBP = Pattern.compile("^[A-Za-z0-9 ]+$");
 
         Pattern numberLP = Pattern.compile("^[0-9]*$");
@@ -142,7 +149,7 @@ public class Controller_CompanyForm {
             postCerror.setStyle("-fx-text-fill:  #9C0E0E; -fx-font-weight: bold");
         }
 
-        if(citySP.matcher(cities).matches()){
+        if(citySP.matcher(cities).find()){
             city.setStyle("-fx-background-radius: 16px");
             cityError.setText(null);
         }else if(cities.trim().isEmpty()){
@@ -179,7 +186,7 @@ public class Controller_CompanyForm {
             buildingError.setStyle("-fx-text-fill:  #9C0E0E; -fx-font-weight: bold");
         }
 
-        if(numberBP.matcher(stree).matches()){
+        if(citySP.matcher(stree).find()){
             street.setStyle("-fx-background-radius: 16px");
             streetError.setText(null);
         }else if(stree.trim().isEmpty()){
@@ -196,7 +203,7 @@ public class Controller_CompanyForm {
 
     public void readIdUser(int id){
         idUserForm.setText(Integer.toString(id));
-        idUserForm.setVisible(false);
+      //  idUserForm.setVisible(false);
     }
 
     public void readPane(Pane pt){

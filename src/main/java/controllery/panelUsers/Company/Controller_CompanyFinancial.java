@@ -1,7 +1,7 @@
 package controllery.panelUsers.Company;
 
-import hibernate.Danefinansowe;
-import hibernate.DanefinansoweConverter;
+import hibernate.DaneFinansowe;
+import hibernate.DaneFinansoweConverter;
 import hibernate.DanefinansoweQuery;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -14,7 +14,7 @@ import java.text.DecimalFormat;
 public class Controller_CompanyFinancial {
 
     @FXML
-    private ComboBox<Danefinansowe> comboYear;
+    private ComboBox<DaneFinansowe> comboYear;
 
 
     @FXML
@@ -55,7 +55,7 @@ public class Controller_CompanyFinancial {
         selectedYear.setText("");
         DanefinansoweQuery dq = new DanefinansoweQuery();
         comboYear.getItems().addAll(dq.DaneFinansoweSelectForYear(idComp));
-        comboYear.setConverter(new DanefinansoweConverter());
+        comboYear.setConverter(new DaneFinansoweConverter());
 
         comboYear.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -67,14 +67,14 @@ public class Controller_CompanyFinancial {
 
     }
 
-    public void comboValue (ComboBox<Danefinansowe> comboYear){
+    public void comboValue (ComboBox<DaneFinansowe> comboYear){
 
-        Danefinansowe df = comboYear.getValue();
+        DaneFinansowe df = comboYear.getValue();
         if(df!= null){
             int year = df.getRokBilansowy();
             int idCmp = Integer.parseInt(companyId.getText());
             DanefinansoweQuery dqr = new DanefinansoweQuery();
-            Danefinansowe dr = dqr.readDatafromYearComp(year, idCmp);
+            DaneFinansowe dr = dqr.readDatafromYearComp(year, idCmp);
 
             String profitG = getDoubleFormat(dr.getZyskBrutto());
             readProfitGross.setText(profitG);

@@ -166,7 +166,7 @@ public class Controller_Analysis_Data {
          data.addNewFinancialDataAnalysis(year_economy, gross_profit, economy_stock, total_assest, total_Sales, credit,
                  operation_profit, amort, capitalOwn, net_profit, id_company);
 
-         Danefinansowe dataFinancial = data.showID(year_economy, gross_profit, economy_stock, total_assest, total_Sales, credit,
+         DaneFinansowe dataFinancial = data.showID(year_economy, gross_profit, economy_stock, total_assest, total_Sales, credit,
                    operation_profit, amort, capitalOwn, net_profit, id_company);
 
          int id = dataFinancial.getIdDane();

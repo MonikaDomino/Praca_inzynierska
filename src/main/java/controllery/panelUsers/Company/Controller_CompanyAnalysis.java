@@ -6,7 +6,6 @@ import javafx.collections.FXCollections;
 
 import javafx.fxml.FXML;
 
-import javafx.geometry.Side;
 import javafx.scene.chart.BarChart;
 ;
 import javafx.scene.chart.CategoryAxis;
@@ -20,7 +19,7 @@ public class Controller_CompanyAnalysis {
 
 
     @FXML
-    private ComboBox<Danefinansowe> yearCombo;
+    private ComboBox<DaneFinansowe> yearCombo;
 
     @FXML
     private Label readROE;
@@ -64,21 +63,21 @@ public class Controller_CompanyAnalysis {
         DanefinansoweQuery dq = new DanefinansoweQuery();
 
         yearCombo.getItems().addAll(dq.DaneFinansoweSelectForYear(idCom));
-        yearCombo.setConverter(new DanefinansoweConverter());
+        yearCombo.setConverter(new DaneFinansoweConverter());
 
         yearCombo.setOnAction(event -> comboValue(yearCombo));
 
 
     }
 
-    public void comboValue(ComboBox<Danefinansowe> yearCombo) {
+    public void comboValue(ComboBox<DaneFinansowe> yearCombo) {
 
-        Danefinansowe df = yearCombo.getValue();
+        DaneFinansowe df = yearCombo.getValue();
         if (df != null) {
             int year = df.getRokBilansowy();
             int idC = Integer.parseInt(idCompany.getText());
             DanefinansoweQuery dqr = new DanefinansoweQuery();
-            Danefinansowe dr = dqr.readDatafromYearComp(year, idC);
+            DaneFinansowe dr = dqr.readDatafromYearComp(year, idC);
 
             int idData = dr.getIdDane();
 

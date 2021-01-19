@@ -236,7 +236,7 @@ public class Controller_Analysis_Data2 {
 
         DanefinansoweQuery q = new DanefinansoweQuery();
         int nYear = Integer.parseInt(idYear.getText());
-        Danefinansowe dft= q.readDatafromYear(nYear);
+        DaneFinansowe dft= q.readDatafromYear(nYear);
         int year = (dft.getRokBilansowy()) - 1;
 
         String gP = grossprofit.getText();
@@ -274,7 +274,7 @@ public class Controller_Analysis_Data2 {
         data.addNewFinancialDataAnalysis(year, gross_profit, economy_stock, total_assest, total_Sales, credit,
                 operation_profit, amort, capitalOwn, net_profit, id_company);
 
-        Danefinansowe dataFinancial = data.showID(year, gross_profit, economy_stock, total_assest, total_Sales, credit,
+        DaneFinansowe dataFinancial = data.showID(year, gross_profit, economy_stock, total_assest, total_Sales, credit,
                 operation_profit, amort, capitalOwn, net_profit, id_company);
 
         int idDate = dataFinancial.getIdDane();
@@ -334,8 +334,8 @@ public class Controller_Analysis_Data2 {
         DanefinansoweQuery dataP = new DanefinansoweQuery();
         int idComa = Integer.parseInt(idCompa.getText());
         int nowYear = Integer.parseInt(idYear.getText());
-        Danefinansowe dftw= dataP.checkYear(idComa,nowYear);
-        Danefinansowe dftp = dataP.checkYear(idComa,idDate);
+        DaneFinansowe dftw= dataP.checkYear(idComa,nowYear);
+        DaneFinansowe dftp = dataP.checkYear(idComa,idDate);
         showAnalysis.readYear(dftw.getRokBilansowy(), dftp.getRokBilansowy());
 
         WskaznikiQuery wsq = new WskaznikiQuery();
