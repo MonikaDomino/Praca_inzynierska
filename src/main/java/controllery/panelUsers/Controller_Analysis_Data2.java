@@ -236,7 +236,7 @@ public class Controller_Analysis_Data2 {
 
         DanefinansoweQuery q = new DanefinansoweQuery();
         int nYear = Integer.parseInt(idYear.getText());
-        DaneFinansowe dft= q.readDatafromYear(nYear);
+        DaneFinansowe dft = q.readDatafromYear(nYear);
         int year = (dft.getRokBilansowy()) - 1;
 
         String gP = grossprofit.getText();
@@ -277,94 +277,93 @@ public class Controller_Analysis_Data2 {
         DaneFinansowe dataFinancial = data.showID(year, gross_profit, economy_stock, total_assest, total_Sales, credit,
                 operation_profit, amort, capitalOwn, net_profit, id_company);
 
-        int idDate = dataFinancial.getIdDane();
+            int idDate = dataFinancial.getIdDane();
 
-        double x1 = (gross_profit + amort)/credit;
-        double x2 = total_assest / credit;
-        double x3 = operation_profit / total_assest;
-        double x4 = operation_profit / total_Sales;
-        double x5 = economy_stock / total_Sales;
-        double x6 = total_Sales / total_assest;
+            double x1 = (gross_profit + amort) / credit;
+            double x2 = total_assest / credit;
+            double x3 = operation_profit / total_assest;
+            double x4 = operation_profit / total_Sales;
+            double x5 = economy_stock / total_Sales;
+            double x6 = total_Sales / total_assest;
 
-        double analysis = ((3 * x1) / 2) + ((8 * x2) / 100) + 10 * x3 + 5 * x4 + ((3 * x5) / 10) + (x6 / 10);
+            double analysis = ((3 * x1) / 2) + ((8 * x2) / 100) + 10 * x3 + 5 * x4 + ((3 * x5) / 10) + (x6 / 10);
 
-        try {
-            AnalizaQuery analyse = new AnalizaQuery();
-            analyse.addNewAnalysis(idDate, analysis);
+            try {
+                AnalizaQuery analyse = new AnalizaQuery();
+                analyse.addNewAnalysis(idDate, analysis);
 
-        } catch (Exception e) {
-            e.getLocalizedMessage();
-        }
+            } catch (Exception e) {
+                e.getLocalizedMessage();
+            }
 
-        double ROE;                             // rentownoœæ kapita³u w³asnego
-        double ROA;                            // rentownoœæ aktywów
-        double ROS;                           // rentownoœæ sprzeda¿y
-        double ROI;                          // rentownoœæ inwestycji
-        double operating_profit_margin;     // mar¿a operacyjna
-        double expected_gross_margin;      // mar¿a zysku brutto
-
-
-        operating_profit_margin = operation_profit / total_Sales;
-        expected_gross_margin = gross_profit / total_Sales;
-        ROI = net_profit / total_assest;
-        ROS = net_profit / total_Sales;
-        ROA = operation_profit / total_assest;
-        ROE = net_profit / capitalOwn;
+            double ROE;                             // rentownoœæ kapita³u w³asnego
+            double ROA;                            // rentownoœæ aktywów
+            double ROS;                           // rentownoœæ sprzeda¿y
+            double ROI;                          // rentownoœæ inwestycji
+            double operating_profit_margin;     // mar¿a operacyjna
+            double expected_gross_margin;      // mar¿a zysku brutto
 
 
+            operating_profit_margin = operation_profit / total_Sales;
+            expected_gross_margin = gross_profit / total_Sales;
+            ROI = net_profit / total_assest;
+            ROS = net_profit / total_Sales;
+            ROA = operation_profit / total_assest;
+            ROE = net_profit / capitalOwn;
 
 
-        try {
-            WskaznikiQuery pointer = new WskaznikiQuery();
-            pointer.addNewPointers(ROE, ROA, ROS, operating_profit_margin, ROI, expected_gross_margin, idDate);
+            try {
+                WskaznikiQuery pointer = new WskaznikiQuery();
+                pointer.addNewPointers(ROE, ROA, ROS, operating_profit_margin, ROI, expected_gross_margin, idDate);
 
-        } catch (Exception e) {
-            e.getLocalizedMessage();
-        }
+            } catch (Exception e) {
+                e.getLocalizedMessage();
+            }
 
-        String link = "/fxml/panelShowAnalysis.fxml";
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(Controller_User.class.getResource(link));
-        Pane newPane = loader.load();
-        paneData.getChildren().add(newPane);
+            String link = "/fxml/panelShowAnalysis.fxml";
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Controller_User.class.getResource(link));
+            Pane newPane = loader.load();
+            paneData.getChildren().add(newPane);
 
-        Controller_ShowAnalysis showAnalysis = loader.getController();
-        shown = showAnalysis;
+            Controller_ShowAnalysis showAnalysis = loader.getController();
+            shown = showAnalysis;
 
-        DanefinansoweQuery dataP = new DanefinansoweQuery();
-        int idComa = Integer.parseInt(idCompa.getText());
-        int nowYear = Integer.parseInt(idYear.getText());
-        DaneFinansowe dftw= dataP.checkYear(idComa,nowYear);
-        DaneFinansowe dftp = dataP.checkYear(idComa,idDate);
-        showAnalysis.readYear(dftw.getRokBilansowy(), dftp.getRokBilansowy());
+            DanefinansoweQuery dataP = new DanefinansoweQuery();
+            int idComa = Integer.parseInt(idCompa.getText());
+            int nowYear = Integer.parseInt(idYear.getText());
+            DaneFinansowe dftw = dataP.checkYear(idComa, nowYear);
+            DaneFinansowe dftp = dataP.checkYear(idComa, idDate);
+            showAnalysis.readYear(dftw.getRokBilansowy(), dftp.getRokBilansowy());
 
-        WskaznikiQuery wsq = new WskaznikiQuery();
-        Wskazniki ws = wsq.showPointers(nowYear);
-        showAnalysis.readPointersNow(ws.getRoe(), ws.getRoa(),ws.getRos(), ws.getRoi(),
-                ws.getMarzaOperacyjna(), ws.getMarzaZb());
-        Wskazniki w = wsq.showPointers(idDate);
-        showAnalysis.readPointersPreview(w.getRoe(), w.getRoa(),w.getRos(), w.getRoi(),
-                w.getMarzaOperacyjna(), w.getMarzaZb());
-        showAnalysis.readValueN(ws.getRoe(), ws.getRoa(),ws.getRos(), ws.getRoi(),
-                ws.getMarzaOperacyjna(), ws.getMarzaZb());
-        showAnalysis.readValue(w.getRoe(), w.getRoa(),w.getRos(), w.getRoi(),
-                w.getMarzaOperacyjna(), w.getMarzaZb());
+            WskaznikiQuery wsq = new WskaznikiQuery();
+            Wskazniki ws = wsq.showPointers(nowYear);
+            showAnalysis.readPointersNow(ws.getRoe(), ws.getRoa(), ws.getRos(), ws.getRoi(),
+                    ws.getMarzaOperacyjna(), ws.getMarzaZb());
+            Wskazniki w = wsq.showPointers(idDate);
+            showAnalysis.readPointersPreview(w.getRoe(), w.getRoa(), w.getRos(), w.getRoi(),
+                    w.getMarzaOperacyjna(), w.getMarzaZb());
+            showAnalysis.readValueN(ws.getRoe(), ws.getRoa(), ws.getRos(), ws.getRoi(),
+                    ws.getMarzaOperacyjna(), ws.getMarzaZb());
+            showAnalysis.readValue(w.getRoe(), w.getRoa(), w.getRos(), w.getRoi(),
+                    w.getMarzaOperacyjna(), w.getMarzaZb());
 
-      double devRoe = showAnalysis.readDeviation(ws.getRoe(), w.getRoe());
-      double devROA = showAnalysis.readDeviation(ws.getRoa(),w.getRoa());
-      double devROS = showAnalysis.readDeviation(ws.getRos(), w.getRos());
-      double devROI = showAnalysis.readDeviation(ws.getRoi(), w.getRoi());
-      double devMO = showAnalysis.readDeviation(ws.getMarzaOperacyjna(), w.getMarzaOperacyjna());
-      double devMG = showAnalysis.readDeviation(ws.getMarzaZb(), w.getMarzaZb());
+            double devRoe = showAnalysis.readDeviation(ws.getRoe(), w.getRoe());
+            double devROA = showAnalysis.readDeviation(ws.getRoa(), w.getRoa());
+            double devROS = showAnalysis.readDeviation(ws.getRos(), w.getRos());
+            double devROI = showAnalysis.readDeviation(ws.getRoi(), w.getRoi());
+            double devMO = showAnalysis.readDeviation(ws.getMarzaOperacyjna(), w.getMarzaOperacyjna());
+            double devMG = showAnalysis.readDeviation(ws.getMarzaZb(), w.getMarzaZb());
 
-        showAnalysis.readDev(devRoe, devROA, devROS, devROI,devMO, devMG);
-        AnalizaQuery analise = new AnalizaQuery();
-        Analiza analize = analise.showResult(nowYear);
-        showAnalysis.readCondition(analize.getWynikAnalizy());
-        showAnalysis.compare(ws.getRoa(), ws.getRoe());
-        showAnalysis.readRoA(w.getRoa());
-        showAnalysis.readRoi(w.getRoi());
-        showAnalysis.readRos(w.getRos());
+            showAnalysis.readDev(devRoe, devROA, devROS, devROI, devMO, devMG);
+            AnalizaQuery analise = new AnalizaQuery();
+            Analiza analize = analise.showResult(nowYear);
+            showAnalysis.readCondition(analize.getWynikAnalizy());
+            showAnalysis.compare(ws.getRoa(), ws.getRoe());
+            showAnalysis.readRoA(w.getRoa());
+            showAnalysis.readRoi(w.getRoi());
+            showAnalysis.readRos(w.getRos());
+
 
 
     }

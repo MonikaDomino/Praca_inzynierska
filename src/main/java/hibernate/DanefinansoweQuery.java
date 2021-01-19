@@ -82,6 +82,16 @@ public class DanefinansoweQuery {
         return df;
     }
 
+    public DaneFinansowe readYear (int year){
+        DaneFinansowe df;
+        session = HibernateUtill.getSessionFactory().openSession();
+        String hql = "from DaneFinansowe where rokBilansowy = '" + year + "'";
+        query = session.createQuery(hql);
+        df = (DaneFinansowe)query.uniqueResult();
+        session.close();
+        return df;
+    }
+
     public DaneFinansowe readDatafromYearComp (int year, int idCompany){
         DaneFinansowe df;
         session = HibernateUtill.getSessionFactory().openSession();

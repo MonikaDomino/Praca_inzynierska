@@ -163,195 +163,100 @@ public class Controller_Analysis_Data {
 
         DanefinansoweQuery data = new DanefinansoweQuery();
 
-         data.addNewFinancialDataAnalysis(year_economy, gross_profit, economy_stock, total_assest, total_Sales, credit,
-                 operation_profit, amort, capitalOwn, net_profit, id_company);
+        DaneFinansowe danF = data.readYear(year_economy);
 
-         DaneFinansowe dataFinancial = data.showID(year_economy, gross_profit, economy_stock, total_assest, total_Sales, credit,
-                   operation_profit, amort, capitalOwn, net_profit, id_company);
+        if(danF == null) {
 
-         int id = dataFinancial.getIdDane();
-        idDataFinancial.setText(Integer.toString(id));
-        idDataFinancial.setVisible(false);
+            data.addNewFinancialDataAnalysis(year_economy, gross_profit, economy_stock, total_assest, total_Sales, credit,
+                    operation_profit, amort, capitalOwn, net_profit, id_company);
 
-         double x1 = (gross_profit + amort) / credit;
-         double x2 = total_assest / credit;
-         double x3 = operation_profit / total_assest;
-         double x4 = operation_profit / total_Sales;
-         double x5 = economy_stock / total_Sales;
-         double x6 = total_Sales / total_assest;
+            DaneFinansowe dataF = data.showID(year_economy, gross_profit, economy_stock, total_assest, total_Sales, credit,
+                    operation_profit, amort, capitalOwn, net_profit, id_company);
 
-         double analysis = ((3 * x1) / 2) + ((8 * x2) / 100) + 10 * x3 + 5 * x4 + ((3 * x5) / 10) + (x6 / 10);
-
-         try {
-             AnalizaQuery analyse = new AnalizaQuery();
-             analyse.addNewAnalysis(id, analysis);
-
-         } catch (Exception e) {
-             e.getLocalizedMessage();
-         }
-
-         double ROE;                             // rentownoœæ kapita³u w³asnego
-         double ROA;                            // rentownoœæ aktywów
-         double ROS;                           // rentownoœæ sprzeda¿y
-         double ROI;                          // rentownoœæ inwestycji
-         double operating_profit_margin;     // mar¿a operacyjna
-         double expected_gross_margin;      // mar¿a zysku brutto
+            int idD = dataF.getIdDane();
 
 
-         operating_profit_margin = operation_profit / total_Sales;
-         expected_gross_margin = gross_profit / total_Sales;
-         ROI = net_profit / total_assest;
-         ROS = net_profit / total_Sales;
-         ROA = operation_profit / total_assest;
-         ROE = net_profit / capitalOwn;
+            idDataFinancial.setText(Integer.toString(idD));
+            idDataFinancial.setVisible(false);
+
+            double x1 = (gross_profit + amort) / credit;
+            double x2 = total_assest / credit;
+            double x3 = operation_profit / total_assest;
+            double x4 = operation_profit / total_Sales;
+            double x5 = economy_stock / total_Sales;
+            double x6 = total_Sales / total_assest;
+
+            double analysis = ((3 * x1) / 2) + ((8 * x2) / 100) + 10 * x3 + 5 * x4 + ((3 * x5) / 10) + (x6 / 10);
+
+            try {
+                AnalizaQuery analyse = new AnalizaQuery();
+                analyse.addNewAnalysis(idD, analysis);
+
+            } catch (Exception e) {
+                e.getLocalizedMessage();
+            }
+
+            double ROE;                             // rentownoœæ kapita³u w³asnego
+            double ROA;                            // rentownoœæ aktywów
+            double ROS;                           // rentownoœæ sprzeda¿y
+            double ROI;                          // rentownoœæ inwestycji
+            double operating_profit_margin;     // mar¿a operacyjna
+            double expected_gross_margin;      // mar¿a zysku brutto
 
 
+            operating_profit_margin = operation_profit / total_Sales;
+            expected_gross_margin = gross_profit / total_Sales;
+            ROI = net_profit / total_assest;
+            ROS = net_profit / total_Sales;
+            ROA = operation_profit / total_assest;
+            ROE = net_profit / capitalOwn;
 
 
-         try {
-             WskaznikiQuery pointer = new WskaznikiQuery();
-             pointer.addNewPointers(ROE, ROA, ROS, operating_profit_margin, ROI, expected_gross_margin, id);
+            try {
+                WskaznikiQuery pointer = new WskaznikiQuery();
+                pointer.addNewPointers(ROE, ROA, ROS, operating_profit_margin, ROI, expected_gross_margin, idD);
 
-         } catch (Exception e) {
-             e.getLocalizedMessage();
-         }
+            } catch (Exception e) {
+                e.getLocalizedMessage();
+            }
 
-         String link = "/fxml/panelUser_type/panelAnalysis_Data2.fxml";
-         FXMLLoader loader = new FXMLLoader();
-         loader.setLocation(Controller_Analysis_Data.class.getResource(link));
-         Pane newPane = loader.load();
-         paneData.getChildren().add(newPane);
+            String link = "/fxml/panelUser_type/panelAnalysis_Data2.fxml";
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Controller_Analysis_Data.class.getResource(link));
+            Pane newPane = loader.load();
+            paneData.getChildren().add(newPane);
 
-         Controller_Analysis_Data2 data2 = loader.getController();
-         analysisData2 = data2;
-         int idCp = Integer.parseInt(CompanyID.getText());
-         data2.readIdCompany(idCp);
-         int year = Integer.parseInt(idDataFinancial.getText());
-         data2.readIdFData(year);
+            Controller_Analysis_Data2 data2 = loader.getController();
+            analysisData2 = data2;
+            int idCp = Integer.parseInt(CompanyID.getText());
+            data2.readIdCompany(idCp);
+            int year = Integer.parseInt(idDataFinancial.getText());
+            data2.readIdFData(year);
 
-     }
+        }else{
+            Alert alertC = new Alert(Alert.AlertType.ERROR);
+            String s = "Analiza rentownoœci za " + year_economy+ "r. zosta³a ju¿ wykonana";
+            alertC.setHeaderText(s);
+            alertC.setContentText(null);
+            alertC.setTitle(null);
+            DialogPane dialogPane = alertC.getDialogPane();
+            dialogPane.getStylesheets().add(
+                    getClass().getResource("/fxml/alert.css").toExternalForm());
+            dialogPane.getStyleClass().add("myAlerts");
+            dialogPane.setMaxSize(500,0);;
+            alertC.showAndWait();
+
+        }
+
+    }
+
 
 
 
 
     @FXML
     void checkIsCorrectNumber(KeyEvent event) {
-        Pattern intNumber = Pattern.compile("^-?\\d+$");
 
-
-        String grossP = grossprofit.getText();
-        String stockEconomy = economyStock.getText();
-        String assesTotal = totalAssest.getText();
-        String profitNet = profit_net.getText();
-        String amortT = amortization.getText();
-        String salesTotal = totalSales.getText();
-        String operPofit = operationProfit.getText();
-        String capitalAD = capital.getText();
-        String credit = credits.getText();
-        String year = yeartxt.getText();
-
-
-        if (intNumber.matcher(year).matches()) {
-            yeartxt.setStyle("");
-
-        } else if (year.trim().isEmpty()) {
-            yeartxt.setStyle("");
-
-        } else {
-            yeartxt.setStyle("-fx-background-color: #FF8080");
-
-        }
-
-        if (checkPatterns(operPofit)) {
-            operationProfit.setStyle("");
-
-        }else if(operPofit.trim().isEmpty()){
-            operationProfit.setStyle("");
-
-        }else {
-            operationProfit.setStyle("-fx-background-color: #FF8080");
-        }
-
-        if (checkPatterns(credit)) {
-            credits.setStyle("");
-
-        }else if(credit.trim().isEmpty()){
-            credits.setStyle("");
-
-        } else {
-
-
-            credits.setStyle("-fx-background-color: #FF8080");
-
-        }
-
-        if (checkPatterns(capitalAD)) {
-            capital.setStyle(" ");
-
-        } else if(capitalAD.trim().isEmpty()){
-                capital.setStyle("");
-
-        } else {
-
-            capital.setStyle("-fx-background-color: #FF8080");
-        }
-
-        if (checkPatterns(salesTotal)) {
-            totalSales.setStyle(" ");
-
-        }else if(salesTotal.trim().isEmpty()){
-                totalSales.setStyle("");
-        } else {
-
-            totalSales.setStyle("-fx-background-color: #FF8080");
-
-        }
-
-        if (checkPatterns(amortT)) {
-            amortization.setStyle(" ");
-
-        } else if(amortT.trim().isEmpty()){
-                amortization.setStyle("");
-        } else {
-            amortization.setStyle("-fx-background-color: #FF8080");
-
-        }
-
-        if (checkPatterns(profitNet) ) {
-            profit_net.setStyle("");
-        }else if(profitNet.trim().isEmpty()){
-                profit_net.setStyle("");
-        } else {
-            profit_net.setStyle("-fx-background-color: #FF8080");
-
-        }
-        if (checkPatterns(assesTotal)) {
-            totalAssest.setStyle("");
-        }else if(assesTotal.trim().isEmpty()){
-                totalAssest.setStyle("");
-        } else {
-            totalAssest.setStyle("-fx-background-color: #FF8080");
-
-        }
-        if (checkPatterns(stockEconomy)) {
-            economyStock.setStyle("");
-        }else if(stockEconomy.trim().isEmpty()){
-                economyStock.setStyle("");
-        } else {
-             economyStock.setStyle("-fx-background-color: #ff8080");
-
-
-        }
-        if (checkPatterns(grossP)) {
-            grossprofit.setStyle("");
-        }  else if(grossP.trim().isEmpty()){
-                grossprofit.setStyle("");
-
-        } else {
-            grossprofit.setStyle("-fx-background-color: #FF8080");
-
-
-        }
 
     }
 

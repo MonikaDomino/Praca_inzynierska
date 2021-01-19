@@ -89,11 +89,12 @@ public class Controller_CompanyForm {
 
             Alert alert_correct = new Alert(Alert.AlertType.INFORMATION);
             alert_correct.setHeaderText("Przedsiêbiorstwo zosta³o dodane do bazy! ");
+            alert_correct.setTitle(null);
             DialogPane dialogPane = alert_correct.getDialogPane();
             dialogPane.getStylesheets().add(
                     getClass().getResource("/fxml/alert.css").toExternalForm());
             dialogPane.getStyleClass().add("myAlerts");
-            dialogPane.setMaxSize(400, 0);
+            dialogPane.setMaxSize(500, 0);
 
             alert_correct.showAndWait();
 
@@ -103,7 +104,9 @@ public class Controller_CompanyForm {
             user.addCompany(idUser, idCompa);
 
             Alert alert_correct = new Alert(Alert.AlertType.INFORMATION);
-            alert_correct.setHeaderText("Przedsiêbiorstwo zosta³o dodane do bazy! ");
+            alert_correct.setTitle(null);
+            alert_correct.setHeaderText("Przedsiêbiorstwo istnieje ju¿ w bazie! ");
+            alert_correct.setContentText("Zosta³eœ do niego dodany!");
             DialogPane dialogPane = alert_correct.getDialogPane();
             dialogPane.getStylesheets().add(
                     getClass().getResource("/fxml/alert.css").toExternalForm());

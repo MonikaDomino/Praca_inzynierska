@@ -1,5 +1,6 @@
 package controllery.panelUsers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
@@ -353,5 +354,12 @@ public class Controller_ShowAnalysis {
             sales.setText("Przedsiêbiorstwo generuje zysk na sprzeda¿y.");
         }
     }
+
+    @FXML
+    void createPDF(ActionEvent event) {
+
+
     }
+
+}
 

@@ -37,6 +37,7 @@
     -fx-font-weight: bold;
     -fx-text-fill:  white;
     -fx-text-origin: top;
+    -fx-text-alignment: center;
 }
 
 .myAlerts .imageview {
