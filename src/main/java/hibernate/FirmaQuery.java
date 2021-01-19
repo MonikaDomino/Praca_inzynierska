@@ -13,7 +13,7 @@ public class FirmaQuery {
 
         session = HibernateUtill.getSessionFactory().openSession();
         String query;
-        if (numberF != " ") {
+        if (!numberF.equals(" ")) {
             query = "INSERT INTO `firma` (`id_firmy`, `nazwa_firmy`, `ulica`, `numer_budynku`, `miasto`, `kod_pocztowy`, `numer_lokalu`) " +
                     "VALUES (NULL , '" + nameCompany + "', '" + street + "', '" + numberB + "', '" + city + "', '" +postCode  + "', '"
                     + numberF + "')";
@@ -33,24 +33,26 @@ public class FirmaQuery {
         }
     }
 
+    public Firma showIdCompany(String nameCompany, String street, String city, String postCode, String numberB,
+                               String numberF){
 
-    public Firma showIdCompany (String nameCompany, String street, String numberB, String numberF, String postcode,
-                               String city){
-
-        Firma cp;
-       session = HibernateUtill.getSessionFactory().openSession();
+        Firma f;
+        session = HibernateUtill.getSessionFactory().openSession();
         String hql;
         hql = "from Firma as company where company.nazwaFirmy ='" +nameCompany+ "' and company.ulica= '" +street+ "' " +
-                "and  company.numerBudynku ='" +numberB+ "' and  company.numerLokalu= '" +numberF+ "' " +
-                "and company.kodPocztowy = '" +postcode+ "' AND company.miasto = '" +city+ "'";
+                "and  company.numerBudynku ='" +numberB+ "' and company.numerLokalu= '" +numberF+ "' " +
+                " AND company.miasto = '" +city+ "' " +
+                "AND company.kodPocztowy = '" +postCode+ "'";
+
+
         query = session.createQuery(hql);
-        cp = (Firma) query.uniqueResult();
+        f = (Firma) query.setMaxResults(1).uniqueResult();
         session.close();
-        return cp;
-
-
-
+        return f;
     }
+
+
+
 
 
     public Firma showCompanyData(int idCompany){
@@ -108,7 +110,7 @@ public class FirmaQuery {
                 query += ",";
             query = query + " `numer_lokalu` = '" + localNumber + "'";
 
-            query = query + " WHERE " + " `id_firmy` = " + idCom;
+            query = query + " WHERE  `firma`.`id_firmy` = " + idCom;
         }
         try {
             session.getTransaction().begin();

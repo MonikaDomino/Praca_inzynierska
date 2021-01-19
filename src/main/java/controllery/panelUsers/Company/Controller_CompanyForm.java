@@ -78,41 +78,55 @@ public class Controller_CompanyForm {
 
         try{
             FirmaQuery company = new FirmaQuery();
+            Firma compa = company.showIdCompany(nameCompany, streetCompany, cityC, postC, numberBuilding, numberLocal);
 
-            Firma com =company.showIdCompany(nameCompany, streetCompany, cityC, postC, numberBuilding, numberLocal);
+        if(compa == null) {
+            company.addCompany(nameCompany, streetCompany, cityC, postC, numberBuilding, numberLocal);
+            Firma cop = company.showIdCompany(nameCompany,streetCompany,cityC, postC, numberBuilding,numberLocal);
+            int idCompa = cop.getIdFirmy();
+            UzytkownikQuery user = new UzytkownikQuery();
+            user.addCompany(idUser, idCompa);
 
-            if(com == null){
-                company.addCompany(nameCompany, streetCompany, cityC, postC, numberBuilding, numberLocal);
-            }
-            int idComa = com.getIdFirmy();
-                UzytkownikQuery usq = new UzytkownikQuery();
-                //usq.addCompany(,idComa);
+            Alert alert_correct = new Alert(Alert.AlertType.INFORMATION);
+            alert_correct.setHeaderText("Przedsiêbiorstwo zosta³o dodane do bazy! ");
+            DialogPane dialogPane = alert_correct.getDialogPane();
+            dialogPane.getStylesheets().add(
+                    getClass().getResource("/fxml/alert.css").toExternalForm());
+            dialogPane.getStyleClass().add("myAlerts");
+            dialogPane.setMaxSize(400, 0);
+
+            alert_correct.showAndWait();
+
+        }else{
+            int idCompa = compa.getIdFirmy();
+            UzytkownikQuery user = new UzytkownikQuery();
+            user.addCompany(idUser, idCompa);
+
+            Alert alert_correct = new Alert(Alert.AlertType.INFORMATION);
+            alert_correct.setHeaderText("Przedsiêbiorstwo zosta³o dodane do bazy! ");
+            DialogPane dialogPane = alert_correct.getDialogPane();
+            dialogPane.getStylesheets().add(
+                    getClass().getResource("/fxml/alert.css").toExternalForm());
+            dialogPane.getStyleClass().add("myAlerts");
+            dialogPane.setMaxSize(400, 0);
+
+            alert_correct.showAndWait();
+        }
 
 
 
+            String link = "/fxml/panelUser_type/panelStart.fxml";
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Controller_CompanyForm.class.getResource(link));
+            Pane newPane = loader.load();
+            allPane.getChildren().add(newPane);
 
-                Alert alert_correct = new Alert(Alert.AlertType.INFORMATION);
-                alert_correct.setHeaderText("Przedsiêbiorstwo zosta³o dodane do bazy! ");
-                DialogPane dialogPane = alert_correct.getDialogPane();
-                dialogPane.getStylesheets().add(
-                        getClass().getResource("/fxml/alert.css").toExternalForm());
-                dialogPane.getStyleClass().add("myAlerts");
-                dialogPane.setMaxSize(400, 0);
+            Controller_Start start = loader.getController();
 
-                alert_correct.showAndWait();
-
-                String link = "/fxml/panelUser_type/panelStart.fxml";
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(Controller_CompanyForm.class.getResource(link));
-                Pane newPane = loader.load();
-                allPane.getChildren().add(newPane);
-
-                Controller_Start start = loader.getController();
-
-                compData = start;
-                //UzytkownikQuery usq = new UzytkownikQuery();
-               // Uzytkownik u = usq.showData(idUser);
-                //start.readLabel(u.getImie(), u.getNazwisko());
+            compData = start;
+            UzytkownikQuery usq = new UzytkownikQuery();
+            Uzytkownik u = usq.showData(idUser);
+            start.readLabel(u.getImie(), u.getNazwisko());
 
 
 
@@ -203,7 +217,7 @@ public class Controller_CompanyForm {
 
     public void readIdUser(int id){
         idUserForm.setText(Integer.toString(id));
-      //  idUserForm.setVisible(false);
+        idUserForm.setVisible(false);
     }
 
     public void readPane(Pane pt){

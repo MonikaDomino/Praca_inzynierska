@@ -161,7 +161,7 @@ public class Controller_Company {
 
     public void readIdUser (int idU){
         idUCom.setText(Integer.toString(idU));
-        // idUCom.setVisible(false);
+        idUCom.setVisible(false);
     }
 
      // read id user for data financial

@@ -125,8 +125,9 @@ public class Controller_User extends openFXMl {
                 f.getMiasto(), f.getKodPocztowy(), idF);
         companyData.readIdCAR(idF);
         companyData.readIDu(idF);
-        companyData.readIdUser(id);
+
     }
+        companyData.readIdUser(id);
     }
 
 

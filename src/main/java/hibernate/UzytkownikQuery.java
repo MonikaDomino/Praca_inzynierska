@@ -51,16 +51,16 @@ public class UzytkownikQuery {
 
         return uk;
     }
-
     public void addCompany (int idUser, int idCompany) {
         session = HibernateUtill.getSessionFactory().openSession();
+
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
             Uzytkownik user = new UzytkownikQuery().showData(idUser);
-            user.setIdFirmy(idCompany);
-            session.update(user);
-            tx.commit();
+                user.setIdFirmy(idCompany);
+                session.update(user);
+                tx.commit();
 
         } catch (HibernateException e) {
             if (tx != null) {
@@ -71,6 +71,9 @@ public class UzytkownikQuery {
             session.close();
         }
     }
+
+
+
 
     public Uzytkownik showData(int id_user){
         Uzytkownik u = null;
