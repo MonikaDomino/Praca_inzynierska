@@ -163,7 +163,7 @@ public class Controller_Analysis_Data {
 
         DanefinansoweQuery data = new DanefinansoweQuery();
 
-        DaneFinansowe danF = data.readYear(year_economy);
+        DaneFinansowe danF = data.readYear(year_economy, id_company);
 
         if(danF == null) {
 

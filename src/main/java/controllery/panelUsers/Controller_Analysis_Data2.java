@@ -360,9 +360,9 @@ public class Controller_Analysis_Data2 {
             Analiza analize = analise.showResult(nowYear);
             showAnalysis.readCondition(analize.getWynikAnalizy());
             showAnalysis.compare(ws.getRoa(), ws.getRoe());
-            showAnalysis.readRoA(w.getRoa());
-            showAnalysis.readRoi(w.getRoi());
-            showAnalysis.readRos(w.getRos());
+            showAnalysis.readRoA(ws.getRoa());
+            showAnalysis.readRoi(ws.getRoi());
+            showAnalysis.readRos(ws.getRos());
 
 
 

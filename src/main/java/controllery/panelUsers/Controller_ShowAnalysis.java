@@ -313,9 +313,9 @@ public class Controller_ShowAnalysis {
     public void readCondition(double result) {
 
         if (result < 0) {
-            condition.setText("Bardzo wysoka mo?liwo?? bankructwa!");
+            condition.setText("Bardzo wysoka mo¿liwoœæ bankructwa!");
         } else if (result > 0 && result < 1) {
-            condition.setText("S?aba kondycja finansowa.");
+            condition.setText("S³aba kondycja finansowa.");
         } else if (result > 1 && result < 2) {
             condition.setText("Dobra kondycja finansowa");
         } else {
@@ -343,23 +343,19 @@ public class Controller_ShowAnalysis {
         if(ROA > 0){
             compare.setText("Maj¹tek przedsiêbiorstwa generuje zysk");
         }else{
-            compare.setText("Maj¹tek przedsiêbiorstwo generuje stratê.");
+            compare.setText("Maj¹tek przedsiêbiorstwa generuje stratê.");
         }
     }
 
     public void readRos(double ROS){
         if(ROS < 0){
-            sales.setText("Przedsiêbiorstwo musi osi¹gaæ wiêksz¹ sprzeda¿, aby generowaæ zysk!  ");
+            sales.setText("Sprzeda¿ musi byæ wiêksza, aby generowaæ zysk!  ");
         }else{
             sales.setText("Przedsiêbiorstwo generuje zysk na sprzeda¿y.");
         }
     }
 
-    @FXML
-    void createPDF(ActionEvent event) {
 
-
-    }
 
 }
 
