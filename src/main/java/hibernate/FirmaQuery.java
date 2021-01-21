@@ -2,6 +2,7 @@ package hibernate;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 public class FirmaQuery {
@@ -71,54 +72,25 @@ public class FirmaQuery {
 
         session = HibernateUtill.getSessionFactory().openSession();
 
-        String query = "UPDATE `firma` SET";
-
-
-        if (!query.equals("UPDATE `firma` SET"))
-            query += ",";
-
-        if (name.length() > 0) {
-            query = query + " `nazwa_firmy` = '" + name + "'";
-        }
-
-        if (street.length() > 0) {
-            if (!query.equals("UPDATE `firma` SET"))
-                query += ",";
-            query = query + " `ulica` = '" + street + "'";
-        }
-
-        if (buildingNr.length() > 0) {
-            if (!query.equals("UPDATE `firma` SET"))
-                query += ",";
-            query = query + " `numer_budynku` = '" + buildingNr + "'";
-        }
-
-        if (city.length() > 0) {
-            if (!query.equals("UPDATE `firma` SET"))
-                query += ",";
-            query = query + " `miasto` = '" + city + "'";
-        }
-
-        if (postcode.length() > 0) {
-            if (!query.equals("UPDATE `firma` SET"))
-                query += ",";
-            query = query + " `kod_pocztowy`= '" + postcode + "'";
-        }
-
-        if (localNumber.length() > 0) {
-            if (!query.equals("UPDATE `firma` SET"))
-                query += ",";
-            query = query + " `numer_lokalu` = '" + localNumber + "'";
-
-            query = query + " WHERE  `firma`.`id_firmy` = " + idCom;
-        }
+        Transaction tx = null;
         try {
-            session.getTransaction().begin();
-            session.createSQLQuery(query).executeUpdate();
-            session.getTransaction().commit();
-            session.close();
-        } catch (HibernateException error) {
-            session.getTransaction().rollback();
+            tx = session.beginTransaction();
+            Firma company = new FirmaQuery().showCompanyData(idCom);
+            company.setNazwaFirmy(name);
+            company.setUlica(street);
+            company.setNumerBudynku(buildingNr);
+            company.setMiasto(city);
+            company.setKodPocztowy(postcode);
+            company.setNumerLokalu(localNumber);
+            session.update(company);
+            tx.commit();
+
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
             session.close();
         }
     }

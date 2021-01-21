@@ -61,6 +61,7 @@ public class Controller_Company_ChangeAdress {
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText("Dane firmy zosta³y zaktualizowane");
+            alert.setTitle(null);
             DialogPane dialogPane = alert.getDialogPane();
             dialogPane.getStylesheets().add(
                     getClass().getResource("/fxml/alert.css").toExternalForm());

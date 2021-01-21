@@ -22,4 +22,18 @@ class FirmaQueryTest {
         int id = co.getIdFirmy();
         System.out.println(id);
     }
+
+    @Test
+    void changeAddress() throws Exception {
+        String name = "Zeto Rzeszów";
+        String street = "Rejtana";
+        String numberB = "19";
+        String city = "Rzeszów";
+        String postcode = "35-090";
+        String numberl = "";
+        int idCompany = 3;
+
+        FirmaQuery comp = new FirmaQuery();
+        comp.changeAddress(name, street, numberB, city, postcode, numberl, idCompany);
+    }
 }
