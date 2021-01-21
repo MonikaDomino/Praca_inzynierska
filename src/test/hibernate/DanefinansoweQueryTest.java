@@ -27,4 +27,22 @@ class DanefinansoweQueryTest {
 
     }
 
+    @Test
+    void readYear() {
+        int year = 2019;
+        int idCompany =4;
+
+        int year2 = 2019;
+        int idCopany = 1;
+
+        DanefinansoweQuery instance = new DanefinansoweQuery();
+        DaneFinansowe df = instance.readYear(year, idCompany);
+        DaneFinansowe dt = instance.readYear(year2, idCopany);
+        int id = df.getIdDane();
+        int idA = dt.getIdDane();
+        System.out.println(id);
+        System.out.println(idA);
+
+
+    }
 }

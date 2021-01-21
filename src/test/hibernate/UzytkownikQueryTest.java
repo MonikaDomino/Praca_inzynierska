@@ -15,4 +15,13 @@ class UzytkownikQueryTest {
         instance.addCompany(id, idC);
 
     }
+
+
+    @Test
+    void showData() {
+        int idU = 3;
+        UzytkownikQuery instance = new UzytkownikQuery();
+        int id = instance.showData(idU).getIdFirmy();
+        System.out.println(id);
+    }
 }

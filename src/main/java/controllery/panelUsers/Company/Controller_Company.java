@@ -68,12 +68,8 @@ public class Controller_Company {
         Controller_CompanyFinancial cf = loader.getController();
         financial = cf;
         int idD = Integer.parseInt(idUshow.getText());
-        UzytkownikQuery user = new UzytkownikQuery();
-        Uzytkownik us = user.showData(idD);
-
-        int idCompa = us.getIdFirmy();
-        cf.comboBox(idCompa);
-       cf.readIdCompany(idCompa);
+        cf.comboBox(idD);
+        cf.readIdCompany(idD);
 
 
     }
@@ -126,8 +122,7 @@ public class Controller_Company {
         analysis = analsis;
         int idCpman = Integer.parseInt(idCAR.getText());
         analsis.comboBox(idCpman);
-        int com = Integer.parseInt(idCompany.getText());
-        analsis.readIdCompany(com);
+       analsis.readIdCompany(idCpman);
 
 
     }
@@ -164,7 +159,7 @@ public class Controller_Company {
         idUCom.setVisible(false);
     }
 
-     // read id user for data financial
+     // read id company for data financial
     public void readIDu (int idUS){
         idUshow.setText(Integer.toString(idUS));
         idUshow.setVisible(false);
